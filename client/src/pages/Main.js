@@ -1,6 +1,7 @@
 import React from 'react'
 import LanguageBar from '../components/LanguageBar'
 import MainImage from '../components/MainImage'
+import PostList from '../components/PostList'
 import PostView from '../components/PostView'
 import '../scss/Main.scss'
 
@@ -18,6 +19,7 @@ const Main = () => {
       />
       <PostView />
       <LanguageBar />
+      <PostList />
     </div>
   )
 }

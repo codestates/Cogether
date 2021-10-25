@@ -7,11 +7,11 @@ const Nav = () => {
     <nav>
       <div className = "nav-logo">
         <img className = "nav-logo-full"
-          src="images/logo_cogether.png"
+          src="images/logo_cogether-removebg-preview.png"
           >
         </img>
         <img className = "nav-logo-small"
-          src="images/locofavicon.png"
+          src="images/favicon-removebg.png"
           >
         </img>
       </div>

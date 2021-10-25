@@ -10,8 +10,6 @@ const LanguageBar = () => {
       <li className="languageItem">Python</li>
       <li className="languageItem">Django</li>
       <li className="languageItem">C</li>
-      <li className="languageItem">C#</li>
-      <li className="languageItem">C++</li>
       <li className="languageItem">Java</li>
       <li className="languageItem">SQL</li>
     </ul>

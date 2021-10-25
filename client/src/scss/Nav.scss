@@ -1,3 +1,4 @@
+@import "./color.scss";
 nav {
   height: 5rem;
   display: flex;
@@ -5,6 +6,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 0.8rem;
+  background: $color-main;
 
   .nav-logo-full {
     width: auto;
