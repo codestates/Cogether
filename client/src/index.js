@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Signin from './Signin'
+import Signup from './Signup'
+import Require from './Require'
 
 ReactDOM.render(
   <React.StrictMode>
