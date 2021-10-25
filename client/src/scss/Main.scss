@@ -1,0 +1,52 @@
+.MainImageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content {
+  font-size: 3rem;
+}
+.postView {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0;
+}
+
+.languageBar {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  padding: 1rem;
+  max-width: 1210px;
+}
+
+.languageItem {
+  margin-right: 0.75rem;
+  margin-left: 0.75rem;
+  font-size: 30px;
+}
+@media screen and (max-width: 1450px) {
+  .content {
+    font-size: 2rem;
+  }
+  .content-img {
+    width: 80%;
+    height: auto;
+    padding: 3rem;
+  }
+}
+
+@media screen and (max-width: 1380px) {
+  .MainImageContainer {
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .content {
+    font-size: 1.5rem;
+  }
+}

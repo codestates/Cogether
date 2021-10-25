@@ -1,9 +1,12 @@
 import './App.css';
+import Nav from './components/Nav';
+import Main from './pages/Main';
 
 function App() {
   return (
     <div>
-      <h1>Cogether Web !</h1>
+      <Nav />
+      <Main />
     </div>
   );
 }

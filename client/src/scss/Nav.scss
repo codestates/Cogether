@@ -1,0 +1,35 @@
+nav {
+  height: 5rem;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem;
+
+  .nav-logo-full {
+    width: auto;
+    height: auto;
+    max-width: 150px;
+    max-height: 150px;
+  }
+
+  .nav-logo-small {
+    display: none;
+  }
+}
+@media screen and (max-width: 880px) {
+  nav {
+    .nav-logo-full {
+      display: none;
+    }
+
+    .nav-logo-small {
+      display: inline-block;
+      min-width: 3rem;
+      height: 3rem;
+      background: {
+        position: center;
+      }
+    }
+  }
+}
