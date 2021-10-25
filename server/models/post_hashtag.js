@@ -1,9 +1,7 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class post_hashtag extends Model {
+  class Post_hashtag extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -12,13 +10,16 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
-  };
-  post_hashtag.init({
-    hashtagId: DataTypes.INTEGER,
-    postId: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'post_hashtag',
-  });
-  return post_hashtag;
+  }
+  Post_hashtag.init(
+    {
+      hashtagId: DataTypes.INTEGER,
+      postId: DataTypes.INTEGER,
+    },
+    {
+      sequelize,
+      modelName: 'Post_hashtag',
+    }
+  );
+  return Post_hashtag;
 };

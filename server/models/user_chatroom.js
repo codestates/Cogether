@@ -1,9 +1,7 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class user_chatroom extends Model {
+  class User_chatroom extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -12,13 +10,16 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
-  };
-  user_chatroom.init({
-    userId: DataTypes.INTEGER,
-    chatroomId: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'user_chatroom',
-  });
-  return user_chatroom;
+  }
+  User_chatroom.init(
+    {
+      userId: DataTypes.INTEGER,
+      chatroomId: DataTypes.INTEGER,
+    },
+    {
+      sequelize,
+      modelName: 'User_chatroom',
+    }
+  );
+  return User_chatroom;
 };
