@@ -19,6 +19,15 @@ nav {
     display: none;
   }
 }
+.userControl {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  div {
+    margin: 5px;
+  }
+}
+
 @media screen and (max-width: 880px) {
   nav {
     .nav-logo-full {

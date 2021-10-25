@@ -8,7 +8,10 @@ const PostList = () => {
         <li>인기</li>
       </ul>
       <div className="postList-img">
-        <img src="./images/No_data-removebg-preview.png"></img>
+        <img
+          className="nodataImg" 
+          src="./images/No_data.svg"
+        ></img>
       </div>
     </>
   )

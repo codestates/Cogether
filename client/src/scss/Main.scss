@@ -1,13 +1,21 @@
-@import "./color.scss";
+@font-face {
+  font-family: "777Balsamtint";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/777Balsamtint.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 
 .MainImageContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: $color-main;
+  font-family: "777Balsamtint";
 }
 .content {
   font-size: 3rem;
+  font-weight: bolder;
+  line-height: 5rem;
 }
 .postView {
   display: flex;
@@ -24,7 +32,6 @@
   max-width: 1210px;
   margin-top: 5rem;
   margin-bottom: 5rem;
-  background: $color-main;
 }
 
 .languageItem {
@@ -37,7 +44,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: $color-main;
   li {
     margin-right: 0.75rem;
     margin-left: 0.75rem;
@@ -49,9 +55,18 @@
   justify-content: center;
   align-items: center;
 }
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #eae8e8;
+  margin-top: 50px;
+}
 @media screen and (max-width: 1450px) {
   .content {
     font-size: 2rem;
+    line-height: 3rem;
   }
   .content-img {
     width: 80%;
@@ -66,10 +81,29 @@
     align-items: center;
     justify-content: center;
   }
+  .nodataImg {
+    max-width: 80%;
+    height: auto;
+  }
 }
 
 @media screen and (max-width: 700px) {
   .content {
     font-size: 1.5rem;
+  }
+  .nodataImg {
+    max-width: 300px;
+    height: auto;
+  }
+  .footer {
+    div,
+    p {
+      font-size: 10px;
+      padding: 5px;
+    }
+    .footer-img {
+      max-width: 150px;
+      height: auto;
+    }
   }
 }
