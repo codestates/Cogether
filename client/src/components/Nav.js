@@ -2,12 +2,16 @@ import React,{ useState } from 'react'
 import '../scss/Nav.scss'
 import Mypage from './Mypage'
 import UserControl from './UserControl'
-
+import { useHistory } from 'react-router';
 
 const Nav = () => {
 
-  const [isLogin, setLogin] = useState(true);
+  const history = useHistory();
 
+  const [isLogin, setLogin] = useState(true);
+  const newPost = () =>{
+    history.push('/write')
+  }
   return (
     <nav>
       <div className = "nav-logo">
@@ -21,7 +25,7 @@ const Nav = () => {
         </img>
       </div>
       <div className="nav-user">
-        <span>새글쓰기</span>
+        <span onClick={newPost}>새글쓰기</span>
         {isLogin ? <Mypage /> :<UserControl />}
       </div>
       
