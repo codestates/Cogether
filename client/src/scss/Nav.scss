@@ -19,6 +19,14 @@ nav {
     display: none;
   }
 }
+.nav-user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  span {
+    margin-right: 0.5rem;
+  }
+}
 .userControl {
   display: flex;
   justify-content: center;

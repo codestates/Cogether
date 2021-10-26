@@ -1,8 +1,10 @@
+'use strict';
+
 module.exports = {
   userController: {
     signup: require('./signup'),
     signin: require('./signin'),
-    ouath: require('./oauth'),
+    oauth: require('./oauth'),
     signout: require('./signout'),
     userinfo: require('./userinfo'),
     updateUserinfo: require('./updateUserinfo'),
