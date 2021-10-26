@@ -1,8 +1,13 @@
-import React from 'react'
+import React,{ useState } from 'react'
 import '../scss/Nav.scss'
+import Mypage from './Mypage'
 import UserControl from './UserControl'
 
+
 const Nav = () => {
+
+  const [isLogin, setLogin] = useState(true);
+
   return (
     <nav>
       <div className = "nav-logo">
@@ -15,7 +20,13 @@ const Nav = () => {
           >
         </img>
       </div>
-      <UserControl />
+      <div className="nav-user">
+        <span>새글쓰기</span>
+        {isLogin ? <Mypage /> :<UserControl />}
+      </div>
+      
+      
+      
     </nav>
   )
 }

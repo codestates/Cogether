@@ -1,0 +1,17 @@
+.mypage-menu {
+  display: none;
+}
+
+.active {
+  transition: all 0.3s linear;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(10px);
+  width: 10rem;
+  top: 3.5rem;
+  right: 0;
+  position: absolute;
+  z-index: 20;
+  display: flex;
+  flex-flow: column nowrap;
+}
