@@ -18,7 +18,7 @@ const Signin = ({ variation }) => {
                     <button className='SigninBtn' type='submit' >로그인</button>
                     <div className='SigninCompoSignup'>
                         <label>회원이 아니신가요?</label>
-                        <span>회원가입</span>
+                        <span onClick={ variation }>회원가입</span>
                     </div>
             </form>
             <button className='SigninGoogle' type='submit'>구글 로그인</button>
