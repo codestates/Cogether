@@ -9,7 +9,7 @@ const Nav = () => {
 
   const history = useHistory();
 
-  const [isLogin, setLogin] = useState(true);
+  const [isLogin, setLogin] = useState(false);
   const newPost = () =>{
     history.push('/write')
   }
