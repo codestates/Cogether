@@ -1,7 +1,7 @@
 import React from 'react'
-import './scss/Signin.scss';
+import '../scss/Signin.scss';
 
-const Signin = () => {
+const Signin = ({ variation }) => {
     return (
         <div className='SigninMain'>
             <form className='SigninForm'>
