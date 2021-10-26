@@ -2,7 +2,7 @@ const cors = require('cors');
 const express = require('express');
 const cookieParser = require('cookie-parser');
 
-// routers
+// routers declaration
 const { userRouter } = require('./routers/user');
 const { postRouter } = require('./routers/post');
 const { interestPostRouter } = require('./routers/interestPost');
@@ -21,6 +21,8 @@ app.use(cookieParser());
 app.get('/', (req, res) => {
   res.status(200).send('Cogether Project !');
 });
+
+// express use routers
 
 app.use('/users', userRouter);
 app.use('/posts', postRouter);
