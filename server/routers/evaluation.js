@@ -3,6 +3,6 @@ const evaluationController = require('../controllers/evaluations');
 
 const router = express.Router();
 
-router.post('/', evaluationController.post);
+router.post('/', evaluationController.postEvaluation);
 
 module.exports.evaluationRouter = router;

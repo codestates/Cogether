@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Evaluation.init(
     {
-      grade: DataTypes.INTEGER,
+      grade: DataTypes.FLOAT,
       content: DataTypes.STRING,
     },
     {

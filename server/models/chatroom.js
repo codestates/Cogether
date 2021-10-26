@@ -13,7 +13,10 @@ module.exports = (sequelize, DataTypes) => {
   }
   Chatroom.init(
     {
-      id: { type: DataTypes.INTEGER, primaryKey: true },
+      id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+      },
     },
     {
       sequelize,

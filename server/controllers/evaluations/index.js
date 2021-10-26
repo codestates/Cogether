@@ -3,7 +3,7 @@
 const { Evaluation } = require('../../models');
 
 module.exports = {
-  post: async (req, res) => {
+  postEvaluation: async (req, res) => {
     const { grade, content } = req.body;
 
     if (!grade || !content) {

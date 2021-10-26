@@ -25,9 +25,9 @@ app.get('/', (req, res) => {
 app.use('/users', userRouter);
 app.use('/posts', postRouter);
 app.use('/interests', interestPostRouter);
-// app.use('/comments', commentRouter);
-// app.use('/chatrooms', chatroomRouter);
-// app.use('/chattings', chattingRouter);
+app.use('/comments', commentRouter);
+app.use('/chatrooms', chatroomRouter);
+app.use('/chattings', chattingRouter);
 app.use('/evaluations', evaluationRouter);
 
 const HTTP_PORT = process.env.HTTP_PORT || 4000;
