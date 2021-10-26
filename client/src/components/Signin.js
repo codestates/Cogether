@@ -23,7 +23,7 @@ const Signin = ({ variation }) => {
             </form>
             <button className='SigninGoogle' type='submit'>구글 로그인</button>
         </div>
-    )
-}
+  );
+};
 
-export default Signin
+export default Signin;

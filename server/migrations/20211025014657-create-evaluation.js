@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       grade: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.FLOAT,
       },
       content: {
         type: Sequelize.STRING,

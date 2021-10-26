@@ -22,6 +22,8 @@ module.exports = {
       },
       authorization: {
         type: Sequelize.BOOLEAN,
+        defaultValue : false,
+      }
       },
       createdAt: {
         allowNull: false,
