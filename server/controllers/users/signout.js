@@ -9,11 +9,11 @@ module.exports = (req, res) => {
     });
   }
 
-  if (req.headers.Authorization || req.cookies.authorization) {
-    delete req.headers.authorization;
-  }
-
   try {
+    if (req.headers.Authorization || req.cookies.authorization) {
+      delete req.headers.authorization;
+    }
+
     res
       .clearCookie('authorization', {
         httpOnly: true,
