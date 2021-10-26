@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import { Link } from 'react-router-dom';
 import '../scss/Mypage.scss'
 
 const Mypage = () => {
@@ -10,7 +11,9 @@ const Mypage = () => {
   return (
     <div onClick={toggleClass}> 마이페이지
       <ul className={isActive ? "mypage-menu active" : "mypage-menu"}>
-        <li>회원정보 수정</li>
+        <Link to="/setting" style={{ textDecoration: 'none' }}>
+          <li>회원정보 수정</li>
+        </Link>
         <li>채팅목록</li>
         <li>채팅방</li>
         <li>로그아웃</li>
