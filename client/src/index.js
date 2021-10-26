@@ -2,14 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './scss/index.scss';
 import App from './App';
-import Signin from './Signin'
-import Signup from './Signup'
-import Require from './Require'
+import { Provider } from 'react-redux';
+import store from './store/store';
+
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 

@@ -1,5 +1,5 @@
-import React from 'react';
-import './scss/Signup.scss';
+import React from 'react'
+import '../scss/Signup.scss';
 
 const Signup = () => {
   return (
