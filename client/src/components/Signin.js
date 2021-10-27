@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { URL } from '../Url';
+import { setIsLogin, setSigninModal } from '../actions/index';
+import { useDispatch } from 'react-redux';
 import '../scss/Signin.scss';
 
 const Signin = ({ variation }) => {
+  const dispatch = useDispatch();
   const [login, setLogin] = useState({
     email: '',
     password: '',
@@ -23,6 +26,10 @@ const Signin = ({ variation }) => {
         password,
       })
       .then((res) => {
+        const { accessToken } = res.data.data;
+        dispatch(setIsLogin(true));
+        localStorage.setItem('accessToken', accessToken);
+        dispatch(setSigninModal(false));
         console.log('로그인 성공');
       })
       .catch((err) => {

@@ -46,7 +46,7 @@ module.exports = async (req, res) => {
 
     res.status(200).send({
       data: {
-        acceesToken: accessToken,
+        accessToken: accessToken,
         id: user.id,
         email: user.email,
         image: user.image,
