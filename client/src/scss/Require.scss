@@ -9,14 +9,33 @@
 
 .RequireHeader {
   display: flex;
+  padding: 1rem;
 }
 
 .RequireFooter {
   display: flex;
   flex-flow: column nowrap;
   padding: 1rem;
-  input {
+  textarea {
+    height: 100px;
+    width: 400px;
+    text-align: left;
+    letter-spacing: 0.9px;
+    resize: none;
   }
   button {
+    background-color: #d3a4f9;
+    color: white;
+    border-radius: 2rem;
+    padding: 10px 30px;
+    font-size: 14px;
+    margin: 0.5rem;
+    margin-top: 1.5rem;
+    border: none;
+  }
+
+  button:hover {
+    color: #870cec;
+    font-weight: 700;
   }
 }

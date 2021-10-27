@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactStars from 'react-rating-stars-component';
-import './scss/Require.scss';
+import '../scss/Require.scss';
 
 const Require = () => {
   return (
@@ -8,7 +8,6 @@ const Require = () => {
       <div className="RequireHeader">
         더 좋은 서비스를 위해 Cogether에게 평가를 남겨주세요!
       </div>
-      <div> 코게더 로고</div>
       <div>
         <ReactStars
           isHalf={true}
@@ -16,13 +15,14 @@ const Require = () => {
           //onChange={ratingChanged}
           size={70}
           activeColor="#870cec"
+          color="black"
+          emptyIcon={<i className="far fa-star"></i>}
+          halfIcon={<i className="fa fa-star-half-alt"></i>}
+          fullIcon={<i className="fa fa-star"></i>}
         />
       </div>
       <div className="RequireFooter">
-        <input
-          type="text"
-          name="textbox"
-          size="50"
+        <textarea
           placeholder="여기에 평가를 남겨주세요"
           // ref={inputRef}
         />

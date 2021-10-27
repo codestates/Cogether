@@ -1,6 +1,10 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { setRequireModal, setSigninModal } from '../actions/index';
 
 const Footer = () => {
+  const dispatch = useDispatch();
+
   return (
     <div className="footer">
       <div className="footer-logo">
@@ -18,7 +22,13 @@ const Footer = () => {
 
       <div>
         CONTACT
-        <p>서비스평가</p>
+        <p
+          onClick={() => {
+            dispatch(setRequireModal(true));
+          }}
+        >
+          서비스평가
+        </p>
       </div>
 
       <div>
