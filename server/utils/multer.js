@@ -11,11 +11,10 @@ const upload = multer(
       bucket: 'cogether',
       acl: 'public-read',
       key: function (req, file, cb) {
-        cb(null, Date.now() + '.' + file.originalname.split('.').pop());
+        cb(null, Date.now() + '.' + file.originalname.split('.').pop()); // 이름 설정
       },
     }),
   },
   'NONE'
 );
-
 module.exports = upload;

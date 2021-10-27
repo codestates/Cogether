@@ -10,11 +10,6 @@ module.exports = async (req, res) => {
   const auth = isAuthorized(req);
   const { nickname, password } = req.body;
 
-  console.log('req.file', req.file);
-  console.log('req.file', req.file.location);
-
-  const image = req.file.location || null;
-
   if (!auth) {
     return res.status(401).send({
       message: 'unauthorized user',
@@ -33,6 +28,11 @@ module.exports = async (req, res) => {
         message: 'nickname already exist',
       });
     }
+
+    if (req.file) {
+      image = req.file.location;
+    }
+    image = null;
 
     const newPassword = hashPassword(password);
     await User.update(
@@ -64,8 +64,6 @@ module.exports = async (req, res) => {
     const accessToken = generateToken(payload);
 
     sendToken(res, accessToken);
-
-    console.log('updatedUser', updatedUser);
 
     res.status(200).send({
       data: {
