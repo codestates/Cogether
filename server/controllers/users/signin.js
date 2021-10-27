@@ -46,10 +46,11 @@ module.exports = async (req, res) => {
 
     res.status(200).send({
       data: {
-        acceesToken: accessToken,
+        accessToken: accessToken,
         id: user.id,
         email: user.email,
         image: user.image,
+        nickname: user.nickname,
         login_type: user.login_type,
         authorization: user.authorization,
         createdAt: user.createdAt,
