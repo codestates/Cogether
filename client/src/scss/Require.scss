@@ -1,25 +1,22 @@
 .RequireMain {
-    padding : 0.4rem;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    background-color: #ffffff;
-    border-radius: 1.5rem;
+  padding: 0.4rem;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 1.5rem;
 }
 
-
-.RequireHeader{
-
+.RequireHeader {
+  display: flex;
 }
 
-.RequireFooter{
-    display: flex;
-    flex-flow: column nowrap;
-    padding: 1rem;
-    input {
-        
-    }
-    button {
-
-    }
+.RequireFooter {
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 1rem;
+  input {
+  }
+  button {
+  }
 }

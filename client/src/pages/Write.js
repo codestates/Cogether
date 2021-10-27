@@ -1,20 +1,20 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react';
 import Editor from '../components/EditorComponent';
 import LanguageSelect from '../components/LanguageSelect';
 import '../scss/Write.scss';
 
 const Write = () => {
   const [desc, setDesc] = useState('');
-  const [title,setTitle] = useState('');
+  const [title, setTitle] = useState('');
   function onEditorChange(value) {
-    setDesc(value)
+    setDesc(value);
   }
   const TitleChange = (e) => {
-    setTitle(e.target.value)
-  }
+    setTitle(e.target.value);
+  };
   return (
     <section className="writeContainer">
-      <input 
+      <input
         className="titleInput"
         type="text"
         placeholder="제목을 입력하세요"
@@ -33,7 +33,7 @@ const Write = () => {
         <button>등록</button>
       </div>
     </section>
-  )
+  );
 };
 
 export default Write;
