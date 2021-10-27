@@ -25,8 +25,10 @@ module.exports = {
         defaultValue: 'local',
       },
       authorization: {
+
         type: Sequelize.STRING,
         defaultValue: 'user',
+
       },
       createdAt: {
         allowNull: false,

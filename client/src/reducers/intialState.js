@@ -1,4 +1,4 @@
 export const initialState = {
-    isSigninModalOpen: false,
+  isSigninModalOpen: false,
+  isLogin: false,
 };
-  
