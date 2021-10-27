@@ -17,9 +17,13 @@ module.exports = (sequelize, DataTypes) => {
       nickname: DataTypes.STRING,
       image: DataTypes.STRING,
       password: DataTypes.STRING,
+      login_type: {
+        type: DataTypes.STRING,
+        defaultValue: 'local',
+      },
       authorization: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false,
+        type: DataTypes.STRING,
+        defaultValue: 'user',
       },
     },
     {
