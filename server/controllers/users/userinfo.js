@@ -24,6 +24,7 @@ module.exports = async (req, res) => {
         email: userInfo.email,
         image: userInfo.image,
         nickname: userInfo.nickname,
+        login_type: userInfo.login_type,
         authorization: userInfo.authorization,
         updatedAt: userInfo.updatedAt,
         createdAt: userInfo.createdAt,
