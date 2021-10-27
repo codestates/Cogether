@@ -5,19 +5,24 @@ import { useSelector } from 'react-redux';
 import Nav from './components/Nav';
 import Main from './pages/Main';
 import SigninModal from './components/SigninModal';
+import RequireModal from './components/RequireModal';
 import Setting from './pages/Setting';
 import Write from './pages/Write';
 
 function App() {
   const SigninInfo = useSelector((state) => state.userReducer);
-  const { isLogin, isSigninModalOpen } = SigninInfo;
+
+  const { isLogin, isSigninModalOpen,isRequireModalOpen } = SigninInfo;
   console.log('로그인상태', isLogin);
   console.log('토큰', `${localStorage.accessToken}`);
+
   return (
     <BrowserRouter>
       <div className="appContainer">
         <SigninModal isOpen={isSigninModalOpen} />
+        <RequireModal isOpenRe={isRequireModalOpen} />
         <Nav isLogin={isLogin} />
+
         <Switch>
           <Route exact path="/">
             <Main />

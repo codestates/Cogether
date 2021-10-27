@@ -1,4 +1,4 @@
-import { SET_IS_SIGNIN, SET_SIGNIN_MODAL } from '../actions/index';
+import { SET_IS_SIGNIN, SET_SIGNIN_MODAL, SET_REQUIRE_MODAL } from '../actions/index';
 import { initialState } from './intialState';
 
 const itemReducer = (state = initialState, action) => {
@@ -6,6 +6,11 @@ const itemReducer = (state = initialState, action) => {
     case SET_SIGNIN_MODAL:
       return Object.assign({}, state, {
         isSigninModalOpen: action.payload,
+      });
+
+    case SET_REQUIRE_MODAL:
+      return Object.assign({}, state, {
+        isRequireModalOpen: action.payload,
       });
 
     case SET_IS_SIGNIN:

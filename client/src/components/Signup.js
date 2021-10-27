@@ -78,7 +78,6 @@ const Signup = () => {
             onChange={handleInputValue('passwordCheck')}
           ></input>
         </label>
-
         <button className="SignupBtn" type="submit">
           회원가입
         </button>
