@@ -14,7 +14,7 @@ module.exports = async (req, res) => {
     const user = await User.findOne({
       where: {
         email,
-        authorization: false,
+        authorization: 'user',
       },
     });
 
@@ -46,11 +46,13 @@ module.exports = async (req, res) => {
 
     res.status(200).send({
       data: {
-        acceesToken: accessToken,
+        accessToken: accessToken,
         id: user.id,
         email: user.email,
         image: user.image,
-        authorization: false,
+        nickname: user.nickname,
+        login_type: user.login_type,
+        authorization: user.authorization,
         createdAt: user.createdAt,
         updatedAt: user.updatedAt,
       },

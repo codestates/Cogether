@@ -1,17 +1,60 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
+import { URL } from '../Url';
+import { setIsLogin, setSigninModal } from '../actions/index';
+import { useDispatch } from 'react-redux';
 import '../scss/Signin.scss';
 
 const Signin = ({ variation }) => {
+  const dispatch = useDispatch();
+  const [login, setLogin] = useState({
+    email: '',
+    password: '',
+  });
+
+  const handleInputValue = (key) => (e) => {
+    setLogin({ ...login, [key]: e.target.value });
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    const { email, password } = login;
+    axios
+      .post(`${URL}/users/signin`, {
+        email,
+        password,
+      })
+      .then((res) => {
+        const { accessToken } = res.data.data;
+        dispatch(setIsLogin(true));
+        localStorage.setItem('accessToken', accessToken);
+        dispatch(setSigninModal(false));
+        console.log('로그인 성공');
+      })
+      .catch((err) => {
+        console.log('로그인 실패');
+      });
+  };
+
   return (
     <div className="SigninMain">
-      <form className="SigninForm">
+      <form className="SigninForm" onSubmit={handleLogin}>
         <p className="SigninP">이메일</p>
         <label className="SigninLabel">
-          <input placeholder="이메일"></input>
+          <input
+            placeholder="이메일"
+            type="email"
+            onChange={handleInputValue('email')}
+          ></input>
         </label>
         <p className="SigninP">비밀번호</p>
         <label className="SigninLabel">
-          <input placeholder="비밀번호"></input>
+          <input
+            placeholder="비밀번호"
+            type="password"
+            onChange={handleInputValue('password')}
+          ></input>
         </label>
         <button className="SigninBtn" type="submit">
           로그인

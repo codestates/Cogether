@@ -2,7 +2,11 @@
 .mypage-menu {
   display: none;
 }
-
+.userInfo:hover,
+.logout:hover {
+  cursor: pointer;
+  color: rgb(58, 86, 133);
+}
 .active {
   transition: all 0.3s linear;
   opacity: 1;

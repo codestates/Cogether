@@ -11,13 +11,18 @@ import Write from './pages/Write';
 
 function App() {
   const SigninInfo = useSelector((state) => state.userReducer);
-  const { isSigninModalOpen, isRequireModalOpen } = SigninInfo;
+
+  const { isLogin, isSigninModalOpen,isRequireModalOpen } = SigninInfo;
+  console.log('로그인상태', isLogin);
+  console.log('토큰', `${localStorage.accessToken}`);
+
   return (
     <BrowserRouter>
       <div className="appContainer">
         <SigninModal isOpen={isSigninModalOpen} />
         <RequireModal isOpenRe={isRequireModalOpen} />
-        <Nav />
+        <Nav isLogin={isLogin} />
+
         <Switch>
           <Route exact path="/">
             <Main />

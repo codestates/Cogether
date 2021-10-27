@@ -5,10 +5,9 @@ import UserControl from './UserControl';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 
-const Nav = () => {
+const Nav = ({ isLogin }) => {
   const history = useHistory();
 
-  const [isLogin, setLogin] = useState(false);
   const newPost = () => {
     history.push('/write');
   };

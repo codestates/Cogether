@@ -9,13 +9,14 @@ module.exports = async (req, res) => {
     const [user, created] = await User.findOrCreate({
       where: {
         email,
-        authorization: false,
+        authorization: 'user',
       },
       defaults: {
         email,
         nickname,
         password: hashedPassword,
-        authorization: false,
+        authorization: 'user',
+        login_type: 'local',
       },
     });
 

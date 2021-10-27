@@ -69,18 +69,20 @@
     line-height: 3rem;
   }
   .content-img {
-    width: 80%;
+    width: 60%;
     height: auto;
     padding: 3rem;
+    min-width: 430px;
   }
 }
 
-@media screen and (max-width: 1380px) {
+@media screen and (max-width: 1026px) {
   .MainImageContainer {
     flex-flow: column;
     align-items: center;
     justify-content: center;
   }
+
   .nodataImg {
     max-width: 80%;
     height: auto;
@@ -91,6 +93,7 @@
   .content {
     font-size: 1.5rem;
   }
+
   .nodataImg {
     max-width: 300px;
     height: auto;
