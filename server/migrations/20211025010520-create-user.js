@@ -20,10 +20,13 @@ module.exports = {
       password: {
         type: Sequelize.STRING,
       },
+      login_type: {
+        type: Sequelize.STRING,
+        defaultValue: 'local',
+      },
       authorization: {
-        type: Sequelize.BOOLEAN,
-        defaultValue : false,
-      }
+        type: Sequelize.STRING,
+        defaultValue: 'user',
       },
       createdAt: {
         allowNull: false,

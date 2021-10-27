@@ -14,7 +14,7 @@ module.exports = async (req, res) => {
     const user = await User.findOne({
       where: {
         email,
-        authorization: false,
+        authorization: 'user',
       },
     });
 
@@ -50,7 +50,8 @@ module.exports = async (req, res) => {
         id: user.id,
         email: user.email,
         image: user.image,
-        authorization: false,
+        login_type: user.login_type,
+        authorization: user.authorization,
         createdAt: user.createdAt,
         updatedAt: user.updatedAt,
       },
