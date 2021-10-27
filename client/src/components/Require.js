@@ -15,10 +15,6 @@ const Require = () => {
           //onChange={ratingChanged}
           size={70}
           activeColor="#870cec"
-          color="black"
-          emptyIcon={<i className="far fa-star"></i>}
-          halfIcon={<i className="fa fa-star-half-alt"></i>}
-          fullIcon={<i className="fa fa-star"></i>}
         />
       </div>
       <div className="RequireFooter">
