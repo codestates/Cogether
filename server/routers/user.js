@@ -3,10 +3,7 @@ const { userController } = require('../controllers/users');
 
 const router = express.Router();
 // multer
-const multer = require('multer');
-const upload = multer({
-  dest: 'uploads/',
-});
+const upload = require('../utils/multer');
 
 router.post('/signup', userController.signup);
 router.post('/signin', userController.signin);

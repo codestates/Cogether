@@ -8,12 +8,6 @@ const {
 
 module.exports = async (req, res) => {
   const auth = isAuthorized(req);
-  const { nickname, password } = req.body;
-
-  console.log('req.file', req.file);
-  console.log('req.file', req.file.location);
-
-  const image = req.file.location || null;
 
   if (!auth) {
     return res.status(401).send({
@@ -22,6 +16,8 @@ module.exports = async (req, res) => {
   }
 
   try {
+    const { nickname, password } = req.body;
+
     const checkNickName = await User.findOne({
       where: {
         nickname: nickname,
@@ -33,6 +29,8 @@ module.exports = async (req, res) => {
         message: 'nickname already exist',
       });
     }
+
+    image = req.file.location || null;
 
     const newPassword = hashPassword(password);
     await User.update(
@@ -65,8 +63,6 @@ module.exports = async (req, res) => {
 
     sendToken(res, accessToken);
 
-    console.log('updatedUser', updatedUser);
-
     res.status(200).send({
       data: {
         accessToken: accessToken,
@@ -82,6 +78,6 @@ module.exports = async (req, res) => {
       message: 'update userinfo successed',
     });
   } catch (err) {
-    console.log(err);
+    console.log('error', err);
   }
 };

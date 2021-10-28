@@ -13,7 +13,13 @@ const { evaluationRouter } = require('./routers/evaluation');
 
 const app = express();
 
-app.use(cors({ origin: true, credentials: true }));
+app.use(
+  cors({
+    origin: true,
+    methods: ['POST', 'GET', 'PATCH', 'DELETE', 'OPTIONS'],
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
