@@ -15,7 +15,9 @@ const ConfirmModal = ({ isOpenCon, content }) => {
           <div className="ModalMain" onClick={closeModal} />
           <div className="ModalBox">
             <div className="Modalcontent">{content}</div>
-            <button onClick={closeModal}>확인</button>
+            <button className="ModalBtn" onClick={closeModal}>
+              확인
+            </button>
           </div>
         </div>
       ) : null}

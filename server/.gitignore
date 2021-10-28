@@ -1,6 +1,6 @@
 node_modules/
 .env
 localhost*
-config
+config.js
 
 *package-lock.json

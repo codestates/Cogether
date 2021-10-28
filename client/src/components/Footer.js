@@ -1,10 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import {
-  setConfirmModal,
-  setRequireModal,
-  setSigninModal,
-} from '../actions/index';
+import { setRequireModal } from '../actions/index';
 
 const Footer = () => {
   const dispatch = useDispatch();
@@ -35,13 +31,7 @@ const Footer = () => {
       </div>
       <div>
         ABOUT US
-        <p
-          onClick={() => {
-            dispatch(setConfirmModal(true, '잘못된 경로입니다.'));
-          }}
-        >
-          깃헙 레포지토리
-        </p>
+        <p>깃헙 레포지토리</p>
       </div>
       <div>
         TEAM MEMBERS
