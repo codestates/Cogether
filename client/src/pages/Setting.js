@@ -54,31 +54,24 @@ const Setting = () => {
   };
 
   const userInfoUpdate = () => {
-    const frm = new FormData();
+    const formData = new FormData();
 
     if (update.nickname) {
-      frm.append('nickname', update.nickname);
+      formData.append('nickname', update.nickname);
     }
     if (file) {
-      frm.append('userProfileImg', file);
+      formData.append('userProfileImg', file);
     }
     if (update.password) {
-      frm.append('password', update.password);
+      formData.append('password', update.password);
     }
     axios
-      .patch(
-        `${URL}/users/userinfo/`,
-        {
-          userProfileImg,
-          nickname: update.nickname,
-          password: update.password,
+      .patch(`${URL}/users/userinfo/`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          authorization: `Bearer ${localStorage.accessToken}`,
         },
-        {
-          headers: {
-            authorization: `Bearer ${localStorage.accessToken}`,
-          },
-        }
-      )
+      })
       .then((res) => {
         console.log('성공');
       })
