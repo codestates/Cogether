@@ -1,16 +1,20 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { setRequireModal, setSigninModal } from '../actions/index';
+import {
+  setConfirmModal,
+  setRequireModal,
+  setSigninModal,
+} from '../actions/index';
 
 const Footer = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className='footer'>
-      <div className='footer-logo'>
+    <div className="footer">
+      <div className="footer-logo">
         <img
-          className='footer-img'
-          src='./images/logo_cogether-removebg-preview.png'
+          className="footer-img"
+          src="./images/logo_cogether-removebg-preview.png"
         ></img>
         <p>
           Cogether는’
@@ -31,7 +35,13 @@ const Footer = () => {
       </div>
       <div>
         ABOUT US
-        <p>깃헙 레포지토리</p>
+        <p
+          onClick={() => {
+            dispatch(setConfirmModal(true, '잘못된 경로입니다.'));
+          }}
+        >
+          깃헙 레포지토리
+        </p>
       </div>
       <div>
         TEAM MEMBERS

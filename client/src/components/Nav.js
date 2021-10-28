@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import '../scss/Nav.scss';
 import Mypage from './Mypage';
 import UserControl from './UserControl';
