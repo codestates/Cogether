@@ -8,7 +8,6 @@ const {
 
 module.exports = async (req, res) => {
   const auth = isAuthorized(req);
-  const { nickname, password } = req.body;
 
   if (!auth) {
     return res.status(401).send({
@@ -17,6 +16,8 @@ module.exports = async (req, res) => {
   }
 
   try {
+    const { nickname, password } = req.body;
+
     const checkNickName = await User.findOne({
       where: {
         nickname: nickname,
@@ -29,10 +30,7 @@ module.exports = async (req, res) => {
       });
     }
 
-    if (req.file) {
-      image = req.file.location;
-    }
-    image = null;
+    image = req.file.location || null;
 
     const newPassword = hashPassword(password);
     await User.update(
@@ -80,6 +78,6 @@ module.exports = async (req, res) => {
       message: 'update userinfo successed',
     });
   } catch (err) {
-    console.log(err);
+    console.log('error', err);
   }
 };
