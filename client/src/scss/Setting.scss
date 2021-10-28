@@ -31,6 +31,13 @@
     button {
       margin: 1.2rem;
     }
+    label {
+      border: 1px solid black;
+      border-radius: 5px;
+    }
+    .hide {
+      display: none;
+    }
   }
 
   .settig-nickname,
