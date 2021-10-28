@@ -1,16 +1,16 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { setRequireModal, setSigninModal } from '../actions/index';
+import { setRequireModal } from '../actions/index';
 
 const Footer = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className='footer'>
-      <div className='footer-logo'>
+    <div className="footer">
+      <div className="footer-logo">
         <img
-          className='footer-img'
-          src='./images/logo_cogether-removebg-preview.png'
+          className="footer-img"
+          src="./images/logo_cogether-removebg-preview.png"
         ></img>
         <p>
           Cogether는’

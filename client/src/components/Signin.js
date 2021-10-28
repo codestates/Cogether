@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { URL } from '../Url';
-import { setIsLogin, setSigninModal } from '../actions/index';
+import { setIsLogin, setSigninModal, setConfirmModal } from '../actions/index';
 import { useDispatch } from 'react-redux';
 import '../scss/Signin.scss';
 
@@ -26,6 +26,7 @@ const Signin = ({ variation }) => {
         password,
       })
       .then((res) => {
+        console.log('이게 레스야', res);
         const { accessToken } = res.data.data;
         dispatch(setIsLogin(true));
         localStorage.setItem('accessToken', accessToken);
@@ -33,7 +34,14 @@ const Signin = ({ variation }) => {
         console.log('로그인 성공');
       })
       .catch((err) => {
-        console.log('로그인 실패');
+        console.log('에러인가?', err.response);
+        if (err.response.data.message === 'user is not exist') {
+          dispatch(setConfirmModal(true, '가입되어 있는 이메일이 아닙니다'));
+        }
+        if (err.response.data.message === 'wrong password') {
+          dispatch(setConfirmModal(true, '비밀번호가 다릅니다.'));
+        }
+        console.log('실패');
       });
   };
 
