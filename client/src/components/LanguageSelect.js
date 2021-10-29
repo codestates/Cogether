@@ -23,6 +23,10 @@ const LanguageSelect = () => {
     { value: '9', label: 'SQL' },
   ];
 
+  const handleChangeSelect = (e) => {
+    console.log(e.target.value);
+  };
+
   return (
     <div style={{ width: '500px' }}>
       <Select
@@ -30,6 +34,7 @@ const LanguageSelect = () => {
         styles={customStyles}
         options={languageList}
         placeholder="사용할 언어를 선택하세요"
+        onChange={(e) => handleChangeSelect()}
       />
     </div>
   );
