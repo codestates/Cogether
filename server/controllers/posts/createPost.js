@@ -1,3 +1,6 @@
-module.exports = (req, res) => {
-  res.status(200).send('ok');
+const { Post, Hashtag } = require('../../models');
+const { isAuthorized } = require('../../utils/helpFunc');
+
+module.exports = async (req, res) => {
+  res.status(200).send('createPost');
 };
