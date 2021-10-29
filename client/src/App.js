@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.scss';
 import { useSelector } from 'react-redux';
@@ -7,18 +7,22 @@ import Main from './pages/Main';
 import SigninModal from './components/SigninModal';
 import RequireModal from './components/RequireModal';
 import ConfirmModal from './components/ConfirmModal';
+import { setConfirmModal } from './actions/index';
 
 import Setting from './pages/Setting';
 import Write from './pages/Write';
 
 function App() {
+  useEffect(() => {
+    setConfirmModal(false, '');
+  }, []);
   const SigninInfo = useSelector((state) => state.userReducer);
 
   const { isLogin, isSigninModalOpen, isRequireModalOpen, confirmModal } =
     SigninInfo;
   console.log('로그인상태', isLogin);
   console.log('토큰', `${localStorage.accessToken}`);
-  console.log('확인모달', confirmModal);
+  console.log('확인모달', SigninInfo);
   console.log('리콰이어', isRequireModalOpen);
   return (
     <BrowserRouter>
