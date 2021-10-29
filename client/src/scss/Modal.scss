@@ -2,6 +2,9 @@
   z-index: 40;
 }
 
+.Modal {
+  z-index: 50;
+}
 .ModalMain {
   z-index: inherit;
   position: fixed;
@@ -9,6 +12,7 @@
   left: 0;
   bottom: 0;
   right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .ModalBox {
@@ -24,4 +28,31 @@
   background-color: #f5e9ff;
   display: flex;
   flex-flow: column nowrap;
+}
+
+@media screen and (max-width: 550px) {
+  .modal-box {
+    min-width: 90vw;
+  }
+}
+
+.Modalcontent {
+  margin: 1rem 0 1rem 0;
+  word-break: break-all;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.ModalBtn {
+  width: 5rem;
+  margin: 0.5rem auto 0.2rem auto;
+  background-color: #d3a4f9;
+  color: white;
+  border-radius: 2rem;
+  font-size: 14px;
+  border: none;
+}
+.ModalBtn:hover {
+  color: #870cec;
+  font-weight: 700;
 }
