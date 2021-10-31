@@ -2,7 +2,7 @@ require('dotenv').config();
 
 module.exports = {
   development: {
-    username: process.env.DATABASE_USERNAME || root,
+    username: process.env.DATABASE_USERNAME || 'root',
     password: process.env.DATABASE_PASSWORD || '',
     database: process.env.DATABASE_NAME || 'cogether_dev',
     host: '127.0.0.1',
