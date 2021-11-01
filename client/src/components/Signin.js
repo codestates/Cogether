@@ -45,9 +45,8 @@ const Signin = ({ variation }) => {
       });
   };
   const oAuthHandler = () => {
-    window.location.assign(
-      `${process.env.REACT_APP_API_URL}/users/google/login`
-    );
+    console.log('구글버튼 클릭');
+    window.location.assign(`${URL}/users/oauth/login`);
   };
 
   return (

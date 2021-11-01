@@ -38,7 +38,7 @@ app.use('/chatrooms', chatroomRouter);
 app.use('/chattings', chattingRouter);
 app.use('/evaluations', evaluationRouter);
 
-const HTTP_PORT = process.env.HTTP_PORT || 4000;
+const HTTP_PORT = process.env.HTTP_PORT || 80;
 
 app.listen(HTTP_PORT, () => {
   console.log(`Cogether's Server is running on ${HTTP_PORT}`);
