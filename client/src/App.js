@@ -7,7 +7,6 @@ import Main from './pages/Main';
 import SigninModal from './components/SigninModal';
 import RequireModal from './components/RequireModal';
 import ConfirmModal from './components/ConfirmModal';
-
 import Setting from './pages/Setting';
 import Write from './pages/Write';
 
