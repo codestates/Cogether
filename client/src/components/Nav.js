@@ -31,7 +31,7 @@ const Nav = ({ isLogin }) => {
               dispatch(setSigninModal(true));
               return;
             }
-            history.push('/Mypage');
+            history.push('/Write');
           }}
         >
           새글쓰기
