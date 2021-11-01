@@ -44,6 +44,11 @@ const Signin = ({ variation }) => {
         console.log('실패');
       });
   };
+  const oAuthHandler = () => {
+    window.location.assign(
+      `${process.env.REACT_APP_API_URL}/users/google/login`
+    );
+  };
 
   return (
     <div className="SigninMain">
@@ -72,7 +77,7 @@ const Signin = ({ variation }) => {
           <span onClick={variation}>회원가입</span>
         </div>
       </form>
-      <button className="SigninGoogle" type="submit">
+      <button className="SigninGoogle" onClick={oAuthHandler}>
         구글 로그인
       </button>
     </div>
