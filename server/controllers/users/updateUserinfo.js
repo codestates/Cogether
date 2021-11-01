@@ -58,8 +58,15 @@ module.exports = async (req, res) => {
       nickname: updatedUser.nickname,
     };
 
-    const accessToken = generateToken(payload);
+    res.clearCookie('authorization', {
+      httpOnly: true,
+      sameSite: 'none',
+      secure: true,
+      path: '/',
+      domail: '/',
+    });
 
+    const accessToken = generateToken(payload);
     sendToken(res, accessToken);
 
     res.status(200).send({
