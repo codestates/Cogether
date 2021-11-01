@@ -3,12 +3,13 @@ import axios from 'axios';
 import { URL } from '../Url';
 import '../scss/Signup.scss';
 import {} from '../actions/index';
-
+import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setConfirmModal } from '../actions';
 
-const Signup = () => {
+const Signup = ({ variation }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [nickMessage, setNickMessage] = useState();
   const [passwordMessage, setPasswordMessage] = useState();
   const [emailMessage, setEmailMessage] = useState();
@@ -104,6 +105,7 @@ const Signup = () => {
         )
         .then((res) => {
           dispatch(setConfirmModal(true, '회원가입에 성공하셨습니다'));
+          variation();
         })
         .catch((err) => {
           if (err.response.status === 409) {
