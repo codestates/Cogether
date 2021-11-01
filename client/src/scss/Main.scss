@@ -1,7 +1,7 @@
 @font-face {
-  font-family: "777Balsamtint";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/777Balsamtint.woff")
-    format("woff");
+  font-family: '777Balsamtint';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/777Balsamtint.woff')
+    format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -10,7 +10,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "777Balsamtint";
+  font-family: '777Balsamtint';
 }
 .content {
   font-size: 3rem;
@@ -69,18 +69,20 @@
     line-height: 3rem;
   }
   .content-img {
-    width: 80%;
+    width: 60%;
     height: auto;
     padding: 3rem;
+    min-width: 430px;
   }
 }
 
-@media screen and (max-width: 1380px) {
+@media screen and (max-width: 1026px) {
   .MainImageContainer {
     flex-flow: column;
     align-items: center;
     justify-content: center;
   }
+
   .nodataImg {
     max-width: 80%;
     height: auto;
@@ -91,6 +93,7 @@
   .content {
     font-size: 1.5rem;
   }
+
   .nodataImg {
     max-width: 300px;
     height: auto;

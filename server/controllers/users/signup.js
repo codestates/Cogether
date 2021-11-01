@@ -1,21 +1,20 @@
 const { User } = require('../../models');
-const { hashPassword } = require('../../utils/helpFunc');
 
 module.exports = async (req, res) => {
   const { email, nickname, password } = req.body;
 
   try {
-    const hashedPassword = hashPassword(password);
     const [user, created] = await User.findOrCreate({
       where: {
         email,
-        authorization: false,
+        authorization: 'user',
       },
       defaults: {
         email,
         nickname,
-        password: hashedPassword,
-        authorization: false,
+        password: password,
+        authorization: 'user',
+        login_type: 'local',
       },
     });
 

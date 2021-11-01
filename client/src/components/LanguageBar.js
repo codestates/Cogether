@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const LanguageBar = () => {
   return (
@@ -13,7 +13,7 @@ const LanguageBar = () => {
       <li className="languageItem">Java</li>
       <li className="languageItem">SQL</li>
     </ul>
-  )
-}
+  );
+};
 
-export default LanguageBar
+export default LanguageBar;

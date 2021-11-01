@@ -1,0 +1,31 @@
+@import 'color.scss';
+.mypage-menu {
+  display: none;
+}
+.userInfo:hover,
+.logout:hover {
+  cursor: pointer;
+  color: rgb(58, 86, 133);
+}
+.active {
+  transition: all 0.3s linear;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(10px);
+  width: 10rem;
+  top: 3.5rem;
+  right: 15px;
+
+  position: absolute;
+  z-index: 20;
+  display: flex;
+  flex-flow: column nowrap;
+  border-radius: 1rem;
+  background: $color-logo;
+  justify-content: center;
+  align-items: center;
+  li {
+    padding: 0.8rem;
+    color: white;
+  }
+}

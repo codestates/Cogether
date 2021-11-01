@@ -1,4 +1,4 @@
-@import "./color.scss";
+@import './color.scss';
 nav {
   height: 5rem;
   display: flex;
@@ -17,6 +17,14 @@ nav {
 
   .nav-logo-small {
     display: none;
+  }
+}
+.nav-user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  span {
+    margin-right: 0.5rem;
   }
 }
 .userControl {

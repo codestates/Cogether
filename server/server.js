@@ -13,7 +13,13 @@ const { evaluationRouter } = require('./routers/evaluation');
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: true,
+    methods: ['POST', 'GET', 'PATCH', 'DELETE', 'OPTIONS'],
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -32,7 +38,7 @@ app.use('/chatrooms', chatroomRouter);
 app.use('/chattings', chattingRouter);
 app.use('/evaluations', evaluationRouter);
 
-const HTTP_PORT = process.env.HTTP_PORT || 4000;
+const HTTP_PORT = process.env.HTTP_PORT || 80;
 
 app.listen(HTTP_PORT, () => {
   console.log(`Cogether's Server is running on ${HTTP_PORT}`);

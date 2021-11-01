@@ -1,0 +1,43 @@
+@import './color.scss';
+.writeContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+.titleInput {
+  font-size: 3rem;
+  font-weight: bold;
+  outline: none;
+  padding-bottom: 0.5rem;
+  border: none;
+  border-bottom: 1px solid #ced4da;
+  margin-bottom: 2rem;
+  width: 80%;
+  height: 4rem;
+}
+.writeLanguages {
+  display: flex;
+  width: 80%;
+  margin-bottom: 1rem;
+  align-items: center;
+  h2 {
+    margin-right: 1.5rem;
+  }
+}
+.writeEditor {
+  width: 80%;
+}
+.writBtn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 80%;
+
+  button {
+    margin-left: 1rem;
+    width: 150px;
+    height: 45px;
+  }
+}

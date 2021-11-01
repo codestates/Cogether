@@ -1,11 +1,7 @@
 require('dotenv').config();
 
 const { User } = require('../../models');
-const {
-  generateToken,
-  sendToken,
-  comparePassword,
-} = require('../../utils/helpFunc');
+const { generateToken, sendToken } = require('../../utils/helpFunc');
 
 module.exports = async (req, res) => {
   const { email, password } = req.body;
@@ -14,7 +10,7 @@ module.exports = async (req, res) => {
     const user = await User.findOne({
       where: {
         email,
-        authorization: false,
+        authorization: 'user',
       },
     });
 
@@ -24,9 +20,8 @@ module.exports = async (req, res) => {
         message: 'user is not exist',
       });
     }
-    const compareResult = comparePassword(password, user.password);
 
-    if (!compareResult) {
+    if (!password !== user.password) {
       return res.status(401).send({
         data: null,
         message: 'wrong password',
@@ -46,11 +41,13 @@ module.exports = async (req, res) => {
 
     res.status(200).send({
       data: {
-        acceesToken: accessToken,
+        accessToken: accessToken,
         id: user.id,
         email: user.email,
         image: user.image,
-        authorization: false,
+        nickname: user.nickname,
+        login_type: user.login_type,
+        authorization: user.authorization,
         createdAt: user.createdAt,
         updatedAt: user.updatedAt,
       },
