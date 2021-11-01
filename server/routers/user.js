@@ -7,9 +7,11 @@ const upload = require('../utils/multer');
 
 router.post('/signup', userController.signup);
 router.post('/signin', userController.signin);
-router.post('/oauth', userController.oauth);
+router.get('/oauth/login', userController.oauth.login);
+router.get('/oauth/callback', userController.oauth.callback);
 router.post('/signout', userController.signout);
 router.get('/userinfo', userController.userinfo);
+
 router.patch(
   '/userinfo',
   upload.single('userProfileImg'),

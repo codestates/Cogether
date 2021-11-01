@@ -69,6 +69,10 @@ const Signin = ({ variation, isMessage }) => {
       console.log('로그인실패');
     }
   };
+  const oAuthHandler = () => {
+    console.log('구글버튼 클릭');
+    window.location.assign(`${URL}/users/oauth/login`);
+  };
 
   return (
     <div className="SigninMain">
@@ -98,7 +102,7 @@ const Signin = ({ variation, isMessage }) => {
           <span onClick={variation}>회원가입</span>
         </div>
       </form>
-      <button className="SigninGoogle" type="submit">
+      <button className="SigninGoogle" onClick={oAuthHandler}>
         구글 로그인
       </button>
     </div>
