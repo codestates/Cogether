@@ -6,4 +6,8 @@ export const initialState = {
     isConfirmOpen: false,
     content: '',
   },
+  isMessage: '',
+  isEmailMessage: '',
+  isNickMessage: '',
+  isPasswordMessage: '',
 };
