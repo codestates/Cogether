@@ -1,18 +1,8 @@
 require('dotenv').config();
 
 const { sign, verify } = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
 
 module.exports = {
-  // use bcrypt for password hashing
-
-  hashPassword: (password) => {
-    return bcrypt.hashSync(password.toString(), 10);
-  },
-  comparePassword: (loginPassword, dbPassword) => {
-    return bcrypt.compareSync(loginPassword, dbPassword);
-  },
-
   // helpFunctions for jsonwebtoken
 
   generateToken: (data) => {

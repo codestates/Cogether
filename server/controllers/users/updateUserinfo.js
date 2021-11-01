@@ -1,7 +1,6 @@
 const { User } = require('../../models');
 const {
   isAuthorized,
-  hashPassword,
   generateToken,
   sendToken,
 } = require('../../utils/helpFunc');
@@ -32,7 +31,7 @@ module.exports = async (req, res) => {
 
     image = req.file.location || null;
 
-    const newPassword = hashPassword(password);
+    const newPassword = password;
     await User.update(
       {
         nickname: nickname,
