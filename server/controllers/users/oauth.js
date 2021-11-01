@@ -11,6 +11,8 @@ module.exports = {
   callback: async (req, res) => {
     const code = req.query.code;
 
+    console.log(code);
+
     // const result = await axios.post(
     //   `https://oauth2.googleapis.com/token?code=${code}&client_id=${process.env.GOOGLE_CLIENT_ID}&client_secret=${process.env.GOOGLE_CLIENT_PASSOWRD}&redirect_uri=http://localhost:3000&grant_type=authorization_code`
     // );
