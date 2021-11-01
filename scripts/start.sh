@@ -12,4 +12,5 @@ export S3_SECRET_KEY=$(aws ssm get-parameters --region ap-northeast-2 --names S3
 export S3_REGION=$(aws ssm get-parameters --region ap-northeast-2 --names S3_REGION --query Parameters[0].Value | sed 's/"//g')
 export S3_BUCKET_NAME=$(aws ssm get-parameters --region ap-northeast-2 --names S3_BUCKET_NAME --query Parameters[0].Value | sed 's/"//g')
 
-authbind --deep pm2 start server.js
+# authbind --deep pm2 start server.js
+sudo npm start
