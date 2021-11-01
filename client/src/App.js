@@ -19,6 +19,9 @@ function App() {
     isRequireModalOpen,
     confirmModal,
     isMessage,
+    isEmailMessage,
+    isNickMessage,
+    isPasswordMessage,
   } = SigninInfo;
   console.log('로그인상태', isLogin);
   console.log('토큰', `${localStorage.accessToken}`);
@@ -30,7 +33,13 @@ function App() {
           content={confirmModal.content}
           isMessage={isMessage}
         />
-        <SigninModal isOpen={isSigninModalOpen} isMessage={isMessage} />
+        <SigninModal
+          isOpen={isSigninModalOpen}
+          isMessage={isMessage}
+          isEmailMessage={isEmailMessage}
+          isNickMessage={isNickMessage}
+          isPasswordMessage={isPasswordMessage}
+        />
         <RequireModal isOpenRe={isRequireModalOpen} />
         <Nav isLogin={isLogin} />
 

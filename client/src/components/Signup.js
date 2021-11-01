@@ -3,9 +3,18 @@ import axios from 'axios';
 import { URL } from '../Url';
 import '../scss/Signup.scss';
 import {} from '../actions/index';
-import { setMessageModal } from '../actions';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import {
+  setConfirmModal,
+  setNickMessage,
+  setPasswordMessage,
+  setEmailMessage,
+} from '../actions';
 
-const Signup = () => {
+const Signup = ({ isEmailMessage, isNickMessage, isPasswordMessage }) => {
+  const dispatch = useDispatch();
+  const history = useHistory();
   const [user, setUser] = useState({
     email: '',
     nickname: '',
@@ -13,9 +22,66 @@ const Signup = () => {
     passwordCheck: '',
   });
 
-  // const [nickMessage, setNickMessage] = useState();
-  // const [passWordMessage, setPassWordMessage] = useState();
-  // const [emailMessage, setEmailMessage] = useState();
+  const validateNickname = (nickname) => {
+    const min = 1;
+    const regNickname = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣0-9a-z]+$/;
+
+    // 이름 길이 확인
+    if (nickname.length < min) {
+      setNickMessage('1자 이상 입력해주세요');
+      return false;
+    }
+
+    // 이름 정규식 확인
+    if (!regNickname.test(nickname)) {
+      setNickMessage('한글 / 영문 소문자 / 숫자만 허용합니다');
+      return false;
+    } else {
+      setNickMessage();
+      return true;
+    }
+  };
+
+  const validateEmail = (email) => {
+    const regEmail = /^[0-9a-z-_.]+@[0-9a-z]+\.[0-9a-z]+$/;
+
+    if (email.length === 0) {
+      setEmailMessage('1자 이상 입력해주세요');
+    } else if (!regEmail.test(email)) {
+      setEmailMessage('특수문자(-_.) 또는 이메일형식(@) 필요합니다');
+      return false;
+    } else {
+      setEmailMessage();
+      return true;
+    }
+  };
+
+  const validatePassword = (password, passwordCheck) => {
+    const min = 4;
+    const max = 20;
+    const regPassword = /^[0-9a-z-_.!?*]+$/;
+
+    if (password !== passwordCheck) {
+      setPasswordMessage('동일한 비밀번호를 입력해 주세요');
+      return false;
+    }
+
+    // 비밀번호 길이 확인
+    if (password.length < min || password.length > max) {
+      setPasswordMessage('비밀번호 4~20자 입니다');
+      return false;
+    }
+
+    // 비밀번호 정규식 확인
+    if (!regPassword.test(password)) {
+      setPasswordMessage('영문 소문자/숫자/특수문자(-_.!?*)만 허용합니다');
+      return false;
+    } else {
+      setPasswordMessage('');
+      return true;
+    }
+  };
+
   const handleInputValue = (key) => (e) => {
     setUser({ ...user, [key]: e.target.value });
   };
@@ -23,22 +89,32 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { email, nickname, password, passwordCheck } = user;
-    axios
-      .post(
-        `${URL}/users/signup`,
-        {
-          email: email,
-          nickname: nickname,
-          password: password,
-        },
-        { withCredentials: true }
-      )
-      .then((res) => {
-        console.log('회원가입에 성공했습니다.');
-      })
-      .catch((err) => {
-        console.log('회원가입에 실패했습니다.');
-      });
+
+    const validNickname = validateNickname(nickname);
+    const validEmail = validateEmail(email);
+    const validPassword = validatePassword(password, passwordCheck);
+
+    if (validNickname & validEmail & validPassword) {
+      axios
+        .post(
+          `${URL}/users/signup`,
+          {
+            email: email,
+            nickname: nickname,
+            password: password,
+          },
+          { withCredentials: true }
+        )
+        .then((res) => {
+          dispatch(setConfirmModal(true, '회원가입에 성공하셨습니다'));
+        })
+        .catch((err) => {
+          if (err.response.status === 409) {
+            dispatch(setConfirmModal(true, '이미 가입되어 있는 이메일입니다.'));
+          }
+          if (err) throw err;
+        });
+    }
   };
   return (
     <div className="SignupMain">
@@ -52,6 +128,7 @@ const Signup = () => {
             type="email"
             onChange={handleInputValue('email')}
           ></input>
+          <span className="SignupAlert">{isEmailMessage}</span>
         </label>
         <p className="SignupP">
           닉네임<span>(필수)</span>
@@ -62,6 +139,7 @@ const Signup = () => {
             type="text"
             onChange={handleInputValue('nickname')}
           ></input>
+          <span className="SignupAlert">{isNickMessage}</span>
         </label>
         <p className="SignupP">
           비밀번호<span>(필수)</span>
@@ -83,6 +161,7 @@ const Signup = () => {
             type="password"
             onChange={handleInputValue('passwordCheck')}
           ></input>
+          <span className="SignupAlert">{isPasswordMessage}</span>
         </label>
         <button className="SignupBtn" type="submit">
           회원가입
