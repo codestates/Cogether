@@ -42,15 +42,12 @@ const Signin = ({ variation, isMessage }) => {
           password,
         })
         .then((res) => {
-          console.log('이게 레스야', res);
           const { accessToken } = res.data.data;
           dispatch(setIsLogin(true));
           localStorage.setItem('accessToken', accessToken);
           dispatch(setSigninModal(false));
-          console.log('로그인 성공');
         })
         .catch((err) => {
-          console.log('에러인가?', err.response);
           if (err.response.data.message === 'user is not exist') {
             dispatch(setConfirmModal(true, '가입되어 있는 이메일이 아닙니다'));
           }
@@ -65,8 +62,6 @@ const Signin = ({ variation, isMessage }) => {
             dispatch(setMessage('이메일을 입력하세요'));
           }
         });
-    } else {
-      console.log('로그인실패');
     }
   };
   const oAuthHandler = () => {

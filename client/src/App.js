@@ -26,9 +26,6 @@ function App() {
     isRequireModalOpen,
     confirmModal,
     isMessage,
-    isEmailMessage,
-    isNickMessage,
-    isPasswordMessage,
   } = SigninInfo;
   console.log('로그인상태', isLogin);
   console.log('토큰', `${localStorage.accessToken}`);
@@ -37,30 +34,24 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className='appContainer'>
+      <div className="appContainer">
         <ConfirmModal
           isOpenCon={confirmModal.isConfirmOpen}
           content={confirmModal.content}
           isMessage={isMessage}
         />
-        <SigninModal
-          isOpen={isSigninModalOpen}
-          isMessage={isMessage}
-          isEmailMessage={isEmailMessage}
-          isNickMessage={isNickMessage}
-          isPasswordMessage={isPasswordMessage}
-        />
+        <SigninModal isOpen={isSigninModalOpen} isMessage={isMessage} />
         <RequireModal isOpenRe={isRequireModalOpen} />
         <Nav isLogin={isLogin} />
 
         <Switch>
-          <Route exact path='/'>
+          <Route exact path="/">
             <Main />
           </Route>
-          <Route exact path='/write'>
+          <Route exact path="/write">
             <Write />
           </Route>
-          <Route exact path='/setting'>
+          <Route exact path="/setting">
             <Setting />
           </Route>
         </Switch>

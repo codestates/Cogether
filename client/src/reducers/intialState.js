@@ -7,7 +7,4 @@ export const initialState = {
     content: '',
   },
   isMessage: '',
-  isEmailMessage: '',
-  isNickMessage: '',
-  isPasswordMessage: '',
 };
