@@ -6,11 +6,11 @@ const Footer = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="footer">
-      <div className="footer-logo">
+    <div className='footer'>
+      <div className='footer-logo'>
         <img
-          className="footer-img"
-          src="./images/logo_cogether-removebg-preview.png"
+          className='footer-img'
+          src='./images/logo_cogether-removebg-preview.png'
         ></img>
         <p>
           Cogether는’
