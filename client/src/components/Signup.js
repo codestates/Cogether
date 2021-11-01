@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { URL } from '../Url';
 import '../scss/Signup.scss';
+import {} from '../actions/index';
+import { setMessageModal } from '../actions';
 
 const Signup = () => {
   const [user, setUser] = useState({
@@ -10,6 +12,10 @@ const Signup = () => {
     password: '',
     passwordCheck: '',
   });
+
+  // const [nickMessage, setNickMessage] = useState();
+  // const [passWordMessage, setPassWordMessage] = useState();
+  // const [emailMessage, setEmailMessage] = useState();
   const handleInputValue = (key) => (e) => {
     setUser({ ...user, [key]: e.target.value });
   };

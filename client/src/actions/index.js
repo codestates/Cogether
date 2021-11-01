@@ -2,6 +2,7 @@ export const SET_IS_SIGNIN = 'SET_IS_SIGNIN';
 export const SET_SIGNIN_MODAL = 'SET_SIGNIN_MODAL';
 export const SET_REQUIRE_MODAL = 'SET_REQUIRE_MODAL';
 export const SET_CONFIRM_MODAL = 'SET_CONFIRM_MODAL';
+export const SET_MESSAGE = 'SET_MESSAGE';
 
 export const setIsLogin = (isLogin) => {
   return {
@@ -33,5 +34,12 @@ export const setConfirmModal = (boolean, content) => {
       isConfirmOpen: boolean,
       content: content,
     },
+  };
+};
+
+export const setMessage = (content) => {
+  return {
+    type: SET_MESSAGE,
+    payload: content,
   };
 };

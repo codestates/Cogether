@@ -6,4 +6,5 @@ export const initialState = {
     isConfirmOpen: false,
     content: '',
   },
+  isMessage: '',
 };

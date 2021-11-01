@@ -3,6 +3,7 @@ import {
   SET_SIGNIN_MODAL,
   SET_REQUIRE_MODAL,
   SET_CONFIRM_MODAL,
+  SET_MESSAGE,
 } from '../actions/index';
 import { initialState } from './intialState';
 
@@ -28,6 +29,11 @@ const itemReducer = (state = initialState, action) => {
         confirmModal: {
           ...action.payload,
         },
+      });
+
+    case SET_MESSAGE:
+      return Object.assign({}, state, {
+        isMessage: action.payload,
       });
 
     default:

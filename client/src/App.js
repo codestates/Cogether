@@ -13,20 +13,24 @@ import Write from './pages/Write';
 function App() {
   const SigninInfo = useSelector((state) => state.userReducer);
 
-  const { isLogin, isSigninModalOpen, isRequireModalOpen, confirmModal } =
-    SigninInfo;
+  const {
+    isLogin,
+    isSigninModalOpen,
+    isRequireModalOpen,
+    confirmModal,
+    isMessage,
+  } = SigninInfo;
   console.log('로그인상태', isLogin);
   console.log('토큰', `${localStorage.accessToken}`);
-  console.log('확인모달', confirmModal);
-  console.log('리콰이어', isRequireModalOpen);
   return (
     <BrowserRouter>
       <div className="appContainer">
         <ConfirmModal
           isOpenCon={confirmModal.isConfirmOpen}
           content={confirmModal.content}
+          isMessage={isMessage}
         />
-        <SigninModal isOpen={isSigninModalOpen} />
+        <SigninModal isOpen={isSigninModalOpen} isMessage={isMessage} />
         <RequireModal isOpenRe={isRequireModalOpen} />
         <Nav isLogin={isLogin} />
 
