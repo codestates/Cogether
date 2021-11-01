@@ -3,13 +3,13 @@ import Mypage from './Mypage';
 import UserControl from './UserControl';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
+import { setSigninModal } from '../actions';
+import { useDispatch } from 'react-redux';
 
 const Nav = ({ isLogin }) => {
   const history = useHistory();
+  const dispatch = useDispatch();
 
-  const newPost = () => {
-    history.push('/write');
-  };
   return (
     <nav>
       <div className="nav-logo">
@@ -25,7 +25,17 @@ const Nav = ({ isLogin }) => {
         </Link>
       </div>
       <div className="nav-user">
-        <span onClick={newPost}>새글쓰기</span>
+        <span
+          onClick={() => {
+            if (!isLogin) {
+              dispatch(setSigninModal(true));
+              return;
+            }
+            history.push('/Write');
+          }}
+        >
+          새글쓰기
+        </span>
         {isLogin ? <Mypage /> : <UserControl />}
       </div>
     </nav>

@@ -19,40 +19,40 @@ module.exports = async (req, res) => {
         data: null,
         message: 'user is not exist',
       });
-    }
+    } else {
+      if (password !== user.password) {
+        return res.status(401).send({
+          data: null,
+          message: 'wrong password',
+        });
+      }
 
-    if (!password !== user.password) {
-      return res.status(401).send({
-        data: null,
-        message: 'wrong password',
-      });
-    }
-
-    const payload = {
-      id: user.id,
-      email: user.email,
-      nickname: user.nickname,
-      image: user.image,
-    };
-
-    const accessToken = generateToken(payload);
-
-    sendToken(res, accessToken);
-
-    res.status(200).send({
-      data: {
-        accessToken: accessToken,
+      const payload = {
         id: user.id,
         email: user.email,
-        image: user.image,
         nickname: user.nickname,
-        login_type: user.login_type,
-        authorization: user.authorization,
-        createdAt: user.createdAt,
-        updatedAt: user.updatedAt,
-      },
-      message: 'sign in successed',
-    });
+        image: user.image,
+      };
+
+      const accessToken = generateToken(payload);
+
+      sendToken(res, accessToken);
+
+      res.status(200).send({
+        data: {
+          accessToken: accessToken,
+          id: user.id,
+          email: user.email,
+          image: user.image,
+          nickname: user.nickname,
+          login_type: user.login_type,
+          authorization: user.authorization,
+          createdAt: user.createdAt,
+          updatedAt: user.updatedAt,
+        },
+        message: 'sign in successed',
+      });
+    }
   } catch (err) {
     console.log(err);
   }
