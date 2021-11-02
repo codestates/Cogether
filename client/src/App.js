@@ -35,7 +35,6 @@ function App() {
   const url = new URL(window.location.href);
   const href = url.href;
   const accessToken = href.split('=')[1];
-  console.log(accessToken);
 
   if (accessToken && isLogin) {
     localStorage.setItem('accessToken', accessToken);
