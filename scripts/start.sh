@@ -20,9 +20,4 @@ export GOOGLE_CLIENT_ID=$(aws ssm get-parameters --region ap-northeast-2 --names
 export GOOGLE_CLIENT_PASSWORD=$(aws ssm get-parameters --region ap-northeast-2 --names GOOGLE_CLIENT_PASSWORD --query Parameters[0].Value | sed 's/"//g')
 export GOOGLE_REDIRECT_URI=$(aws ssm get-parameters --region ap-northeast-2 --names GOOGLE_REDIRECT_URI --query Parameters[0].Value | sed 's/"//g')
 
-npx sequelize-cli db:seed:undo:all
-npx sequelize-cli db:migrate:undo:all
-npx sequelize-cli db:migrate
-npx sequelize-cli db:seed:all
-
 authbind --deep pm2 start server.js
