@@ -28,10 +28,11 @@ module.exports = async (req, res) => {
         message: 'nickname already exist',
       });
     }
-
+    console.log(req.file);
     image = req.file.location || null;
 
     const newPassword = password;
+
     await User.update(
       {
         nickname: nickname,
