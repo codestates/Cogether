@@ -51,7 +51,9 @@ module.exports = {
       const accessToken = generateToken(payload);
       sendToken(res, accessToken);
 
-      res.redirect(`http://localhost:3000?access_token=${accessToken}`);
+      res.redirect(
+        `http://cogether-bucket-deploy.s3-website.ap-northeast-2.amazonaws.com?access_token=${accessToken}`
+      );
     } catch (err) {
       console.log(err);
     }
