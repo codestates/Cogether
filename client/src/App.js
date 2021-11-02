@@ -8,7 +8,7 @@ import Post from './pages/Post';
 import SigninModal from './components/SigninModal';
 import RequireModal from './components/RequireModal';
 import ConfirmModal from './components/ConfirmModal';
-import { setConfirmModal } from './actions/index';
+import { setConfirmModal, setIsLogin } from './actions/index';
 import Setting from './pages/Setting';
 import Write from './pages/Write';
 

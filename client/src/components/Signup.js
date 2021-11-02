@@ -2,14 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import '../scss/Signup.scss';
 import { useDispatch } from 'react-redux';
-import {
-  setConfirmModal,
-  setNickMessage,
-  setPasswordMessage,
-  setEmailMessage,
-} from '../actions/index';
+import { setConfirmModal } from '../actions/index';
 
-const Signup = ({ isEmailMessage, isNickMessage, isPasswordMessage }) => {
+const Signup = ({ variation }) => {
   const dispatch = useDispatch();
   const [nickMessage, setNickMessage] = useState();
   const [passwordMessage, setPasswordMessage] = useState();
