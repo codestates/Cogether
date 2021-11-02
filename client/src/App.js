@@ -7,7 +7,7 @@ import Main from './pages/Main';
 import SigninModal from './components/SigninModal';
 import RequireModal from './components/RequireModal';
 import ConfirmModal from './components/ConfirmModal';
-import { setConfirmModal } from './actions/index';
+import { setConfirmModal, setIsLogin } from './actions/index';
 import Setting from './pages/Setting';
 import Write from './pages/Write';
 
@@ -26,15 +26,11 @@ function App() {
     isRequireModalOpen,
     confirmModal,
     isMessage,
-    isEmailMessage,
-    isNickMessage,
-    isPasswordMessage,
   } = SigninInfo;
 
   const url = new URL(window.location.href);
   const href = url.href;
   const accessToken = href.split('=')[1];
-  console.log(accessToken);
 
   if (accessToken && isLogin) {
     localStorage.setItem('accessToken', accessToken);
@@ -48,13 +44,7 @@ function App() {
           content={confirmModal.content}
           isMessage={isMessage}
         />
-        <SigninModal
-          isOpen={isSigninModalOpen}
-          isMessage={isMessage}
-          isEmailMessage={isEmailMessage}
-          isNickMessage={isNickMessage}
-          isPasswordMessage={isPasswordMessage}
-        />
+        <SigninModal isOpen={isSigninModalOpen} isMessage={isMessage} />
         <RequireModal isOpenRe={isRequireModalOpen} />
         <Nav isLogin={isLogin} />
 
