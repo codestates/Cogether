@@ -76,6 +76,22 @@
   font-weight: 700;
 }
 
+.BackSignup {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  display: flex;
+  flex-flow: nowrap;
+  span {
+    cursor: pointer;
+    margin-left: 0.5rem;
+    font-weight: 500;
+    color: #000000;
+  }
+  span:hover {
+    color: #870cec;
+  }
+}
 .SignupGoogle {
   background-color: #ffffff;
   color: black;
