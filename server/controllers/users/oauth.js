@@ -15,7 +15,7 @@ module.exports = {
 
     try {
       const result = await axios.post(
-        `https://oauth2.googleapis.com/token?code=${code}&client_id=${process.env.GOOGLE_CLIENT_ID}&client_secret=${process.env.GOOGLE_CLIENT_PASSOWRD}&redirect_uri=${process.env.GOOGLE_REDIRECT_URI}&grant_type=authorization_code`
+        `https://oauth2.googleapis.com/token?code=${code}&client_id=${process.env.GOOGLE_CLIENT_ID}&client_secret=${process.env.GOOGLE_CLIENT_PASSOWRD}&redirect_uri=${process.env.GOOGLE_REDIRECT_URI}&grant_type=authorization_code`,
       );
 
       const userInfo = await axios.get(
