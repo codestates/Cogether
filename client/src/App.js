@@ -16,7 +16,6 @@ function App() {
 
   useEffect(() => {
     dispatch(setConfirmModal(false, ''));
-    dispatch(setIsLogin(false));
   }, []);
 
   const SigninInfo = useSelector((state) => state.userReducer);
