@@ -37,7 +37,7 @@ const Signin = ({ variation, isMessage }) => {
 
     if (email && password) {
       axios
-        .post(`${process.env.REACT_APP_URL}/users/signin`, {
+        .post(`${process.env.REACT_APP_API_URL}/users/signin`, {
           email,
           password,
         })
@@ -66,7 +66,9 @@ const Signin = ({ variation, isMessage }) => {
   };
   const oAuthHandler = () => {
     console.log('구글버튼 클릭');
-    window.location.assign(`${process.env.REACT_APP_URL}/users/oauth/login`);
+    window.location.assign(
+      `${process.env.REACT_APP_API_URL}/users/oauth/login`
+    );
     dispatch(setSigninModal(false));
     dispatch(setIsLogin(true));
     dispatch(setIsGoogleLogin(true));

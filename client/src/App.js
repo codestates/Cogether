@@ -14,10 +14,12 @@ import Write from './pages/Write';
 function App() {
   const dispatch = useDispatch();
   const token = localStorage.accessToken;
+  console.log('토큰', token);
 
   useEffect(() => {
     dispatch(setConfirmModal(false, ''));
-    if (!token) {
+
+    if (token === null) {
       dispatch(setIsLogin(false));
     }
   }, []);

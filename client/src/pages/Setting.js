@@ -11,7 +11,7 @@ const Setting = () => {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_URL}/users/userinfo`, {
+      .get(`${process.env.REACT_APP_API_URL}/users/userinfo`, {
         headers: {
           authorization: `Bearer ${localStorage.accessToken}`,
         },
@@ -66,7 +66,7 @@ const Setting = () => {
       formData.append('password', update.password);
     }
     axios
-      .patch(`${process.env.REACT_APP_URL}/users/userinfo/`, formData, {
+      .patch(`${process.env.REACT_APP_API_URL}/users/userinfo/`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           authorization: `Bearer ${localStorage.accessToken}`,

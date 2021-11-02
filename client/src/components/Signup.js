@@ -94,7 +94,7 @@ const Signup = ({ isEmailMessage, isNickMessage, isPasswordMessage }) => {
     if (validNickname & validEmail & validPassword) {
       axios
         .post(
-          `${process.env.REACT_APP_URL}/users/signup`,
+          `${process.env.REACT_APP_API_URL}/users/signup`,
           {
             email: email,
             nickname: nickname,

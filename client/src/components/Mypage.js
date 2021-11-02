@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { setIsGoogleLogin, setIsLogin } from '../actions/index';
+import {
+  setIsGoogleLogin,
+  setIsLogin,
+  setConfirmModal,
+} from '../actions/index';
 import '../scss/Mypage.scss';
 
 const Mypage = () => {
@@ -15,7 +19,7 @@ const Mypage = () => {
   const logOutHandler = async () => {
     await axios
       .post(
-        `${process.env.REACT_APP_URL}/users/signout`,
+        `${process.env.REACT_APP_API_URL}/users/signout`,
         {},
         {
           headers: {
