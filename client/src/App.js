@@ -13,9 +13,13 @@ import Write from './pages/Write';
 
 function App() {
   const dispatch = useDispatch();
+  const token = localStorage.accessToken;
 
   useEffect(() => {
     dispatch(setConfirmModal(false, ''));
+    if (!token) {
+      dispatch(setIsLogin(false));
+    }
   }, []);
 
   const SigninInfo = useSelector((state) => state.userReducer);
@@ -34,8 +38,9 @@ function App() {
 
   if (accessToken && isLogin) {
     localStorage.setItem('accessToken', accessToken);
-    window.location.href = 'http://localhost:3000';
+    window.location.href = `${process.env.REACT_APP_DOMAIN}`;
   }
+
   return (
     <BrowserRouter>
       <div className="appContainer">
