@@ -20,4 +20,6 @@ export GOOGLE_CLIENT_ID=$(aws ssm get-parameters --region ap-northeast-2 --names
 export GOOGLE_CLIENT_PASSWORD=$(aws ssm get-parameters --region ap-northeast-2 --names GOOGLE_CLIENT_PASSWORD --query Parameters[0].Value | sed 's/"//g')
 export GOOGLE_REDIRECT_URI=$(aws ssm get-parameters --region ap-northeast-2 --names GOOGLE_REDIRECT_URI --query Parameters[0].Value | sed 's/"//g')
 
+export DOMAIN=$(aws ssm get-parameters --region ap-northeast-2 --names DOMAIN --query Parameters[0].Value | sed 's/"//g')
+
 authbind --deep pm2 start server.js
