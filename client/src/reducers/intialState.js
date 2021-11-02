@@ -10,4 +10,5 @@ export const initialState = {
   isEmailMessage: '',
   isNickMessage: '',
   isPasswordMessage: '',
+  isGoogleLogin: false,
 };

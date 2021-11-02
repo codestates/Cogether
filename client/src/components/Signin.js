@@ -6,11 +6,14 @@ import {
   setSigninModal,
   setConfirmModal,
   setMessage,
+  setIsGoogleLogin,
 } from '../actions/index';
 import { useDispatch } from 'react-redux';
 import '../scss/Signin.scss';
+import { useHistory } from 'react-router';
 
 const Signin = ({ variation, isMessage }) => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [login, setLogin] = useState({
     email: '',
@@ -72,6 +75,9 @@ const Signin = ({ variation, isMessage }) => {
   const oAuthHandler = () => {
     console.log('구글버튼 클릭');
     window.location.assign(`${URL}/users/oauth/login`);
+    dispatch(setSigninModal(false));
+    dispatch(setIsLogin(true));
+    dispatch(setIsGoogleLogin(true));
   };
 
   return (

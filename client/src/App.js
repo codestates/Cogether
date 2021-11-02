@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.scss';
 import { useSelector, useDispatch } from 'react-redux';
@@ -30,14 +30,19 @@ function App() {
     isNickMessage,
     isPasswordMessage,
   } = SigninInfo;
-  console.log('로그인상태', isLogin);
-  console.log('토큰', `${localStorage.accessToken}`);
-  console.log('확인모달', SigninInfo);
-  console.log('리콰이어', isRequireModalOpen);
 
+  const url = new URL(window.location.href);
+  const href = url.href;
+  const accessToken = href.split('=')[1];
+  console.log(accessToken);
+
+  if (accessToken && isLogin) {
+    localStorage.setItem('accessToken', accessToken);
+    window.location.href = 'http://localhost:3000';
+  }
   return (
     <BrowserRouter>
-      <div className='appContainer'>
+      <div className="appContainer">
         <ConfirmModal
           isOpenCon={confirmModal.isConfirmOpen}
           content={confirmModal.content}
@@ -54,13 +59,13 @@ function App() {
         <Nav isLogin={isLogin} />
 
         <Switch>
-          <Route exact path='/'>
+          <Route exact path="/">
             <Main />
           </Route>
-          <Route exact path='/write'>
+          <Route exact path="/write">
             <Write />
           </Route>
-          <Route exact path='/setting'>
+          <Route exact path="/setting">
             <Setting />
           </Route>
         </Switch>

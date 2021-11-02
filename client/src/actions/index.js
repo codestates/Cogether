@@ -6,12 +6,22 @@ export const SET_MESSAGE = 'SET_MESSAGE';
 export const SET_NICK_MESSAGE = 'SET_NICK_MESSAGE';
 export const SET_PASSWORD_MESSAGE = 'SET_PASSWORD_MESSAGE';
 export const SET_EMAIL_MESSAGE = 'SET_EMAIL_MESSAGE';
+export const SET_IS_GOOGLESIGNIN = 'SET_IS_GOOGLESIGNIN';
 
 export const setIsLogin = (isLogin) => {
   return {
     type: SET_IS_SIGNIN,
     payload: {
       isLogin,
+    },
+  };
+};
+
+export const setIsGoogleLogin = (isGoogleLogin) => {
+  return {
+    type: SET_IS_GOOGLESIGNIN,
+    payload: {
+      isGoogleLogin,
     },
   };
 };

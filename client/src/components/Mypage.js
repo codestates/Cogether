@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { URL } from '../Url';
 import { useDispatch } from 'react-redux';
-import { setIsLogin } from '../actions/index';
+import { setIsGoogleLogin, setIsLogin } from '../actions/index';
 import '../scss/Mypage.scss';
 
 const Mypage = () => {
@@ -27,6 +27,7 @@ const Mypage = () => {
       .then((res) => {
         localStorage.setItem('accessToken', null);
         dispatch(setIsLogin(false));
+        dispatch(setIsGoogleLogin(false));
         console.log('로그아웃 성공');
       })
       .catch((err) => {

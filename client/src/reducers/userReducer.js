@@ -7,6 +7,7 @@ import {
   SET_EMAIL_MESSAGE,
   SET_NICK_MESSAGE,
   SET_PASSWORD_MESSAGE,
+  SET_IS_GOOGLESIGNIN,
 } from '../actions/index';
 import { initialState } from './intialState';
 
@@ -52,6 +53,11 @@ const itemReducer = (state = initialState, action) => {
     case SET_PASSWORD_MESSAGE:
       return Object.assign({}, state, {
         isPasswordMessage: action.payload,
+      });
+
+    case SET_IS_GOOGLESIGNIN:
+      return Object.assign({}, state, {
+        isGoogleLogin: action.payload.isGoogleLogin,
       });
 
     default:
