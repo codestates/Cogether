@@ -1,16 +1,17 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { setRequireModal } from '../actions/index';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className='footer'>
-      <div className='footer-logo'>
+    <div className="footer">
+      <div className="footer-logo">
         <img
-          className='footer-img'
-          src='./images/logo_cogether-removebg-preview.png'
+          className="footer-img"
+          src="./images/logo_cogether-removebg-preview.png"
         ></img>
         <p>
           Cogether는’
@@ -31,7 +32,9 @@ const Footer = () => {
       </div>
       <div>
         ABOUT US
-        <p>깃헙 레포지토리</p>
+        <Link to="/post">
+          <p>깃헙 레포지토리이지만 잠시 포스트 링크용 으로 테스트</p>
+        </Link>
       </div>
       <div>
         TEAM MEMBERS

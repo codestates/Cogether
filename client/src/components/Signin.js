@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { URL } from '../Url';
 import {
   setIsLogin,
   setSigninModal,
@@ -10,10 +9,8 @@ import {
 } from '../actions/index';
 import { useDispatch } from 'react-redux';
 import '../scss/Signin.scss';
-import { useHistory } from 'react-router';
 
 const Signin = ({ variation, isMessage }) => {
-  const history = useHistory();
   const dispatch = useDispatch();
   const [login, setLogin] = useState({
     email: '',
@@ -40,7 +37,7 @@ const Signin = ({ variation, isMessage }) => {
 
     if (email && password) {
       axios
-        .post(`${URL}/users/signin`, {
+        .post(`${process.env.REACT_APP_API_URL}/users/signin`, {
           email,
           password,
         })
@@ -49,6 +46,7 @@ const Signin = ({ variation, isMessage }) => {
           dispatch(setIsLogin(true));
           localStorage.setItem('accessToken', accessToken);
           dispatch(setSigninModal(false));
+          dispatch(setConfirmModal(true, '로그인에 성공 하셨습니다.'));
         })
         .catch((err) => {
           if (err.response.data.message === 'user is not exist') {
@@ -69,7 +67,9 @@ const Signin = ({ variation, isMessage }) => {
   };
   const oAuthHandler = () => {
     console.log('구글버튼 클릭');
-    window.location.assign(`${URL}/users/oauth/login`);
+    window.location.assign(
+      `${process.env.REACT_APP_API_URL}/users/oauth/login`
+    );
     dispatch(setSigninModal(false));
     dispatch(setIsLogin(true));
     dispatch(setIsGoogleLogin(true));

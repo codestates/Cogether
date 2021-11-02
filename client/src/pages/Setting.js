@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { URL } from '../Url';
 import '../scss/Setting.scss';
 const Setting = () => {
   const [userProfileImg, setUserProfileImg] = useState(null);
@@ -12,7 +11,7 @@ const Setting = () => {
 
   useEffect(() => {
     axios
-      .get(`${URL}/users/userinfo`, {
+      .get(`${process.env.REACT_APP_API_URL}/users/userinfo`, {
         headers: {
           authorization: `Bearer ${localStorage.accessToken}`,
         },
@@ -68,7 +67,7 @@ const Setting = () => {
     }
 
     axios
-      .patch(`${URL}/users/userinfo/`, formData, {
+      .patch(`${process.env.REACT_APP_API_URL}/users/userinfo/`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           authorization: `Bearer ${localStorage.accessToken}`,

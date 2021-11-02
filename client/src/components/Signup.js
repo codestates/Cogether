@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { URL } from '../Url';
 import '../scss/Signup.scss';
-import {} from '../actions/index';
-import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setConfirmModal } from '../actions';
+import {
+  setConfirmModal,
+  setNickMessage,
+  setPasswordMessage,
+  setEmailMessage,
+} from '../actions/index';
 
-const Signup = ({ variation }) => {
+const Signup = ({ isEmailMessage, isNickMessage, isPasswordMessage }) => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const [nickMessage, setNickMessage] = useState();
   const [passwordMessage, setPasswordMessage] = useState();
   const [emailMessage, setEmailMessage] = useState();
@@ -28,6 +29,7 @@ const Signup = ({ variation }) => {
     // 이름 길이 확인
     if (nickname.length < min) {
       setNickMessage('1자 이상 입력해주세요');
+      return false;
     }
 
     // 이름 정규식 확인
@@ -95,7 +97,7 @@ const Signup = ({ variation }) => {
     if (validNickname & validEmail & validPassword) {
       axios
         .post(
-          `${URL}/users/signup`,
+          `${process.env.REACT_APP_API_URL}/users/signup`,
           {
             email: email,
             nickname: nickname,
@@ -105,7 +107,6 @@ const Signup = ({ variation }) => {
         )
         .then((res) => {
           dispatch(setConfirmModal(true, '회원가입에 성공하셨습니다'));
-          variation();
         })
         .catch((err) => {
           if (err.response.status === 409) {
@@ -166,6 +167,12 @@ const Signup = ({ variation }) => {
           회원가입
         </button>
       </form>
+      <div className="BackSignup">
+        <label>계정이 있으신가요?</label>
+        <span className="SigninFormBtn" onClick={variation}>
+          로그인
+        </span>
+      </div>
     </div>
   );
 };
