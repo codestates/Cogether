@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.scss';
 import { useSelector, useDispatch } from 'react-redux';
@@ -7,7 +7,7 @@ import Main from './pages/Main';
 import SigninModal from './components/SigninModal';
 import RequireModal from './components/RequireModal';
 import ConfirmModal from './components/ConfirmModal';
-import { setConfirmModal } from './actions/index';
+import { setConfirmModal, setIsLogin } from './actions/index';
 import Setting from './pages/Setting';
 import Write from './pages/Write';
 
@@ -16,6 +16,7 @@ function App() {
 
   useEffect(() => {
     dispatch(setConfirmModal(false, ''));
+    dispatch(setIsLogin(false));
   }, []);
 
   const SigninInfo = useSelector((state) => state.userReducer);
@@ -27,11 +28,16 @@ function App() {
     confirmModal,
     isMessage,
   } = SigninInfo;
-  console.log('로그인상태', isLogin);
-  console.log('토큰', `${localStorage.accessToken}`);
-  console.log('확인모달', SigninInfo);
-  console.log('리콰이어', isRequireModalOpen);
 
+  const url = new URL(window.location.href);
+  const href = url.href;
+  const accessToken = href.split('=')[1];
+  console.log(accessToken);
+
+  if (accessToken && isLogin) {
+    localStorage.setItem('accessToken', accessToken);
+    window.location.href = 'http://localhost:3000';
+  }
   return (
     <BrowserRouter>
       <div className="appContainer">
