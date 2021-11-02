@@ -8,7 +8,7 @@ import Post from './pages/Post';
 import SigninModal from './components/SigninModal';
 import RequireModal from './components/RequireModal';
 import ConfirmModal from './components/ConfirmModal';
-import { setConfirmModal } from './actions/index';
+import { setConfirmModal, setIsLogin } from './actions/index';
 import Setting from './pages/Setting';
 import Write from './pages/Write';
 
@@ -49,7 +49,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="appContainer">
+      <div className='appContainer'>
         <ConfirmModal
           isOpenCon={confirmModal.isConfirmOpen}
           content={confirmModal.content}
@@ -60,16 +60,16 @@ function App() {
         <Nav isLogin={isLogin} />
 
         <Switch>
-          <Route exact path="/">
+          <Route exact path='/'>
             <Main />
           </Route>
-          <Route exact path="/write">
+          <Route exact path='/write'>
             <Write />
           </Route>
-          <Route exact path="/setting">
+          <Route exact path='/setting'>
             <Setting />
           </Route>
-          <Route exact path="/post">
+          <Route exact path='/post'>
             <Post />
           </Route>
         </Switch>
