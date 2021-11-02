@@ -5,13 +5,7 @@ import Signin from './Signin';
 import Signup from './Signup';
 import '../scss/Modal.scss';
 
-const SigninModal = ({
-  isOpen,
-  isMessage,
-  isEmailMessage,
-  isNickMessage,
-  isPasswordMessage,
-}) => {
+const SigninModal = ({ isOpen, isMessage }) => {
   const [isSignin, setIsSignin] = useState(true);
   const dispatch = useDispatch();
   const closeModal = () => {
@@ -32,12 +26,7 @@ const SigninModal = ({
               {isSignin ? (
                 <Signin variation={HandlerSignin} isMessage={isMessage} />
               ) : (
-                <Signup
-                  variation={HandlerSignin}
-                  isEmailMessage={isEmailMessage}
-                  isNickMessage={isNickMessage}
-                  isPasswordMessage={isPasswordMessage}
-                />
+                <Signup variation={HandlerSignin} />
               )}
             </>
           </div>
