@@ -2,9 +2,14 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import '../scss/Signup.scss';
 import { useDispatch } from 'react-redux';
-import { setConfirmModal } from '../actions';
+import {
+  setConfirmModal,
+  setNickMessage,
+  setPasswordMessage,
+  setEmailMessage,
+} from '../actions/index';
 
-const Signup = ({ variation }) => {
+const Signup = ({ isEmailMessage, isNickMessage, isPasswordMessage }) => {
   const dispatch = useDispatch();
   const [nickMessage, setNickMessage] = useState();
   const [passwordMessage, setPasswordMessage] = useState();
@@ -24,6 +29,7 @@ const Signup = ({ variation }) => {
     // 이름 길이 확인
     if (nickname.length < min) {
       setNickMessage('1자 이상 입력해주세요');
+      return false;
     }
 
     // 이름 정규식 확인
@@ -91,7 +97,7 @@ const Signup = ({ variation }) => {
     if (validNickname & validEmail & validPassword) {
       axios
         .post(
-          `${process.env.REACT_APP_URL}/users/signup`,
+          `${process.env.REACT_APP_API_URL}/users/signup`,
           {
             email: email,
             nickname: nickname,
@@ -101,7 +107,6 @@ const Signup = ({ variation }) => {
         )
         .then((res) => {
           dispatch(setConfirmModal(true, '회원가입에 성공하셨습니다'));
-          variation();
         })
         .catch((err) => {
           if (err.response.status === 409) {
@@ -112,53 +117,53 @@ const Signup = ({ variation }) => {
     }
   };
   return (
-    <div className='SignupMain'>
-      <form className='SignupForm' onSubmit={handleSubmit}>
-        <p className='SignupP'>
+    <div className="SignupMain">
+      <form className="SignupForm" onSubmit={handleSubmit}>
+        <p className="SignupP">
           이메일<span>(필수)</span>
         </p>
-        <label className='SignupLabel'>
+        <label className="SignupLabel">
           <input
-            placeholder='이메일'
-            type='email'
+            placeholder="이메일"
+            type="email"
             onChange={handleInputValue('email')}
           ></input>
         </label>
-        <span className='SignupAlert'>{emailMessage}</span>
-        <p className='SignupP'>
+        <span className="SignupAlert">{emailMessage}</span>
+        <p className="SignupP">
           닉네임<span>(필수)</span>
         </p>
-        <label className='SignupLabel'>
+        <label className="SignupLabel">
           <input
-            placeholder='닉네임'
-            type='text'
+            placeholder="닉네임"
+            type="text"
             onChange={handleInputValue('nickname')}
           ></input>
         </label>
-        <span className='SignupAlert'>{nickMessage}</span>
-        <p className='SignupP'>
+        <span className="SignupAlert">{nickMessage}</span>
+        <p className="SignupP">
           비밀번호<span>(필수)</span>
         </p>
-        <label className='SignupLabel'>
+        <label className="SignupLabel">
           <input
-            placeholder='비밀번호'
-            type='password'
+            placeholder="비밀번호"
+            type="password"
             onChange={handleInputValue('password')}
-            placeholder='password'
+            placeholder="password"
           ></input>
         </label>
-        <p className='SignupP'>
+        <p className="SignupP">
           비밀번호 확인<span>(필수)</span>
         </p>
-        <label className='SignupLabel'>
+        <label className="SignupLabel">
           <input
-            placeholder='비밀번호 확인'
-            type='password'
+            placeholder="비밀번호 확인"
+            type="password"
             onChange={handleInputValue('passwordCheck')}
           ></input>
         </label>
-        <span className='SignupAlert'>{passwordMessage}</span>
-        <button className='SignupBtn' type='submit'>
+        <span className="SignupAlert">{passwordMessage}</span>
+        <button className="SignupBtn" type="submit">
           회원가입
         </button>
       </form>
