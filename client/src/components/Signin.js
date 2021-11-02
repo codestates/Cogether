@@ -46,6 +46,7 @@ const Signin = ({ variation, isMessage }) => {
           dispatch(setIsLogin(true));
           localStorage.setItem('accessToken', accessToken);
           dispatch(setSigninModal(false));
+          dispatch(setConfirmModal(true, '로그인에 성공 하셨습니다.'));
         })
         .catch((err) => {
           if (err.response.data.message === 'user is not exist') {

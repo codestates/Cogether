@@ -11,6 +11,9 @@ import {
 
 const Signup = ({ isEmailMessage, isNickMessage, isPasswordMessage }) => {
   const dispatch = useDispatch();
+  const [nickMessage, setNickMessage] = useState();
+  const [passwordMessage, setPasswordMessage] = useState();
+  const [emailMessage, setEmailMessage] = useState();
 
   const [user, setUser] = useState({
     email: '',
@@ -125,8 +128,8 @@ const Signup = ({ isEmailMessage, isNickMessage, isPasswordMessage }) => {
             type="email"
             onChange={handleInputValue('email')}
           ></input>
-          <span className="SignupAlert">{isEmailMessage}</span>
         </label>
+        <span className="SignupAlert">{emailMessage}</span>
         <p className="SignupP">
           닉네임<span>(필수)</span>
         </p>
@@ -136,8 +139,8 @@ const Signup = ({ isEmailMessage, isNickMessage, isPasswordMessage }) => {
             type="text"
             onChange={handleInputValue('nickname')}
           ></input>
-          <span className="SignupAlert">{isNickMessage}</span>
         </label>
+        <span className="SignupAlert">{nickMessage}</span>
         <p className="SignupP">
           비밀번호<span>(필수)</span>
         </p>
@@ -158,12 +161,18 @@ const Signup = ({ isEmailMessage, isNickMessage, isPasswordMessage }) => {
             type="password"
             onChange={handleInputValue('passwordCheck')}
           ></input>
-          <span className="SignupAlert">{isPasswordMessage}</span>
         </label>
+        <span className="SignupAlert">{passwordMessage}</span>
         <button className="SignupBtn" type="submit">
           회원가입
         </button>
       </form>
+      <div className="BackSignup">
+        <label>계정이 있으신가요?</label>
+        <span className="SigninFormBtn" onClick={variation}>
+          로그인
+        </span>
+      </div>
     </div>
   );
 };

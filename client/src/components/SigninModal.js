@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { setSigninModal } from '../actions/index';
 import Signin from './Signin';
 import Signup from './Signup';
-import '../scss/Modal.scss';
 
 const SigninModal = ({ isOpen, isMessage }) => {
   const [isSignin, setIsSignin] = useState(true);
