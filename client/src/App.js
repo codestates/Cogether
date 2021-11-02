@@ -4,6 +4,7 @@ import './App.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import Nav from './components/Nav';
 import Main from './pages/Main';
+import Post from './pages/Post';
 import SigninModal from './components/SigninModal';
 import RequireModal from './components/RequireModal';
 import ConfirmModal from './components/ConfirmModal';
@@ -29,8 +30,6 @@ function App() {
   } = SigninInfo;
   console.log('로그인상태', isLogin);
   console.log('토큰', `${localStorage.accessToken}`);
-  console.log('확인모달', SigninInfo);
-  console.log('리콰이어', isRequireModalOpen);
 
   return (
     <BrowserRouter>
@@ -53,6 +52,9 @@ function App() {
           </Route>
           <Route exact path="/setting">
             <Setting />
+          </Route>
+          <Route exact path="/post">
+            <Post />
           </Route>
         </Switch>
       </div>
