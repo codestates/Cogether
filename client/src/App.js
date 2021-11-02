@@ -8,7 +8,7 @@ import Post from './pages/Post';
 import SigninModal from './components/SigninModal';
 import RequireModal from './components/RequireModal';
 import ConfirmModal from './components/ConfirmModal';
-import { setConfirmModal, setIsLogin } from './actions/index';
+import { setConfirmModal } from './actions/index';
 import Setting from './pages/Setting';
 import Write from './pages/Write';
 
@@ -17,7 +17,6 @@ function App() {
 
   useEffect(() => {
     dispatch(setConfirmModal(false, ''));
-    // dispatch(setIsLogin(false));
   }, []);
 
   const SigninInfo = useSelector((state) => state.userReducer);

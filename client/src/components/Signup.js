@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { URL } from '../Url';
 import '../scss/Signup.scss';
-import {} from '../actions/index';
-import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setConfirmModal } from '../actions';
 
 const Signup = ({ variation }) => {
   const dispatch = useDispatch();
-  const history = useHistory();
+
   const [nickMessage, setNickMessage] = useState();
   const [passwordMessage, setPasswordMessage] = useState();
   const [emailMessage, setEmailMessage] = useState();

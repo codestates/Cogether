@@ -10,13 +10,13 @@ const Post = () => {
           <button>삭제</button>
           <span>2021-11-02</span>
         </div>
-        <div className="writeLanguages">
+        <div className="PostLanguages">
           <h2>사용 언어 : </h2>
         </div>
         <hr />
       </section>
 
-      <div className="writeEditor">
+      <div className="PostEditor">
         <Editor />
       </div>
       <div className="PostInfo">
