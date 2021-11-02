@@ -26,9 +26,6 @@ function App() {
     isRequireModalOpen,
     confirmModal,
     isMessage,
-    isEmailMessage,
-    isNickMessage,
-    isPasswordMessage,
   } = SigninInfo;
 
   const url = new URL(window.location.href);
@@ -48,13 +45,7 @@ function App() {
           content={confirmModal.content}
           isMessage={isMessage}
         />
-        <SigninModal
-          isOpen={isSigninModalOpen}
-          isMessage={isMessage}
-          isEmailMessage={isEmailMessage}
-          isNickMessage={isNickMessage}
-          isPasswordMessage={isPasswordMessage}
-        />
+        <SigninModal isOpen={isSigninModalOpen} isMessage={isMessage} />
         <RequireModal isOpenRe={isRequireModalOpen} />
         <Nav isLogin={isLogin} />
 
