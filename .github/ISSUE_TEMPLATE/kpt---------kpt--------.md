@@ -1,6 +1,6 @@
 ---
-name: KPT 회고 템플릿
-about: KPT 회고 작성시 사용하세요.
+name: KPT 회고 템플릿 (KPT 회고 작성시)
+about: '제목 템플릿 (상황에 맞게 쓰세요) : [KPT / 팀] 0주차 0요일 / [KPT / 이름] 0주차 0요일'
 title: ''
 labels: ''
 assignees: ''

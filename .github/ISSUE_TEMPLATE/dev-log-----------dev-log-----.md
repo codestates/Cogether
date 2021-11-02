@@ -1,6 +1,6 @@
 ---
-name: Dev-log 마크다운 템플릿
-about: Dev-log 작성시 사용하세요.
+name: Dev-log 마크다운 템플릿 (Dev-log 작성시)
+about: '제목 템플릿 (복사해서 쓰세요) : [⌨️ Dev-Log] 이름 / 2021-00-00'
 title: ''
 labels: ''
 assignees: ''
