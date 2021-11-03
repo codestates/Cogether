@@ -8,8 +8,8 @@ export const initialState = {
     isOpen: false,
   },
   isMessage: '',
-  isEmailMessage: '',
-  isNickMessage: '',
-  isPasswordMessage: '',
   isGoogleLogin: false,
+  emailMessage: '',
+  passwordMessage: '',
+  nicknameMessage: '',
 };
