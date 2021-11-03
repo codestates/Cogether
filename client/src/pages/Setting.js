@@ -1,13 +1,21 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+
+import { setConfirmModal } from '../actions/index';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
 import { setQuarterModal } from '../actions';
 import '../scss/Setting.scss';
 
 const Setting = () => {
   const dispatch = useDispatch();
-  const [userProfileImg, setUserProfileImg] = useState(null);
-  const [file, setFile] = useState(null);
+  const [userProfileImg, setUserProfileImg] = useState('');
+  const [file, setFile] = useState('');
+  const history = useHistory();
+  const SigninInfo = useSelector((state) => state.userReducer);
+
+  const { confirmModal } = SigninInfo;
+
   const [update, setUpdate] = useState({
     nickname: '',
     password: '',
@@ -30,7 +38,6 @@ const Setting = () => {
         console.log(err);
       });
   }, []);
-  console.log('토큰', `${localStorage.accessToken}`);
 
   const insertImg = (e) => {
     setFile(e.target.files[0]);
@@ -50,7 +57,8 @@ const Setting = () => {
   };
 
   const deleteImg = () => {
-    setUserProfileImg(null);
+    setUserProfileImg('');
+    setFile('');
   };
 
   const handleInputValue = (key) => (e) => {
@@ -80,6 +88,8 @@ const Setting = () => {
       .then((res) => {
         console.log('성공');
         localStorage.setItem('accessToken', res.data.data.accessToken);
+        dispatch(setConfirmModal(true, '유저정보가 변경되었습니다.'));
+        history.push('/');
       })
       .catch((err) => {
         console.log(err);

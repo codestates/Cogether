@@ -6,12 +6,20 @@ import '../scss/Write.scss';
 const Write = () => {
   const [desc, setDesc] = useState('');
   const [title, setTitle] = useState('');
+  const [language, setLanguage] = useState('');
   function onEditorChange(value) {
     setDesc(value);
   }
   const TitleChange = (e) => {
     setTitle(e.target.value);
   };
+
+  const createPost = () => {
+    console.log('title', typeof title);
+    console.log('language', language);
+    console.log(typeof desc);
+  };
+
   return (
     <section className="writeContainer">
       <input
@@ -23,14 +31,14 @@ const Write = () => {
       />
       <div className="writeLanguages">
         <h2>사용 언어 : </h2>
-        <LanguageSelect />
+        <LanguageSelect setLanguage={setLanguage} />
       </div>
       <div className="writeEditor">
         <Editor value={desc} onChange={onEditorChange} />
       </div>
       <div className="writBtn">
         <button>취소</button>
-        <button>등록</button>
+        <button onClick={createPost}>등록</button>
       </div>
     </section>
   );
