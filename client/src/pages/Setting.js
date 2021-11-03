@@ -1,7 +1,11 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { setQuarterModal } from '../actions';
 import '../scss/Setting.scss';
+
 const Setting = () => {
+  const dispatch = useDispatch();
   const [userProfileImg, setUserProfileImg] = useState(null);
   const [file, setFile] = useState(null);
   const [update, setUpdate] = useState({
@@ -118,7 +122,13 @@ const Setting = () => {
       </div>
       <div className="setting-userInfo">
         <button onClick={userInfoUpdate}>변경 완료</button>
-        <button>회원 탈퇴</button>
+        <button
+          onClick={() => {
+            dispatch(setQuarterModal(true, '정말로 회원 탈퇴를 하시겠습니까?'));
+          }}
+        >
+          회원 탈퇴
+        </button>
       </div>
     </div>
   );

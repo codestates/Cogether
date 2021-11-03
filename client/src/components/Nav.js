@@ -4,11 +4,13 @@ import UserControl from './UserControl';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { setSigninModal } from '../actions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-const Nav = ({ isLogin }) => {
+const Nav = () => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const NavInfo = useSelector((state) => state.userReducer);
+  const { isLogin } = NavInfo;
 
   return (
     <nav>
