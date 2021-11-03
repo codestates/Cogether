@@ -2,14 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import '../scss/Signup.scss';
 import { useDispatch } from 'react-redux';
-import {
-  setConfirmModal,
-  setNickMessage,
-  setPasswordMessage,
-  setEmailMessage,
-} from '../actions/index';
+import { setConfirmModal } from '../actions/index';
 
-const Signup = ({ isEmailMessage, isNickMessage, isPasswordMessage }) => {
+const Signup = ({ variation }) => {
   const dispatch = useDispatch();
   const [nickMessage, setNickMessage] = useState();
   const [passwordMessage, setPasswordMessage] = useState();
@@ -107,6 +102,8 @@ const Signup = ({ isEmailMessage, isNickMessage, isPasswordMessage }) => {
         )
         .then((res) => {
           dispatch(setConfirmModal(true, '회원가입에 성공하셨습니다'));
+          console.log('확인모달');
+          variation();
         })
         .catch((err) => {
           if (err.response.status === 409) {
