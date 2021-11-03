@@ -8,7 +8,7 @@ import Post from './pages/Post';
 import SigninModal from './components/SigninModal';
 import RequireModal from './components/RequireModal';
 import ConfirmModal from './components/ConfirmModal';
-import { setConfirmModal, setIsLogin } from './actions/index';
+import { setIsLogin } from './actions/index';
 import Setting from './pages/Setting';
 import Write from './pages/Write';
 
@@ -25,7 +25,7 @@ function App() {
 
   const SigninInfo = useSelector((state) => state.userReducer);
 
-  const { isLogin, isRequireModalOpen } = SigninInfo;
+  const { isLogin } = SigninInfo;
 
   console.log('로그인상태', isLogin);
   console.log('토큰', `${localStorage.accessToken}`);
@@ -44,7 +44,7 @@ function App() {
       <div className="appContainer">
         <ConfirmModal />
         <SigninModal />
-        <RequireModal isOpenRe={isRequireModalOpen} />
+        <RequireModal />
         <Nav isLogin={isLogin} />
 
         <Switch>
