@@ -9,6 +9,8 @@ module.exports = async (req, res) => {
   const { nickname, password } = req.body;
   const auth = isAuthorized(req);
 
+  // 토근 검증
+
   if (!auth) {
     return res.status(401).send({
       message: 'unauthorized user',
@@ -16,6 +18,7 @@ module.exports = async (req, res) => {
   }
 
   try {
+    // 닉네임 중복 검사
     const checkNickName = await User.findOne({
       where: {
         nickname: nickname,
@@ -28,6 +31,7 @@ module.exports = async (req, res) => {
       });
     }
 
+    // 회원 정보 수정
     const userInfo = await User.findOne({
       where: {
         email: auth.email,
