@@ -2,8 +2,6 @@ import {
   SET_IS_SIGNIN,
   SET_SIGNIN_MODAL,
   SET_REQUIRE_MODAL,
-  SET_CONFIRM_MODAL,
-  SET_MESSAGE,
   SET_IS_GOOGLESIGNIN,
 } from '../actions/index';
 import { initialState } from './intialState';
@@ -23,18 +21,6 @@ const itemReducer = (state = initialState, action) => {
     case SET_IS_SIGNIN:
       return Object.assign({}, state, {
         isLogin: action.payload.isLogin,
-      });
-
-    case SET_CONFIRM_MODAL:
-      return Object.assign({}, state, {
-        confirmModal: {
-          ...action.payload,
-        },
-      });
-
-    case SET_MESSAGE:
-      return Object.assign({}, state, {
-        isMessage: action.payload,
       });
 
     case SET_IS_GOOGLESIGNIN:
