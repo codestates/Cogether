@@ -46,6 +46,7 @@ export const setConfirmModal = (boolean, content) => {
     payload: {
       isConfirmOpen: boolean,
       content: content,
+      isOpen: boolean,
     },
   };
 };

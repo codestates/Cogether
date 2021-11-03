@@ -102,6 +102,8 @@ const Signup = ({ variation }) => {
         )
         .then((res) => {
           dispatch(setConfirmModal(true, '회원가입에 성공하셨습니다'));
+          console.log('확인모달');
+          variation();
         })
         .catch((err) => {
           if (err.response.status === 409) {
