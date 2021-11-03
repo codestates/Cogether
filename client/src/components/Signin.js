@@ -12,8 +12,8 @@ import '../scss/Signin.scss';
 
 const Signin = ({ variation }) => {
   const dispatch = useDispatch();
-  const SigninInfo = useSelector((state) => state.userReducer);
-  const { isMessage } = SigninInfo;
+  const messageInfo = useSelector((state) => state.messageReducer);
+  const { isMessage } = messageInfo;
   const [login, setLogin] = useState({
     email: '',
     password: '',

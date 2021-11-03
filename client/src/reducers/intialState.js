@@ -3,13 +3,16 @@ export const initialState = {
   isRequireModalOpen: false,
   isLogin: false,
   confirmModal: {
-    isConfirmOpen: false,
+    content: '',
+    isOpen: false,
+  },
+  quarterModal: {
     content: '',
     isOpen: false,
   },
   isMessage: '',
-  isEmailMessage: '',
-  isNickMessage: '',
-  isPasswordMessage: '',
   isGoogleLogin: false,
+  emailMessage: '',
+  passwordMessage: '',
+  nicknameMessage: '',
 };

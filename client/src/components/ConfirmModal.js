@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setConfirmModal } from '../actions';
 
 const ConfirmModal = () => {
-  const SigninInfo = useSelector((state) => state.userReducer);
+  const confirm = useSelector((state) => state.messageReducer);
 
-  const { confirmModal } = SigninInfo;
+  const { confirmModal } = confirm;
   const dispatch = useDispatch();
   const closeModal = () => {
     dispatch(setConfirmModal(false, ''));
