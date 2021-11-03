@@ -16,7 +16,6 @@ module.exports = async (req, res) => {
       message: 'unauthorized user',
     });
   }
-
   try {
     // 닉네임 중복 검사
     const checkNickName = await User.findOne({
@@ -24,13 +23,13 @@ module.exports = async (req, res) => {
         nickname: nickname,
       },
     });
-
-    if (auth.id !== checkNickName.id) {
-      return res.status(400).send({
-        message: 'nickname is already exist',
-      });
+    if (checkNickName) {
+      if (auth.id !== checkNickName.id) {
+        return res.status(400).send({
+          message: 'nickname is already exist',
+        });
+      }
     }
-
     // 회원 정보 수정
     const userInfo = await User.findOne({
       where: {
@@ -40,10 +39,6 @@ module.exports = async (req, res) => {
 
     if (req.file) {
       userInfo.image = req.file.location;
-    }
-
-    if (!req.file) {
-      userInfo.image = null;
     }
 
     if (nickname) {
@@ -74,7 +69,7 @@ module.exports = async (req, res) => {
     const accessToken = generateToken(payload);
     sendToken(res, accessToken);
 
-    res.status(200).send({
+    return res.status(200).send({
       data: {
         accessToken: accessToken,
         id: userInfo.id,
