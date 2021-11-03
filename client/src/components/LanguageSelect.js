@@ -1,7 +1,7 @@
 import React from 'react';
 import Select from 'react-select';
 
-const LanguageSelect = () => {
+const LanguageSelect = ({ setLanguage }) => {
   const customStyles = {
     control: (css) => ({
       ...css,
@@ -23,8 +23,8 @@ const LanguageSelect = () => {
     { value: '9', label: 'SQL' },
   ];
 
-  const handleChangeSelect = (e) => {
-    console.log(e.target.value);
+  const setLikeLanguages = (e) => {
+    setLanguage(e);
   };
 
   return (
@@ -34,7 +34,9 @@ const LanguageSelect = () => {
         styles={customStyles}
         options={languageList}
         placeholder="사용할 언어를 선택하세요"
-        onChange={(e) => handleChangeSelect()}
+        onChange={(e) => {
+          setLikeLanguages(e);
+        }}
       />
     </div>
   );

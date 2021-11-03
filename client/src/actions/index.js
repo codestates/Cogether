@@ -3,10 +3,11 @@ export const SET_SIGNIN_MODAL = 'SET_SIGNIN_MODAL';
 export const SET_REQUIRE_MODAL = 'SET_REQUIRE_MODAL';
 export const SET_CONFIRM_MODAL = 'SET_CONFIRM_MODAL';
 export const SET_MESSAGE = 'SET_MESSAGE';
-export const SET_NICK_MESSAGE = 'SET_NICK_MESSAGE';
-export const SET_PASSWORD_MESSAGE = 'SET_PASSWORD_MESSAGE';
-export const SET_EMAIL_MESSAGE = 'SET_EMAIL_MESSAGE';
 export const SET_IS_GOOGLESIGNIN = 'SET_IS_GOOGLESIGNIN';
+export const SET_EMAIL_MESSAGE = 'SET_EMAIL_MESSAGE';
+export const SET_PASSWORD_MESSAGE = 'SET_PASSWORD_MESSAGE';
+export const SET_NICKNAME_MESSAGE = 'SET_NICKNAME_MESSAGE';
+export const SET_QUARTER_MODAL = 'SET_QUARTER_MODAL';
 
 export const setIsLogin = (isLogin) => {
   return {
@@ -44,7 +45,17 @@ export const setConfirmModal = (boolean, content) => {
   return {
     type: SET_CONFIRM_MODAL,
     payload: {
-      isConfirmOpen: boolean,
+      content: content,
+      isOpen: boolean,
+    },
+  };
+};
+
+export const setQuarterModal = (boolean, content) => {
+  return {
+    type: SET_QUARTER_MODAL,
+    payload: {
+      isOpen: boolean,
       content: content,
     },
   };
@@ -57,9 +68,9 @@ export const setMessage = (content) => {
   };
 };
 
-export const setNickMessage = (content) => {
+export const setEmailMessage = (content) => {
   return {
-    type: SET_NICK_MESSAGE,
+    type: SET_EMAIL_MESSAGE,
     payload: content,
   };
 };
@@ -71,9 +82,9 @@ export const setPasswordMessage = (content) => {
   };
 };
 
-export const setEmailMessage = (content) => {
+export const setNicknameMessage = (content) => {
   return {
-    type: SET_EMAIL_MESSAGE,
+    type: SET_NICKNAME_MESSAGE,
     payload: content,
   };
 };

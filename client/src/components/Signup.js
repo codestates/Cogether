@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../scss/Signup.scss';
-import { useDispatch } from 'react-redux';
-import { setConfirmModal } from '../actions/index';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  setConfirmModal,
+  setEmailMessage,
+  setNicknameMessage,
+  setPasswordMessage,
+} from '../actions/index';
 
 const Signup = ({ variation }) => {
   const dispatch = useDispatch();
-  const [nickMessage, setNickMessage] = useState();
-  const [passwordMessage, setPasswordMessage] = useState();
-  const [emailMessage, setEmailMessage] = useState();
-
+  const messageInfo = useSelector((state) => state.messageReducer);
+  const { emailMessage, passwordMessage, nicknameMessage } = messageInfo;
   const [user, setUser] = useState({
     email: '',
     nickname: '',
@@ -23,16 +26,16 @@ const Signup = ({ variation }) => {
 
     // 이름 길이 확인
     if (nickname.length < min) {
-      setNickMessage('1자 이상 입력해주세요');
+      dispatch(setNicknameMessage('1자 이상 입력해주세요'));
       return false;
     }
 
     // 이름 정규식 확인
     if (!regNickname.test(nickname)) {
-      setNickMessage('한글 / 영문 소문자 / 숫자만 허용합니다');
+      dispatch(setNicknameMessage('한글 / 영문 소문자 / 숫자만 허용합니다'));
       return false;
     } else {
-      setNickMessage();
+      dispatch(setNicknameMessage());
       return true;
     }
   };
@@ -41,12 +44,12 @@ const Signup = ({ variation }) => {
     const regEmail = /^[0-9a-z-_.]+@[0-9a-z]+\.[0-9a-z]+$/;
 
     if (email.length === 0) {
-      setEmailMessage('1자 이상 입력해주세요');
+      dispatch(setEmailMessage('1자 이상 입력해주세요'));
     } else if (!regEmail.test(email)) {
-      setEmailMessage('특수문자(-_.) 또는 이메일형식(@) 필요합니다');
+      dispatch(setEmailMessage('특수문자(-_.) 또는 이메일형식(@) 필요합니다'));
       return false;
     } else {
-      setEmailMessage();
+      dispatch(setEmailMessage());
       return true;
     }
   };
@@ -57,22 +60,24 @@ const Signup = ({ variation }) => {
     const regPassword = /^[0-9a-z-_.!?*]+$/;
 
     if (password !== passwordCheck) {
-      setPasswordMessage('동일한 비밀번호를 입력해 주세요');
+      dispatch(setPasswordMessage('동일한 비밀번호를 입력해 주세요'));
       return false;
     }
 
     // 비밀번호 길이 확인
     if (password.length < min || password.length > max) {
-      setPasswordMessage('비밀번호 4~20자 입니다');
+      dispatch(setPasswordMessage('비밀번호 4~20자 입니다'));
       return false;
     }
 
     // 비밀번호 정규식 확인
     if (!regPassword.test(password)) {
-      setPasswordMessage('영문 소문자/숫자/특수문자(-_.!?*)만 허용합니다');
+      dispatch(
+        setPasswordMessage('영문 소문자/숫자/특수문자(-_.!?*)만 허용합니다')
+      );
       return false;
     } else {
-      setPasswordMessage('');
+      dispatch(setPasswordMessage(''));
       return true;
     }
   };
@@ -102,6 +107,8 @@ const Signup = ({ variation }) => {
         )
         .then((res) => {
           dispatch(setConfirmModal(true, '회원가입에 성공하셨습니다'));
+          console.log('확인모달');
+          variation();
         })
         .catch((err) => {
           if (err.response.status === 409) {
@@ -135,8 +142,8 @@ const Signup = ({ variation }) => {
             onChange={handleInputValue('nickname')}
           ></input>
         </label>
-        <span className='SignupAlert'>{nickMessage}</span>
-        <p className='SignupP'>
+        <span className="SignupAlert">{nicknameMessage}</span>
+        <p className="SignupP">
           비밀번호<span>(필수)</span>
         </p>
         <label className='SignupLabel'>
