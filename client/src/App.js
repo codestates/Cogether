@@ -8,7 +8,7 @@ import Post from './pages/Post';
 import SigninModal from './components/SigninModal';
 import RequireModal from './components/RequireModal';
 import ConfirmModal from './components/ConfirmModal';
-import { setConfirmModal, setIsLogin } from './actions/index';
+import { setIsLogin } from './actions/index';
 import Setting from './pages/Setting';
 import Write from './pages/Write';
 
@@ -18,8 +18,6 @@ function App() {
   console.log('토큰', token);
 
   useEffect(() => {
-    dispatch(setConfirmModal(false, ''));
-
     if (token === null) {
       dispatch(setIsLogin(false));
     }
@@ -27,13 +25,7 @@ function App() {
 
   const SigninInfo = useSelector((state) => state.userReducer);
 
-  const {
-    isLogin,
-    isSigninModalOpen,
-    isRequireModalOpen,
-    confirmModal,
-    isMessage,
-  } = SigninInfo;
+  const { isLogin } = SigninInfo;
 
   console.log('로그인상태', isLogin);
   console.log('토큰', `${localStorage.accessToken}`);
@@ -50,13 +42,9 @@ function App() {
   return (
     <BrowserRouter>
       <div className="appContainer">
-        <ConfirmModal
-          isOpenCon={confirmModal.isConfirmOpen}
-          content={confirmModal.content}
-          isMessage={isMessage}
-        />
-        <SigninModal isOpen={isSigninModalOpen} isMessage={isMessage} />
-        <RequireModal isOpenRe={isRequireModalOpen} />
+        <ConfirmModal />
+        <SigninModal />
+        <RequireModal />
         <Nav isLogin={isLogin} />
 
         <Switch>

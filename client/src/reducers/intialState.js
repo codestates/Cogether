@@ -5,6 +5,7 @@ export const initialState = {
   confirmModal: {
     isConfirmOpen: false,
     content: '',
+    isOpen: false,
   },
   isMessage: '',
   isEmailMessage: '',

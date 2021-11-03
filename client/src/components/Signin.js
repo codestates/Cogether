@@ -7,11 +7,13 @@ import {
   setMessage,
   setIsGoogleLogin,
 } from '../actions/index';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import '../scss/Signin.scss';
 
-const Signin = ({ variation, isMessage }) => {
+const Signin = ({ variation }) => {
   const dispatch = useDispatch();
+  const SigninInfo = useSelector((state) => state.userReducer);
+  const { isMessage } = SigninInfo;
   const [login, setLogin] = useState({
     email: '',
     password: '',
@@ -54,13 +56,6 @@ const Signin = ({ variation, isMessage }) => {
           }
           if (err.response.data.message === 'wrong password') {
             dispatch(setConfirmModal(true, '비밀번호가 다릅니다.'));
-          }
-          if (!email && !password) {
-            dispatch(setMessage('이메일과 비밀번호를 입력하세요.'));
-          } else if (!password) {
-            dispatch(setMessage('비밀번호를 입력하세요.'));
-          } else if (!email) {
-            dispatch(setMessage('이메일을 입력하세요'));
           }
         });
     }

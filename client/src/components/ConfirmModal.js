@@ -1,8 +1,11 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { setConfirmModal } from '../actions';
 
-const ConfirmModal = ({ isOpenCon, content }) => {
+const ConfirmModal = () => {
+  const SigninInfo = useSelector((state) => state.userReducer);
+
+  const { confirmModal } = SigninInfo;
   const dispatch = useDispatch();
   const closeModal = () => {
     dispatch(setConfirmModal(false, ''));
@@ -10,11 +13,11 @@ const ConfirmModal = ({ isOpenCon, content }) => {
 
   return (
     <>
-      {isOpenCon ? (
+      {confirmModal.isOpen ? (
         <div className="Modal">
-          <div className="ModalMain" onClick={closeModal} />
+          <div className="ModalMain" />
           <div className="ModalBox">
-            <div className="Modalcontent">{content}</div>
+            <div className="Modalcontent">{confirmModal.content}</div>
             <button className="ModalBtn" onClick={closeModal}>
               확인
             </button>

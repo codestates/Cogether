@@ -75,6 +75,7 @@ const Setting = () => {
     if (update.password) {
       formData.append('password', update.password);
     }
+
     axios
       .patch(`${process.env.REACT_APP_API_URL}/users/userinfo/`, formData, {
         headers: {
