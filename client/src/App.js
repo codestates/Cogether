@@ -16,25 +16,13 @@ function App() {
   const dispatch = useDispatch();
   const token = localStorage.accessToken;
   console.log('토큰', token);
-
-  useEffect(() => {
-    if (token === null) {
-      dispatch(setIsLogin(false));
-    }
-  }, []);
-
-  const SigninInfo = useSelector((state) => state.userReducer);
-
-  const { isLogin } = SigninInfo;
-
-  console.log('로그인상태', isLogin);
   console.log('토큰', `${localStorage.accessToken}`);
 
   const url = new URL(window.location.href);
   const href = url.href;
   const accessToken = href.split('=')[1];
 
-  if (accessToken && isLogin) {
+  if (accessToken) {
     localStorage.setItem('accessToken', accessToken);
     window.location.href = `${process.env.REACT_APP_DOMAIN}`;
   }
@@ -45,7 +33,7 @@ function App() {
         <ConfirmModal />
         <SigninModal />
         <RequireModal />
-        <Nav isLogin={isLogin} />
+        <Nav />
 
         <Switch>
           <Route exact path="/">
