@@ -11,7 +11,6 @@ const ConfirmModal = () => {
     dispatch(setConfirmModal(false, ''));
   };
 
-  console.log('확인모달창에 뭐가 있나', confirmModal);
   return (
     <>
       {confirmModal.isOpen ? (
