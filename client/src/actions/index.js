@@ -7,6 +7,7 @@ export const SET_IS_GOOGLESIGNIN = 'SET_IS_GOOGLESIGNIN';
 export const SET_EMAIL_MESSAGE = 'SET_EMAIL_MESSAGE';
 export const SET_PASSWORD_MESSAGE = 'SET_PASSWORD_MESSAGE';
 export const SET_NICKNAME_MESSAGE = 'SET_NICKNAME_MESSAGE';
+export const SET_QUARTER_MODAL = 'SET_QUARTER_MODAL';
 
 export const setIsLogin = (isLogin) => {
   return {
@@ -44,9 +45,18 @@ export const setConfirmModal = (boolean, content) => {
   return {
     type: SET_CONFIRM_MODAL,
     payload: {
-      isConfirmOpen: boolean,
       content: content,
       isOpen: boolean,
+    },
+  };
+};
+
+export const setQuarterModal = (boolean, content) => {
+  return {
+    type: SET_QUARTER_MODAL,
+    payload: {
+      isOpen: boolean,
+      content: content,
     },
   };
 };

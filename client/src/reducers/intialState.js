@@ -3,7 +3,10 @@ export const initialState = {
   isRequireModalOpen: false,
   isLogin: false,
   confirmModal: {
-    isConfirmOpen: false,
+    content: '',
+    isOpen: false,
+  },
+  quarterModal: {
     content: '',
     isOpen: false,
   },

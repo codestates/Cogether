@@ -1,19 +1,17 @@
-import React, { useEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.scss';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Nav from './components/Nav';
 import Main from './pages/Main';
 import Post from './pages/Post';
 import SigninModal from './components/SigninModal';
 import RequireModal from './components/RequireModal';
 import ConfirmModal from './components/ConfirmModal';
-import { setIsLogin } from './actions/index';
+import QuarterModal from './components/QuarterModal';
 import Setting from './pages/Setting';
 import Write from './pages/Write';
 
 function App() {
-  const dispatch = useDispatch();
   const token = localStorage.accessToken;
   console.log('토큰', token);
   console.log('토큰', `${localStorage.accessToken}`);
@@ -31,6 +29,7 @@ function App() {
     <BrowserRouter>
       <div className="appContainer">
         <ConfirmModal />
+        <QuarterModal />
         <SigninModal />
         <RequireModal />
         <Nav />
