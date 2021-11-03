@@ -35,16 +35,16 @@ function App() {
         <Nav />
 
         <Switch>
-          <Route exact path="/">
+          <Route exact path='/'>
             <Main />
           </Route>
-          <Route exact path="/write">
+          <Route exact path='/write'>
             <Write />
           </Route>
-          <Route exact path="/setting">
+          <Route exact path='/setting'>
             <Setting />
           </Route>
-          <Route exact path="/post">
+          <Route exact path='/post'>
             <Post />
           </Route>
         </Switch>

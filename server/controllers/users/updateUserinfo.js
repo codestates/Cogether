@@ -25,7 +25,7 @@ module.exports = async (req, res) => {
     });
     if (checkNickName) {
       if (auth.id !== checkNickName.id) {
-        res.status(400).send({
+        return res.status(400).send({
           message: 'nickname is already exist',
         });
       }
@@ -39,10 +39,6 @@ module.exports = async (req, res) => {
 
     if (req.file) {
       userInfo.image = req.file.location;
-    }
-
-    if (!req.file) {
-      userInfo.image = null;
     }
 
     if (nickname) {
@@ -73,7 +69,7 @@ module.exports = async (req, res) => {
     const accessToken = generateToken(payload);
     sendToken(res, accessToken);
 
-    res.status(200).send({
+    return res.status(200).send({
       data: {
         accessToken: accessToken,
         id: userInfo.id,

@@ -1,5 +1,3 @@
-const { isAuthorized } = require('../../utils/helpFunc');
-
 module.exports = (req, res) => {
   try {
     if (req.headers.Authorization || req.cookies.authorization) {
