@@ -1,7 +1,9 @@
 require('dotenv').config();
+
 const { User } = require('../../models');
-const axios = require('axios');
 const { generateToken, sendToken } = require('../../utils/helpFunc');
+
+const axios = require('axios');
 
 module.exports = {
   login: (req, res) => {
