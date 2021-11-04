@@ -22,11 +22,21 @@ module.exports = async (req, res) => {
     });
 
     res.status(200).send({
-      nickname: userInfo.nickname,
-      image: userInfo.image,
-      title,
-      content,
-      stacks,
+      data: {
+        // id:
+        // userId: userInfo.id,
+        nickname: userInfo.nickname,
+        image: userInfo.image,
+        title,
+        content,
+        stacks,
+        totalViews,
+        totalInterests,
+        totalComments,
+        // updatedAt:,
+        // createdAt:,
+      },
+      message: 'create post successed',
     });
   } catch (err) {
     console.log(err);
