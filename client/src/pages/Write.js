@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import Comment from '../components/Comment';
 import Editor from '../components/EditorComponent';
 import LanguageSelect from '../components/LanguageSelect';
 import '../scss/Write.scss';
@@ -17,13 +16,15 @@ const Write = () => {
   };
   const getFields = (input, field) => {
     let output = [];
-    for (let i = 0; i < input.length; ++i) output.push(input[i][field]);
+    for (let i = 0; i < input.length; ++i)
+      output.push(parseInt(input[i][field]));
     return output;
   };
 
   let result = getFields(language, 'value');
 
   const createPost = () => {
+    console.log(title);
     console.log('result', result);
 
     axios
@@ -31,7 +32,7 @@ const Write = () => {
         `${process.env.REACT_APP_API_URL}/posts`,
         {
           title: title,
-          stacks: language,
+          stacks: result,
           content: desc,
         },
         {
@@ -41,10 +42,10 @@ const Write = () => {
         }
       )
       .then((res) => {
-        console.log(res);
+        console.log('등록완료');
       })
       .catch((err) => {
-        console.log(err);
+        console.log('등록실패');
       });
   };
 
@@ -64,9 +65,7 @@ const Write = () => {
       <div className="writeEditor">
         <Editor value={desc || ''} onChange={onEditorChange} />
       </div>
-      <div className="test">
-        <Comment />
-      </div>
+
       <div className="writBtn">
         <button>취소</button>
         <button onClick={createPost}>등록</button>
