@@ -18,9 +18,8 @@ class EditorComponent extends Component {
         { indent: '-1' },
         { indent: '+1' },
       ],
-      ['link', 'image'],
+
       [{ align: [] }, { color: [] }, { background: [] }], // dropdown with defaults from theme
-      ['clean'],
     ],
   };
 
@@ -35,8 +34,6 @@ class EditorComponent extends Component {
     'list',
     'bullet',
     'indent',
-    'link',
-    'image',
     'align',
     'color',
     'background',
@@ -44,11 +41,12 @@ class EditorComponent extends Component {
 
   render() {
     const { value, onChange } = this.props;
+
     return (
       <div style={{ height: '650px' }}>
         <ReactQuill
           style={{ height: '600px' }}
-          theme='snow'
+          theme="snow"
           modules={this.modules}
           formats={this.formats}
           value={value || ''}

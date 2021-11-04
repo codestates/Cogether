@@ -2,7 +2,8 @@ const { Post, Hashtag } = require('../../models');
 const { isAuthorized } = require('../../utils/helpFunc');
 
 module.exports = async (req, res) => {
-  const { title, content, stacks } = req.body;
+  console.log(req);
+  // const { title, content, stacks } = req.body;
   const auth = isAuthorized(req);
 
   if (!auth) {
