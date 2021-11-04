@@ -5,7 +5,8 @@ const router = express.Router();
 
 router.post('/', postController.createPost);
 router.get('/hashtags/:id', postController.getPostByHashtags);
-router.get('/', postController.getAllPosts);
+router.get('/', postController.getAllPosts.byCreatedAt);
+router.get('/totalviews', postController.getAllPosts.byTotalViews);
 router.get('/:id', postController.getPostDetail);
 router.get('/myposts', postController.getMyPost);
 router.patch('/:id', postController.updatePost);
