@@ -4,11 +4,53 @@ const { isAuthorized } = require('../../utils/helpFunc');
 module.exports = async (req, res) => {
   const { title, content, stacks } = req.body;
 
-  console.log(stacks);
-  console.log(stacks[0].value);
-  console.log(stacks[0].label);
+  console.log(stacks.length);
 
-  res.sendStatus(200);
+  // for (let i = 0; i < stacks.length; i++) {
+  //   Post_hashtag.create({
+  //     postId: 1,
+  //     hashtagId: stacks[i],
+  //   });
+
+  await Post_hashtag.create({
+    hashtagId: 1,
+    postId: 1,
+  });
+
+  const find = await Post_hashtag.findAll();
+
+  res.status(200).send({
+    data: find,
+  });
+
+  // const stacks = stack.map((stack) => stack.value);
+  // [1, 2, 3, 4, 5];
+  // Post_hashtag.create({
+  //   postId: 1,
+  //   hashtagId: 3,
+  // });
+
+  // const hashtag1 = await Hashtag.findOne({
+  //   where: {
+  //     id: 1,
+  //   },
+  // });
+
+  // const hashtag2 = await Hashtag.findOne({
+  //   where: {
+  //     stack: stacks,
+  //   },
+  // });
+
+  // const posts1 = await hashtag1.getPosts();
+  // const posts2 = await hashtag2.getPosts();
+
+  // res.status(200).send({
+  //   data: {
+  //     posts1,
+  //     posts2,
+  //   },
+  // });
 
   // const auth = isAuthorized(req);
 
