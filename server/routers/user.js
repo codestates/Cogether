@@ -17,6 +17,6 @@ router.patch(
   upload.single('userProfileImg'),
   userController.updateUserinfo
 );
-router.delete('/delete', userController.delete);
+router.delete('/delete', userController.deleteUser);
 
 module.exports.userRouter = router;

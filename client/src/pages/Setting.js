@@ -11,6 +11,7 @@ const Setting = () => {
   const dispatch = useDispatch();
   const [userProfileImg, setUserProfileImg] = useState(null);
   const [file, setFile] = useState('');
+  const [loginType, setLoginType] = useState(false);
   const history = useHistory();
 
   const [update, setUpdate] = useState({
@@ -31,12 +32,15 @@ const Setting = () => {
         setUserProfileImg(data.image);
         setUpdate({ ...update, nickname: data.nickname });
         dispatch(setConfirmModal(false, ''));
+        if (data.login_type !== 'local') {
+          setLoginType(true);
+        }
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
-
+  console.log('소셜로그인 확인', loginType);
   const insertImg = (e) => {
     setFile(e.target.files[0]);
     let reader = new FileReader();
@@ -128,7 +132,7 @@ const Setting = () => {
           value={update.nickname}
         ></input>
       </div>
-      <div className="settig-password">
+      <div className={loginType ? 'settig-passwordBlock' : 'settig-password'}>
         <p>비밀번호 : </p>
         <input onChange={handleInputValue('password')}></input>
       </div>

@@ -16,7 +16,7 @@ const Main = () => {
           '밤새 코딩과 사투를 벌여온 당신,',
           'Cogether에서는 더 이상 혼자가 아닙니다.',
         ]}
-        imageLink={'images/landing.svg'}
+        imageLink={'images/MainPage.svg'}
       />
       <PostView />
       <LanguageBar />

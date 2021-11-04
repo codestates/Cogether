@@ -12,10 +12,16 @@
   align-items: center;
   font-family: '777Balsamtint';
 }
+
 .content {
   font-size: 3rem;
   font-weight: bolder;
   line-height: 5rem;
+  margin-right: 0.1rem;
+}
+.content-img {
+  max-width: 850px;
+  max-height: 800px;
 }
 .postView {
   display: flex;
