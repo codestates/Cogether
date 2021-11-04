@@ -1,4 +1,13 @@
 @import 'color.scss';
+
+.MypageMain {
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+
+.MypageMain:hover {
+  color: #870cec;
+}
 .mypage-menu {
   display: none;
 }

@@ -1,6 +1,5 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.scss';
-import { useDispatch } from 'react-redux';
 import Nav from './components/Nav';
 import Main from './pages/Main';
 import Post from './pages/Post';
@@ -35,16 +34,16 @@ function App() {
         <Nav />
 
         <Switch>
-          <Route exact path='/'>
+          <Route exact path="/">
             <Main />
           </Route>
-          <Route exact path='/write'>
+          <Route exact path="/write">
             <Write />
           </Route>
-          <Route exact path='/setting'>
+          <Route exact path="/setting">
             <Setting />
           </Route>
-          <Route exact path='/post'>
+          <Route exact path="/post">
             <Post />
           </Route>
         </Switch>

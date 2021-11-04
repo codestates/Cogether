@@ -3,6 +3,7 @@ import {
   SET_SIGNIN_MODAL,
   SET_REQUIRE_MODAL,
   SET_IS_GOOGLESIGNIN,
+  SET_USER_DELETE,
 } from '../actions/index';
 import { initialState } from './intialState';
 
@@ -26,6 +27,11 @@ const itemReducer = (state = initialState, action) => {
     case SET_IS_GOOGLESIGNIN:
       return Object.assign({}, state, {
         isGoogleLogin: action.payload.isGoogleLogin,
+      });
+
+    case SET_USER_DELETE:
+      return Object.assign({}, state, {
+        isDelete: action.payload,
       });
 
     default:

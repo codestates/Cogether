@@ -27,14 +27,14 @@ const Write = () => {
         type="text"
         placeholder="제목을 입력하세요"
         onChange={TitleChange}
-        value={title}
+        value={title || ''}
       />
       <div className="writeLanguages">
         <h2>사용 언어 : </h2>
         <LanguageSelect setLanguage={setLanguage} />
       </div>
       <div className="writeEditor">
-        <Editor value={desc} onChange={onEditorChange} />
+        <Editor value={desc || ''} onChange={onEditorChange} />
       </div>
       <div className="writBtn">
         <button>취소</button>
