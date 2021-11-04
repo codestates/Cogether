@@ -83,15 +83,15 @@ Hashtag.belongsToMany(Post, {
 // One to Many
 
 // Chatroom 1 : N Chatting
-Chatroom.hasMany(Chatting);
+Chatroom.hasMany(Chatting, { foreignKey: 'chatroomId' });
 Chatting.belongsTo(Chatroom);
 
 // User 1 : N Post
-User.hasMany(Post);
+User.hasMany(Post, { foreignKey: 'userId' });
 Post.belongsTo(User);
 
 // User 1 : N Chatting
-User.hasMany(Chatting);
+User.hasMany(Chatting, { foreignKey: 'userId' });
 Chatting.belongsTo(User);
 
 db.sequelize = sequelize;

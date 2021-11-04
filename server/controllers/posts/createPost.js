@@ -23,6 +23,7 @@ module.exports = async (req, res) => {
     const post = await Post.create({
       userId: userInfo.id,
       nickname: userInfo.nickname,
+      image: userInfo.image,
       title: title,
       content: content,
       stacks: stacks,
