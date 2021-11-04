@@ -25,13 +25,16 @@ module.exports = async (req, res) => {
       },
     });
 
-    await Post_comment.create({
+    const createdData = await Post_comment.create({
       userId: user.id,
       postId: post.id,
       comment,
     });
 
     res.status(201).send({
+      data: {
+        createdData,
+      },
       message: 'create comment successed',
     });
   } catch (err) {
