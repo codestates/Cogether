@@ -3,7 +3,7 @@ const { User } = require('../../models');
 
 module.exports = async (req, res) => {
   const auth = isAuthorized(req);
-
+  console.log('오쓰래', auth);
   if (!auth) {
     return res.status(401).send({
       message: 'unauthorized user',

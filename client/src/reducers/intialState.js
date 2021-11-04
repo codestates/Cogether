@@ -15,4 +15,5 @@ export const initialState = {
   emailMessage: '',
   passwordMessage: '',
   nicknameMessage: '',
+  isDelete: false,
 };
