@@ -17,13 +17,15 @@ const Write = () => {
   };
   const getFields = (input, field) => {
     let output = [];
-    for (let i = 0; i < input.length; ++i) output.push(input[i][field]);
+    for (let i = 0; i < input.length; ++i)
+      output.push(parseInt(input[i][field]));
     return output;
   };
 
   let result = getFields(language, 'value');
 
   const createPost = () => {
+    console.log(title);
     console.log('result', result);
 
     axios
@@ -31,7 +33,7 @@ const Write = () => {
         `${process.env.REACT_APP_API_URL}/posts`,
         {
           title: title,
-          stacks: language,
+          stacks: result,
           content: desc,
         },
         {
@@ -41,33 +43,33 @@ const Write = () => {
         }
       )
       .then((res) => {
-        console.log(res);
+        console.log('등록완료');
       })
       .catch((err) => {
-        console.log(err);
+        console.log('등록실패');
       });
   };
 
   return (
-    <section className="writeContainer">
+    <section className='writeContainer'>
       <input
-        className="titleInput"
-        type="text"
-        placeholder="제목을 입력하세요"
+        className='titleInput'
+        type='text'
+        placeholder='제목을 입력하세요'
         onChange={TitleChange}
         value={title || ''}
       />
-      <div className="writeLanguages">
+      <div className='writeLanguages'>
         <h2>사용 언어 : </h2>
         <LanguageSelect setLanguage={setLanguage} />
       </div>
-      <div className="writeEditor">
+      <div className='writeEditor'>
         <Editor value={desc || ''} onChange={onEditorChange} />
       </div>
-      <div className="test">
+      <div className='test'>
         <Comment />
       </div>
-      <div className="writBtn">
+      <div className='writBtn'>
         <button>취소</button>
         <button onClick={createPost}>등록</button>
       </div>
