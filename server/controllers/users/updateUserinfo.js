@@ -37,6 +37,10 @@ module.exports = async (req, res) => {
       },
     });
 
+    if (!req.file) {
+      userInfo.image = null;
+    }
+
     if (req.file) {
       userInfo.image = req.file.location;
     }

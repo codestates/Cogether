@@ -8,8 +8,9 @@ import '../scss/Setting.scss';
 
 const Setting = () => {
   const dispatch = useDispatch();
-  const [userProfileImg, setUserProfileImg] = useState('');
+  const [userProfileImg, setUserProfileImg] = useState(null);
   const [file, setFile] = useState('');
+  const [loginType, setLoginType] = useState(false);
   const history = useHistory();
 
   const [update, setUpdate] = useState({
@@ -29,12 +30,16 @@ const Setting = () => {
         console.log(data);
         setUserProfileImg(data.image);
         setUpdate({ ...update, nickname: data.nickname });
+        dispatch(setConfirmModal(false, ''));
+        if (data.login_type !== 'local') {
+          setLoginType(true);
+        }
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
-
+  console.log('소셜로그인 확인', loginType);
   const insertImg = (e) => {
     setFile(e.target.files[0]);
     let reader = new FileReader();
@@ -53,8 +58,8 @@ const Setting = () => {
   };
 
   const deleteImg = () => {
-    setUserProfileImg('');
-    setFile('');
+    setUserProfileImg(null);
+    setFile(null);
   };
 
   const handleInputValue = (key) => (e) => {
@@ -88,6 +93,10 @@ const Setting = () => {
         history.push('/');
       })
       .catch((err) => {
+        if (err.response.data.message === 'nickname is already exist') {
+          dispatch(setConfirmModal(true, '이미있는 닉네임 입니다.'));
+          window.location.replace(`/Setting`);
+        }
         console.log(err);
       });
   };
@@ -127,7 +136,7 @@ const Setting = () => {
           value={update.nickname || ''}
         ></input>
       </div>
-      <div className="settig-password">
+      <div className={loginType ? 'settig-passwordBlock' : 'settig-password'}>
         <p>비밀번호 : </p>
         <input onChange={handleInputValue('password')}></input>
       </div>

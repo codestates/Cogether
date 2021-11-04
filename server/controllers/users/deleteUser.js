@@ -3,6 +3,7 @@ const { User } = require('../../models');
 
 module.exports = async (req, res) => {
   const auth = isAuthorized(req);
+
   if (!auth) {
     return res.status(401).send({
       message: 'unauthorized user',
