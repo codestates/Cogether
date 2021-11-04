@@ -9,7 +9,7 @@ import '../scss/Setting.scss';
 
 const Setting = () => {
   const dispatch = useDispatch();
-  const [userProfileImg, setUserProfileImg] = useState('');
+  const [userProfileImg, setUserProfileImg] = useState(null);
   const [file, setFile] = useState('');
   const history = useHistory();
 
@@ -54,8 +54,8 @@ const Setting = () => {
   };
 
   const deleteImg = () => {
-    setUserProfileImg('');
-    setFile('');
+    setUserProfileImg(null);
+    setFile(null);
   };
 
   const handleInputValue = (key) => (e) => {
@@ -89,6 +89,10 @@ const Setting = () => {
         history.push('/');
       })
       .catch((err) => {
+        if (err.response.data.message === 'nickname is already exist') {
+          dispatch(setConfirmModal(true, '이미있는 닉네임 입니다.'));
+          window.location.replace(`/Setting`);
+        }
         console.log(err);
       });
   };

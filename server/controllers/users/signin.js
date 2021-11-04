@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 const { User } = require('../../models');
 const { generateToken, sendToken } = require('../../utils/helpFunc');
 
