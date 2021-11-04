@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { setRequireModal } from '../actions/index';
 import { Link } from 'react-router-dom';
+import '../scss/Footer.scss';
 
 const Footer = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ const Footer = () => {
       <div>
         CONTACT
         <p
+          className="footer-contact"
           onClick={() => {
             dispatch(setRequireModal(true));
           }}
