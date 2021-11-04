@@ -87,12 +87,12 @@ Chatroom.hasMany(Chatting, { foreignKey: 'chatroomId' });
 Chatting.belongsTo(Chatroom);
 
 // User 1 : N Post
-User.hasMany(Post, { foreignKey: 'userId' });
-Post.belongsTo(User);
+User.hasMany(Post, { foreignKey: 'userId', sourceKey: 'id' });
+Post.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });
 
 // User 1 : N Chatting
-User.hasMany(Chatting, { foreignKey: 'userId' });
-Chatting.belongsTo(User);
+User.hasMany(Chatting, { foreignKey: 'userId', sourceKey: 'id' });
+Chatting.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
