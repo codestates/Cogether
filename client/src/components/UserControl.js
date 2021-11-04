@@ -7,6 +7,7 @@ const UserControl = () => {
   return (
     <div className="userControl">
       <div
+        className="userControlSignin"
         onClick={() => {
           dispatch(setSigninModal(true));
         }}

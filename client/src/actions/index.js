@@ -8,6 +8,7 @@ export const SET_EMAIL_MESSAGE = 'SET_EMAIL_MESSAGE';
 export const SET_PASSWORD_MESSAGE = 'SET_PASSWORD_MESSAGE';
 export const SET_NICKNAME_MESSAGE = 'SET_NICKNAME_MESSAGE';
 export const SET_QUARTER_MODAL = 'SET_QUARTER_MODAL';
+export const SET_USER_DELETE = 'SET_USER_DELETE';
 
 export const setIsLogin = (isLogin) => {
   return {
@@ -86,5 +87,12 @@ export const setNicknameMessage = (content) => {
   return {
     type: SET_NICKNAME_MESSAGE,
     payload: content,
+  };
+};
+
+export const setUserDelete = (boolean) => {
+  return {
+    type: SET_USER_DELETE,
+    payload: boolean,
   };
 };

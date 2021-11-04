@@ -25,7 +25,11 @@ nav {
   justify-content: center;
   align-items: center;
   span {
+    cursor: pointer;
     margin-right: 0.5rem;
+  }
+  span:hover {
+    color: #870cec;
   }
 }
 .userControl {
@@ -35,6 +39,14 @@ nav {
   div {
     margin: 5px;
   }
+}
+
+.userControlSignin {
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+.userControlSignin:hover {
+  color: #870cec;
 }
 
 @media screen and (max-width: 880px) {

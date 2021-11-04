@@ -1,10 +1,9 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-
 import { setConfirmModal } from '../actions/index';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
-import { setQuarterModal } from '../actions';
+import { setQuarterModal, setUserDelete } from '../actions';
 import '../scss/Setting.scss';
 
 const Setting = () => {
@@ -102,6 +101,11 @@ const Setting = () => {
       });
   };
 
+  const withDrawal = () => {
+    dispatch(setQuarterModal(true, '정말로 회원 탈퇴를 하시겠습니까?'));
+    dispatch(setUserDelete(true));
+  };
+
   return (
     <div className="setting">
       <div className="setting-header">
@@ -129,7 +133,7 @@ const Setting = () => {
         <p>닉네임 : </p>
         <input
           onChange={handleInputValue('nickname')}
-          value={update.nickname}
+          value={update.nickname || ''}
         ></input>
       </div>
       <div className={loginType ? 'settig-passwordBlock' : 'settig-password'}>
@@ -138,13 +142,7 @@ const Setting = () => {
       </div>
       <div className="setting-userInfo">
         <button onClick={userInfoUpdate}>변경 완료</button>
-        <button
-          onClick={() => {
-            dispatch(setQuarterModal(true, '정말로 회원 탈퇴를 하시겠습니까?'));
-          }}
-        >
-          회원 탈퇴
-        </button>
+        <button onClick={withDrawal}>회원 탈퇴</button>
       </div>
     </div>
   );

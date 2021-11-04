@@ -38,7 +38,7 @@ const Mypage = () => {
       });
   };
   return (
-    <div onClick={toggleClass}>
+    <div className="MypageMain" onClick={toggleClass}>
       {' '}
       마이페이지
       <ul className={isActive ? 'mypage-menu active' : 'mypage-menu'}>
