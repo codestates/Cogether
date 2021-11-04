@@ -37,6 +37,7 @@ module.exports = async (req, res) => {
         userId: createdData.userId,
         postId: createdData.postId,
         nickname: user.nickname,
+        image: user.image,
         comment: createdData.comment,
       },
       message: 'create comment successed',
