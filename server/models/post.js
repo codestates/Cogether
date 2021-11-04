@@ -15,9 +15,9 @@ module.exports = (sequelize, DataTypes) => {
     {
       userId: DataTypes.INTEGER,
       nickname: DataTypes.STRING,
+      image: DataTypes.STRING,
       title: DataTypes.STRING,
       content: DataTypes.STRING,
-      image: DataTypes.STRING,
       totalViews: {
         type: DataTypes.INTEGER,
         defaultValue: 0,
