@@ -19,7 +19,10 @@ const Main = () => {
         imageLink={'images/MainPage.svg'}
       />
       <PostView />
-      <LanguageBar />
+      <div className="mainLanguageBar">
+        <LanguageBar />
+      </div>
+
       <PostList />
       <Footer />
     </div>
