@@ -124,7 +124,7 @@ const Setting = () => {
         <p>닉네임 : </p>
         <input
           onChange={handleInputValue('nickname')}
-          value={update.nickname}
+          value={update.nickname || ''}
         ></input>
       </div>
       <div className="settig-password">

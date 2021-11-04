@@ -32,7 +32,7 @@ const LanguageSelect = ({ setLanguage }) => {
       <Select
         isMulti
         styles={customStyles}
-        options={languageList}
+        options={languageList || ''}
         placeholder="사용할 언어를 선택하세요"
         onChange={(e) => {
           setLikeLanguages(e);
