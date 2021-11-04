@@ -83,8 +83,8 @@ Hashtag.belongsToMany(Post, {
 // One to Many
 
 // Chatroom 1 : N Chatting
-Chatroom.hasMany(Chatting, { foreignKey: 'chatroomId' });
-Chatting.belongsTo(Chatroom);
+Chatroom.hasMany(Chatting, { foreignKey: 'chatroomId', sourceKey: 'id' });
+Chatting.belongsTo(Chatroom, { foreignKey: 'chatroomId', sourceKey: 'id' });
 
 // User 1 : N Post
 User.hasMany(Post, { foreignKey: 'userId', sourceKey: 'id' });
