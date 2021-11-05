@@ -26,6 +26,9 @@ module.exports = {
       content: {
         type: Sequelize.STRING,
       },
+      mainstack: {
+        type: Sequelize.INTEGER,
+      },
       totalViews: {
         type: Sequelize.INTEGER,
       },
