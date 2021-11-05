@@ -18,7 +18,6 @@ module.exports = async (req, res) => {
     await post.save();
 
     const hashtags = await Post_hashtag.findAll({
-      attritbutes: ['hashtagId'],
       where: {
         postId: id,
       },
