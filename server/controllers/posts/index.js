@@ -8,7 +8,6 @@ module.exports = {
     getPostDetail: require('./getPostDetail'),
     getMyPosts: require('./getMyPosts'),
     updatePost: require('./updatePost'),
-    updateTotalViews: require('./updateTotalViews'),
     deletePost: require('./deletePost'),
   },
 };
