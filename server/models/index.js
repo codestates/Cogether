@@ -94,6 +94,10 @@ Post.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });
 User.hasMany(Chatting, { foreignKey: 'userId', sourceKey: 'id' });
 Chatting.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });
 
+// Post 1 : N Post_hashtag
+Post.hasMany(Post_hashtag, { foreignKey: 'postId', sourceKey: 'id' });
+Post_hashtag.belongsTo(Post, { foreignKey: 'postId', sourceKey: 'id' });
+
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
