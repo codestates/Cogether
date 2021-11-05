@@ -1,7 +1,9 @@
 const { Post, Post_hashtag } = require('../../models');
+const { isAuthorized } = require('../../utils/helpFunc');
 
 module.exports = async (req, res) => {
   const { id } = req.params;
+  const auth = isAuthorized(req);
 
   try {
     const post = await Post.findOne({
@@ -18,11 +20,25 @@ module.exports = async (req, res) => {
 
     const stackArr = hashtags.map((item) => item.hashtagId);
 
-    res.status(200).send({
-      data: post,
-      stacks: stackArr,
-      message: 'get post detail successed',
-    });
+    // normal user !== post author
+
+    if (!auth) {
+      return res.status(200).send({
+        data: post,
+        stacks: stackArr,
+        message: 'get post detail successed',
+      });
+    }
+
+    // user === post author
+
+    if (auth.id === post.userId) {
+      return res.status(200).send({
+        data: post,
+        stacks: stackArr,
+        message: `get author's post detail successed`,
+      });
+    }
   } catch (err) {
     console.log(err);
   }
