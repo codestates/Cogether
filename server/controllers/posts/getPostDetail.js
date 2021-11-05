@@ -1,7 +1,6 @@
-const { Post } = require('../../models');
+const { Post, Post_hashtag } = require('../../models');
 
 module.exports = async (req, res) => {
-  console.log('2');
   const { id } = req.params;
 
   try {
@@ -10,16 +9,26 @@ module.exports = async (req, res) => {
         id,
       },
     });
-    // update totalViews value + 1
 
+    // update totalViews value + 1
     if (post) {
       post.totalViews = post.totalViews + 1;
     }
 
     await post.save();
 
+    const hashtags = await Post_hashtag.findAll({
+      attritbutes: ['hashtagId'],
+      where: {
+        postId: id,
+      },
+    });
+
+    const stackArr = hashtags.map((item) => item.hashtagId);
+
     res.status(200).send({
       data: post,
+      stacks: stackArr,
       message: 'get post detail successed',
     });
   } catch (err) {

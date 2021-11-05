@@ -2,7 +2,6 @@ const { Post } = require('../../models');
 const { isAuthorized } = require('../../utils/helpFunc');
 
 module.exports = async (req, res) => {
-  console.log('1');
   const auth = isAuthorized(req);
 
   if (!auth) {
@@ -17,6 +16,7 @@ module.exports = async (req, res) => {
       where: {
         userId: auth.id,
       },
+      order: [['totalViews', 'DESC']],
     });
 
     if (myPosts.length === 0) {
