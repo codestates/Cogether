@@ -8,6 +8,7 @@ module.exports = async (req, res) => {
       where: {
         hashtagId: id,
       },
+      order: [['createdAt', 'DESC']],
     });
 
     if (post.length === 0) {
