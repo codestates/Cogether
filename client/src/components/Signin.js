@@ -53,9 +53,11 @@ const Signin = ({ variation }) => {
         .catch((err) => {
           if (err.response.data.message === 'user is not exist') {
             dispatch(setConfirmModal(true, '가입되어 있는 이메일이 아닙니다'));
+            dispatch(setSigninModal(false));
           }
           if (err.response.data.message === 'wrong password') {
             dispatch(setConfirmModal(true, '비밀번호가 다릅니다.'));
+            dispatch(setSigninModal(false));
           }
 
           console.log(err);
@@ -73,34 +75,34 @@ const Signin = ({ variation }) => {
   };
 
   return (
-    <div className='SigninMain'>
-      <form className='SigninForm' onSubmit={handleLogin}>
-        <p className='SigninP'>이메일</p>
-        <label className='SigninLabel'>
+    <div className="SigninMain">
+      <form className="SigninForm" onSubmit={handleLogin}>
+        <p className="SigninP">이메일</p>
+        <label className="SigninLabel">
           <input
-            placeholder='이메일'
-            type='email'
+            placeholder="이메일"
+            type="email"
             onChange={handleInputValue('email')}
           ></input>
         </label>
-        <p className='SigninP'>비밀번호</p>
-        <label className='SigninLabel'>
+        <p className="SigninP">비밀번호</p>
+        <label className="SigninLabel">
           <input
-            placeholder='비밀번호'
-            type='password'
+            placeholder="비밀번호"
+            type="password"
             onChange={handleInputValue('password')}
           ></input>
         </label>
-        <button className='SigninBtn' type='submit'>
+        <button className="SigninBtn" type="submit">
           로그인
         </button>
-        <span className='SigninAlert'>{isMessage}</span>
-        <div className='SigninCompoSignup'>
+        <span className="SigninAlert">{isMessage}</span>
+        <div className="SigninCompoSignup">
           <label>회원이 아니신가요?</label>
           <span onClick={variation}>회원가입</span>
         </div>
       </form>
-      <button className='SigninGoogle' onClick={oAuthHandler}>
+      <button className="SigninGoogle" onClick={oAuthHandler}>
         구글 로그인
       </button>
     </div>
