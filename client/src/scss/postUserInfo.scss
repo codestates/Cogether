@@ -1,10 +1,9 @@
-.comment {
+.postUserInfo {
   display: flex;
-  justify-content: center;
   align-items: center;
   width: 100%;
 
-  .comment-img {
+  .postUserInfo-img {
     width: 50px;
     height: 50px;
     border-radius: 70%;
@@ -17,11 +16,13 @@
       z-index: 10;
     }
   }
-
-  .comment-container {
+  .postNickname {
+    width: 55px;
+  }
+  .postUserInfo-container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
-    width: 85%;
+    width: 100%;
   }
 }

@@ -2,8 +2,8 @@ const { User, Post, Post_hashtag, Hashtag } = require('../../models');
 const { isAuthorized } = require('../../utils/helpFunc');
 
 module.exports = async (req, res) => {
-  console.log(req);
-  // const { title, content, stacks } = req.body;
+  // console.log(req);
+  const { title, content, stacks } = req.body;
   const auth = isAuthorized(req);
 
   if (!auth) {
@@ -17,8 +17,9 @@ module.exports = async (req, res) => {
       where: {
         id: auth.id,
       },
-      attributes: ['nickname', 'image'],
+      attributes: ['id', 'nickname', 'image'],
     });
+
     // create post
 
     const post = await Post.create({

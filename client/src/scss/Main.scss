@@ -30,20 +30,30 @@
   margin: 2.8rem 0;
 }
 
-.languageBar {
+.mainLanguageBar {
   display: flex;
-  flex-wrap: wrap;
-  margin: 0 auto;
-  padding: 1rem;
-  max-width: 1210px;
-  margin-top: 5rem;
-  margin-bottom: 5rem;
-}
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  .languageContainer {
+    width: 80%;
+    .languageBar {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 auto;
+      padding: 1rem;
+      max-width: 1210px;
+      margin-top: 5rem;
+      // margin-bottom: 5rem;
+    }
 
-.languageItem {
-  margin-right: 0.75rem;
-  margin-left: 0.75rem;
-  font-size: 30px;
+    .languageItem {
+      margin-right: 0.75rem;
+      margin-left: 0.75rem;
+      font-size: 30px;
+    }
+  }
 }
 
 .postList {
@@ -114,5 +124,43 @@
       max-width: 150px;
       height: auto;
     }
+  }
+}
+
+// 말풍선 영역
+
+.balloon,
+.balloon2,
+.balloon3,
+.balloon3,
+.balloon4,
+.balloon5,
+.balloon6,
+.balloon7,
+.balloon8,
+.balloon9 {
+  position: relative;
+  top: 0;
+  // margin: 50px;
+  width: 100%;
+  height: 500px;
+  background: pink;
+  border-radius: 10px;
+  // left: 200px;
+  animation: tilt-in-fwd-tl 1s cubic-bezier(0.445, 0.05, 0.55, 0.95) both;
+}
+
+@keyframes tilt-in-fwd-tl {
+  0% {
+    -webkit-transform: rotateY(-10deg) rotateX(35deg) translate(-300px, -300px)
+      skew(35deg, -10deg);
+    transform: rotateY(-10deg) rotateX(35deg) translate(-300px, -300px)
+      skew(35deg, -10deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotateY(0) rotateX(0deg) translate(0, 0) skew(0deg, 0deg);
+    transform: rotateY(0) rotateX(0deg) translate(0, 0) skew(0deg, 0deg);
+    opacity: 1;
   }
 }
