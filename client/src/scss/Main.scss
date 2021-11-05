@@ -164,3 +164,22 @@
     opacity: 1;
   }
 }
+
+// PostList영역
+.postList-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  .postList-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+
+    .postListContainer-bottom {
+      display: flex;
+    }
+  }
+}

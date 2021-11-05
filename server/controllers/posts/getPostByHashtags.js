@@ -1,4 +1,4 @@
-const { Post_hashtag } = require('../../models');
+const { Post_hashtag, Post } = require('../../models');
 
 module.exports = async (req, res) => {
   const { id } = req.params;
@@ -8,6 +8,20 @@ module.exports = async (req, res) => {
       where: {
         hashtagId: id,
       },
+      include: [
+        {
+          model: Post,
+          attributes: [
+            'title',
+            'content',
+            'mainstack',
+            'totalViews',
+            'totalInterests',
+            'totalComments',
+          ],
+        },
+      ],
+      order: [['createdAt', 'DESC']],
     });
 
     if (post.length === 0) {

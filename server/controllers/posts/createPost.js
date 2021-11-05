@@ -1,4 +1,4 @@
-const { User, Post, Post_hashtag, Hashtag } = require('../../models');
+const { User, Post, Post_hashtag } = require('../../models');
 const { isAuthorized } = require('../../utils/helpFunc');
 
 module.exports = async (req, res) => {
@@ -27,17 +27,17 @@ module.exports = async (req, res) => {
       image: userInfo.image,
       title: title,
       content: content,
-      stacks: stacks,
+      mainstack: stacks[0],
     });
 
     // post_hashtag 생성
 
-    for (let i = 0; i < stacks.length; i++) {
+    stacks.forEach((stack) => {
       Post_hashtag.create({
         postId: post.id,
-        hashtagId: stacks[i],
+        hashtagId: stack,
       });
-    }
+    });
 
     res.status(200).send({
       data: {
@@ -48,6 +48,7 @@ module.exports = async (req, res) => {
         title: post.title,
         content: post.content,
         stacks: stacks,
+        mainstack: stacks[0],
         totalViews: post.totalViews,
         totalInterests: post.totalInterests,
         totalComments: post.totalComments,
