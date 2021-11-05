@@ -36,6 +36,16 @@
       h2 {
         margin-right: 1.5rem;
       }
+      .postLanguages-view {
+        display: flex;
+
+        div {
+          margin-left: 0.5rem;
+        }
+      }
+      .postLanguages-edit {
+        display: none;
+      }
     }
 
     .postComments {

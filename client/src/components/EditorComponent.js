@@ -40,7 +40,7 @@ class EditorComponent extends Component {
   ];
 
   render() {
-    const { value, onChange } = this.props;
+    const { value, postEdit } = this.props;
 
     return (
       <div style={{ height: '550px' }}>
@@ -50,9 +50,11 @@ class EditorComponent extends Component {
           modules={this.modules}
           formats={this.formats}
           value={value || ''}
-          onChange={(content, delta, source, editor) =>
-            onChange(editor.getHTML())
-          }
+          // onChange={(content, delta, source, editor) =>
+          //   onChange(editor.getHTML())
+          // }
+
+          readOnly={postEdit}
         />
       </div>
     );

@@ -43,7 +43,7 @@ function App() {
           <Route exact path="/setting">
             <Setting />
           </Route>
-          <Route exact path="/post">
+          <Route exact path="/post/:postId">
             <Post />
           </Route>
         </Switch>
