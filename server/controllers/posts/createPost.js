@@ -2,7 +2,6 @@ const { User, Post, Post_hashtag, Hashtag } = require('../../models');
 const { isAuthorized } = require('../../utils/helpFunc');
 
 module.exports = async (req, res) => {
-  // console.log(req);
   const { title, content, stacks } = req.body;
   const auth = isAuthorized(req);
 
@@ -25,6 +24,7 @@ module.exports = async (req, res) => {
     const post = await Post.create({
       userId: userInfo.id,
       nickname: userInfo.nickname,
+      image: userInfo.image,
       title: title,
       content: content,
       stacks: stacks,

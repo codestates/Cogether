@@ -50,22 +50,21 @@ const Write = () => {
   };
 
   return (
-    <section className="writeContainer">
+    <section className='writeContainer'>
       <input
-        className="titleInput"
-        type="text"
-        placeholder="제목을 입력하세요"
+        className='titleInput'
+        type='text'
+        placeholder='제목을 입력하세요'
         onChange={TitleChange}
         value={title || ''}
       />
-      <div className="writeLanguages">
+      <div className='writeLanguages'>
         <h2>사용 언어 : </h2>
         <LanguageSelect setLanguage={setLanguage} />
       </div>
-      <div className="writeEditor">
+      <div className='writeEditor'>
         <Editor value={desc || ''} onChange={onEditorChange} />
       </div>
-
       <div className="writBtn">
         <button>취소</button>
         <button onClick={createPost}>등록</button>
