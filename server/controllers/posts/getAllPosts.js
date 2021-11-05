@@ -1,10 +1,11 @@
-const { Post, Post_hashtag } = require('../../models');
+const { Post, Post_Hashtag } = require('../../models');
 
 module.exports = {
   // get all posts sorted by createdAt - default(최신순)
   byCreatedAt: async (req, res) => {
     try {
       const sortedByCreatedAt = await Post.findAll({
+        include: [{ model: Post_Hashtag, attributes: ['hashtagId'] }],
         order: [['createdAt', 'DESC']],
       });
 
