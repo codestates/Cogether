@@ -8,7 +8,7 @@ const PostList = () => {
         <li>인기</li>
       </ul>
       <div className="postList-img">
-        <img className="nodataImg" src="./images/No_data.svg"></img>
+        {/* <img className="nodataImg" src="./images/No_data.svg"></img> */}
       </div>
     </>
   );

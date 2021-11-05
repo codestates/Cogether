@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import Comment from '../components/Comment';
 import Editor from '../components/EditorComponent';
 import LanguageSelect from '../components/LanguageSelect';
 import '../scss/Write.scss';
@@ -66,10 +65,7 @@ const Write = () => {
       <div className='writeEditor'>
         <Editor value={desc || ''} onChange={onEditorChange} />
       </div>
-      <div className='test'>
-        <Comment />
-      </div>
-      <div className='writBtn'>
+      <div className="writBtn">
         <button>취소</button>
         <button onClick={createPost}>등록</button>
       </div>

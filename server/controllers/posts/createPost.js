@@ -18,6 +18,7 @@ module.exports = async (req, res) => {
       },
       attributes: ['id', 'nickname', 'image'],
     });
+
     // create post
 
     const post = await Post.create({
