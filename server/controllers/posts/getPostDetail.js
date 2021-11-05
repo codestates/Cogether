@@ -1,6 +1,7 @@
 const { Post } = require('../../models');
 
 module.exports = async (req, res) => {
+  console.log('2');
   const { id } = req.params;
 
   try {
@@ -10,6 +11,7 @@ module.exports = async (req, res) => {
       },
     });
     // update totalViews value + 1
+
     if (post) {
       post.totalViews = post.totalViews + 1;
     }
@@ -22,8 +24,10 @@ module.exports = async (req, res) => {
     });
   } catch (err) {
     // update totalViews value - 1
+
     post.totalViews = post.totalViews - 1;
     await post.save();
+
     console.log(err);
   }
 };
