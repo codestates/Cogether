@@ -5,7 +5,6 @@ module.exports = {
   byCreatedAt: async (req, res) => {
     try {
       const sortedByCreatedAt = await Post.findAll({
-        include: [{ model: Post_Hashtag, attributes: ['hashtagId'] }],
         order: [['createdAt', 'DESC']],
       });
 

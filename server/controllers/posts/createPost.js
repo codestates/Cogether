@@ -27,7 +27,7 @@ module.exports = async (req, res) => {
       image: userInfo.image,
       title: title,
       content: content,
-      stacks: stacks,
+      mainstack: stacks[0],
     });
 
     // post_hashtag 생성
@@ -48,6 +48,7 @@ module.exports = async (req, res) => {
         title: post.title,
         content: post.content,
         stacks: stacks,
+        mainstack: stacks[0],
         totalViews: post.totalViews,
         totalInterests: post.totalInterests,
         totalComments: post.totalComments,
