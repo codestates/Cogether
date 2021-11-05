@@ -96,11 +96,15 @@
       background-color: #d3a4f9;
       color: white;
       border-radius: 2rem;
-      padding: 10px 50px;
+      padding: 10px 30px;
       font-size: 14px;
       margin: 1.5rem;
       margin-top: 1.5rem;
       border: none;
+    }
+    button:hover {
+      color: #870cec;
+      font-weight: 700;
     }
   }
 }
