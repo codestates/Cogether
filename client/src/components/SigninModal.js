@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setSigninModal } from '../actions/index';
+import '../scss/Modal.scss';
 import Signin from './Signin';
 import Signup from './Signup';
 
