@@ -10,13 +10,6 @@ module.exports = async (req, res) => {
       },
     });
 
-    // update totalViews value + 1
-    if (post) {
-      post.totalViews = post.totalViews + 1;
-    }
-
-    await post.save();
-
     const hashtags = await Post_hashtag.findAll({
       where: {
         postId: id,
@@ -31,11 +24,6 @@ module.exports = async (req, res) => {
       message: 'get post detail successed',
     });
   } catch (err) {
-    // update totalViews value - 1
-
-    post.totalViews = post.totalViews - 1;
-    await post.save();
-
     console.log(err);
   }
 };
