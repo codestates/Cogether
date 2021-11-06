@@ -10,7 +10,6 @@ router.get('/totalviews', postController.getAllPosts.byTotalViews);
 router.get('/myposts', postController.getMyPost);
 router.get('/:id', postController.getPostDetail);
 router.patch('/:id', postController.updatePost);
-router.patch('/views/:id', postController.updateTotalViews);
 router.delete('/:id', postController.deletePost);
 
 module.exports.postRouter = router;

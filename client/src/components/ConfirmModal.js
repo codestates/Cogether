@@ -16,7 +16,7 @@ const ConfirmModal = () => {
       {confirmModal.isOpen ? (
         <div className="Modal">
           <div className="ModalMain" />
-          <div className="ModalBox">
+          <div className="ConfirmModalBox">
             <div className="Modalcontent">{confirmModal.content}</div>
             <button className="ModalBtn" onClick={closeModal}>
               확인

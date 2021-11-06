@@ -1,10 +1,15 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setConfirmModal } from '../actions';
+import { useHistory } from 'react-router';
 import Editor from '../components/EditorComponent';
 import LanguageSelect from '../components/LanguageSelect';
 import '../scss/Write.scss';
 
 const Write = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
   const [desc, setDesc] = useState('');
   const [title, setTitle] = useState('');
   const [language, setLanguage] = useState('');
@@ -42,27 +47,30 @@ const Write = () => {
         }
       )
       .then((res) => {
+        dispatch(setConfirmModal(true, '등록 완료되었습니다'));
         console.log('등록완료');
+        history.push('/');
       })
       .catch((err) => {
+        dispatch(setConfirmModal(true, '등록 실패하였습니다'));
         console.log('등록실패');
       });
   };
 
   return (
-    <section className='writeContainer'>
+    <section className="writeContainer">
       <input
-        className='titleInput'
-        type='text'
-        placeholder='제목을 입력하세요'
+        className="titleInput"
+        type="text"
+        placeholder="제목을 입력하세요"
         onChange={TitleChange}
         value={title || ''}
       />
-      <div className='writeLanguages'>
+      <div className="writeLanguages">
         <h2>사용 언어 : </h2>
         <LanguageSelect setLanguage={setLanguage} />
       </div>
-      <div className='writeEditor'>
+      <div className="writeEditor">
         <Editor value={desc || ''} onChange={onEditorChange} />
       </div>
       <div className="writBtn">

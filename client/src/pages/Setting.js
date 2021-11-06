@@ -127,7 +127,9 @@ const Setting = () => {
             onChange={(e) => insertImg(e)}
           ></input>
         </label>
-        <button onClick={deleteImg}>프로필 사진 제거</button>
+        <button className="settting-profile-del-btn" onClick={deleteImg}>
+          프로필 사진 제거
+        </button>
       </div>
       <div className="settig-nickname">
         <p>닉네임 : </p>

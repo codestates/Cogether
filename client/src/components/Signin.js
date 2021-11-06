@@ -47,17 +47,15 @@ const Signin = ({ variation }) => {
           const { accessToken } = res.data.data;
           dispatch(setIsLogin(true));
           localStorage.setItem('accessToken', accessToken);
-          dispatch(setSigninModal(false));
           dispatch(setConfirmModal(true, '로그인에 성공 하셨습니다.'));
+          dispatch(setSigninModal(false));
         })
         .catch((err) => {
           if (err.response.data.message === 'user is not exist') {
             dispatch(setConfirmModal(true, '가입되어 있는 이메일이 아닙니다'));
-            dispatch(setSigninModal(false));
           }
           if (err.response.data.message === 'wrong password') {
             dispatch(setConfirmModal(true, '비밀번호가 다릅니다.'));
-            dispatch(setSigninModal(false));
           }
 
           console.log(err);
