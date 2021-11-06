@@ -1,5 +1,4 @@
 const { Post } = require('../../models');
-const { isAuthorized } = require('../../utils/helpFunc');
 
 module.exports = {
   // get all posts sorted by createdAt - default(최신순)
