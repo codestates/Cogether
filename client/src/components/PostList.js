@@ -51,7 +51,7 @@ const PostList = () => {
     // window.location.replace(`/post/${index}`);
   };
   return (
-    <>
+    <div className="postMain">
       <ul className="postList">
         <li>최신</li>
         <li>인기</li>
@@ -62,9 +62,8 @@ const PostList = () => {
       <div className="postList-main">
         {posts?.map((data) => {
           return (
-            <div className="postList-box">
+            <div key={data.id} className="postList-box">
               <div
-                key={data.id}
                 className="postListContainer"
                 onClick={() => postDtail(data.id)}
               >
@@ -84,7 +83,7 @@ const PostList = () => {
           );
         })}
       </div>
-    </>
+    </div>
   );
 };
 

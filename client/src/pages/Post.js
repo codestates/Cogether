@@ -19,6 +19,8 @@ const Post = () => {
   const [postNickname, setPostNickname] = useState('');
   const [isAuthor, setIsAuthor] = useState(false);
   const [isinterest, setIsinterest] = useState('');
+  const [isRead, setIsRead] = useState(true);
+  const [isImg, setIsimg] = useState('');
   // get post detail successed -- 비회원이거나 글쓴이가 아니거나
   //"get author's post detail successed" --내가 쓴글
 
@@ -39,6 +41,7 @@ const Post = () => {
         setPostStackNumber(res.data.stacks);
         setPostDate(data.updatedAt);
         setPostNickname(data.nickname);
+        setIsimg(data.image);
         setIsinterest(data.totalInterests);
         console.log('메시지', res.data.message);
         res.data.message === "get author's post detail successed"
@@ -49,10 +52,10 @@ const Post = () => {
         console.log(err);
       });
   }, []);
+  //수정버튼 클릭
   const editWrite = () => {};
 
   postStackNumber?.map((data) => {
-    console.log(data);
     if (data === 1) {
       postStack.push('JavaScript');
     }
@@ -81,7 +84,7 @@ const Post = () => {
       postStack.push('SQL');
     }
   });
-  console.log(postStack);
+
   return (
     <div className="post">
       <div className="postContainer">
@@ -100,8 +103,8 @@ const Post = () => {
         <div className="postLanguages">
           <h2>사용 언어 : </h2>
           <div className="postLanguages-view">
-            {postStack.map((stack) => {
-              return <div>{stack}</div>;
+            {postStack.map((stack, idx) => {
+              return <div key={idx}>{stack}</div>;
             })}
           </div>
           <div className="postLanguages-edit">
@@ -110,10 +113,18 @@ const Post = () => {
         </div>
 
         <div className="postEditor">
-          <Editor value={postContent} postEdit={postEdit} />
+          <Editor
+            value={postContent || ''}
+            postEdit={postEdit}
+            isRead={isRead}
+          />
         </div>
         <div className="postUser">
-          <PostUserInfo nickname={postNickname} interestCount={isinterest} />
+          <PostUserInfo
+            nickname={postNickname}
+            interestCount={isinterest}
+            isImg={isImg}
+          />
         </div>
 
         <div className="postComment">
