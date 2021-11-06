@@ -1,7 +1,9 @@
 import axios from 'axios';
+import { useHistory } from 'react-router';
 import React, { useState, useEffect } from 'react';
 
 const PostList = () => {
+  const history = useHistory();
   const [posts, setPosts] = useState();
   useEffect(() => {
     axios
@@ -14,7 +16,40 @@ const PostList = () => {
         console.log(err);
       });
   }, []);
-  console.log(posts);
+
+  posts?.map((data) => {
+    console.log(typeof data.mainstack);
+  });
+
+  function reducer(state = '', action) {
+    switch (action) {
+      case 1:
+        return (state = './images/languages/javascript.png');
+      case 2:
+        return (state = './images/languages/typescript.png');
+      case 3:
+        return (state = './images/languages/react.png');
+      case 4:
+        return (state = './images/languages/nodejs.png');
+      case 5:
+        return (state = './images/languages/python.png');
+      case 6:
+        return (state = './images/languages/go.png');
+      case 7:
+        return (state = './images/languages/c.png');
+      case 8:
+        return (state = './images/languages/java.png');
+      case 9:
+        return (state = './images/languages/sql.png');
+      default:
+        return state;
+    }
+  }
+
+  const postDtail = (index) => {
+    history.push(`/post/${index}`);
+    // window.location.replace(`/post/${index}`);
+  };
   return (
     <>
       <ul className="postList">
@@ -28,9 +63,16 @@ const PostList = () => {
         {posts?.map((data) => {
           return (
             <div className="postList-box">
-              <div key={data.id} className="postListContainer">
-                <div>
+              <div
+                key={data.id}
+                className="postListContainer"
+                onClick={() => postDtail(data.id)}
+              >
+                <div className="postList-title">
                   <p>{data?.title}</p>
+                </div>
+                <div className="postList-img">
+                  <img src={reducer('', data?.mainstack)} />
                 </div>
                 <div className="postListContainer-bottom">
                   <p>{data?.totalComments}</p>
