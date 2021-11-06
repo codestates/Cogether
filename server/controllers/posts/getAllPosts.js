@@ -4,8 +4,6 @@ const { isAuthorized } = require('../../utils/helpFunc');
 module.exports = {
   // get all posts sorted by createdAt - default(최신순)
   byCreatedAt: async (req, res) => {
-    const auth = isAuthorized(req);
-
     try {
       const sortedByCreatedAt = await Post.findAll({
         order: [['createdAt', 'DESC']],
@@ -13,7 +11,6 @@ module.exports = {
 
       res.status(200).send({
         data: sortedByCreatedAt,
-        visitorId: auth.id || null,
         message: 'get all posts sorted by createdat successed',
       });
     } catch (err) {

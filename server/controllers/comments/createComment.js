@@ -31,11 +31,6 @@ module.exports = async (req, res) => {
       comment,
     });
 
-    // update totalViews value - 1 because totalViews increased by re-render
-    if (createdData) {
-      post.totalViews = post.totalViews - 1;
-    }
-
     res.status(201).send({
       data: {
         id: createdData.id,
