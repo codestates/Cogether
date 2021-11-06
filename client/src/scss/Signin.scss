@@ -15,6 +15,7 @@
   background-color: #ffffff;
   align-items: center;
   border-radius: 1.5rem;
+  padding: 0.4rem;
   input {
     margin-top: 0.5rem;
     margin-bottom: 1.5rem;
@@ -27,6 +28,15 @@
   }
   input:focus {
     box-shadow: 0 0 0 2px #870cec;
+  }
+  label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .SigninLabel {
+    margin-bottom: 0.8rem;
   }
 }
 
@@ -47,6 +57,7 @@
   span:hover {
     color: #870cec;
   }
+  display: flex;
 }
 
 .SigninBtn {
@@ -55,8 +66,7 @@
   border-radius: 2rem;
   padding: 10px 50px;
   font-size: 14px;
-  margin: 0.5rem;
-  margin-top: 1.5rem;
+
   border: none;
 }
 
@@ -72,6 +82,12 @@
   padding: 10px 30px;
   font-size: 14px;
   margin: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    margin-right: 0.5rem;
+  }
 }
 
 .SigninGoogle:hover {
@@ -82,5 +98,5 @@
 
 .SigninAlert {
   color: #870cec;
-  font-size: 10px;
+  font-size: 15px;
 }
