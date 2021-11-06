@@ -1,7 +1,9 @@
 const { Post, Post_hashtag } = require('../../models');
+const { isAuthorized } = require('../../utils/helpFunc');
 
 module.exports = async (req, res) => {
   const { id } = req.params;
+  const auth = isAuthorized(req);
 
   try {
     const post = await Post.findOne({
@@ -9,13 +11,6 @@ module.exports = async (req, res) => {
         id,
       },
     });
-
-    // update totalViews value + 1
-    if (post) {
-      post.totalViews = post.totalViews + 1;
-    }
-
-    await post.save();
 
     const hashtags = await Post_hashtag.findAll({
       where: {
@@ -25,17 +20,26 @@ module.exports = async (req, res) => {
 
     const stackArr = hashtags.map((item) => item.hashtagId);
 
-    res.status(200).send({
-      data: post,
-      stacks: stackArr,
-      message: 'get post detail successed',
-    });
+    // normal user !== post author
+
+    if (!auth) {
+      return res.status(200).send({
+        data: post,
+        stacks: stackArr,
+        message: 'get post detail successed',
+      });
+    }
+
+    // user === post author
+
+    if (auth.id === post.userId) {
+      return res.status(200).send({
+        data: post,
+        stacks: stackArr,
+        message: `get author's post detail successed`,
+      });
+    }
   } catch (err) {
-    // update totalViews value - 1
-
-    post.totalViews = post.totalViews - 1;
-    await post.save();
-
     console.log(err);
   }
 };

@@ -19,6 +19,9 @@ const Post = () => {
   const [postNickname, setPostNickname] = useState('');
   const [isAuthor, setIsAuthor] = useState(false);
   const [isinterest, setIsinterest] = useState('');
+  // get post detail successed -- 비회원이거나 글쓴이가 아니거나
+  //"get author's post detail successed" --내가 쓴글
+
   let postStack = [];
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -37,6 +40,10 @@ const Post = () => {
         setPostDate(data.updatedAt);
         setPostNickname(data.nickname);
         setIsinterest(data.totalInterests);
+        console.log('메시지', res.data.message);
+        res.data.message === "get author's post detail successed"
+          ? setIsAuthor(true)
+          : setIsAuthor(false);
       })
       .catch((err) => {
         console.log(err);
