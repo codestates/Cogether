@@ -1,4 +1,4 @@
-const { Post, Post_hashtag } = require('../../models');
+const { Post, User, Post_hashtag } = require('../../models');
 const { isAuthorized } = require('../../utils/helpFunc');
 
 module.exports = async (req, res) => {
@@ -10,6 +10,13 @@ module.exports = async (req, res) => {
       where: {
         id,
       },
+      include: [
+        {
+          model: User,
+          as: 'User',
+          attributes: ['nickname', 'image'],
+        },
+      ],
     });
 
     const hashtags = await Post_hashtag.findAll({

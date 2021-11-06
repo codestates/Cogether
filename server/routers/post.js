@@ -13,14 +13,6 @@ router.get('/:id', postController.getPostDetail);
 
 router.patch('/:id', postController.updatePost);
 router.patch('/totalviews/:id', postController.updatePostTotalViews);
-router.patch(
-  '/increase/:id',
-  postController.updatePostTotalComments.increaseTotalComments
-);
-router.patch(
-  '/decrease/:id',
-  postController.updatePostTotalComments.decreaseTotalComments
-);
 
 router.delete('/:id', postController.deletePost);
 

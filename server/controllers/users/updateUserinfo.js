@@ -67,7 +67,7 @@ module.exports = async (req, res) => {
       sameSite: 'none',
       secure: true,
       path: '/',
-      domail: '/',
+      domain: '/',
     });
 
     const accessToken = generateToken(payload);

@@ -10,7 +10,7 @@ module.exports = (req, res) => {
         sameSite: 'none',
         secure: true,
         path: '/',
-        domail: '/',
+        domain: '/',
       })
       .status(205)
       .send({

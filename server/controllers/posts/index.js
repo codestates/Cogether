@@ -10,6 +10,5 @@ module.exports = {
     updatePost: require('./updatePost'),
     deletePost: require('./deletePost'),
     updatePostTotalViews: require('./updatePostTotalViews'),
-    updatePostTotalComments: require('./updatePostTotalComments'),
   },
 };

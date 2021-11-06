@@ -87,8 +87,8 @@ Chatroom.hasMany(Chatting, { foreignKey: 'chatroomId', sourceKey: 'id' });
 Chatting.belongsTo(Chatroom, { foreignKey: 'chatroomId', sourceKey: 'id' });
 
 // User 1 : N Post
-User.hasMany(Post, { foreignKey: 'userId', sourceKey: 'id' });
-Post.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });
+User.hasMany(Post, { foreignKey: 'userId' });
+Post.belongsTo(User, { foreignKey: 'userId' });
 
 // User 1 : N Chatting
 User.hasMany(Chatting, { foreignKey: 'userId', sourceKey: 'id' });
@@ -97,6 +97,10 @@ Chatting.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });
 // Post 1 : N Post_hashtag
 Post.hasMany(Post_hashtag, { foreignKey: 'postId', sourceKey: 'id' });
 Post_hashtag.belongsTo(Post, { foreignKey: 'postId', sourceKey: 'id' });
+
+// User 1 : N Post_comment
+User.hasMany(Post_comment, { foreignKey: 'userId', sourceKey: 'id' });
+Post_comment.belongsTo(User, { foreignKey: 'userId', sourceKey: 'id' });
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

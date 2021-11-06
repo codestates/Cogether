@@ -28,8 +28,8 @@ module.exports = async (req, res) => {
       const payload = {
         id: user.id,
         email: user.email,
-        nickname: user.nickname,
         image: user.image,
+        nickname: user.nickname,
       };
 
       const accessToken = generateToken(payload);
