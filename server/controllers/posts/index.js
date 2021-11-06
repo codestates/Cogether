@@ -9,6 +9,7 @@ module.exports = {
     getMyPosts: require('./getMyPosts'),
     updatePost: require('./updatePost'),
     deletePost: require('./deletePost'),
-    increaseTotalViews: require('./increaseTotalViews'),
+    updatePostTotalViews: require('./updatePostTotalViews'),
+    updatePostTotalComments: require('./updatePostTotalComments'),
   },
 };
