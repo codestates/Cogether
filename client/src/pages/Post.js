@@ -36,7 +36,7 @@ const Post = () => {
   //"get author's post detail successed" --내가 쓴글
 
   const [comments, setComments] = useState();
-
+  const [visitId, setVisitId] = useState('');
   let postStack = [];
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -50,12 +50,13 @@ const Post = () => {
         const data = res.data.data;
         setPostTitle(data.title);
         setPostContent(data.content);
-        console.log(data);
+        console.log('data', res);
         setPostStackNumber(res.data.stacks);
         setPostDate(data.updatedAt);
         setPostNickname(data.User.nickname);
         setIsimg(data.User.image);
         setIsinterest(data.totalInterests);
+        setVisitId(res.data.visitorId);
         res.data.message === "get author's post detail successed"
           ? setIsAuthor(true)
           : setIsAuthor(false);
@@ -66,13 +67,13 @@ const Post = () => {
 
     commentList();
   }, []);
-  //댓글 등록
 
   // 댓글리스트 불러오기
   const commentList = () => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/comments/${detailId.postId}`)
       .then((res) => {
+        console.log('댓글', res);
         const { data: comment } = res.data;
         setComments(comment);
       })
@@ -103,6 +104,22 @@ const Post = () => {
         console.log('실패');
         console.log(err);
         dispatch(setConfirmModal(true, '로그인후 이용가능 합니다.'));
+      });
+  };
+
+  const deleteComment = (data) => {
+    axios
+      .delete(`${process.env.REACT_APP_API_URL}/comments/${data}`, {
+        headers: {
+          authorization: `Bearer ${localStorage.accessToken}`,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        commentList();
+      })
+      .catch((err) => {
+        console.log('실패');
       });
   };
 
@@ -188,7 +205,12 @@ const Post = () => {
         </div>
 
         <div className="postComment">
-          <Comment comments={comments} uploadComment={uploadComment} />
+          <Comment
+            comments={comments}
+            uploadComment={uploadComment}
+            visitId={visitId}
+            deleteComment={deleteComment}
+          />
         </div>
       </div>
     </div>

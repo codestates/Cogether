@@ -1,8 +1,8 @@
 import React, { useState, useRef } from 'react';
-
 import '../scss/comment.scss';
+import axios from 'axios';
 
-const Comment = ({ comments, uploadComment }) => {
+const Comment = ({ comments, uploadComment, visitId, deleteComment }) => {
   const [isComment, setIsComment] = useState('');
   const inputRef = useRef();
 
@@ -15,7 +15,6 @@ const Comment = ({ comments, uploadComment }) => {
     setIsComment('');
   };
 
-  console.log(comments);
   return (
     <div className="commentContainer">
       {comments?.map((data, i) => {
@@ -35,6 +34,12 @@ const Comment = ({ comments, uploadComment }) => {
             <div className="comment-container">
               <p>{data.comment}</p>
             </div>
+            {data.userId === visitId ? (
+              <i
+                className="fas fa-trash-alt"
+                onClick={() => deleteComment(data.id)}
+              ></i>
+            ) : null}
           </div>
         );
       })}
