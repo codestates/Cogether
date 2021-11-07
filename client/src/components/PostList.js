@@ -1,25 +1,52 @@
 import axios from 'axios';
 import { useHistory } from 'react-router';
+import { useSelector, useDispatch } from 'react-redux';
 import React, { useState, useEffect } from 'react';
+import { setStack } from '../actions';
 
 const PostList = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const Stack = useSelector((state) => state.userReducer);
+  const { isStack } = Stack;
   const [posts, setPosts] = useState();
+  const [stackList, setStackList] = useState();
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/posts`)
       .then((res) => {
-        console.log('정상');
+        console.log('정상적인 리스트', res);
         setPosts(res.data.data);
       })
       .catch((err) => {
         console.log(err);
       });
+    dispatch(setStack(''));
   }, []);
 
-  posts?.map((data) => {
-    console.log(typeof data.mainstack);
-  });
+  //Stack에 따른 리스트 관리
+  const getFields = (input, field) => {
+    let output = [];
+    for (let i = 0; i < input.length; ++i) output.push(input[i][field]);
+    return output;
+  };
+
+  useEffect(() => {
+    console.log('Stack', isStack);
+    if (isStack !== '') {
+      axios
+        .get(`${process.env.REACT_APP_API_URL}/posts/hashtags/${isStack}`)
+        .then((res) => {
+          console.log('정상', res.data.data);
+          let result = getFields(res.data.data, 'Post');
+          setPosts(result);
+          dispatch(setStack(''));
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [isStack]);
 
   function reducer(state = '', action) {
     switch (action) {
@@ -47,6 +74,7 @@ const PostList = () => {
   }
 
   const postDtail = (index) => {
+    console.log(posts);
     axios
       .patch(`${process.env.REACT_APP_API_URL}/posts/totalviews/${index}`)
       .then((res) => {
@@ -66,9 +94,9 @@ const PostList = () => {
         <img className="nodataImg" src="./images/No_data.svg"></img>
       </div> */}
       <div className="postList-main">
-        {posts?.map((data) => {
+        {posts?.map((data, ind) => {
           return (
-            <div key={data.id} className="postList-box">
+            <div key={ind} className="postList-box">
               <div
                 className="postListContainer"
                 onClick={() => postDtail(data.id)}

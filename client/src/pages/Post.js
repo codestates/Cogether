@@ -98,7 +98,7 @@ const Post = () => {
       .then((res) => {
         const { data: comment } = res.data;
         setComments([...comments, comment]);
-        console.log(comment);
+        console.log('comment', comment);
       })
       .catch((err) => {
         console.log('실패');

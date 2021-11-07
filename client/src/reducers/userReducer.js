@@ -6,6 +6,7 @@ import {
   SET_USER_DELETE,
   SET_POST_DELETE,
   SET_POST_ID,
+  SET_USER_STACK,
 } from '../actions/index';
 import { initialState } from './intialState';
 
@@ -44,6 +45,11 @@ const itemReducer = (state = initialState, action) => {
     case SET_POST_ID:
       return Object.assign({}, state, {
         isPostId: action.payload,
+      });
+
+    case SET_USER_STACK:
+      return Object.assign({}, state, {
+        isStack: action.payload,
       });
 
     default:

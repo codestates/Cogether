@@ -18,4 +18,5 @@ export const initialState = {
   isDelete: false,
   isPostDelete: false,
   isPostId: '',
+  isStack: '',
 };
