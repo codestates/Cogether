@@ -12,15 +12,15 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const interestPost = Post_interest.findOne({
+    const interestPost = await Post_interest.findOne({
       where: {
         userId: auth.id,
         postId: id,
       },
     });
 
-    if (!interestPost) {
-      return res.statusCode(400);
+    if (interestPost === null) {
+      return res.sendStatus(400);
     }
 
     await Post_interest.destroy({

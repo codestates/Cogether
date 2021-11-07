@@ -5,9 +5,6 @@ module.exports = async (req, res) => {
   const { id } = req.params;
   const auth = isAuthorized(req);
 
-  console.log(id);
-  console.log(auth.id);
-
   if (!auth) {
     return res.status(401).send({
       message: 'unauthorized user',
@@ -22,24 +19,16 @@ module.exports = async (req, res) => {
       },
     });
 
-    console.log('b', interestPost);
-
     if (interestPost) {
       return res.status(400).send({
         message: 'post is already exist in interest list',
       });
     }
 
-    console.log(id);
-    console.log(auth.id);
     await Post_interest.create({
-      where: {
-        userId: 2,
-        postId: 1,
-      },
+      userId: auth.id,
+      postId: id,
     });
-
-    console.log('a', interestPost);
 
     const post = await Post.findOne({
       where: {

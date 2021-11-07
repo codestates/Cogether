@@ -44,7 +44,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        stack: 'SQL',
+        stack: 'MySQL',
         createdAt: new Date(),
         updatedAt: new Date(),
       },

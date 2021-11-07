@@ -66,8 +66,14 @@ const {
 // });
 
 // User <-> Post (Post_interest)
-// User.belongsToMany(Post, { through: 'Post_interest', foreignKey: 'userId' });
-// Post.belongsToMany(User, { through: 'Post_interest', foreignKey: 'postId' });
+// User.belongsToMany(Post, {
+//   through: 'Post_interest',
+//   foreignKey: 'userId',
+// });
+// Post.belongsToMany(User, {
+//   through: 'Post_interest',
+//   foreignKey: 'postId',
+// });
 
 // User <-> Post (Post_comment)
 // User.belongsToMany(Post, { through: 'Post_comment', foreignKey: 'userId' });
@@ -105,6 +111,10 @@ Post_hashtag.belongsTo(Post, { foreignKey: 'postId', sourceKey: 'id' });
 // Post 1: N Post_ineterest
 Post.hasMany(Post_interest, { foreignKey: 'postId', sourceKey: 'id' });
 Post_interest.belongsTo(Post, { foreignKey: 'postId', sourceKey: 'id' });
+
+// User 1: N Post_ineterest
+User.hasMany(Post_interest, { foreignKey: 'userId', sourceKey: 'id' });
+Post_interest.belongsTo(User, { foreignKey: 'userId', sourceKey: 'id' });
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

@@ -43,9 +43,18 @@ module.exports = async (req, res) => {
       return res.status(200).send({
         data: post,
         stacks: stackArr,
+        visitorId: auth.id,
         message: `get author's post detail successed`,
       });
     }
+    // else
+
+    res.status(200).send({
+      data: post,
+      stacks: stackArr,
+      visitorId: auth.id,
+      message: `get post detail successed`,
+    });
   } catch (err) {
     console.log(err);
   }
