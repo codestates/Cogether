@@ -56,14 +56,14 @@ const {
 // Many to Many
 
 // User <-> Chatroom
-User.belongsToMany(Chatroom, {
-  through: 'User_chatroom',
-  foreignKey: 'userId',
-});
-Chatroom.belongsToMany(User, {
-  through: 'User_chatroom',
-  foreignKey: 'chatroomId',
-});
+// User.belongsToMany(Chatroom, {
+//   through: 'User_chatroom',
+//   foreignKey: 'userId',
+// });
+// Chatroom.belongsToMany(User, {
+//   through: 'User_chatroom',
+//   foreignKey: 'chatroomId',
+// });
 
 // User <-> Post (Post_interest)
 // User.belongsToMany(Post, { through: 'Post_interest', foreignKey: 'userId' });

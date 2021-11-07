@@ -15,42 +15,42 @@ module.exports = async (req, res) => {
     });
   }
 
-  const user = await User.findOne({
-    where: {
-      id: auth.id,
-    },
-  });
+  try {
+    const user = await User.findOne({
+      where: {
+        id: auth.id,
+      },
+    });
 
-  const post = await Post.findOne({
-    where: {
-      id,
-    },
-  });
+    const post = await Post.findOne({
+      where: {
+        id,
+      },
+    });
 
-  const createComment = await Post_comment.create({
-    userId: user.id,
-    postId: post.id,
-    comment,
-  });
+    const createcomment = await Post_comment.create({
+      userId: user.id,
+      postId: post.id,
+      comment,
+    });
 
-  console.log(createComment.id);
-  console.log(createComment.userId);
-  console.log(createComment.postId);
+    const commentData = await Post_comment.findOne({
+      where: {
+        id: createcomment.id,
+      },
+      include: [
+        {
+          model: User,
+          attributes: ['nickname', 'image'],
+        },
+      ],
+    });
 
-  // const createdComment = await Post_comment.findOne({
-  //   where: {
-  //     id: createComment.id,
-  //   },
-  //   include: [
-  //     {
-  //       model: User,
-  //       attributes: ['nickname', 'image'],
-  //     },
-  //   ],
-  // });
-
-  res.status(201).send({
-    data: createComment,
-    message: 'create comment successed',
-  });
+    res.status(201).send({
+      data: commentData,
+      message: 'create comment successed',
+    });
+  } catch (err) {
+    console.log(err);
+  }
 };
