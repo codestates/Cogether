@@ -5,6 +5,8 @@ module.exports = async (req, res) => {
   const { comment } = req.body;
   const { id } = req.params;
 
+  console.log(req.params);
+
   const auth = isAuthorized(req);
 
   if (!auth) {
@@ -13,37 +15,42 @@ module.exports = async (req, res) => {
     });
   }
 
-  try {
-    const user = await User.findOne({
-      where: {
-        id: auth.id,
-      },
-    });
+  const user = await User.findOne({
+    where: {
+      id: auth.id,
+    },
+  });
 
-    const post = await Post.findOne({
-      where: {
-        id,
-      },
-    });
+  const post = await Post.findOne({
+    where: {
+      id,
+    },
+  });
 
-    const createdComment = await Post_comment.create({
-      userId: user.id,
-      postId: post.id,
-      comment,
-    });
+  const createComment = await Post_comment.create({
+    userId: user.id,
+    postId: post.id,
+    comment,
+  });
 
-    res.status(201).send({
-      data: {
-        id: createdComment.id,
-        userId: createdComment.userId,
-        postId: createdComment.postId,
-        nickname: user.nickname,
-        image: user.image,
-        comment: createdComment.comment,
-      },
-      message: 'create comment successed',
-    });
-  } catch (err) {
-    console.log(err);
-  }
+  console.log(createComment.id);
+  console.log(createComment.userId);
+  console.log(createComment.postId);
+
+  // const createdComment = await Post_comment.findOne({
+  //   where: {
+  //     id: createComment.id,
+  //   },
+  //   include: [
+  //     {
+  //       model: User,
+  //       attributes: ['nickname', 'image'],
+  //     },
+  //   ],
+  // });
+
+  res.status(201).send({
+    data: createComment,
+    message: 'create comment successed',
+  });
 };

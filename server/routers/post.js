@@ -9,6 +9,7 @@ router.get('/hashtags/:id', postController.getPostByHashtags);
 router.get('/', postController.getAllPosts.byCreatedAt);
 router.get('/hotposts', postController.getAllPosts.byTotalViews);
 router.get('/myposts', postController.getMyPosts);
+// router.get('/interest', postController.getAllPosts.byInterest);
 router.get('/:id', postController.getPostDetail);
 
 router.patch('/:id', postController.updatePost);

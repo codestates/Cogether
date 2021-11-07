@@ -66,19 +66,19 @@ Chatroom.belongsToMany(User, {
 });
 
 // User <-> Post (Post_interest)
-User.belongsToMany(Post, { through: 'Post_interest', foreignKey: 'userId' });
-Post.belongsToMany(User, { through: 'Post_interest', foreignKey: 'postId' });
+// User.belongsToMany(Post, { through: 'Post_interest', foreignKey: 'userId' });
+// Post.belongsToMany(User, { through: 'Post_interest', foreignKey: 'postId' });
 
 // User <-> Post (Post_comment)
-User.belongsToMany(Post, { through: 'Post_comment', foreignKey: 'userId' });
-Post.belongsToMany(User, { through: 'Post_comment', foreignKey: 'postId' });
+// User.belongsToMany(Post, { through: 'Post_comment', foreignKey: 'userId' });
+// Post.belongsToMany(User, { through: 'Post_comment', foreignKey: 'postId' });
 
 // Post <-> Hashtag (Post_hashtag)
-Post.belongsToMany(Hashtag, { through: 'Post_hashtag', foreignKey: 'postId' });
-Hashtag.belongsToMany(Post, {
-  through: 'Post_hashtag',
-  foreignKey: 'hashtagId',
-});
+// Post.belongsToMany(Hashtag, { through: 'Post_hashtag', foreignKey: 'postId' });
+// Hashtag.belongsToMany(Post, {
+//   through: 'Post_hashtag',
+//   foreignKey: 'hashtagId',
+// });
 
 // One to Many
 
@@ -94,13 +94,17 @@ Post.belongsTo(User, { foreignKey: 'userId' });
 User.hasMany(Chatting, { foreignKey: 'userId', sourceKey: 'id' });
 Chatting.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });
 
+// User 1 : N Post_comment
+User.hasMany(Post_comment, { foreignKey: 'userId', sourceKey: 'id' });
+Post_comment.belongsTo(User, { foreignKey: 'userId', sourceKey: 'id' });
+
 // Post 1 : N Post_hashtag
 Post.hasMany(Post_hashtag, { foreignKey: 'postId', sourceKey: 'id' });
 Post_hashtag.belongsTo(Post, { foreignKey: 'postId', sourceKey: 'id' });
 
-// User 1 : N Post_comment
-User.hasMany(Post_comment, { foreignKey: 'userId', sourceKey: 'id' });
-Post_comment.belongsTo(User, { foreignKey: 'userId', sourceKey: 'id' });
+// Post 1: N Post_ineterest
+Post.hasMany(Post_interest, { foreignKey: 'postId', sourceKey: 'id' });
+Post_interest.belongsTo(Post, { foreignKey: 'postId', sourceKey: 'id' });
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
