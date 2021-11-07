@@ -16,4 +16,6 @@ export const initialState = {
   passwordMessage: '',
   nicknameMessage: '',
   isDelete: false,
+  isPostDelete: false,
+  isPostId: '',
 };

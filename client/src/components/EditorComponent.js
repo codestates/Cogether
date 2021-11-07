@@ -63,7 +63,6 @@ class EditorComponent extends Component {
             onChange={(content, delta, source, editor) =>
               onChange(editor.getHTML())
             }
-            readOnly={postEdit}
           />
         )}
       </div>

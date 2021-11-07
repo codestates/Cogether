@@ -5,6 +5,8 @@ module.exports = async (req, res) => {
   const { comment } = req.body;
   const { id } = req.params;
 
+  console.log(req.params);
+
   const auth = isAuthorized(req);
 
   if (!auth) {
@@ -26,23 +28,26 @@ module.exports = async (req, res) => {
       },
     });
 
-    const createdComment = await Post_comment.create({
+    const createcomment = await Post_comment.create({
       userId: user.id,
       postId: post.id,
       comment,
     });
 
-    res.status(201).send({
-      data: {
-        User: {
-          nickname: user.nickname,
-          image: user.image,
-        },
-        id: createdComment.id,
-        userId: createdComment.userId,
-        postId: createdComment.postId,
-        comment: createdComment.comment,
+    const commentData = await Post_comment.findOne({
+      where: {
+        id: createcomment.id,
       },
+      include: [
+        {
+          model: User,
+          attributes: ['nickname', 'image'],
+        },
+      ],
+    });
+
+    res.status(201).send({
+      data: commentData,
       message: 'create comment successed',
     });
   } catch (err) {

@@ -1,8 +1,8 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setConfirmModal } from '../actions';
-import { useHistory } from 'react-router';
+import { setConfirmModal, setQuarterModal } from '../actions';
+import { useParams, useHistory } from 'react-router';
 import Editor from '../components/EditorComponent';
 import LanguageSelect from '../components/LanguageSelect';
 import '../scss/Write.scss';
@@ -12,12 +12,41 @@ const Write = () => {
   const history = useHistory();
   const [desc, setDesc] = useState('');
   const [title, setTitle] = useState('');
-  const [language, setLanguage] = useState('');
+  const [language, setLanguage] = useState([]);
+
+  //수정버튼 클릭시 사용되는 상태들
+  const postId = useParams();
+  const [detailId, setDetailId] = useState(postId);
+  const [edit, setEdit] = useState(true);
+  useEffect(() => {
+    if (detailId.postId && edit) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+      axios
+        .get(`${process.env.REACT_APP_API_URL}/posts/${detailId.postId}`, {
+          headers: {
+            authorization: `Bearer ${localStorage.accessToken}` || null,
+          },
+        })
+        .then((res) => {
+          const data = res.data.data;
+          // console.log('data', res.data.stacks);
+          setTitle(data.title);
+          setDesc(data.content);
+          setLanguage(res.data.stacks);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, []);
+
   function onEditorChange(value) {
     setDesc(value);
+    setEdit(false);
   }
   const TitleChange = (e) => {
     setTitle(e.target.value);
+    setEdit(false);
   };
   const getFields = (input, field) => {
     let output = [];
@@ -57,6 +86,32 @@ const Write = () => {
       });
   };
 
+  const editPost = () => {
+    axios
+      .patch(
+        `${process.env.REACT_APP_API_URL}/posts/${detailId.postId}`,
+        {
+          title: title,
+          stacks: result,
+          content: desc,
+        },
+        {
+          headers: {
+            authorization: `Bearer ${localStorage.accessToken}`,
+          },
+        }
+      )
+      .then((res) => {
+        dispatch(setConfirmModal(true, '게시물이 수정되었습니다.'));
+        console.log('등록완료');
+        history.push('/');
+      })
+      .catch((err) => {
+        dispatch(setConfirmModal(true, '게시물 수정에 실패하였습니다.'));
+        console.log('등록실패');
+      });
+  };
+
   return (
     <section className="writeContainer">
       <input
@@ -75,7 +130,11 @@ const Write = () => {
       </div>
       <div className="writBtn">
         <button>취소</button>
-        <button onClick={createPost}>등록</button>
+        {detailId.postId ? (
+          <button onClick={editPost}>저장</button>
+        ) : (
+          <button onClick={createPost}>등록</button>
+        )}
       </div>
     </section>
   );

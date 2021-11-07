@@ -20,7 +20,7 @@ const LanguageSelect = ({ setLanguage }) => {
     { value: '6', label: 'Django' },
     { value: '7', label: 'C' },
     { value: '8', label: 'Java' },
-    { value: '9', label: 'SQL' },
+    { value: '9', label: 'MySQL' },
   ];
 
   const setLikeLanguages = (e) => {

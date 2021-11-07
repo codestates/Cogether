@@ -1,17 +1,23 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useParams } from 'react-router';
+import { useParams, useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 import Editor from '../components/EditorComponent';
 import LanguageSelect from '../components/LanguageSelect';
 import PostUserInfo from '../components/PostUserInfo';
 import Comment from '../components/Comment';
-import { setConfirmModal } from '../actions/index';
+import {
+  setQuarterModal,
+  setConfirmModal,
+  setPostDelete,
+  setPostId,
+} from '../actions';
 import axios from 'axios';
 import '../scss/Post.scss';
 
 const Post = () => {
   const containerRef = useRef();
   const dispatch = useDispatch();
+  const history = useHistory();
   const postId = useParams();
   const [detailId, setDetailId] = useState(postId);
   const [language, setLanguage] = useState('');
@@ -29,7 +35,6 @@ const Post = () => {
   // get post detail successed -- 비회원이거나 글쓴이가 아니거나
   //"get author's post detail successed" --내가 쓴글
 
-  //댓글 관련 상태
   const [comments, setComments] = useState();
 
   let postStack = [];
@@ -102,7 +107,9 @@ const Post = () => {
   };
 
   //수정버튼 클릭
-  const editWrite = () => {};
+  const editWrite = () => {
+    history.push(`/write/${detailId.postId}`);
+  };
 
   postStackNumber?.map((data) => {
     if (data === 1) {
@@ -130,10 +137,14 @@ const Post = () => {
       postStack.push('Java');
     }
     if (data === 9) {
-      postStack.push('SQL');
+      postStack.push('MySQL');
     }
   });
-
+  const deletePost = () => {
+    dispatch(setPostId(`${detailId.postId}`));
+    dispatch(setQuarterModal(true, '게시물을 수정 하시겠습니까?'));
+    dispatch(setPostDelete(true));
+  };
   return (
     <div className="post" ref={containerRef}>
       <div className="postContainer">
@@ -143,7 +154,7 @@ const Post = () => {
         <section className="postControl">
           <div className="postControl-btn">
             {isAuthor ? <button onClick={editWrite}>수정</button> : null}
-            {isAuthor ? <button>삭제</button> : null}
+            {isAuthor ? <button onClick={deletePost}>삭제</button> : null}
           </div>
 
           <span>{postDate.substring(0, 10)}</span>

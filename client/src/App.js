@@ -9,6 +9,7 @@ import ConfirmModal from './components/ConfirmModal';
 import QuarterModal from './components/QuarterModal';
 import Setting from './pages/Setting';
 import Write from './pages/Write';
+import Edit from './pages/Edit';
 
 function App() {
   const token = localStorage.accessToken;
@@ -45,6 +46,9 @@ function App() {
           </Route>
           <Route exact path="/post/:postId">
             <Post />
+          </Route>
+          <Route exact path="/write/:postId">
+            <Write />
           </Route>
         </Switch>
       </div>

@@ -56,29 +56,29 @@ const {
 // Many to Many
 
 // User <-> Chatroom
-User.belongsToMany(Chatroom, {
-  through: 'User_chatroom',
-  foreignKey: 'userId',
-});
-Chatroom.belongsToMany(User, {
-  through: 'User_chatroom',
-  foreignKey: 'chatroomId',
-});
+// User.belongsToMany(Chatroom, {
+//   through: 'User_chatroom',
+//   foreignKey: 'userId',
+// });
+// Chatroom.belongsToMany(User, {
+//   through: 'User_chatroom',
+//   foreignKey: 'chatroomId',
+// });
 
-// User <-> Post (Post_interest)
-User.belongsToMany(Post, { through: 'Post_interest', foreignKey: 'userId' });
-Post.belongsToMany(User, { through: 'Post_interest', foreignKey: 'postId' });
+// // User <-> Post (Post_interest)
+// User.belongsToMany(Post, { through: 'Post_interest', foreignKey: 'userId' });
+// Post.belongsToMany(User, { through: 'Post_interest', foreignKey: 'postId' });
 
-// User <-> Post (Post_comment)
-User.belongsToMany(Post, { through: 'Post_comment', foreignKey: 'userId' });
-Post.belongsToMany(User, { through: 'Post_comment', foreignKey: 'postId' });
+// // User <-> Post (Post_comment)
+// User.belongsToMany(Post, { through: 'Post_comment', foreignKey: 'userId' });
+// Post.belongsToMany(User, { through: 'Post_comment', foreignKey: 'postId' });
 
-// Post <-> Hashtag (Post_hashtag)
-Post.belongsToMany(Hashtag, { through: 'Post_hashtag', foreignKey: 'postId' });
-Hashtag.belongsToMany(Post, {
-  through: 'Post_hashtag',
-  foreignKey: 'hashtagId',
-});
+// // Post <-> Hashtag (Post_hashtag)
+// Post.belongsToMany(Hashtag, { through: 'Post_hashtag', foreignKey: 'postId' });
+// Hashtag.belongsToMany(Post, {
+//   through: 'Post_hashtag',
+//   foreignKey: 'hashtagId',
+// });
 
 // One to Many
 
