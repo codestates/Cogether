@@ -166,20 +166,51 @@
 }
 
 // PostList영역
-.postList-main {
+.postMain {
+  width: 100%;
+  height: auto;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 80%;
-  .postList-box {
+  .postList-main {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid black;
-
-    .postListContainer-bottom {
+    width: 80%;
+    height: auto;
+    flex-wrap: wrap;
+    .postList-box {
       display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid black;
+      margin: 1rem;
+      .postListContainer {
+        .postList-title {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .postList-img {
+          width: 150px;
+          height: 150px;
+          img {
+            width: auto;
+            height: auto;
+            max-width: 80px;
+            max-height: 80px;
+            padding-top: 1rem;
+          }
+        }
+
+        .postListContainer-bottom {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
     }
   }
 }

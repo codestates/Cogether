@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../scss/Signup.scss';
 import { useSelector, useDispatch } from 'react-redux';
@@ -19,8 +19,13 @@ const Signup = ({ variation }) => {
     password: '',
     passwordCheck: '',
   });
-
-  const validateNickname = (nickname) => {
+  useEffect(() => {
+    dispatch(setEmailMessage(''));
+    dispatch(setNicknameMessage(''));
+    dispatch(setPasswordMessage(''));
+  }, []);
+  const validateNickname = () => {
+    const { nickname } = user;
     const min = 1;
     const regNickname = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣0-9a-z]+$/;
 
@@ -40,33 +45,35 @@ const Signup = ({ variation }) => {
     }
   };
 
-  const validateEmail = (email) => {
-    const regEmail = /^[0-9a-z-_.]+@[0-9a-z]+\.[0-9a-z]+$/;
-
+  const validateEmail = () => {
+    const { email } = user;
+    const regEmail =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (email.length === 0) {
       dispatch(setEmailMessage('1자 이상 입력해주세요'));
     } else if (!regEmail.test(email)) {
       dispatch(setEmailMessage('특수문자(-_.) 또는 이메일형식(@) 필요합니다'));
       return false;
     } else {
-      dispatch(setEmailMessage());
+      dispatch(setEmailMessage(''));
       return true;
     }
   };
 
-  const validatePassword = (password, passwordCheck) => {
+  const validatePassword = () => {
+    const { password, passwordCheck } = user;
     const min = 4;
     const max = 20;
     const regPassword = /^[0-9a-z-_.!?*]+$/;
 
-    if (password !== passwordCheck) {
-      dispatch(setPasswordMessage('동일한 비밀번호를 입력해 주세요'));
-      return false;
-    }
-
     // 비밀번호 길이 확인
     if (password.length < min || password.length > max) {
       dispatch(setPasswordMessage('비밀번호 4~20자 입니다'));
+      return false;
+    }
+
+    if (password !== passwordCheck) {
+      dispatch(setPasswordMessage('동일한 비밀번호를 입력해 주세요'));
       return false;
     }
 
@@ -88,6 +95,7 @@ const Signup = ({ variation }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const { email, nickname, password, passwordCheck } = user;
 
     const validNickname = validateNickname(nickname);
@@ -119,59 +127,55 @@ const Signup = ({ variation }) => {
     }
   };
   return (
-    <div className='SignupMain'>
-      <form className='SignupForm' onSubmit={handleSubmit}>
-        <p className='SignupP'>
-          이메일<span>(필수)</span>
-        </p>
-        <label className='SignupLabel'>
+    <div className="SignupMain">
+      <form className="SignupForm" onSubmit={handleSubmit}>
+        <p className="SignupP">Email</p>
+        <label className="SignupLabel">
           <input
-            placeholder='이메일'
-            type='email'
+            placeholder="email"
+            type="email"
             onChange={handleInputValue('email')}
+            onKeyUp={validateEmail}
           ></input>
         </label>
-        <span className='SignupAlert'>{emailMessage}</span>
-        <p className='SignupP'>
-          닉네임<span>(필수)</span>
-        </p>
-        <label className='SignupLabel'>
+        <span className="SignupAlert">{emailMessage}</span>
+        <p className="SignupP">Nickname</p>
+        <label className="SignupLabel">
           <input
-            placeholder='닉네임'
-            type='text'
+            placeholder="nickname"
+            type="text"
             onChange={handleInputValue('nickname')}
+            onKeyUp={validateNickname}
           ></input>
         </label>
         <span className="SignupAlert">{nicknameMessage}</span>
-        <p className="SignupP">
-          비밀번호<span>(필수)</span>
-        </p>
-        <label className='SignupLabel'>
+        <p className="SignupP">Password</p>
+        <label className="SignupLabel">
           <input
-            placeholder='비밀번호'
-            type='password'
+            placeholder="password"
+            type="password"
             onChange={handleInputValue('password')}
-            placeholder='password'
+            placeholder="password"
+            onKeyUp={validatePassword}
           ></input>
         </label>
-        <p className='SignupP'>
-          비밀번호 확인<span>(필수)</span>
-        </p>
-        <label className='SignupLabel'>
+        <p className="SignupP">Password Check</p>
+        <label className="SignupLabel">
           <input
-            placeholder='비밀번호 확인'
-            type='password'
+            placeholder="password check"
+            type="password"
             onChange={handleInputValue('passwordCheck')}
+            onKeyUp={validatePassword}
           ></input>
         </label>
-        <span className='SignupAlert'>{passwordMessage}</span>
-        <button className='SignupBtn' type='submit'>
+        <span className="SignupAlert">{passwordMessage}</span>
+        <button className="SignupBtn" type="submit">
           회원가입
         </button>
       </form>
-      <div className='BackSignup'>
+      <div className="BackSignup">
         <label>계정이 있으신가요?</label>
-        <span className='SigninFormBtn' onClick={variation}>
+        <span className="SigninFormBtn" onClick={variation}>
           로그인
         </span>
       </div>

@@ -18,11 +18,11 @@ const Nav = () => {
         <Link to="/">
           <img
             className="nav-logo-full"
-            src="images/logo_cogether-removebg-preview.png"
+            src="/images/logo_cogether-removebg-preview.png"
           ></img>
           <img
             className="nav-logo-small"
-            src="images/favicon-removebg.png"
+            src="/images/favicon-removebg.png"
           ></img>
         </Link>
       </div>
