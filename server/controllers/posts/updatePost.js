@@ -53,17 +53,8 @@ module.exports = async (req, res) => {
       ],
     });
 
-    const hashtags = await Post_hashtag.findAll({
-      where: {
-        postId: id,
-      },
-    });
-
-    const stackArr = hashtags.map((item) => item.hashtagId);
-
     res.status(200).send({
       data: updatedPost,
-      stacks: stackArr,
       message: 'update post successed',
     });
   } catch (err) {
