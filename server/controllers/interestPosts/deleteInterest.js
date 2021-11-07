@@ -36,12 +36,14 @@ module.exports = async (req, res) => {
       },
     });
 
-    post.totalInterest = post.totalInterest - 1;
+    post.totalInterests = post.totalInterests - 1;
 
     await post.save();
 
     res.status(200).send({
-      data: {},
+      data: {
+        post,
+      },
       message: 'delete post interest successed',
     });
   } catch (err) {

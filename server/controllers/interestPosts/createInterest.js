@@ -5,6 +5,9 @@ module.exports = async (req, res) => {
   const { id } = req.params;
   const auth = isAuthorized(req);
 
+  console.log(id);
+  console.log(auth.id);
+
   if (!auth) {
     return res.status(401).send({
       message: 'unauthorized user',
@@ -12,12 +15,14 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const interestPost = Post_interest.findOne({
+    const interestPost = await Post_interest.findOne({
       where: {
         userId: auth.id,
         postId: id,
       },
     });
+
+    console.log('b', interestPost);
 
     if (interestPost) {
       return res.status(400).send({
@@ -25,12 +30,16 @@ module.exports = async (req, res) => {
       });
     }
 
+    console.log(id);
+    console.log(auth.id);
     await Post_interest.create({
       where: {
-        userId: auth.id,
-        postId: id,
+        userId: 2,
+        postId: 1,
       },
     });
+
+    console.log('a', interestPost);
 
     const post = await Post.findOne({
       where: {
@@ -38,13 +47,13 @@ module.exports = async (req, res) => {
       },
     });
 
-    post.totalInterest = post.totalInterest + 1;
+    post.totalInterests = post.totalInterests + 1;
 
     await post.save();
 
     res.status(200).send({
       data: {
-        totalInterest: post.totalInterest,
+        post,
       },
       message: 'add interest list successed',
     });
