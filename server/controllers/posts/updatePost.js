@@ -1,4 +1,4 @@
-const { User, Post, Post_hashtag, Post_comment } = require('../../models');
+const { User, Post, Post_hashtag } = require('../../models');
 const { isAuthorized } = require('../../utils/helpFunc');
 
 module.exports = async (req, res) => {
@@ -13,12 +13,6 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const userInfo = await User.findOne({
-      where: {
-        id: auth.id,
-      },
-      attributes: ['id', 'nickname', 'image'],
-    });
     // update post
     await Post.update(
       {
@@ -33,47 +27,43 @@ module.exports = async (req, res) => {
       }
     );
 
+    await Post_hashtag.destroy({
+      where: {
+        postId: id,
+      },
+    });
+
+    await stacks.forEach((stack) => {
+      Post_hashtag.create({
+        postId: id,
+        hashtagId: stack,
+      });
+    });
+
     const updatedPost = await Post.findOne({
       where: {
         id,
       },
+      include: [
+        {
+          model: User,
+          as: 'User',
+          attributes: ['nickname', 'image'],
+        },
+      ],
     });
 
-    // update post_hashtag
-
-    // await stacks.forEach((stack) => {
-    //   Post_hashtag.update(
-    //     {
-    //       hashtagId: stack,
-    //     },
-    //     {
-    //       where: {
-    //         postId: id,
-    //       },
-    //     }
-    //   );
-    // });
-
-    const totalComments = await Post_comment.count({
+    const hashtags = await Post_hashtag.findAll({
       where: {
-        postId: updatedPost.id,
+        postId: id,
       },
     });
+
+    const stackArr = hashtags.map((item) => item.hashtagId);
 
     res.status(200).send({
-      data: {
-        id: updatedPost.id,
-        userId: userInfo.id,
-        title: updatedPost.title,
-        content: updatedPost.content,
-        stacks: stacks,
-        mainstack: stacks[0],
-        totalViews: updatedPost.totalViews,
-        totalInterests: updatedPost.totalInterests,
-        totalComments: totalComments,
-        updatedAt: updatedPost.updatedAt,
-        createdAt: updatedPost.createdAt,
-      },
+      data: updatedPost,
+      stacks: stackArr,
       message: 'update post successed',
     });
   } catch (err) {
