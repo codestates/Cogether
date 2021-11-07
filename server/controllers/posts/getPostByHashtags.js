@@ -25,9 +25,9 @@ module.exports = async (req, res) => {
     });
 
     if (post.length === 0) {
-      return res.status(400).send({
+      return res.status(404).send({
         data: null,
-        message: 'cannot find posts by hashtag',
+        message: 'post by hashtag is not exist',
       });
     }
 

@@ -35,7 +35,7 @@ module.exports = async (req, res) => {
     if (myInterestPosts.length === 0) {
       return res.status(404).send({
         data: null,
-        message: 'cannot find my interest post',
+        message: 'my interest post is not exist',
       });
     }
 

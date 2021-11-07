@@ -8,6 +8,13 @@ module.exports = {
         order: [['createdAt', 'DESC']],
       });
 
+      if (sortedByCreatedAt.length === 0) {
+        return res.status(404).send({
+          data: null,
+          message: 'post is not exist',
+        });
+      }
+
       res.status(200).send({
         data: sortedByCreatedAt,
         message: 'get all posts sorted by createdat successed',
@@ -23,6 +30,13 @@ module.exports = {
       const sortedByTotalViews = await Post.findAll({
         order: [['totalViews', 'DESC']],
       });
+
+      if (sortedByTotalViews.length === 0) {
+        return res.status(404).send({
+          data: null,
+          message: 'post is not exist',
+        });
+      }
 
       res.status(200).send({
         data: sortedByTotalViews,
