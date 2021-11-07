@@ -30,7 +30,7 @@ module.exports = async (req, res) => {
 
     // post_hashtag 생성
 
-    stacks.forEach((stack) => {
+    await stacks.forEach((stack) => {
       Post_hashtag.create({
         postId: post.id,
         hashtagId: stack,
