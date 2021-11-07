@@ -1,4 +1,4 @@
-const { Post_comment } = require('../../models');
+const { User, Post_comment } = require('../../models');
 
 module.exports = async (req, res) => {
   const { id } = req.params;

@@ -26,25 +26,20 @@ module.exports = async (req, res) => {
       },
     });
 
-    const createdData = await Post_comment.create({
+    const createdComment = await Post_comment.create({
       userId: user.id,
       postId: post.id,
       comment,
     });
 
-    // update totalViews value - 1 because totalViews increased by re-render
-    if (createdData) {
-      post.totalViews = post.totalViews - 1;
-    }
-
     res.status(201).send({
       data: {
-        id: createdData.id,
-        userId: createdData.userId,
-        postId: createdData.postId,
+        id: createdComment.id,
+        userId: createdComment.userId,
+        postId: createdComment.postId,
         nickname: user.nickname,
         image: user.image,
-        comment: createdData.comment,
+        comment: createdComment.comment,
       },
       message: 'create comment successed',
     });

@@ -1,4 +1,4 @@
-const { User, Post, Post_hashtag } = require('../../models');
+const { User, Post, Post_hashtag, Post_comment } = require('../../models');
 const { isAuthorized } = require('../../utils/helpFunc');
 
 module.exports = async (req, res) => {
@@ -22,9 +22,7 @@ module.exports = async (req, res) => {
     // create post
 
     const post = await Post.create({
-      userId: userInfo.id,
-      nickname: userInfo.nickname,
-      image: userInfo.image,
+      userId: auth.id,
       title: title,
       content: content,
       mainstack: stacks[0],
@@ -32,26 +30,30 @@ module.exports = async (req, res) => {
 
     // post_hashtag 생성
 
-    stacks.forEach((stack) => {
+    await stacks.forEach((stack) => {
       Post_hashtag.create({
         postId: post.id,
         hashtagId: stack,
       });
     });
 
+    const totalComments = await Post_comment.count({
+      where: {
+        postId: post.id,
+      },
+    });
+
     res.status(200).send({
       data: {
         id: post.id,
         userId: userInfo.id,
-        nickname: userInfo.nickname,
-        image: userInfo.image,
         title: post.title,
         content: post.content,
         stacks: stacks,
         mainstack: stacks[0],
         totalViews: post.totalViews,
         totalInterests: post.totalInterests,
-        totalComments: post.totalComments,
+        totalComments: totalComments,
         updatedAt: post.updatedAt,
         createdAt: post.createdAt,
       },
