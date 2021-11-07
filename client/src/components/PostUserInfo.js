@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../scss/postUserInfo.scss';
 
-const PostUserInfo = ({ nickname, interestCount }) => {
+const PostUserInfo = ({ nickname, interestCount, isImg }) => {
   const [interest, setInterest] = useState('#cccccc');
   const changeInterest = () => {
     interest === '#56d0a0' ? setInterest('#cccccc') : setInterest('#56d0a0');
@@ -9,7 +9,10 @@ const PostUserInfo = ({ nickname, interestCount }) => {
   return (
     <div className="postUserInfo">
       <div className="postUserInfo-img">
-        <img className="profile" src="/images/default-profile.jpg"></img>
+        <img
+          className="profile"
+          src={isImg !== null ? isImg : '/images/default-profile.jpg'}
+        ></img>
       </div>
       <p className="postNickname">{nickname}</p>
       <div className="postUserInfo-container">
@@ -26,7 +29,7 @@ const PostUserInfo = ({ nickname, interestCount }) => {
           {interestCount}
         </div>
         <div>
-          <i class="far fa-eye" style={{ color: '#85878a' }}></i>
+          <i className="far fa-eye" style={{ color: '#85878a' }}></i>
         </div>
       </div>
     </div>

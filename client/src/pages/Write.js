@@ -31,7 +31,7 @@ const Write = () => {
   const createPost = () => {
     console.log(title);
     console.log('result', result);
-
+    console.log(desc);
     axios
       .post(
         `${process.env.REACT_APP_API_URL}/posts`,

@@ -40,22 +40,32 @@ class EditorComponent extends Component {
   ];
 
   render() {
-    const { value, postEdit } = this.props;
+    const { value, postEdit, onChange, isRead } = this.props;
 
     return (
       <div style={{ height: '550px' }}>
-        <ReactQuill
-          style={{ height: '500px' }}
-          theme="snow"
-          modules={this.modules}
-          formats={this.formats}
-          value={value || ''}
-          // onChange={(content, delta, source, editor) =>
-          //   onChange(editor.getHTML())
-          // }
-
-          readOnly={postEdit}
-        />
+        {isRead === true ? (
+          <ReactQuill
+            style={{ height: '500px' }}
+            theme="snow"
+            modules={this.modules}
+            formats={this.formats}
+            value={value || ''}
+            readOnly={postEdit}
+          />
+        ) : (
+          <ReactQuill
+            style={{ height: '500px' }}
+            theme="snow"
+            modules={this.modules}
+            formats={this.formats}
+            value={value || ''}
+            onChange={(content, delta, source, editor) =>
+              onChange(editor.getHTML())
+            }
+            readOnly={postEdit}
+          />
+        )}
       </div>
     );
   }
