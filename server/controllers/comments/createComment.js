@@ -1,4 +1,5 @@
 const { User, Post, Post_comment } = require('../../models');
+const { isAuthorized } = require('../../utils/helpFunc');
 
 module.exports = async (req, res) => {
   const { comment } = req.body;

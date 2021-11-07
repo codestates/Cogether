@@ -21,6 +21,7 @@ const Post = () => {
   const [isinterest, setIsinterest] = useState('');
   const [isRead, setIsRead] = useState(true);
   const [isImg, setIsimg] = useState('');
+  const [isComment, setIsComment] = useState('');
   // get post detail successed -- 비회원이거나 글쓴이가 아니거나
   //"get author's post detail successed" --내가 쓴글
 
@@ -51,10 +52,51 @@ const Post = () => {
       .catch((err) => {
         console.log(err);
       });
+
+    commentList();
   }, []);
+  // 댓글리스트 불러오기
+  const commentList = () => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/comments/${detailId.postId}`)
+      .then((res) => {
+        console.log('댓글성공');
+      })
+      .catch((err) => {
+        console.log('댓글실패');
+      });
+  };
+
   //수정버튼 클릭
   const editWrite = () => {};
 
+  //댓글
+  const comment = (e) => {
+    setIsComment(e.target.value);
+  };
+  const commentPush = () => {
+    console.log(isComment);
+    axios
+      .post(
+        `${process.env.REACT_APP_API_URL}/comments/${detailId.postId}`,
+        {
+          comment: isComment,
+        },
+        {
+          headers: {
+            authorization: `Bearer ${localStorage.accessToken}` || null,
+          },
+        }
+      )
+      .then((res) => {
+        console.log('성공');
+        // console.log(res)
+      })
+      .catch((err) => {
+        console.log('실패');
+        // console.log(err)
+      });
+  };
   postStackNumber?.map((data) => {
     if (data === 1) {
       postStack.push('JavaScript');
@@ -129,9 +171,13 @@ const Post = () => {
 
         <div className="postComment">
           <Comment />
-          <textarea placeholder="댓글을 남겨주세요" />
+          <textarea
+            placeholder="댓글을 남겨주세요"
+            onChange={comment}
+            value={isComment}
+          />
           <div className="postComment-btn">
-            <button>댓글 달기</button>
+            <button onClick={commentPush}>댓글 달기</button>
           </div>
         </div>
       </div>
