@@ -34,11 +34,13 @@ module.exports = async (req, res) => {
 
     res.status(201).send({
       data: {
+        User: {
+          nickname: user.nickname,
+          image: user.image,
+        },
         id: createdComment.id,
         userId: createdComment.userId,
         postId: createdComment.postId,
-        nickname: user.nickname,
-        image: user.image,
         comment: createdComment.comment,
       },
       message: 'create comment successed',

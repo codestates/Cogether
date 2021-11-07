@@ -47,8 +47,14 @@ const PostList = () => {
   }
 
   const postDtail = (index) => {
-    history.push(`/post/${index}`);
-    // window.location.replace(`/post/${index}`);
+    axios
+      .patch(`${process.env.REACT_APP_API_URL}/posts/totalviews/${index}`)
+      .then((res) => {
+        history.push(`/post/${index}`);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <div className="postMain">

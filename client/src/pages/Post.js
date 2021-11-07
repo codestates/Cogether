@@ -1,13 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router';
+import { useDispatch } from 'react-redux';
 import Editor from '../components/EditorComponent';
 import LanguageSelect from '../components/LanguageSelect';
 import PostUserInfo from '../components/PostUserInfo';
 import Comment from '../components/Comment';
+import { setConfirmModal } from '../actions/index';
 import axios from 'axios';
 import '../scss/Post.scss';
 
 const Post = () => {
+  const containerRef = useRef();
+  const dispatch = useDispatch();
   const postId = useParams();
   const [detailId, setDetailId] = useState(postId);
   const [language, setLanguage] = useState('');
@@ -21,9 +25,12 @@ const Post = () => {
   const [isinterest, setIsinterest] = useState('');
   const [isRead, setIsRead] = useState(true);
   const [isImg, setIsimg] = useState('');
-  const [isComment, setIsComment] = useState('');
+
   // get post detail successed -- 비회원이거나 글쓴이가 아니거나
   //"get author's post detail successed" --내가 쓴글
+
+  //댓글 관련 상태
+  const [comments, setComments] = useState();
 
   let postStack = [];
   useEffect(() => {
@@ -41,10 +48,9 @@ const Post = () => {
         console.log(data);
         setPostStackNumber(res.data.stacks);
         setPostDate(data.updatedAt);
-        setPostNickname(data.nickname);
-        setIsimg(data.image);
+        setPostNickname(data.User.nickname);
+        setIsimg(data.User.image);
         setIsinterest(data.totalInterests);
-        console.log('메시지', res.data.message);
         res.data.message === "get author's post detail successed"
           ? setIsAuthor(true)
           : setIsAuthor(false);
@@ -55,27 +61,22 @@ const Post = () => {
 
     commentList();
   }, []);
+  //댓글 등록
+
   // 댓글리스트 불러오기
   const commentList = () => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/comments/${detailId.postId}`)
       .then((res) => {
-        console.log('댓글성공');
+        const { data: comment } = res.data;
+        setComments(comment);
       })
       .catch((err) => {
         console.log('댓글실패');
       });
   };
 
-  //수정버튼 클릭
-  const editWrite = () => {};
-
-  //댓글
-  const comment = (e) => {
-    setIsComment(e.target.value);
-  };
-  const commentPush = () => {
-    console.log(isComment);
+  const uploadComment = (isComment) => {
     axios
       .post(
         `${process.env.REACT_APP_API_URL}/comments/${detailId.postId}`,
@@ -84,19 +85,25 @@ const Post = () => {
         },
         {
           headers: {
-            authorization: `Bearer ${localStorage.accessToken}` || null,
+            authorization: `Bearer ${localStorage.accessToken}`,
           },
         }
       )
       .then((res) => {
-        console.log('성공');
-        // console.log(res)
+        const { data: comment } = res.data;
+        setComments([...comments, comment]);
+        console.log(comment);
       })
       .catch((err) => {
         console.log('실패');
-        // console.log(err)
+        console.log(err);
+        dispatch(setConfirmModal(true, '로그인후 이용가능 합니다.'));
       });
   };
+
+  //수정버튼 클릭
+  const editWrite = () => {};
+
   postStackNumber?.map((data) => {
     if (data === 1) {
       postStack.push('JavaScript');
@@ -128,7 +135,7 @@ const Post = () => {
   });
 
   return (
-    <div className="post">
+    <div className="post" ref={containerRef}>
       <div className="postContainer">
         <section className="postHeader">
           <div className="postTitle">{postTitle}</div>
@@ -170,15 +177,7 @@ const Post = () => {
         </div>
 
         <div className="postComment">
-          <Comment />
-          <textarea
-            placeholder="댓글을 남겨주세요"
-            onChange={comment}
-            value={isComment}
-          />
-          <div className="postComment-btn">
-            <button onClick={commentPush}>댓글 달기</button>
-          </div>
+          <Comment comments={comments} uploadComment={uploadComment} />
         </div>
       </div>
     </div>
