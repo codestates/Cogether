@@ -1,5 +1,5 @@
 const { isAuthorized } = require('../../utils/helpFunc');
-const { User, Post } = require('../../models');
+const { User, Post, Post_comment } = require('../../models');
 
 module.exports = async (req, res) => {
   const auth = isAuthorized(req);
@@ -17,8 +17,13 @@ module.exports = async (req, res) => {
       },
     });
 
-
     await Post.destroy({
+      where: {
+        userId: auth.id,
+      },
+    });
+
+    await Post_comment.destroy({
       where: {
         userId: auth.id,
       },
