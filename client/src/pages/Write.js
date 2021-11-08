@@ -59,31 +59,35 @@ const Write = () => {
 
   const createPost = () => {
     console.log(title);
-    console.log('result', result);
+    console.log('result', result.length);
     console.log(desc);
-    axios
-      .post(
-        `${process.env.REACT_APP_API_URL}/posts`,
-        {
-          title: title,
-          stacks: result,
-          content: desc,
-        },
-        {
-          headers: {
-            authorization: `Bearer ${localStorage.accessToken}`,
+    if (title !== '' && desc !== '' && result.length !== 0) {
+      axios
+        .post(
+          `${process.env.REACT_APP_API_URL}/posts`,
+          {
+            title: title,
+            stacks: result,
+            content: desc,
           },
-        }
-      )
-      .then((res) => {
-        dispatch(setConfirmModal(true, '등록 완료되었습니다'));
-        console.log('등록완료');
-        history.push('/');
-      })
-      .catch((err) => {
-        dispatch(setConfirmModal(true, '등록 실패하였습니다'));
-        console.log('등록실패');
-      });
+          {
+            headers: {
+              authorization: `Bearer ${localStorage.accessToken}`,
+            },
+          }
+        )
+        .then((res) => {
+          dispatch(setConfirmModal(true, '등록 완료되었습니다'));
+          console.log('등록완료');
+          history.push('/');
+        })
+        .catch((err) => {
+          dispatch(setConfirmModal(true, '등록 실패하였습니다'));
+          console.log('등록실패');
+        });
+    } else {
+      dispatch(setConfirmModal(true, '제목, 언어, 내용을 작성해 주세요.'));
+    }
   };
 
   const editPost = () => {
