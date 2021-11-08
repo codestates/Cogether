@@ -10,6 +10,7 @@ import {
   setConfirmModal,
   setPostDelete,
   setPostId,
+  setUserDelete,
 } from '../actions';
 import axios from 'axios';
 import '../scss/Post.scss';
@@ -159,8 +160,9 @@ const Post = () => {
   });
   const deletePost = () => {
     dispatch(setPostId(`${detailId.postId}`));
-    dispatch(setQuarterModal(true, '게시물을 수정 하시겠습니까?'));
+    dispatch(setUserDelete(false));
     dispatch(setPostDelete(true));
+    dispatch(setQuarterModal(true, '게시물을 삭제 하시겠습니까?'));
   };
   return (
     <div className="post" ref={containerRef}>
