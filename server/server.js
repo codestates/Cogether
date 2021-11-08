@@ -1,6 +1,7 @@
 const cors = require('cors');
 const express = require('express');
 const cookieParser = require('cookie-parser');
+const http = require('http');
 
 // routers declaration
 const { userRouter } = require('./routers/user');
@@ -40,6 +41,24 @@ app.use('/evaluations', evaluationRouter);
 
 const HTTP_PORT = process.env.HTTP_PORT || 80;
 
-app.listen(HTTP_PORT, () => {
-  console.log(`Cogether's Server is running on ${HTTP_PORT}`);
+const server = http.createServer(app);
+// .listen(HTTP_PORT, () => {
+//   console.log(`Cogether's Server is running on ${HTTP_PORT}`);
+// });
+
+//socket io
+
+const socketIo = require('socket.io');
+const io = socketIo(server, {
+  cors: {
+    origin: process.env.DOMAIN,
+    methods: ['GET', 'POST'],
+    credentials: true,
+  },
 });
+
+io.on('connection', (socket) => {});
+
+server.listen(HTTP_PORT, () =>
+  console.log(`Cogether's Server is running on ${HTTP_PORT}`)
+);
