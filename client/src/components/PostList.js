@@ -95,7 +95,7 @@ const PostList = () => {
       </div> */}
       <div className="postList-main">
         {posts?.map((data, ind) => {
-          return (
+          return data !== null ? (
             <div key={ind} className="postList-box">
               <div
                 className="postListContainer"
@@ -108,11 +108,30 @@ const PostList = () => {
                   <img src={reducer('', data?.mainstack)} />
                 </div>
                 <div className="postListContainer-bottom">
-                  <p>{data?.totalComments}</p>
-                  <p>{data?.totalInterests}</p>
-                  <p>{data?.totalViews}</p>
+                  <div className="list-bottom">
+                    <i
+                      className="far fa-comment-dots"
+                      style={{ color: '#56d0a0' }}
+                    />
+                    <p>{data?.totalComments}</p>
+                  </div>
+                  <div className="list-bottom">
+                    <i
+                      className="fas fa-thumbs-up"
+                      style={{ color: '#5f7db7' }}
+                    />
+                    <p>{data?.totalInterests}</p>
+                  </div>
+                  <div className="list-bottom">
+                    <i className="far fa-eye" style={{ color: '#85878a' }}></i>
+                    <p>{data?.totalViews}</p>
+                  </div>
                 </div>
               </div>
+            </div>
+          ) : (
+            <div className="postList-img">
+              <img className="nodataImg" src="./images/No_data.svg"></img>
             </div>
           );
         })}
