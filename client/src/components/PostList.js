@@ -87,8 +87,14 @@ const PostList = () => {
   return (
     <div className="postMain">
       <ul className="postList">
-        <li>최신</li>
-        <li>인기</li>
+        <li>
+          <i className="far fa-clock"></i>
+          최신
+        </li>
+        <li>
+          <i className="fas fa-fire"></i>
+          인기
+        </li>
       </ul>
       {/* <div className="postList-img">
         <img className="nodataImg" src="./images/No_data.svg"></img>
@@ -129,11 +135,7 @@ const PostList = () => {
                 </div>
               </div>
             </div>
-          ) : (
-            <div className="postList-img">
-              <img className="nodataImg" src="./images/No_data.svg"></img>
-            </div>
-          );
+          ) : null;
         })}
       </div>
     </div>

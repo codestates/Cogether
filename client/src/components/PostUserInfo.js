@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import '../scss/postUserInfo.scss';
 
-const PostUserInfo = ({ nickname, interestCount, isImg }) => {
+const PostUserInfo = ({ nickname, interestCount, isImg, view }) => {
   const [interest, setInterest] = useState('#cccccc');
   const changeInterest = () => {
     interest === '#56d0a0' ? setInterest('#cccccc') : setInterest('#56d0a0');
   };
+
   return (
     <div className="postUserInfo">
       <div className="postUserInfo-img">
@@ -30,6 +31,7 @@ const PostUserInfo = ({ nickname, interestCount, isImg }) => {
         </div>
         <div>
           <i className="far fa-eye" style={{ color: '#85878a' }}></i>
+          {view}
         </div>
       </div>
     </div>

@@ -30,6 +30,7 @@ const Post = () => {
   const [postNickname, setPostNickname] = useState('');
   const [isAuthor, setIsAuthor] = useState(false);
   const [isinterest, setIsinterest] = useState('');
+  const [view, setView] = useState();
   const [isRead, setIsRead] = useState(true);
   const [isImg, setIsimg] = useState('');
 
@@ -57,6 +58,7 @@ const Post = () => {
         setPostNickname(data.User.nickname);
         setIsimg(data.User.image);
         setIsinterest(data.totalInterests);
+        setView(data.totalViews);
         setVisitId(res.data.visitorId);
         res.data.message === "get author's post detail successed"
           ? setIsAuthor(true)
@@ -158,12 +160,15 @@ const Post = () => {
       postStack.push('MySQL');
     }
   });
+  //삭제 버튼 클릭
   const deletePost = () => {
     dispatch(setPostId(`${detailId.postId}`));
     dispatch(setUserDelete(false));
     dispatch(setPostDelete(true));
     dispatch(setQuarterModal(true, '게시물을 삭제 하시겠습니까?'));
   };
+
+  //좋아요 이벤트
   return (
     <div className="post" ref={containerRef}>
       <div className="postContainer">
@@ -203,6 +208,7 @@ const Post = () => {
             nickname={postNickname}
             interestCount={isinterest}
             isImg={isImg}
+            view={view}
           />
         </div>
 
