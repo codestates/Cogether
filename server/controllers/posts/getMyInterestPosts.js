@@ -20,6 +20,7 @@ module.exports = async (req, res) => {
         {
           model: Post,
           attributes: [
+            'id',
             'title',
             'content',
             'mainstack',
