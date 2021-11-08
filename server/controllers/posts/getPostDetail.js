@@ -34,10 +34,10 @@ module.exports = async (req, res) => {
       },
     });
 
-    let interested = false;
+    let isInterest = false;
 
     if (interestPost) {
-      return (interested = true);
+      return (isInterest = true);
     }
 
     // normal user !== post author
@@ -57,7 +57,7 @@ module.exports = async (req, res) => {
         data: post,
         stacks: stackArr,
         visitorId: auth.id,
-        interested: interested,
+        isInterest: isInterest,
         message: `get author's post detail successed`,
       });
     }
@@ -68,7 +68,7 @@ module.exports = async (req, res) => {
       data: post,
       stacks: stackArr,
       visitorId: auth.id,
-      interested: interested,
+      isInterest: isInterest,
       message: `get post detail successed`,
     });
   } catch (err) {
