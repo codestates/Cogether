@@ -36,7 +36,7 @@ module.exports = async (req, res) => {
         email: auth.email,
       },
     });
-    console.log('@@@@@@@@@@@@@@@@@@@@@@22', req.body);
+
     if (!req.file && deleteImg) {
       userInfo.image = null;
     }

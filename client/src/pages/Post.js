@@ -39,6 +39,7 @@ const Post = () => {
 
   const [comments, setComments] = useState();
   const [visitId, setVisitId] = useState('');
+  const [isInterest, setIsInterest] = useState();
   let postStack = [];
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -60,6 +61,7 @@ const Post = () => {
         setIsinterest(data.totalInterests);
         setView(data.totalViews);
         setVisitId(res.data.visitorId);
+        setIsInterest(res.data.isInterest);
         res.data.message === "get author's post detail successed"
           ? setIsAuthor(true)
           : setIsAuthor(false);
@@ -169,6 +171,7 @@ const Post = () => {
   };
 
   //좋아요 이벤트
+  // console.log('isInterest', isInterest);
   return (
     <div className="post" ref={containerRef}>
       <div className="postContainer">
@@ -206,9 +209,10 @@ const Post = () => {
         <div className="postUser">
           <PostUserInfo
             nickname={postNickname}
-            interestCount={isinterest}
             isImg={isImg}
             view={view}
+            detailId={detailId}
+            isInterest={isInterest}
           />
         </div>
 
