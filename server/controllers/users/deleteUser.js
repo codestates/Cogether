@@ -17,8 +17,13 @@ module.exports = async (req, res) => {
       },
     });
 
-
     await Post.destroy({
+      where: {
+        userId: auth.id,
+      },
+    });
+
+    await Post_comment.destroy({
       where: {
         userId: auth.id,
       },
