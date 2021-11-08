@@ -1,4 +1,4 @@
-const { Post, User, Post_hashtag } = require('../../models');
+const { Post, User, Post_hashtag, Post_interest } = require('../../models');
 const { isAuthorized } = require('../../utils/helpFunc');
 
 module.exports = async (req, res) => {
@@ -27,6 +27,19 @@ module.exports = async (req, res) => {
 
     const stackArr = hashtags.map((item) => item.hashtagId);
 
+    const interestPost = await Post_interest.findOne({
+      where: {
+        userId: auth.id,
+        postId: id,
+      },
+    });
+
+    let interested = false;
+
+    if (interestPost) {
+      return (interested = true);
+    }
+
     // normal user !== post author
 
     if (!auth) {
@@ -44,16 +57,18 @@ module.exports = async (req, res) => {
         data: post,
         stacks: stackArr,
         visitorId: auth.id,
+        interested: interested,
         message: `get author's post detail successed`,
       });
     }
 
     // else
-    
+
     res.status(200).send({
       data: post,
       stacks: stackArr,
       visitorId: auth.id,
+      interested: interested,
       message: `get post detail successed`,
     });
   } catch (err) {
