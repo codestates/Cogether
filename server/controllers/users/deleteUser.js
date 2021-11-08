@@ -17,6 +17,7 @@ module.exports = async (req, res) => {
       },
     });
 
+
     await Post.destroy({
       where: {
         userId: auth.id,

@@ -9,6 +9,9 @@ export const SET_PASSWORD_MESSAGE = 'SET_PASSWORD_MESSAGE';
 export const SET_NICKNAME_MESSAGE = 'SET_NICKNAME_MESSAGE';
 export const SET_QUARTER_MODAL = 'SET_QUARTER_MODAL';
 export const SET_USER_DELETE = 'SET_USER_DELETE';
+export const SET_POST_DELETE = 'SET_POST_DELETE';
+export const SET_POST_ID = 'SET_POST_ID';
+export const SET_USER_STACK = 'SET_USER_STACK';
 
 export const setIsLogin = (isLogin) => {
   return {
@@ -94,5 +97,26 @@ export const setUserDelete = (boolean) => {
   return {
     type: SET_USER_DELETE,
     payload: boolean,
+  };
+};
+
+export const setPostDelete = (boolean) => {
+  return {
+    type: SET_POST_DELETE,
+    payload: boolean,
+  };
+};
+
+export const setPostId = (content) => {
+  return {
+    type: SET_POST_ID,
+    payload: content,
+  };
+};
+
+export const setStack = (content) => {
+  return {
+    type: SET_USER_STACK,
+    payload: content,
   };
 };

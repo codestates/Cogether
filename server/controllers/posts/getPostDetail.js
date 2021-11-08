@@ -47,8 +47,9 @@ module.exports = async (req, res) => {
         message: `get author's post detail successed`,
       });
     }
-    // else
 
+    // else
+    
     res.status(200).send({
       data: post,
       stacks: stackArr,

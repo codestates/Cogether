@@ -1,25 +1,52 @@
 import axios from 'axios';
 import { useHistory } from 'react-router';
+import { useSelector, useDispatch } from 'react-redux';
 import React, { useState, useEffect } from 'react';
+import { setStack } from '../actions';
 
 const PostList = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const Stack = useSelector((state) => state.userReducer);
+  const { isStack } = Stack;
   const [posts, setPosts] = useState();
+  const [stackList, setStackList] = useState();
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/posts`)
       .then((res) => {
-        console.log('정상');
+        console.log('정상적인 리스트', res);
         setPosts(res.data.data);
       })
       .catch((err) => {
         console.log(err);
       });
+    dispatch(setStack(''));
   }, []);
 
-  posts?.map((data) => {
-    console.log(typeof data.mainstack);
-  });
+  //Stack에 따른 리스트 관리
+  const getFields = (input, field) => {
+    let output = [];
+    for (let i = 0; i < input.length; ++i) output.push(input[i][field]);
+    return output;
+  };
+
+  useEffect(() => {
+    console.log('Stack', isStack);
+    if (isStack !== '') {
+      axios
+        .get(`${process.env.REACT_APP_API_URL}/posts/hashtags/${isStack}`)
+        .then((res) => {
+          console.log('정상', res.data.data);
+          let result = getFields(res.data.data, 'Post');
+          setPosts(result);
+          dispatch(setStack(''));
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [isStack]);
 
   function reducer(state = '', action) {
     switch (action) {
@@ -47,8 +74,15 @@ const PostList = () => {
   }
 
   const postDtail = (index) => {
-    history.push(`/post/${index}`);
-    // window.location.replace(`/post/${index}`);
+    console.log(posts);
+    axios
+      .patch(`${process.env.REACT_APP_API_URL}/posts/totalviews/${index}`)
+      .then((res) => {
+        history.push(`/post/${index}`);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <div className="postMain">
@@ -60,9 +94,9 @@ const PostList = () => {
         <img className="nodataImg" src="./images/No_data.svg"></img>
       </div> */}
       <div className="postList-main">
-        {posts?.map((data) => {
-          return (
-            <div key={data.id} className="postList-box">
+        {posts?.map((data, ind) => {
+          return data !== null ? (
+            <div key={ind} className="postList-box">
               <div
                 className="postListContainer"
                 onClick={() => postDtail(data.id)}
@@ -74,11 +108,30 @@ const PostList = () => {
                   <img src={reducer('', data?.mainstack)} />
                 </div>
                 <div className="postListContainer-bottom">
-                  <p>{data?.totalComments}</p>
-                  <p>{data?.totalInterests}</p>
-                  <p>{data?.totalViews}</p>
+                  <div className="list-bottom">
+                    <i
+                      className="far fa-comment-dots"
+                      style={{ color: '#56d0a0' }}
+                    />
+                    <p>{data?.totalComments}</p>
+                  </div>
+                  <div className="list-bottom">
+                    <i
+                      className="fas fa-thumbs-up"
+                      style={{ color: '#5f7db7' }}
+                    />
+                    <p>{data?.totalInterests}</p>
+                  </div>
+                  <div className="list-bottom">
+                    <i className="far fa-eye" style={{ color: '#85878a' }}></i>
+                    <p>{data?.totalViews}</p>
+                  </div>
                 </div>
               </div>
+            </div>
+          ) : (
+            <div className="postList-img">
+              <img className="nodataImg" src="./images/No_data.svg"></img>
             </div>
           );
         })}

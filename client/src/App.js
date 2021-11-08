@@ -46,6 +46,9 @@ function App() {
           <Route exact path="/post/:postId">
             <Post />
           </Route>
+          <Route exact path="/write/:postId">
+            <Write />
+          </Route>
         </Switch>
       </div>
     </BrowserRouter>

@@ -5,6 +5,8 @@ module.exports = async (req, res) => {
   const { comment } = req.body;
   const { id } = req.params;
 
+  console.log(req.params);
+
   const auth = isAuthorized(req);
 
   if (!auth) {

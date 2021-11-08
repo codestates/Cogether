@@ -4,6 +4,9 @@ import {
   SET_REQUIRE_MODAL,
   SET_IS_GOOGLESIGNIN,
   SET_USER_DELETE,
+  SET_POST_DELETE,
+  SET_POST_ID,
+  SET_USER_STACK,
 } from '../actions/index';
 import { initialState } from './intialState';
 
@@ -32,6 +35,21 @@ const itemReducer = (state = initialState, action) => {
     case SET_USER_DELETE:
       return Object.assign({}, state, {
         isDelete: action.payload,
+      });
+
+    case SET_POST_DELETE:
+      return Object.assign({}, state, {
+        isPostDelete: action.payload,
+      });
+
+    case SET_POST_ID:
+      return Object.assign({}, state, {
+        isPostId: action.payload,
+      });
+
+    case SET_USER_STACK:
+      return Object.assign({}, state, {
+        isStack: action.payload,
       });
 
     default:

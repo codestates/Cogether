@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setStack } from '../actions';
 
 const LanguageBar = () => {
+  const dispatch = useDispatch();
   const [value, setValue] = useState('1');
   const test = (e) => {
     setValue(e.target.value);
+    dispatch(setStack(e.target.value));
   };
-  console.log('value', value);
   return (
     <div className="languageContainer">
       <ul className="languageBar">
@@ -37,7 +40,7 @@ const LanguageBar = () => {
           SQL
         </li>
       </ul>
-      {value === 1 ? <div className="balloon">1</div> : null}
+      {/* {value === 1 ? <div className="balloon">1</div> : null}
       {value === 2 ? <div className="balloon2">2</div> : null}
       {value === 3 ? <div className="balloon3">3</div> : null}
       {value === 4 ? <div className="balloon4">4</div> : null}
@@ -45,7 +48,7 @@ const LanguageBar = () => {
       {value === 6 ? <div className="balloon6">6</div> : null}
       {value === 7 ? <div className="balloon7">7</div> : null}
       {value === 8 ? <div className="balloon8">8</div> : null}
-      {value === 9 ? <div className="balloon9">9</div> : null}
+      {value === 9 ? <div className="balloon9">9</div> : null} */}
     </div>
   );
 };

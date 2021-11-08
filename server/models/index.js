@@ -65,6 +65,7 @@ const {
 //   foreignKey: 'chatroomId',
 // });
 
+
 // User <-> Post (Post_interest)
 // User.belongsToMany(Post, {
 //   through: 'Post_interest',

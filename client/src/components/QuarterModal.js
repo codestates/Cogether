@@ -1,7 +1,12 @@
 import axios from 'axios';
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setQuarterModal, setIsLogin } from '../actions';
+import {
+  setQuarterModal,
+  setIsLogin,
+  setPostDelete,
+  setUserDelete,
+} from '../actions';
 import { useHistory } from 'react-router';
 
 const QuarterModal = () => {
@@ -11,10 +16,31 @@ const QuarterModal = () => {
   const dispatch = useDispatch();
 
   const { quarterModal } = QuarterInfo;
-  const { isDelete } = Delete;
+  const { isDelete, isPostDelete, isPostId } = Delete;
 
   const closeModal = () => {
     dispatch(setQuarterModal(false, ''));
+    dispatch(setUserDelete(false));
+    dispatch(setPostDelete(false));
+  };
+
+  const handlePostDelete = () => {
+    axios
+      .delete(`${process.env.REACT_APP_API_URL}/posts/${isPostId}`, {
+        headers: {
+          authorization: `Bearer ${localStorage.accessToken}`,
+        },
+      })
+      .then((res) => {
+        console.log('성공');
+        dispatch(setQuarterModal(false, ''));
+        dispatch(setPostDelete(false));
+        dispatch(setUserDelete(false));
+        history.push('/');
+      })
+      .catch((err) => {
+        console.log('실패');
+      });
   };
 
   const handleDelete = () => {
@@ -43,13 +69,16 @@ const QuarterModal = () => {
           <div className="ModalBox">
             <div className="Modalcontent">{quarterModal.content}</div>
             <div className="ModalBtnBox">
+              {isPostDelete ? (
+                <button className="ModalBtn" onClick={handlePostDelete}>
+                  삭제
+                </button>
+              ) : null}
               {isDelete ? (
                 <button className="ModalBtn" onClick={handleDelete}>
                   회원 탈퇴
                 </button>
-              ) : (
-                <button className="ModalBtn">예</button>
-              )}
+              ) : null}
               <button className="ModalBtn" onClick={closeModal}>
                 아니요
               </button>
