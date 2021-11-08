@@ -27,6 +27,16 @@ module.exports = async (req, res) => {
 
     const stackArr = hashtags.map((item) => item.hashtagId);
 
+    // normal user !== post author
+
+    if (!auth) {
+      return res.status(200).send({
+        data: post,
+        stacks: stackArr,
+        message: 'get post detail successed',
+      });
+    }
+
     const interestPost = await Post_interest.findOne({
       where: {
         userId: auth.id,
@@ -38,16 +48,6 @@ module.exports = async (req, res) => {
 
     if (interestPost) {
       return (isInterest = true);
-    }
-
-    // normal user !== post author
-
-    if (!auth) {
-      return res.status(200).send({
-        data: post,
-        stacks: stackArr,
-        message: 'get post detail successed',
-      });
     }
 
     // user === post author
