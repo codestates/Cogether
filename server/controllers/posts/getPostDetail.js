@@ -48,6 +48,8 @@ module.exports = async (req, res) => {
       });
     }
 
+    // else
+    
     res.status(200).send({
       data: post,
       stacks: stackArr,

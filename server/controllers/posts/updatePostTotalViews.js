@@ -18,7 +18,7 @@ module.exports = async (req, res) => {
 
     res.status(200).send({
       data: {
-        totalViews: post.totalViews,
+        post,
       },
       message: 'increase totalview successed',
     });

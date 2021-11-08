@@ -17,7 +17,12 @@ module.exports = async (req, res) => {
       },
     });
 
-    await Post.destroy({ where: { userId: auth.id } });
+
+    await Post.destroy({
+      where: {
+        userId: auth.id,
+      },
+    });
 
     res
       .clearCookie('authorization', {

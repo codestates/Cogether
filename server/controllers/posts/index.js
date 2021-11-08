@@ -7,6 +7,7 @@ module.exports = {
     getAllPosts: require('./getAllPosts'),
     getPostDetail: require('./getPostDetail'),
     getMyPosts: require('./getMyPosts'),
+    getMyInterestPosts: require('./getMyInterestPosts'),
     updatePost: require('./updatePost'),
     deletePost: require('./deletePost'),
     updatePostTotalViews: require('./updatePostTotalViews'),
