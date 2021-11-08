@@ -30,7 +30,7 @@ const Comment = ({ comments, uploadComment, visitId, deleteComment }) => {
                 }
               ></img>
             </div>
-            <p>{data.User.nickname}</p>
+            <p className="commentNick">{data.User.nickname}</p>
             <div className="comment-container">
               <p>{data.comment}</p>
             </div>
@@ -44,6 +44,7 @@ const Comment = ({ comments, uploadComment, visitId, deleteComment }) => {
         );
       })}
       <textarea
+        className="comment-area"
         ref={inputRef}
         placeholder="댓글을 남겨주세요"
         onChange={comment}

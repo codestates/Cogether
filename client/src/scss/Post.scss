@@ -28,9 +28,37 @@
       justify-content: space-between;
       align-items: center;
     }
+    .postedit {
+      background-color: #d3a4f9;
+      color: white;
+      border-radius: 2rem;
+      padding: 10px 20px;
+      font-size: 14px;
+      margin-right: 1.5rem;
+      border: none;
+    }
+    .postedit:hover {
+      color: #870cec;
+      font-weight: 700;
+    }
+    .postdelete {
+      background-color: #d3a4f9;
+      color: white;
+      border-radius: 2rem;
+      padding: 10px 20px;
+      font-size: 14px;
+
+      border: none;
+    }
+    .postdelete:hover {
+      color: #870cec;
+      font-weight: 700;
+    }
+
     .postLanguages {
       display: flex;
       width: 80%;
+      margin-top: 1rem;
       margin-bottom: 1rem;
       align-items: center;
       h2 {
@@ -41,6 +69,8 @@
 
         div {
           margin-left: 0.5rem;
+          background-color: #d3a4f9;
+          border-radius: 3rem;
         }
       }
       .postLanguages-edit {
