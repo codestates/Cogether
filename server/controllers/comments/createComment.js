@@ -26,21 +26,26 @@ module.exports = async (req, res) => {
       },
     });
 
-    const createdComment = await Post_comment.create({
+    const createcomment = await Post_comment.create({
       userId: user.id,
       postId: post.id,
       comment,
     });
 
-    res.status(201).send({
-      data: {
-        id: createdComment.id,
-        userId: createdComment.userId,
-        postId: createdComment.postId,
-        nickname: user.nickname,
-        image: user.image,
-        comment: createdComment.comment,
+    const commentData = await Post_comment.findOne({
+      where: {
+        id: createcomment.id,
       },
+      include: [
+        {
+          model: User,
+          attributes: ['nickname', 'image'],
+        },
+      ],
+    });
+
+    res.status(201).send({
+      data: commentData,
       message: 'create comment successed',
     });
   } catch (err) {

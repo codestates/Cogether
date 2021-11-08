@@ -1,12 +1,20 @@
-const { Post_hashtag, Post } = require('../../models');
+const { Post, Post_interest } = require('../../models');
+const { isAuthorized } = require('../../utils/helpFunc');
 
 module.exports = async (req, res) => {
-  const { id } = req.params;
+  const auth = isAuthorized(req);
+
+  if (!auth) {
+    return res.status(401).send({
+      data: null,
+      message: 'unauthorized user',
+    });
+  }
 
   try {
-    const post = await Post_hashtag.findAll({
+    const myInterestPosts = await Post_interest.findAll({
       where: {
-        hashtagId: id,
+        userId: auth.id,
       },
       include: [
         {
@@ -25,16 +33,16 @@ module.exports = async (req, res) => {
       order: [['createdAt', 'DESC']],
     });
 
-    if (post.length === 0) {
+    if (myInterestPosts.length === 0) {
       return res.status(404).send({
         data: null,
-        message: 'post by hashtag is not exist',
+        message: 'my interest post is not exist',
       });
     }
 
     res.status(200).send({
-      data: post,
-      message: 'get posts by hashtag successed',
+      data: myInterestPosts,
+      message: 'get my interest posts successed',
     });
   } catch (err) {
     console.log(err);
