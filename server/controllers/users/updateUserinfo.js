@@ -47,10 +47,12 @@ module.exports = async (req, res) => {
 
     if (nickname) {
       userInfo.nickname = nickname;
+      userInfo.image = userInfo.image;
     }
 
     if (password) {
-      userInfo.password = password;
+      userInfo.nickname = nickname;
+      userInfo.image = userInfo.image;
     }
 
     await userInfo.save();
