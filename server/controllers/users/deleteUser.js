@@ -1,5 +1,5 @@
 const { isAuthorized } = require('../../utils/helpFunc');
-const { User, Post } = require('../../models');
+const { User, Post, Post_comment } = require('../../models');
 
 module.exports = async (req, res) => {
   const auth = isAuthorized(req);
