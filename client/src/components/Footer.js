@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { setRequireModal } from '../actions/index';
-import { Link } from 'react-router-dom';
 import '../scss/Footer.scss';
 
 const Footer = () => {
@@ -34,9 +33,7 @@ const Footer = () => {
       </div>
       <div>
         ABOUT US
-        <Link to="/post">
-          <p>깃헙 레포지토리이지만 잠시 포스트 링크용 으로 테스트</p>
-        </Link>
+        <p>깃헙 레포지토리</p>
       </div>
       <div>
         TEAM MEMBERS
