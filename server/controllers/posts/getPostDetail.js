@@ -50,6 +50,7 @@ module.exports = async (req, res) => {
       return (isInterest = true);
     }
 
+
     // user === post author
 
     if (auth.id === post.userId) {

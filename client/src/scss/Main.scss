@@ -173,6 +173,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 3rem;
   .postList-main {
     display: flex;
     justify-content: center;
@@ -180,6 +181,7 @@
     width: 80%;
     height: auto;
     flex-wrap: wrap;
+    margin-top: 2rem;
     .postList-box {
       display: flex;
       flex-direction: column;

@@ -11,6 +11,7 @@ const Setting = () => {
   const [userProfileImg, setUserProfileImg] = useState(null);
   const [file, setFile] = useState('');
   const [loginType, setLoginType] = useState(false);
+  const [deletImg, setDeleteImg] = useState(false);
   const history = useHistory();
 
   const [update, setUpdate] = useState({
@@ -60,6 +61,7 @@ const Setting = () => {
   const deleteImg = () => {
     setUserProfileImg(null);
     setFile(null);
+    setDeleteImg(true);
   };
 
   const handleInputValue = (key) => (e) => {
@@ -78,7 +80,11 @@ const Setting = () => {
     if (update.password) {
       formData.append('password', update.password);
     }
-    console.log('@@@@@@@@@@@@@@', formData);
+
+    if (deletImg) {
+      formData.append('deleteImg', deletImg);
+    }
+
     axios
       .patch(`${process.env.REACT_APP_API_URL}/users/userinfo/`, formData, {
         headers: {

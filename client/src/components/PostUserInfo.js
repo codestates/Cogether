@@ -1,10 +1,63 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import '../scss/postUserInfo.scss';
+import { setConfirmModal } from '../actions';
+import { useDispatch, useSelector } from 'react-redux';
 
-const PostUserInfo = ({ nickname, interestCount, isImg }) => {
-  const [interest, setInterest] = useState('#cccccc');
+const PostUserInfo = ({ nickname, isImg, view, detailId, isInterest }) => {
+  const [interest, setInterest] = useState();
+  const dispatch = useDispatch();
+  const Login = useSelector((state) => state.userReducer);
+  const { isLogin } = Login;
+
+  useEffect(() => {
+    {
+      isInterest ? setInterest('#56d0a0') : setInterest('#cccccc');
+    }
+  }, [isInterest]);
+
   const changeInterest = () => {
-    interest === '#56d0a0' ? setInterest('#cccccc') : setInterest('#56d0a0');
+    pushInterest();
+    if (isLogin) {
+      interest === '#56d0a0' ? setInterest('#cccccc') : setInterest('#56d0a0');
+    }
+  };
+  const pushInterest = () => {
+    console.log(interest);
+    if (interest === '#cccccc') {
+      axios
+        .post(
+          `${process.env.REACT_APP_API_URL}/interests/${detailId.postId}`,
+          {},
+          {
+            headers: {
+              authorization: `Bearer ${localStorage.accessToken}`,
+            },
+          }
+        )
+        .then((res) => {
+          console.log('test정상', res);
+        })
+        .catch((err) => {
+          dispatch(setConfirmModal(true, '로그인 후 이용가능 합니다.'));
+        });
+    } else {
+      axios
+        .delete(
+          `${process.env.REACT_APP_API_URL}/interests/${detailId.postId}`,
+          {
+            headers: {
+              authorization: `Bearer ${localStorage.accessToken}`,
+            },
+          }
+        )
+        .then((res) => {
+          console.log('delete정상', res);
+        })
+        .catch((err) => {
+          console.log('실패');
+        });
+    }
   };
   return (
     <div className="postUserInfo">
@@ -26,10 +79,11 @@ const PostUserInfo = ({ nickname, interestCount, isImg }) => {
             style={{ color: interest }}
             onClick={changeInterest}
           />
-          {interestCount}
+          관심글 추가
         </div>
         <div>
           <i className="far fa-eye" style={{ color: '#85878a' }}></i>
+          {view}
         </div>
       </div>
     </div>

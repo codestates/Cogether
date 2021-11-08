@@ -6,7 +6,7 @@ const {
 } = require('../../utils/helpFunc');
 
 module.exports = async (req, res) => {
-  const { nickname, password } = req.body;
+  const { nickname, password, deleteImg } = req.body;
   const auth = isAuthorized(req);
 
   // 토근 검증
@@ -37,12 +37,12 @@ module.exports = async (req, res) => {
       },
     });
 
-    if (!req.file) {
+    if (!req.file && deleteImg) {
       userInfo.image = null;
     }
 
     if (req.file) {
-      userInfo.image = req.file.location;
+      userInfo.image = req.file.location || null;
     }
 
     if (nickname) {
