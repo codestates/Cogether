@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { setConfirmModal } from '../actions/index';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
-import { setQuarterModal, setUserDelete } from '../actions';
+import { setQuarterModal, setUserDelete, setIsReplace } from '../actions';
 import '../scss/Setting.scss';
 
 const Setting = () => {
@@ -11,6 +11,7 @@ const Setting = () => {
   const [userProfileImg, setUserProfileImg] = useState(null);
   const [file, setFile] = useState('');
   const [loginType, setLoginType] = useState(false);
+  const [deletImg, setDeleteImg] = useState(false);
   const history = useHistory();
 
   const [update, setUpdate] = useState({
@@ -60,6 +61,7 @@ const Setting = () => {
   const deleteImg = () => {
     setUserProfileImg(null);
     setFile(null);
+    setDeleteImg(true);
   };
 
   const handleInputValue = (key) => (e) => {
@@ -79,6 +81,10 @@ const Setting = () => {
       formData.append('password', update.password);
     }
 
+    if (deletImg) {
+      formData.append('deleteImg', deletImg);
+    }
+
     axios
       .patch(`${process.env.REACT_APP_API_URL}/users/userinfo/`, formData, {
         headers: {
@@ -94,8 +100,8 @@ const Setting = () => {
       })
       .catch((err) => {
         if (err.response.data.message === 'nickname is already exist') {
+          dispatch(setIsReplace(true));
           dispatch(setConfirmModal(true, '이미있는 닉네임 입니다.'));
-          window.location.replace(`/Setting`);
         }
         console.log(err);
       });

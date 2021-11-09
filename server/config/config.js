@@ -1,4 +1,5 @@
 require('dotenv').config();
+
 //for reading from database
 const common = {
   dialectOptions: {
@@ -8,6 +9,7 @@ const common = {
   },
   timezone: '+09:00',
 };
+
 module.exports = {
   development: {
     username: process.env.DATABASE_USERNAME || 'root',

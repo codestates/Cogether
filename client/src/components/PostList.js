@@ -8,19 +8,11 @@ const PostList = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const Stack = useSelector((state) => state.userReducer);
-  const { isStack } = Stack;
+  const { isStack, isLogin } = Stack;
   const [posts, setPosts] = useState();
   const [stackList, setStackList] = useState();
   useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/posts`)
-      .then((res) => {
-        console.log('정상적인 리스트', res);
-        setPosts(res.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    recentPosts();
     dispatch(setStack(''));
   }, []);
 
@@ -84,12 +76,97 @@ const PostList = () => {
         console.log(err);
       });
   };
+
+  const recentPosts = () => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/posts`)
+      .then((res) => {
+        console.log('정상적인 리스트', res);
+        setPosts(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const myPosts = () => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/posts/myposts`, {
+        headers: {
+          authorization: `Bearer ${localStorage.accessToken}`,
+        },
+      })
+      .then((res) => {
+        console.log('성공', res);
+        setPosts(res.data.data);
+      })
+      .catch((err) => {
+        console.log('에러');
+      });
+  };
+
+  const hotPosts = () => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/posts/hotposts`)
+      .then((res) => {
+        console.log('정상적인 리스트', res);
+        setPosts(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const myInterest = () => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/posts/interests`, {
+        headers: {
+          authorization: `Bearer ${localStorage.accessToken}`,
+        },
+      })
+      .then((res) => {
+        console.log('정상적인 리스트', res);
+        let result = getFields(res.data.data, 'Post');
+        setPosts(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div className="postMain">
-      <ul className="postList">
-        <li>최신</li>
-        <li>인기</li>
-      </ul>
+      {isLogin ? (
+        <ul className="postList">
+          <li onClick={recentPosts}>
+            <i className="far fa-clock"></i>
+            최신
+          </li>
+          <li onClick={hotPosts}>
+            <i className="fas fa-fire"></i>
+            인기
+          </li>
+          <li onClick={myPosts}>
+            <i className="fas fa-fire"></i>
+            내가 쓴 글
+          </li>
+          <li onClick={myInterest}>
+            <i className="fas fa-fire"></i>
+            관심있는 글
+          </li>
+        </ul>
+      ) : (
+        <ul className="postList">
+          <li>
+            <i className="far fa-clock"></i>
+            최신
+          </li>
+          <li>
+            <i className="fas fa-fire"></i>
+            인기
+          </li>
+        </ul>
+      )}
+
       {/* <div className="postList-img">
         <img className="nodataImg" src="./images/No_data.svg"></img>
       </div> */}
@@ -129,11 +206,7 @@ const PostList = () => {
                 </div>
               </div>
             </div>
-          ) : (
-            <div className="postList-img">
-              <img className="nodataImg" src="./images/No_data.svg"></img>
-            </div>
-          );
+          ) : null;
         })}
       </div>
     </div>

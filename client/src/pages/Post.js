@@ -10,6 +10,7 @@ import {
   setConfirmModal,
   setPostDelete,
   setPostId,
+  setUserDelete,
 } from '../actions';
 import axios from 'axios';
 import '../scss/Post.scss';
@@ -29,6 +30,7 @@ const Post = () => {
   const [postNickname, setPostNickname] = useState('');
   const [isAuthor, setIsAuthor] = useState(false);
   const [isinterest, setIsinterest] = useState('');
+  const [view, setView] = useState();
   const [isRead, setIsRead] = useState(true);
   const [isImg, setIsimg] = useState('');
 
@@ -37,6 +39,7 @@ const Post = () => {
 
   const [comments, setComments] = useState();
   const [visitId, setVisitId] = useState('');
+  const [isInterest, setIsInterest] = useState();
   let postStack = [];
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -56,7 +59,9 @@ const Post = () => {
         setPostNickname(data.User.nickname);
         setIsimg(data.User.image);
         setIsinterest(data.totalInterests);
+        setView(data.totalViews);
         setVisitId(res.data.visitorId);
+        setIsInterest(res.data.isInterest);
         res.data.message === "get author's post detail successed"
           ? setIsAuthor(true)
           : setIsAuthor(false);
@@ -103,7 +108,7 @@ const Post = () => {
       .catch((err) => {
         console.log('실패');
         console.log(err);
-        dispatch(setConfirmModal(true, '로그인후 이용가능 합니다.'));
+        dispatch(setConfirmModal(true, '로그인 후 이용가능 합니다.'));
       });
   };
 
@@ -157,15 +162,18 @@ const Post = () => {
       postStack.push('MySQL');
     }
   });
+  //삭제 버튼 클릭
   const deletePost = () => {
     dispatch(setPostId(`${detailId.postId}`));
-    dispatch(setQuarterModal(true, '게시물을 수정 하시겠습니까?'));
+    dispatch(setUserDelete(false));
     dispatch(setPostDelete(true));
+    dispatch(setQuarterModal(true, '게시물을 삭제 하시겠습니까?'));
   };
-
+  
   const Postlist = () => {
     history.push('/');
   };
+
   return (
     <div className="post" ref={containerRef}>
       <div className="postContainer">
@@ -214,8 +222,10 @@ const Post = () => {
         <div className="postUser">
           <PostUserInfo
             nickname={postNickname}
-            interestCount={isinterest}
             isImg={isImg}
+            view={view}
+            detailId={detailId}
+            isInterest={isInterest}
           />
         </div>
 
