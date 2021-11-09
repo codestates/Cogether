@@ -26,6 +26,7 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(morgan('dev'));
 
 app.get('/', (req, res) => {
   res.status(200).send('Cogether Project !');
@@ -41,17 +42,6 @@ const { chatroomRouter } = require('./routers/chatroom');
 const { chattingRouter } = require('./routers/chatting');
 const { evaluationRouter } = require('./routers/evaluation');
 
-// use morgan for logging
-const logRouter = express.Router();
-
-logRouter.use(morgan('combined'));
-
-logRouter.get('/', (req, res) => {
-  console.log('access to log');
-  res.writeHead(404, { 'Content-Type': 'text-html' });
-  res.end('error !');
-});
-
 // express use routers
 
 app.use('/users', userRouter);
@@ -61,6 +51,5 @@ app.use('/comments', commentRouter);
 app.use('/chatrooms', chatroomRouter);
 app.use('/chattings', chattingRouter);
 app.use('/evaluations', evaluationRouter);
-app.use('/log', logRouter);
 
 module.exports = app;
