@@ -4,7 +4,7 @@
   width: 100%;
 
   .postUserInfo-img {
-    width: 50px;
+    width: 90px;
     height: 50px;
     border-radius: 70%;
     overflow: hidden;
@@ -17,7 +17,7 @@
     }
   }
   .postNickname {
-    width: 55px;
+    width: 550px;
   }
   .postUserInfo-container {
     display: flex;
@@ -27,6 +27,7 @@
 
     i {
       font-size: 40px;
+      margin: 1.5rem;
     }
   }
 }

@@ -1,8 +1,9 @@
 require('dotenv').config();
 
+//for reading from database
 const common = {
   dialectOptions: {
-    useUTC: false, //for reading from database
+    useUTC: false,
     dateStrings: true,
     typeCast: true,
   },

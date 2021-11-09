@@ -169,9 +169,11 @@ const Post = () => {
     dispatch(setPostDelete(true));
     dispatch(setQuarterModal(true, '게시물을 삭제 하시겠습니까?'));
   };
+  
+  const Postlist = () => {
+    history.push('/');
+  };
 
-  //좋아요 이벤트
-  // console.log('isInterest', isInterest);
   return (
     <div className="post" ref={containerRef}>
       <div className="postContainer">
@@ -180,8 +182,19 @@ const Post = () => {
         </section>
         <section className="postControl">
           <div className="postControl-btn">
-            {isAuthor ? <button onClick={editWrite}>수정</button> : null}
-            {isAuthor ? <button onClick={deletePost}>삭제</button> : null}
+            {isAuthor ? (
+              <button className="postedit" onClick={editWrite}>
+                수정
+              </button>
+            ) : null}
+            {isAuthor ? (
+              <button className="postdelete" onClick={deletePost}>
+                삭제
+              </button>
+            ) : null}
+            <button className="postlist" onClick={Postlist}>
+              목록
+            </button>
           </div>
 
           <span>{postDate.substring(0, 10)}</span>
