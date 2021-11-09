@@ -30,7 +30,7 @@ module.exports = {
       // console.log(myInfo.Chatrooms);
       if (myInfo.Chatrooms.length !== 0) {
         for (let i = 0; i < myInfo.Chatrooms.length; i++) {
-          if (myInfo.Chatrooms[i].delflag) {
+          if (myInfo.Chatrooms[i]) {
             //   console.log(myInfo.Chatrooms[i].id);
             const RoomInfo = await Chatroom.findOne({
               where: {
@@ -50,8 +50,8 @@ module.exports = {
                 roomId: RoomInfo.id,
                 opponentId: opponentInfo.id,
                 opponentEmail: opponentInfo.email,
-                opponentNicknam: opponentInfo.nickname,
-                opponentProfileImg: opponentInfo.image,
+                opponentNickname: opponentInfo.nickname,
+                opponentImage: opponentInfo.image,
               });
             });
           }

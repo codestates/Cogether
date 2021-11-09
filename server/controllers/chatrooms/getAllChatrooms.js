@@ -2,7 +2,6 @@ const { User, Chatroom } = require('../../models');
 const { isAuthorized } = require('../../utils/helpFunc');
 
 module.exports = async (req, res) => {
-  console.log('read Chatroom List');
   const auth = isAuthorized(req);
 
   if (!auth) {
@@ -33,8 +32,9 @@ module.exports = async (req, res) => {
         },
       ],
     });
-    // console.log(myInfo.id);
-    // console.log(myInfo.Chatrooms);
+
+    console.log(myInfo.id);
+    console.log(myInfo.Chatrooms);
     if (myInfo.Chatrooms.length !== 0) {
       for (let i = 0; i < myInfo.Chatrooms.length; i++) {
         if (myInfo.Chatrooms[i]) {
@@ -57,8 +57,8 @@ module.exports = async (req, res) => {
               roomId: RoomInfo.id,
               opponentId: opponentInfo.id,
               opponentEmail: opponentInfo.email,
-              opponentNicknam: opponentInfo.nickname,
-              opponentProfileImg: opponentInfo.image,
+              opponentNickname: opponentInfo.nickname,
+              opponentImage: opponentInfo.image,
             });
           });
         }

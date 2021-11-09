@@ -2,7 +2,7 @@ const { Chatroom, User } = require('../../models');
 const { isAuthorized } = require('../../utils/helpFunc');
 const _ = require('lodash');
 
-module.exports = (req, res) => {
+module.exports = async (req, res) => {
   const auth = isAuthorized(req);
 
   if (!auth) {
@@ -43,11 +43,11 @@ module.exports = (req, res) => {
     }
 
     const isChatroom = _.intersection(myChatrooms, opponenUserList);
-    console.log(isChatroom);
 
     if (isChatroom.length === 0) {
-      const chatroomInfo = await Chatroom.create({});
-
+      const chatroomInfo = await Chatroom.create({
+        userId: myId,
+      });
       await chatroomInfo.addUsers(myId);
       await chatroomInfo.addUsers(opponentId);
 

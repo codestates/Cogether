@@ -53,6 +53,9 @@ function App() {
           <Route exact path="/chatlist">
             <Chatlist />
           </Route>
+          <Route exact path="/chatlist:id">
+            <Chatlist />
+          </Route>
         </Switch>
       </div>
     </BrowserRouter>
