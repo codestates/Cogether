@@ -27,7 +27,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="appContainer">
+      <div className='appContainer'>
         <ConfirmModal />
         <QuarterModal />
         <SigninModal />
@@ -35,22 +35,22 @@ function App() {
         <Nav />
 
         <Switch>
-          <Route exact path="/">
+          <Route exact path='/'>
             <Main />
           </Route>
-          <Route exact path="/write">
+          <Route exact path='/write'>
             <Write />
           </Route>
-          <Route exact path="/setting">
+          <Route exact path='/setting'>
             <Setting />
           </Route>
-          <Route exact path="/post/:postId">
+          <Route exact path='/post/:postId'>
             <Post />
           </Route>
-          <Route exact path="/write/:postId">
+          <Route exact path='/write/:postId'>
             <Write />
           </Route>
-          <Route exact path="/chatlist">
+          <Route exact path='/chatlist'>
             <Chatlist />
           </Route>
         </Switch>

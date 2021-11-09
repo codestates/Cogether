@@ -1,10 +1,11 @@
 'use strict';
-const { User, Chatroom } = require('../../models');
+const { User, Chatting } = require('../../models');
 const { isAuthorized } = require('../../utils/helpFunc');
 
 module.exports = {
   getAllChattings: async (req, res) => {
     const auth = isAuthorized(req);
+    const roomId = req.params.id;
 
     if (!auth) {
       return res.status(401).send({
@@ -12,59 +13,22 @@ module.exports = {
       });
     }
 
-    const myId = auth.id;
-    let data = [];
-
     try {
-      const myInfo = await User.findOne({
+      const chattingData = await Chatting.findAll({
         where: {
-          id: myId,
+          chatroomId: roomId,
         },
         include: [
           {
-            model: Chatroom,
+            model: User,
+            attributes: ['nickname', 'image'],
           },
         ],
       });
-      // console.log(myInfo.id);
-      // console.log(myInfo.Chatrooms);
-      if (myInfo.Chatrooms.length !== 0) {
-        for (let i = 0; i < myInfo.Chatrooms.length; i++) {
-          if (myInfo.Chatrooms[i]) {
-            //   console.log(myInfo.Chatrooms[i].id);
-            const RoomInfo = await Chatroom.findOne({
-              where: {
-                id: myInfo.Chatrooms[i].id,
-              },
-              include: [{ model: User }],
-            });
-            //   console.log(RoomInfo.id);
-            //   console.log(RoomInfo.Users);
-            const opponentInfoList = RoomInfo.Users.filter(
-              (user) => user.id !== myId
-            );
-            //   console.log(opponentInfoList);
-            opponentInfoList.forEach((opponentInfo) => {
-              // console.log(opponentInfo);
-              data.push({
-                roomId: RoomInfo.id,
-                opponentId: opponentInfo.id,
-                opponentEmail: opponentInfo.email,
-                opponentNickname: opponentInfo.nickname,
-                opponentImage: opponentInfo.image,
-              });
-            });
-          }
-        }
-        // 시간.....
-        //   console.log(data);
-        return res.status(200).send({ data, message: '성공' });
-      } else {
-        return res.status(200).send({ message: '채팅목록없음' });
-      }
+
+      return res.status(200).send({ data: chattingData, message: '성공' });
     } catch (error) {
       console.error(error);
-      res.status(500).send('에러');
     }
   },
 };
