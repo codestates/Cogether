@@ -3,11 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
-import {
-  setIsGoogleLogin,
-  setIsLogin,
-  setConfirmModal,
-} from '../actions/index';
+import { setIsGoogleLogin, setIsLogin, setUserInfo } from '../actions/index';
 import '../scss/Mypage.scss';
 
 const Mypage = () => {
@@ -33,6 +29,7 @@ const Mypage = () => {
         localStorage.setItem('accessToken', null);
         dispatch(setIsLogin(false));
         dispatch(setIsGoogleLogin(false));
+        dispatch(setUserInfo({}));
         console.log('로그아웃 성공');
         history.push('/');
       })
@@ -48,8 +45,9 @@ const Mypage = () => {
         <Link to="/setting" style={{ textDecoration: 'none' }}>
           <li className="userInfo">회원정보 수정</li>
         </Link>
-        <li>채팅목록</li>
-        <li>채팅방</li>
+        <Link to="/chatlist" style={{ textDecoration: 'none' }}>
+          <li>채팅목록</li>
+        </Link>
         <li className="logout" onClick={logOutHandler}>
           로그아웃
         </li>

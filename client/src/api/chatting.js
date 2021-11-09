@@ -10,7 +10,7 @@ export const getRoomList = async () => {
       withCredentials: true,
     }
   );
-  console.log('test', response.data);
+  // console.log('test', response.data);
   return response.data.data;
 };
 
@@ -50,6 +50,9 @@ export const chatData = async (roomId) => {
   const response = await axios.get(
     `${process.env.REACT_APP_API_URL}/chattings/${roomId}`,
     {
+      headers: {
+        authorization: `Bearer ${localStorage.accessToken}`,
+      },
       withCredentials: true,
     }
   );
