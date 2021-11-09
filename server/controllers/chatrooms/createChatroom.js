@@ -2,7 +2,7 @@ const { Chatroom, User } = require('../../models');
 const { isAuthorized } = require('../../utils/helpFunc');
 const _ = require('lodash');
 
-module.exports = (req, res) => {
+module.exports = async (req, res) => {
   const auth = isAuthorized(req);
 
   if (!auth) {
@@ -14,6 +14,9 @@ module.exports = (req, res) => {
   const myId = auth.id;
   const opponentId = req.body.opponentId;
 
+  console.log('##myId', myId);
+  console.log('@@@opponent', opponentId);
+
   try {
     const user = await User.findOne({
       where: {
@@ -23,6 +26,8 @@ module.exports = (req, res) => {
       include: [{ model: Chatroom }],
     });
 
+    console.log('0', user);
+
     const oppentUser = await User.findOne({
       where: {
         id: opponentId,
@@ -30,6 +35,8 @@ module.exports = (req, res) => {
       attributes: ['id'],
       include: [{ model: Chatroom }],
     });
+
+    console.log('1', oppentUser);
 
     const myChatrooms = [];
     const opponenUserList = [];
@@ -43,10 +50,12 @@ module.exports = (req, res) => {
     }
 
     const isChatroom = _.intersection(myChatrooms, opponenUserList);
-    console.log(isChatroom);
+    console.log('2', isChatroom);
 
     if (isChatroom.length === 0) {
-      const chatroomInfo = await Chatroom.create({});
+      const chatroomInfo = await Chatroom.create();
+
+      console.log('@@@@@@@@chatroomInfo', chatroomInfo);
 
       await chatroomInfo.addUsers(myId);
       await chatroomInfo.addUsers(opponentId);
