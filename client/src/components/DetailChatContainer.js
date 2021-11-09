@@ -21,7 +21,7 @@ const DetailChatContainer = ({ socket, roomId }) => {
   useEffect(() => {
     dispatch(getChatData(roomId));
     // 여기에다가 채팅목록 뿌려줘야됨 쿼리파라미터로 roomid다 가져와서
-    console.log('roomId', roomId);
+    console.log('data', data);
     socket.on('onReceive', (msg) => {
       // console.log(msg);
       setMsgList((msgList) => [...msgList, msg]);

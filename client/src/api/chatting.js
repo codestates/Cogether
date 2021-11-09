@@ -56,7 +56,7 @@ export const chatData = async (roomId) => {
       withCredentials: true,
     }
   );
-  // console.log('====api====');
-  // console.log(response.data.data);
+  console.log('====api====');
+  console.log(response.data.data);
   return response.data.data;
 };
