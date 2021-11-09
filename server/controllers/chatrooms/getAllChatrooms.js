@@ -33,8 +33,6 @@ module.exports = async (req, res) => {
       ],
     });
 
-    console.log(myInfo.id);
-    console.log(myInfo.Chatrooms);
     if (myInfo.Chatrooms.length !== 0) {
       for (let i = 0; i < myInfo.Chatrooms.length; i++) {
         if (myInfo.Chatrooms[i]) {

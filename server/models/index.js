@@ -98,7 +98,7 @@ Post.belongsTo(User, { foreignKey: 'userId' });
 
 // User 1 : N Chatting
 User.hasMany(Chatting, { foreignKey: 'userId', sourceKey: 'id' });
-Chatting.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });
+Chatting.belongsTo(User, { foreignKey: 'userId', sourceKey: 'id' });
 
 // User 1 : N Post_comment
 User.hasMany(Post_comment, { foreignKey: 'userId', sourceKey: 'id' });

@@ -32,8 +32,6 @@ io.on('connection', (socket) => {
     });
 
     socket.on('onSend', async (content) => {
-      console.log(content);
-      console.log(userInfo);
       io.to(room).emit('onReceive', {
         ...userInfo,
         User: {
