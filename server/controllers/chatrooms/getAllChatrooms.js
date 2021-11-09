@@ -57,8 +57,8 @@ module.exports = async (req, res) => {
               roomId: RoomInfo.id,
               opponentId: opponentInfo.id,
               opponentEmail: opponentInfo.email,
-              opponentNicknam: opponentInfo.nickname,
-              opponentProfileImg: opponentInfo.image,
+              opponentNickname: opponentInfo.nickname,
+              opponentImage: opponentInfo.image,
             });
           });
         }
