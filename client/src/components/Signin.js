@@ -4,10 +4,9 @@ import {
   setIsLogin,
   setSigninModal,
   setConfirmModal,
-  setMessage,
   setIsGoogleLogin,
 } from '../actions/index';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import '../scss/Signin.scss';
 
 const Signin = ({ variation }) => {
