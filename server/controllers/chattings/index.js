@@ -19,7 +19,6 @@ module.exports = {
         include: [
           {
             model: User,
-            as: 'User',
             attributes: ['id', 'nickname', 'image'],
           },
         ],

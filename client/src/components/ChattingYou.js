@@ -50,11 +50,11 @@ function ChattingYou({ chat }) {
   return (
     <Container>
       <ImgDiv>
-        <img src={`${chat.User.profile_image}`} alt={`${chat.nickname}`} />
+        <img src={`${chat.User.image}`} alt={`${chat.User.nickname}`} />
       </ImgDiv>
       <ChatDiv>
-        <div className="nickname">{chat.nickname}</div>
-        <div className="message">{chat.content}</div>
+        <div className="nickname">{chat.User.nickname}</div>
+        <div className="message">{chat.User.content}</div>
       </ChatDiv>
     </Container>
   );
