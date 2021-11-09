@@ -5,6 +5,7 @@ import {
   setSigninModal,
   setConfirmModal,
   setIsGoogleLogin,
+  setUserInfo,
 } from '../actions/index';
 import { useDispatch } from 'react-redux';
 import '../scss/Signin.scss';
@@ -17,7 +18,6 @@ const Signin = ({ variation }) => {
     email: '',
     password: '',
   });
-
   const handleInputValue = (key) => (e) => {
     setLogin({ ...login, [key]: e.target.value });
   };
@@ -56,6 +56,8 @@ const Signin = ({ variation }) => {
           localStorage.setItem('accessToken', accessToken);
           dispatch(setConfirmModal(true, '로그인에 성공 하셨습니다.'));
           dispatch(setSigninModal(false));
+          dispatch(setUserInfo(res.data.data));
+          console.log(res.data.data);
         })
         .catch((err) => {
           if (err.response.data.message === 'user is not exist') {
@@ -78,7 +80,6 @@ const Signin = ({ variation }) => {
     dispatch(setIsLogin(true));
     dispatch(setIsGoogleLogin(true));
   };
-
   return (
     <div className="SigninMain">
       <form className="SigninForm" onSubmit={handleLogin}>

@@ -1,16 +1,13 @@
 'use strict';
 const { User, Chatting } = require('../../models');
 const { isAuthorized } = require('../../utils/helpFunc');
-
 module.exports = {
   getAllChattings: async (req, res) => {
     const auth = isAuthorized(req);
     const roomId = req.params.id;
 
     if (!auth) {
-      return res.status(401).send({
-        message: 'unauthorized user',
-      });
+      return res.status(401).send({ message: 'unauthorized user' });
     }
 
     try {

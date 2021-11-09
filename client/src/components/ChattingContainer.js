@@ -12,10 +12,11 @@ const ChattingContainer = () => {
   const { loading, error, data } = useSelector(
     (state) => state.chattingReducer.rooms
   );
+  // console.log(data);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getRooms());
-  }, [dispatch]);
+  }, []);
   if (loading) return <div>로딩중</div>;
   if (error) return <div>에러</div>;
   if (!data)

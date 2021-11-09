@@ -40,6 +40,7 @@ const Post = () => {
   const [comments, setComments] = useState();
   const [visitId, setVisitId] = useState('');
   const [isInterest, setIsInterest] = useState();
+  const [authorId, setAuthorId] = useState();
   let postStack = [];
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -62,6 +63,7 @@ const Post = () => {
         setView(data.totalViews);
         setVisitId(res.data.visitorId);
         setIsInterest(res.data.isInterest);
+        setAuthorId(data.userId);
         res.data.message === "get author's post detail successed"
           ? setIsAuthor(true)
           : setIsAuthor(false);
@@ -169,7 +171,7 @@ const Post = () => {
     dispatch(setPostDelete(true));
     dispatch(setQuarterModal(true, '게시물을 삭제 하시겠습니까?'));
   };
-  
+
   const Postlist = () => {
     history.push('/');
   };
@@ -226,6 +228,7 @@ const Post = () => {
             view={view}
             detailId={detailId}
             isInterest={isInterest}
+            authorId={authorId}
           />
         </div>
 

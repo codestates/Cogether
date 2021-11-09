@@ -13,6 +13,7 @@ export const SET_POST_DELETE = 'SET_POST_DELETE';
 export const SET_POST_ID = 'SET_POST_ID';
 export const SET_USER_STACK = 'SET_USER_STACK';
 export const SET_IS_REPLACE = 'SET_IS_REPLACE';
+export const SET_USERINFO = 'SET_USERINFO';
 
 export const setIsLogin = (isLogin) => {
   return {
@@ -127,6 +128,15 @@ export const setIsReplace = (isReplace) => {
     type: SET_IS_REPLACE,
     payload: {
       isReplace,
+    },
+  };
+};
+
+export const setUserInfo = (userInfo) => {
+  return {
+    type: SET_USERINFO,
+    payload: {
+      ...userInfo,
     },
   };
 };
