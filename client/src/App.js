@@ -14,7 +14,6 @@ import ChattingPage from './pages/ChattingPage';
 
 function App() {
   const token = localStorage.accessToken;
-
   console.log('토큰', `${localStorage.accessToken}`);
 
   const url = new URL(window.location.href);
@@ -54,7 +53,7 @@ function App() {
           <Route exact path='/chatlist'>
             <Chatlist />
           </Route>
-          <Route exact path="/chatlist/:id">
+          <Route exact path='/chatlist/:id'>
             <ChattingPage />
           </Route>
         </Switch>

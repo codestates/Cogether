@@ -5,6 +5,7 @@ module.exports = {
   getAllChattings: async (req, res) => {
     const auth = isAuthorized(req);
     const roomId = req.params.id;
+    console.log('@@@@@@@@roomId', roomId);
 
     if (!auth) {
       return res.status(401).send({ message: 'unauthorized user' });
@@ -18,7 +19,8 @@ module.exports = {
         include: [
           {
             model: User,
-            attributes: ['nickname', 'image'],
+            as: 'User',
+            attributes: ['id', 'nickname', 'image'],
           },
         ],
       });

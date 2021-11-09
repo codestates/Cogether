@@ -10,7 +10,7 @@ export const getRoomList = async () => {
       withCredentials: true,
     }
   );
-  // console.log('test', response.data);
+  console.log('test', response.data);
   return response.data.data;
 };
 
