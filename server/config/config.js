@@ -1,9 +1,10 @@
 require('dotenv').config();
 
-//for reading from database
+// Asia/Seoul time set
+
 const common = {
   dialectOptions: {
-    useUTC: false,
+    useUTC: false, //for reading from database
     dateStrings: true,
     typeCast: true,
   },
