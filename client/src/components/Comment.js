@@ -16,13 +16,13 @@ const Comment = ({ comments, uploadComment, visitId, deleteComment }) => {
   };
 
   return (
-    <div className="commentContainer">
+    <div className='commentContainer'>
       {comments?.map((data, i) => {
         return (
-          <div key={i} className="comment">
-            <div className="comment-img">
+          <div key={i} className='comment'>
+            <div className='comment-img'>
               <img
-                className="profile"
+                className='profile'
                 src={
                   data.User.image === null
                     ? '/images/default-profile.jpg'
@@ -31,12 +31,13 @@ const Comment = ({ comments, uploadComment, visitId, deleteComment }) => {
               ></img>
             </div>
             <p>{data.User.nickname}</p>
-            <div className="comment-container">
+            <p>{data.createdAt}</p>
+            <div className='comment-container'>
               <p>{data.comment}</p>
             </div>
             {data.userId === visitId ? (
               <i
-                className="fas fa-trash-alt"
+                className='fas fa-trash-alt'
                 onClick={() => deleteComment(data.id)}
               ></i>
             ) : null}
@@ -45,10 +46,10 @@ const Comment = ({ comments, uploadComment, visitId, deleteComment }) => {
       })}
       <textarea
         ref={inputRef}
-        placeholder="댓글을 남겨주세요"
+        placeholder='댓글을 남겨주세요'
         onChange={comment}
       />
-      <div className="postComment-btn">
+      <div className='postComment-btn'>
         <button onClick={handleUpload}>댓글 달기</button>
       </div>
     </div>
