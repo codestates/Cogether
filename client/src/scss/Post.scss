@@ -47,14 +47,25 @@
       border-radius: 2rem;
       padding: 10px 20px;
       font-size: 14px;
-
+      margin-right: 1.5rem;
       border: none;
     }
     .postdelete:hover {
       color: #870cec;
       font-weight: 700;
     }
-
+    .postlist {
+      background-color: #d3a4f9;
+      color: white;
+      border-radius: 2rem;
+      padding: 10px 20px;
+      font-size: 14px;
+      border: none;
+    }
+    .postlist:hover {
+      color: #870cec;
+      font-weight: 700;
+    }
     .postLanguages {
       display: flex;
       width: 80%;
@@ -71,6 +82,7 @@
           margin-left: 0.5rem;
           background-color: #d3a4f9;
           border-radius: 3rem;
+          padding: 0.5rem;
         }
       }
       .postLanguages-edit {
@@ -90,14 +102,14 @@
 
       textarea {
         height: 100px;
-        width: 80%;
+        width: 100%;
         text-align: left;
         letter-spacing: 0.9px;
         resize: none;
         margin: 1rem;
       }
       .postComment-btn {
-        width: 80%;
+        width: 100%;
         display: flex;
         justify-content: flex-end;
       }

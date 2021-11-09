@@ -162,6 +162,10 @@ const Post = () => {
     dispatch(setQuarterModal(true, '게시물을 수정 하시겠습니까?'));
     dispatch(setPostDelete(true));
   };
+
+  const Postlist = () => {
+    history.push('/');
+  };
   return (
     <div className="post" ref={containerRef}>
       <div className="postContainer">
@@ -180,6 +184,9 @@ const Post = () => {
                 삭제
               </button>
             ) : null}
+            <button className="postlist" onClick={Postlist}>
+              목록
+            </button>
           </div>
 
           <span>{postDate.substring(0, 10)}</span>

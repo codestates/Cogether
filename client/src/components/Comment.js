@@ -17,6 +17,17 @@ const Comment = ({ comments, uploadComment, visitId, deleteComment }) => {
 
   return (
     <div className="commentContainer">
+      <textarea
+        className="comment-area"
+        ref={inputRef}
+        placeholder="댓글을 남겨주세요"
+        onChange={comment}
+      />
+
+      <div className="postComment-btn">
+        <button onClick={handleUpload}>댓글 달기</button>
+      </div>
+
       {comments?.map((data, i) => {
         return (
           <div key={i} className="comment">
@@ -30,7 +41,11 @@ const Comment = ({ comments, uploadComment, visitId, deleteComment }) => {
                 }
               ></img>
             </div>
-            <p className="commentNick">{data.User.nickname}</p>
+            <div className="commentUser">
+              <p className="commentNick">{data.User.nickname}</p>
+              <p className="commnetTime">{data.createdAt}</p>
+            </div>
+
             <div className="comment-container">
               <p>{data.comment}</p>
             </div>
@@ -43,15 +58,6 @@ const Comment = ({ comments, uploadComment, visitId, deleteComment }) => {
           </div>
         );
       })}
-      <textarea
-        className="comment-area"
-        ref={inputRef}
-        placeholder="댓글을 남겨주세요"
-        onChange={comment}
-      />
-      <div className="postComment-btn">
-        <button onClick={handleUpload}>댓글 달기</button>
-      </div>
     </div>
   );
 };
