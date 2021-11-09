@@ -22,7 +22,7 @@ function Chatting({ chatContent, data, msgList }) {
         data.map((chat) => {
           if (chat.hello === 'hello') {
             return;
-          } else if (userInfo.id === chat.UserId) {
+          } else if (userInfo.id === chat.userId) {
             return <ChattingMe chat={chat} key={chat.id} />;
           } else {
             return <ChattingYou chat={chat} key={chat.id} />;
@@ -31,7 +31,7 @@ function Chatting({ chatContent, data, msgList }) {
       {chatContent.map((chat, idx) => {
         if (chat.hello === 'hello') {
           return <div key={idx}>{chat.content}</div>;
-        } else if (userInfo.id === chat.id) {
+        } else if (userInfo.id === chat.userId) {
           return <ChattingMe chat={chat} key={idx} />;
         } else {
           return <ChattingYou chat={chat} key={idx} />;

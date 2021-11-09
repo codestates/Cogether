@@ -17,7 +17,7 @@ const ChattingPage = ({}) => {
 
   if (currentSocket) {
     currentSocket.on('connect', () => {
-      currentSocket.emit('join', { roomId: detailId.id, userInfo });
+      currentSocket.emit('join', { chatroomId: detailId.id, userInfo });
     });
   }
   console.log('채팅페이지');
