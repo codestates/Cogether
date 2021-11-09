@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
 import {
   setIsGoogleLogin,
   setIsLogin,
@@ -11,6 +12,7 @@ import '../scss/Mypage.scss';
 
 const Mypage = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [isActive, setActive] = useState(false);
 
   const toggleClass = () => {
@@ -32,6 +34,7 @@ const Mypage = () => {
         dispatch(setIsLogin(false));
         dispatch(setIsGoogleLogin(false));
         console.log('로그아웃 성공');
+        history.push('/');
       })
       .catch((err) => {
         console.log('로그아웃 실패');

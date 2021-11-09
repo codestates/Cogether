@@ -9,6 +9,7 @@ import ConfirmModal from './components/ConfirmModal';
 import QuarterModal from './components/QuarterModal';
 import Setting from './pages/Setting';
 import Write from './pages/Write';
+import Chatlist from './pages/Chatlist';
 
 function App() {
   const token = localStorage.accessToken;
@@ -48,6 +49,9 @@ function App() {
           </Route>
           <Route exact path="/write/:postId">
             <Write />
+          </Route>
+          <Route exact path="/chatlist">
+            <Chatlist />
           </Route>
         </Switch>
       </div>

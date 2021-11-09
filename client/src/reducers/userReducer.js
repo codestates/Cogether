@@ -7,6 +7,7 @@ import {
   SET_POST_DELETE,
   SET_POST_ID,
   SET_USER_STACK,
+  SET_IS_REPLACE,
 } from '../actions/index';
 import { initialState } from './intialState';
 
@@ -51,7 +52,10 @@ const itemReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         isStack: action.payload,
       });
-
+    case SET_IS_REPLACE:
+      return Object.assign({}, state, {
+        isReplace: action.payload.isReplace,
+      });
     default:
       return state;
   }

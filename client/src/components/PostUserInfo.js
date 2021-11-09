@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router';
 import '../scss/postUserInfo.scss';
 import { setConfirmModal } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
+import { createRoom, getRooms } from '../reducers/chattingReducer';
 
 const PostUserInfo = ({ nickname, isImg, view, detailId, isInterest }) => {
   const [interest, setInterest] = useState();
+  const history = useHistory();
   const dispatch = useDispatch();
   const Login = useSelector((state) => state.userReducer);
   const { isLogin } = Login;
@@ -59,6 +62,15 @@ const PostUserInfo = ({ nickname, isImg, view, detailId, isInterest }) => {
         });
     }
   };
+
+  const checkLoginStatus = (callback) => {
+    if (isLogin) {
+      callback();
+    } else {
+      dispatch(setConfirmModal(true, '로그인 후 이용가능 합니다.'));
+    }
+    return;
+  };
   return (
     <div className="postUserInfo">
       <div className="postUserInfo-img">
@@ -69,7 +81,17 @@ const PostUserInfo = ({ nickname, isImg, view, detailId, isInterest }) => {
       </div>
       <p className="postNickname">{nickname}</p>
       <div className="postUserInfo-container">
-        <div>
+        <div
+          onClick={() => {
+            checkLoginStatus(() => {
+              dispatch(createRoom(detailId.postId));
+              setTimeout(() => {
+                dispatch(getRooms());
+                history.push(`/chatlist`);
+              }, 500);
+            });
+          }}
+        >
           <i className="far fa-comment-dots" style={{ color: '#56d0a0' }} />
           채팅하기
         </div>

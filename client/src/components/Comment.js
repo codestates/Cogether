@@ -31,6 +31,7 @@ const Comment = ({ comments, uploadComment, visitId, deleteComment }) => {
               ></img>
             </div>
             <p>{data.User.nickname}</p>
+            <p>{data.createdAt}</p>
             <div className="comment-container">
               <p>{data.comment}</p>
             </div>

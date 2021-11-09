@@ -47,9 +47,8 @@ module.exports = async (req, res) => {
     let isInterest = false;
 
     if (interestPost) {
-      return (isInterest = true);
+      isInterest = true;
     }
-
 
     // user === post author
 
