@@ -30,11 +30,11 @@ const ChatDiv = styled.div`
   .message {
     position: relative;
     padding: 1rem;
-    background: #63e6be;
+    background: #c48eee;
     border-radius: 10px;
   }
   .message:after {
-    border-top: 15px solid #63e6be;
+    border-top: 15px solid #c48eee;
     border-left: 15px solid transparent;
     border-right: 0px solid transparent;
     border-bottom: 0px solid transparent;
