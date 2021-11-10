@@ -47,9 +47,6 @@ class EditorComponent extends Component {
         {isRead === true ? (
           <ReactQuill
             style={{ height: '500px' }}
-            theme="snow"
-            modules={this.modules}
-            formats={this.formats}
             value={value || ''}
             readOnly={postEdit}
           />

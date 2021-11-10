@@ -1,6 +1,9 @@
+import axios from 'axios';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { getRooms } from '../reducers/chattingReducer';
+import { useDispatch } from 'react-redux';
 
 const ListBox = styled.div`
   display: flex;
@@ -58,7 +61,23 @@ const ListBoxContainer = styled.div`
 `;
 
 const Rooms = ({ data }) => {
+  const dispatch = useDispatch();
   console.log('data', data);
+
+  const deleteList = (roomId) => {
+    axios
+      .delete(`${process.env.REACT_APP_API_URL}/chatrooms`, {
+        data: {
+          id: roomId,
+        },
+      })
+      .then((res) => {
+        dispatch(getRooms());
+      })
+      .catch((err) => {
+        console.log('에러');
+      });
+  };
   return (
     <ListBox>
       {data.map((room) => (
@@ -78,7 +97,7 @@ const Rooms = ({ data }) => {
               <p>{room.opponentNickname}</p>
             </div>
           </Link>
-          <button>
+          <button onClick={() => deleteList(room.roomId)}>
             <i className="fas fa-trash-alt"></i>
           </button>
         </ListBoxContainer>
