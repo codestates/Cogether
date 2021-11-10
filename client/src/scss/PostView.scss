@@ -3,12 +3,15 @@
   button {
     font-family: '777Balsamtint';
     border: none;
+    cursor: pointer;
     height: 7%;
     width: 30%;
     font-size: 3rem;
     padding: 0.5rem;
     background-color: #f5e9ff;
     border-radius: 1.5rem;
+    min-width: 350px;
+    box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.15);
   }
   button:hover {
     color: #870cec;
