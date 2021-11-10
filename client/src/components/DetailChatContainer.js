@@ -30,6 +30,14 @@ const DetailChatContainer = ({ socket, roomId }) => {
     socket.on('onConnect', (msg) => {
       setMsgList((msgList) => [...msgList, msg]);
     });
+
+    socket.on('onDisconnect', (msg) => {
+      setMsgList((msgList) => [...msgList, msg]);
+    });
+
+    return () => {
+      socket.disconnect();
+    };
   }, [socket, dispatch, roomId]);
 
   const onSubmit = useCallback(
