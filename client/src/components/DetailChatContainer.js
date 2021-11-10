@@ -51,6 +51,7 @@ const DetailChatContainer = ({ socket, roomId }) => {
 
   const onMessageChange = useCallback((e) => {
     setMessage(e.target.value);
+    console.log(e.target.value);
   }, []);
 
   if (loading) return <div>로딩중</div>;
