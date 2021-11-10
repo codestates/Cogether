@@ -12,7 +12,7 @@ const ChattingContainer = () => {
   const { loading, error, data } = useSelector(
     (state) => state.chattingReducer.rooms
   );
-  // console.log(data);
+  console.log('data', data);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getRooms());
