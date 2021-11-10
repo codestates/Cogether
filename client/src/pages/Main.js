@@ -4,6 +4,7 @@ import LanguageBar from '../components/LanguageBar';
 import MainImage from '../components/MainImage';
 import PostList from '../components/PostList';
 import PostView from '../components/PostView';
+import GoTop from '../components/GoTop';
 import '../scss/Main.scss';
 
 const Main = () => {
@@ -19,11 +20,11 @@ const Main = () => {
         imageLink={'images/MainPage.svg'}
       />
       <PostView />
-      <div className="mainLanguageBar">
+      <div className='mainLanguageBar'>
         <LanguageBar />
       </div>
-
       <PostList />
+      <GoTop />
       <Footer />
     </div>
   );

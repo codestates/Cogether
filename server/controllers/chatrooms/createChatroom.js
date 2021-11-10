@@ -1,4 +1,4 @@
-const { Chatroom, User, User_chatroom } = require('../../models');
+const { Chatroom, User_chatroom } = require('../../models');
 const { isAuthorized } = require('../../utils/helpFunc');
 const _ = require('lodash');
 

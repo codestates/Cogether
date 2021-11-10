@@ -1,8 +1,16 @@
+@font-face {
+  font-family: 'OTWelcomeRA';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeRA.woff2')
+    format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .MainImageContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: '777Balsamtint';
+  font-family: 'OTWelcomeRA';
 }
 
 .content {
@@ -74,6 +82,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.fa-chevron-circle-up {
+  position: fixed;
+  z-index: 10;
+  right: 2rem;
+  bottom: 2rem;
+  color: #c48eee;
+}
+.fa-chevron-circle-up:hover {
+  cursor: pointer;
 }
 
 .footer {
