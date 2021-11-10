@@ -108,7 +108,12 @@ const Setting = () => {
   };
 
   const withDrawal = () => {
-    dispatch(setQuarterModal(true, '정말로 회원 탈퇴를 하시겠습니까?'));
+    dispatch(
+      setQuarterModal(
+        true,
+        '회원과 관련된 모든 데이터가 삭제됩니다. 탈퇴하시겠습니까?'
+      )
+    );
     dispatch(setUserDelete(true));
   };
 

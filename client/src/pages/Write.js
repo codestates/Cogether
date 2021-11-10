@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setConfirmModal, setQuarterModal } from '../actions';
+import { setConfirmModal } from '../actions';
 import { useParams, useHistory } from 'react-router';
 import Editor from '../components/EditorComponent';
 import LanguageSelect from '../components/LanguageSelect';
@@ -116,6 +116,10 @@ const Write = () => {
       });
   };
 
+  const cancel = () => {
+    console.log('글쓰기 취소');
+    history.push('/');
+  };
   return (
     <section className="writeContainer">
       <input
@@ -133,7 +137,7 @@ const Write = () => {
         <Editor value={desc || ''} onChange={onEditorChange} />
       </div>
       <div className="writBtn">
-        <button>취소</button>
+        <button onClick={cancel}>취소</button>
         {detailId.postId ? (
           <button onClick={editPost}>저장</button>
         ) : (
