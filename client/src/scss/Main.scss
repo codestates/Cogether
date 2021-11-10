@@ -64,7 +64,7 @@
   justify-content: center;
   align-items: center;
   li {
-    min-width: 100px;
+    min-width: 75px;
     margin-right: 0.75rem;
     margin-left: 0.75rem;
     font-size: 2rem;
@@ -131,6 +131,9 @@
 @media screen and (max-width: 700px) {
   .content {
     font-size: 1.5rem;
+  }
+  .postList li {
+    font-size: 1.3rem;
   }
 
   .nodataImg {

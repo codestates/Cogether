@@ -43,13 +43,10 @@ class EditorComponent extends Component {
     const { value, postEdit, onChange, isRead } = this.props;
 
     return (
-      <div style={{ height: '550px' }}>
+      <div style={{ height: '550px', marginBottom: '1rem' }}>
         {isRead === true ? (
           <ReactQuill
             style={{ height: '500px' }}
-            theme="snow"
-            modules={this.modules}
-            formats={this.formats}
             value={value || ''}
             readOnly={postEdit}
           />

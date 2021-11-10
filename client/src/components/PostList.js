@@ -145,13 +145,12 @@ const PostList = () => {
             <i className="fas fa-fire"></i>
             인기
           </li>
-          <li onClick={myPosts}>
-            <i className="fas fa-fire"></i>
-            내가 쓴 글
-          </li>
           <li onClick={myInterest}>
             <i className="fas fa-fire"></i>
-            관심있는 글
+            관심
+          </li>
+          <li onClick={myPosts}>
+            <i className="fas fa-fire"></i>내 글
           </li>
         </ul>
       ) : (
