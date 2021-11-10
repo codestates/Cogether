@@ -18,7 +18,7 @@ const db = require('./models');
 
 app.use(
   cors({
-    origin: true,
+    origin: process.env.DOMAIN,
     methods: ['POST', 'GET', 'PATCH', 'DELETE', 'OPTIONS'],
     credentials: true,
   })

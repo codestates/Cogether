@@ -11,7 +11,6 @@
   width: 100%;
   display: flex;
   flex-flow: column nowrap;
-  // background-color: #D3A4F9;
   background-color: #ffffff;
   align-items: center;
   border-radius: 1.5rem;
@@ -61,12 +60,12 @@
 }
 
 .SigninBtn {
+  font-family: '777Balsamtint';
   background-color: #d3a4f9;
   color: white;
   border-radius: 2rem;
   padding: 10px 50px;
   font-size: 14px;
-
   border: none;
 }
 

@@ -46,15 +46,15 @@ const ChatDiv = styled.div`
 `;
 
 function ChattingYou({ chat }) {
-  // console.log(chat);
+  console.log('상대방입니다', chat);
   return (
     <Container>
       <ImgDiv>
-        <img src={`${chat.User.image}`} alt={`${chat.User.nickname}`} />
+        <img src={chat.User.image} alt={chat.User.nickname} />
       </ImgDiv>
       <ChatDiv>
         <div className="nickname">{chat.User.nickname}</div>
-        <div className="message">{chat.User.content}</div>
+        <div className="message">{chat.content}</div>
       </ChatDiv>
     </Container>
   );

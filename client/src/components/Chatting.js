@@ -6,7 +6,7 @@ import ChattingYou from './ChattingYou';
 function Chatting({ chatContent, data, msgList }) {
   const loginInfo = useSelector((state) => state.userReducer);
   const { userInfo } = loginInfo;
-  console.log(data);
+  console.log('userInfo', userInfo);
 
   const messagesEndRef = useRef(null);
   const scrollToBottom = () => {
@@ -31,7 +31,7 @@ function Chatting({ chatContent, data, msgList }) {
       {chatContent.map((chat, idx) => {
         if (chat.hello === 'hello') {
           return <div key={idx}>{chat.content}</div>;
-        } else if (userInfo.id !== chat.userId) {
+        } else if (userInfo.id === chat.id) {
           return <ChattingMe chat={chat} key={idx} />;
         } else {
           return <ChattingYou chat={chat} key={idx} />;

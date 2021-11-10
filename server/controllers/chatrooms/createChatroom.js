@@ -38,16 +38,9 @@ module.exports = async (req, res) => {
       ],
     });
 
-    const myRoomList = [];
-    const opponentList = [];
 
-    for (let i = 0; i < myInfo.Chatrooms.length; i++) {
-      myRoomList.push(myInfo.Chatrooms[i].id);
-    }
-
-    for (let i = 0; i < opponentInfo.Chatrooms.length; i++) {
-      opponentList.push(opponentInfo.Chatrooms[i].id);
-    }
+    const myRoomList = myInfo.Chatrooms.map((chatroom) => chatroom.id);
+    const opponentList = opponentInfo.Chatrooms.map((chatroom) => chatroom.id);
 
     const isChatroom = _.intersection(myRoomList, opponentList);
 
