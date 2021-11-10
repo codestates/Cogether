@@ -115,7 +115,7 @@ const Setting = () => {
   return (
     <div className="setting">
       <div className="setting-header">
-        <h2>회원 정보수정</h2>
+        <h2>회원 정보 수정</h2>
       </div>
       <div className="setting-img">
         <img

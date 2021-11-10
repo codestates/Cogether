@@ -12,7 +12,8 @@
       display: flex;
       align-items: center;
       .postTitle {
-        font-size: 3rem;
+        font-family: arial;
+        font-size: 2.5rem;
         font-weight: bold;
         outline: none;
         padding-bottom: 0.5rem;
@@ -54,6 +55,12 @@
       }
     }
 
+    @media screen and (max-width: 700px) {
+      .postTitle {
+        font-size: 1.5rem !important;
+      }
+    }
+
     .postLanguages {
       display: flex;
       width: 80%;
@@ -61,8 +68,8 @@
       margin-bottom: 1rem;
       align-items: center;
       h2 {
-        min-width: 110px;
-        margin-right: 1.5rem;
+        min-width: 78px;
+        margin-right: 0.5rem;
       }
       .postLanguages-view {
         display: flex;
@@ -90,6 +97,7 @@
       padding: 1rem;
 
       textarea {
+        font-family: '777Balsamtint';
         height: 100px;
         width: 100%;
         text-align: left;
