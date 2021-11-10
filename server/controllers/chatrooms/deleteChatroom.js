@@ -1,15 +1,7 @@
 const { User_chatroom, Chatroom, Chatting } = require('../../models');
-const { isAuthorized } = require('../../utils/helpFunc');
 
 module.exports = async (req, res) => {
-  const auth = isAuthorized(req);
   const chatroomId = req.body.id;
-
-  if (!auth) {
-    return res.status(401).send({
-      message: 'unauthorized user',
-    });
-  }
 
   try {
     // delete chatroom by chatroomId
