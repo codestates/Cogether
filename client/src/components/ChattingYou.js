@@ -50,7 +50,14 @@ function ChattingYou({ chat }) {
   return (
     <Container>
       <ImgDiv>
-        <img src={chat.User.image} alt={chat.User.nickname} />
+        <img
+          src={
+            chat.User.image !== null
+              ? chat.User.image
+              : '/images/default-profile.jpg'
+          }
+          alt={chat.User.nickname}
+        />
       </ImgDiv>
       <ChatDiv>
         <div className="nickname">{chat.User.nickname}</div>
