@@ -2,7 +2,7 @@ const { Chatroom, User } = require('../../models');
 const { isAuthorized } = require('../../utils/helpFunc');
 const _ = require('lodash');
 
-module.exports = (req, res) => {
+module.exports = async (req, res) => {
   const auth = isAuthorized(req);
 
   if (!auth) {

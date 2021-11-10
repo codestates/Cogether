@@ -1,45 +1,67 @@
-const cors = require('cors');
-const express = require('express');
-const cookieParser = require('cookie-parser');
+// http server
 
-// routers declaration
-const { userRouter } = require('./routers/user');
-const { postRouter } = require('./routers/post');
-const { interestPostRouter } = require('./routers/interestPost');
-const { commentRouter } = require('./routers/comment');
-const { chatroomRouter } = require('./routers/chatroom');
-const { chattingRouter } = require('./routers/chatting');
-const { evaluationRouter } = require('./routers/evaluation');
-
-const app = express();
-
-app.use(
-  cors({
-    origin: true,
-    methods: ['POST', 'GET', 'PATCH', 'DELETE', 'OPTIONS'],
-    credentials: true,
-  })
-);
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-
-app.get('/', (req, res) => {
-  res.status(200).send('Cogether Project !');
-});
-
-// express use routers
-
-app.use('/users', userRouter);
-app.use('/posts', postRouter);
-app.use('/interests', interestPostRouter);
-app.use('/comments', commentRouter);
-app.use('/chatrooms', chatroomRouter);
-app.use('/chattings', chattingRouter);
-app.use('/evaluations', evaluationRouter);
-
+const http = require('http');
+const app = require('./app');
+const server = http.createServer(app);
 const HTTP_PORT = process.env.HTTP_PORT || 80;
 
-app.listen(HTTP_PORT, () => {
-  console.log(`Cogether's Server is running on ${HTTP_PORT}`);
+// socket.io server
+
+const socketIO = require('socket.io');
+const io = socketIO(server, {
+  cors: {
+    origin: process.env.DOMAIN,
+    methods: ['GET', 'POST'],
+    credentials: true,
+  },
+});
+
+const { Chatting } = require('./models');
+
+io.on('connection', (socket) => {
+  // join : 채팅 참여 이벤트
+  // send : 클라이언트가 메시지 보내는 이벤트
+  // item: {name: String, msg: String, timeStamp: String}
+  console.log(`socket.io is running on port :${HTTP_PORT}`);
+
+  socket.on('join', ({ chatroomId: room, userInfo }) => {
+    socket.join(room);
+    io.to(room).emit('onConnect', {
+      hello: 'hello',
+      content: `${userInfo.nickname} 님이 입장했습니다.`,
+    });
+
+    socket.on('onSend', async (content) => {
+      io.to(room).emit('onReceive', {
+        ...userInfo,
+        User: {
+          nickname: userInfo.nickname,
+          image: userInfo.image,
+        },
+        content,
+      });
+
+      try {
+        await Chatting.create({
+          userId: userInfo.id,
+          chatroomId: room,
+          content,
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    });
+
+    socket.on('disconnect', () => {
+      socket.leave(room);
+      io.to(room).emit('onDisconnect', {
+        hello: 'hello',
+        content: `${userInfo.nickname} 님이 퇴장하셨습니다.`,
+      });
+    });
+  });
+});
+
+server.listen(HTTP_PORT, () => {
+  console.log(`Cogether's Server is running on port :${HTTP_PORT}`);
 });

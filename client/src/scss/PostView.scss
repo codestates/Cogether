@@ -1,0 +1,17 @@
+.postView {
+  display: flex;
+  button {
+    font-family: '777Balsamtint';
+    border: none;
+    height: 7%;
+    width: 30%;
+    font-size: 3rem;
+    padding: 0.5rem;
+    background-color: #f5e9ff;
+    border-radius: 1.5rem;
+  }
+  button:hover {
+    color: #870cec;
+    font-weight: 700;
+  }
+}

@@ -169,7 +169,7 @@ const Post = () => {
     dispatch(setPostDelete(true));
     dispatch(setQuarterModal(true, '게시물을 삭제 하시겠습니까?'));
   };
-  
+
   const Postlist = () => {
     history.push('/');
   };
@@ -197,7 +197,7 @@ const Post = () => {
             </button>
           </div>
 
-          <span>{postDate.substring(0, 10)}</span>
+          <span class>{postDate.substring(0, 10)}</span>
         </section>
 
         <div className="postLanguages">

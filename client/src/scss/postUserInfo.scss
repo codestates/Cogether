@@ -4,8 +4,10 @@
   width: 100%;
 
   .postUserInfo-img {
-    width: 90px;
-    height: 50px;
+    min-width: 20px;
+    min-height: 20px;
+    max-width: 50px;
+    max-height: 90px;
     border-radius: 70%;
     overflow: hidden;
     margin-right: 0.8rem;
@@ -26,7 +28,7 @@
     width: 100%;
 
     i {
-      font-size: 40px;
+      font-size: 1.5rem;
       margin: 1.5rem;
     }
   }
