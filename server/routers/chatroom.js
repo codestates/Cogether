@@ -5,6 +5,6 @@ const router = express.Router();
 
 router.post('/', chatroomController.createChatroom);
 router.get('/', chatroomController.getAllChatrooms);
-router.delete('/:id', chatroomController.deleteChatroom);
+router.delete('/', chatroomController.deleteChatroom);
 
 module.exports.chatroomRouter = router;

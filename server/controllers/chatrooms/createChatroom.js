@@ -1,4 +1,4 @@
-const { Chatroom, User } = require('../../models');
+const { Chatroom, User_chatroom } = require('../../models');
 const { isAuthorized } = require('../../utils/helpFunc');
 const _ = require('lodash');
 
@@ -14,39 +14,30 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const myInfo = await User.findOne({
+    const myChatrooms = await User_chatroom.findAll({
       where: {
-        id: myId,
+        userId: myId,
       },
-      attributes: ['id'],
-      include: [
-        {
-          model: Chatroom,
-        },
-      ],
     });
 
-    const opponentInfo = await User.findOne({
+    const opponentChatrooms = await User_chatroom.findAll({
       where: {
-        id: opponentId,
+        userId: opponentId,
       },
-      attributes: ['id'],
-      include: [
-        {
-          model: Chatroom,
-        },
-      ],
     });
 
-
-    const myRoomList = myInfo.Chatrooms.map((chatroom) => chatroom.id);
-    const opponentList = opponentInfo.Chatrooms.map((chatroom) => chatroom.id);
+    const myRoomList = myChatrooms.map(
+      (chatroom) => chatroom.dataValues.chatroomId
+    );
+    const opponentList = opponentChatrooms.map(
+      (chatroom) => chatroom.dataValues.chatroomId
+    );
 
     const isChatroom = _.intersection(myRoomList, opponentList);
 
     if (isChatroom.length === 0) {
       const chatroomInfo = await Chatroom.create({
-        userId: myInfo.id,
+        userId: myId,
       });
 
       await chatroomInfo.addUsers(myId);

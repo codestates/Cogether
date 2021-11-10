@@ -35,7 +35,7 @@ module.exports = async (req, res) => {
 
         opponentInfoList.forEach((opponentInfo) => {
           data.push({
-            roomId: RoomInfo.id,
+            chatroomId: RoomInfo.id,
             opponentId: opponentInfo.id,
             opponentEmail: opponentInfo.email,
             opponentNickname: opponentInfo.nickname,
