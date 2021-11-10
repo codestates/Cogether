@@ -10,7 +10,11 @@ const Rooms = ({ data }) => {
           <Link to={`/chatlist/${room.roomId}`}>
             <div>
               <img
-                src={room.opponentImage}
+                src={
+                  room.opponentImage
+                    ? room.opponentImage
+                    : '/images/default-profile.jpg'
+                }
                 alt={room.opponentNickname}
                 style={{ width: '300px' }}
               />
