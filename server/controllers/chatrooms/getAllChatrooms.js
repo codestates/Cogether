@@ -1,4 +1,4 @@
-const { User, Chatroom } = require('../../models');
+const { User, Chatroom, User_chatroom } = require('../../models');
 const { isAuthorized } = require('../../utils/helpFunc');
 
 module.exports = async (req, res) => {
@@ -13,62 +13,48 @@ module.exports = async (req, res) => {
   const myId = auth.id;
   let data = [];
 
-  /*
-    roomid, = 룸 아이디
-    opponentId
-    opponentName = 상대방 닉네임
-    opponentimg = 상대방 프사
-    updatedAt = 마지막 채팅 시간
-  */
-
   try {
-    const myInfo = await User.findOne({
+    const userChatroom = await User_chatroom.findAll({
       where: {
-        id: myId,
+        userId: myId,
       },
-      include: [
-        {
-          model: Chatroom,
-        },
-      ],
     });
 
-    if (myInfo.Chatrooms.length !== 0) {
-      for (let i = 0; i < myInfo.Chatrooms.length; i++) {
-        if (myInfo.Chatrooms[i]) {
-          //   console.log(myInfo.Chatrooms[i].id);
-          const RoomInfo = await Chatroom.findOne({
-            where: {
-              id: myInfo.Chatrooms[i].id,
-            },
-            include: [{ model: User }],
+    if (userChatroom.length !== 0) {
+      for (let i = 0; i < userChatroom.length; i++) {
+        const RoomInfo = await Chatroom.findOne({
+          where: {
+            id: userChatroom[i].chatroomId,
+          },
+          include: [{ model: User }],
+        });
+
+        const opponentInfoList = RoomInfo.Users.filter(
+          (user) => user.id !== myId
+        );
+
+        opponentInfoList.forEach((opponentInfo) => {
+          data.push({
+            roomId: RoomInfo.id,
+            opponentId: opponentInfo.id,
+            opponentEmail: opponentInfo.email,
+            opponentNickname: opponentInfo.nickname,
+            opponentImage: opponentInfo.image,
           });
-          //   console.log(RoomInfo.id);
-          //   console.log(RoomInfo.Users);
-          const opponentInfoList = RoomInfo.Users.filter(
-            (user) => user.id !== myId
-          );
-          //   console.log(opponentInfoList);
-          opponentInfoList.forEach((opponentInfo) => {
-            // console.log(opponentInfo);
-            data.push({
-              roomId: RoomInfo.id,
-              opponentId: opponentInfo.id,
-              opponentEmail: opponentInfo.email,
-              opponentNickname: opponentInfo.nickname,
-              opponentImage: opponentInfo.image,
-            });
-          });
-        }
+        });
       }
-      // 시간.....
-      //   console.log(data);
-      return res.status(200).send({ data, message: '성공' });
+
+      return res.status(200).send({
+        data: data,
+        message: 'get all chatrooms successed',
+      });
     } else {
-      return res.status(200).send({ message: '채팅목록없음' });
+      return res.status(200).send({
+        data: null,
+        message: 'chatroom is not exist',
+      });
     }
   } catch (error) {
     console.error(error);
-    res.status(500).send('에러');
   }
 };
