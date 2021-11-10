@@ -129,6 +129,7 @@ const Write = () => {
       <input
         className="titleInput"
         type="text"
+        maxlength="30"
         placeholder="제목을 입력하세요"
         onChange={TitleChange}
         value={title || ''}
