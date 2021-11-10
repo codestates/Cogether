@@ -38,6 +38,9 @@ module.exports = async (req, res) => {
       ],
     });
 
+    if (myInfo && opponentInfo) {
+      return res.status(400).send({ message: 'chatroom is already exist' });
+    }
 
     const myRoomList = myInfo.Chatrooms.map((chatroom) => chatroom.id);
     const opponentList = opponentInfo.Chatrooms.map((chatroom) => chatroom.id);

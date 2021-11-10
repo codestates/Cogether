@@ -8,6 +8,19 @@ const ImgDiv = styled.div`
   text-align: center;
 `;
 
+const DivContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const H1 = styled.div`
+  font-weight: bolder;
+  font-size: 60px;
+  margin: 1.3rem;
+`;
+
 const ChattingContainer = () => {
   const { loading, error, data } = useSelector(
     (state) => state.chattingReducer.rooms
@@ -16,6 +29,7 @@ const ChattingContainer = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getRooms());
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   }, [dispatch]);
   if (loading) return <div>로딩중</div>;
   if (error) return <div>에러</div>;
@@ -27,9 +41,10 @@ const ChattingContainer = () => {
       </ImgDiv>
     );
   return (
-    <div>
+    <DivContainer>
+      <H1>나의 채팅목록</H1>
       <Rooms data={data} />
-    </div>
+    </DivContainer>
   );
 };
 export default ChattingContainer;
