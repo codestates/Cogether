@@ -91,29 +91,33 @@ const Write = () => {
   };
 
   const editPost = () => {
-    axios
-      .patch(
-        `${process.env.REACT_APP_API_URL}/posts/${detailId.postId}`,
-        {
-          title: title,
-          stacks: result,
-          content: desc,
-        },
-        {
-          headers: {
-            authorization: `Bearer ${localStorage.accessToken}`,
+    if (title !== '' && desc !== '' && !result.includes(NaN)) {
+      axios
+        .patch(
+          `${process.env.REACT_APP_API_URL}/posts/${detailId.postId}`,
+          {
+            title: title,
+            stacks: result,
+            content: desc,
           },
-        }
-      )
-      .then((res) => {
-        dispatch(setConfirmModal(true, '게시물이 수정되었습니다.'));
-        console.log('등록완료');
-        history.push('/');
-      })
-      .catch((err) => {
-        dispatch(setConfirmModal(true, '게시물 수정에 실패하였습니다.'));
-        console.log('등록실패');
-      });
+          {
+            headers: {
+              authorization: `Bearer ${localStorage.accessToken}`,
+            },
+          }
+        )
+        .then((res) => {
+          dispatch(setConfirmModal(true, '게시물이 수정되었습니다.'));
+          console.log('등록완료');
+          history.push('/');
+        })
+        .catch((err) => {
+          dispatch(setConfirmModal(true, '게시물 수정에 실패하였습니다.'));
+          console.log('등록실패');
+        });
+    } else {
+      dispatch(setConfirmModal(true, '사용 언어를 선택해주세요'));
+    }
   };
 
   const cancel = () => {
