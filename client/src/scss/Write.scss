@@ -37,8 +37,18 @@
   width: 80%;
 
   button {
-    margin-left: 1rem;
-    width: 150px;
-    height: 45px;
+    font-family: '777Balsamtint';
+    min-width: 70px;
+    background-color: #d3a4f9;
+    color: white;
+    border-radius: 2rem;
+    padding: 10px 20px;
+    font-size: 14px;
+    margin-right: 1.5rem;
+    border: none;
+  }
+  button:hover {
+    color: #870cec;
+    font-weight: 700;
   }
 }
