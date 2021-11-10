@@ -44,16 +44,8 @@ module.exports = async (req, res) => {
     console.log('myInfo', myInfo);
     console.log('oppenentInfo', opponentInfo);
 
-    const myRoomList = [];
-    const opponentList = [];
-
-    for (let i = 0; i < myInfo.Chatrooms.length; i++) {
-      myRoomList.push(myInfo.Chatrooms[i].id);
-    }
-
-    for (let i = 0; i < opponentInfo.Chatrooms.length; i++) {
-      opponentList.push(opponentInfo.Chatrooms[i].id);
-    }
+    const myRoomList = myInfo.Chatrooms.map((x) => x.id);
+    const opponentList = opponentInfo.Chatrooms.map((x) => x.id);
 
     console.log('myRoomList', myRoomList);
     console.log('opponentList', opponentList);
