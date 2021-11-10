@@ -14,19 +14,19 @@ const Nav = () => {
 
   return (
     <nav>
-      <div className="nav-logo">
-        <Link to="/">
+      <div className='nav-logo'>
+        <Link to='/'>
           <img
-            className="nav-logo-full"
-            src="/images/logo_cogether-removebg-preview.png"
+            className='nav-logo-full'
+            src='/images/logo_cogether-removebg-preview.png'
           ></img>
           <img
-            className="nav-logo-small"
-            src="/images/favicon-removebg.png"
+            className='nav-logo-small'
+            src='/images/favicon-removebg.png'
           ></img>
         </Link>
       </div>
-      <div className="nav-user">
+      <div className='nav-user'>
         <span
           onClick={() => {
             if (!isLogin) {
@@ -36,7 +36,7 @@ const Nav = () => {
             history.push('/Write');
           }}
         >
-          새글쓰기
+          새 글 쓰기
         </span>
         {isLogin ? <Mypage /> : <UserControl />}
       </div>

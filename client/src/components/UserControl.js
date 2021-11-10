@@ -5,9 +5,9 @@ const UserControl = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="userControl">
+    <div className='userControl'>
       <div
-        className="userControlSignin"
+        className='userControlSignin'
         onClick={() => {
           dispatch(setSigninModal(true));
         }}

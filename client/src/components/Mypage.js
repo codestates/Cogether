@@ -38,17 +38,17 @@ const Mypage = () => {
       });
   };
   return (
-    <div className="MypageMain" onClick={toggleClass}>
+    <div className='MypageMain' onClick={toggleClass}>
       {' '}
       마이페이지
       <ul className={isActive ? 'mypage-menu active' : 'mypage-menu'}>
-        <Link to="/setting" style={{ textDecoration: 'none' }}>
-          <li className="userInfo">회원정보 수정</li>
+        <Link to='/setting' style={{ textDecoration: 'none' }}>
+          <li className='userInfo'>회원 정보 수정</li>
         </Link>
-        <Link to="/chatlist" style={{ textDecoration: 'none' }}>
-          <li>채팅목록</li>
+        <Link to='/chatlist' style={{ textDecoration: 'none' }}>
+          <li>채팅 목록</li>
         </Link>
-        <li className="logout" onClick={logOutHandler}>
+        <li className='logout' onClick={logOutHandler}>
           로그아웃
         </li>
       </ul>
