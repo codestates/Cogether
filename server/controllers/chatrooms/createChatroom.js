@@ -13,9 +13,6 @@ module.exports = async (req, res) => {
     });
   }
 
-  console.log('로그인 한 유저의 id', myId);
-  console.log('게시글 작성자 id', opponentId);
-
   try {
     const myInfo = await User.findOne({
       where: {
@@ -41,24 +38,16 @@ module.exports = async (req, res) => {
       ],
     });
 
-    console.log('myInfo', myInfo);
-    console.log('oppenentInfo', opponentInfo);
 
-    const myRoomList = myInfo.Chatrooms.map((x) => x.id);
-    const opponentList = opponentInfo.Chatrooms.map((x) => x.id);
-
-    console.log('myRoomList', myRoomList);
-    console.log('opponentList', opponentList);
+    const myRoomList = myInfo.Chatrooms.map((chatroom) => chatroom.id);
+    const opponentList = opponentInfo.Chatrooms.map((chatroom) => chatroom.id);
 
     const isChatroom = _.intersection(myRoomList, opponentList);
-    console.log('isChatroom', isChatroom);
 
     if (isChatroom.length === 0) {
       const chatroomInfo = await Chatroom.create({
         userId: myInfo.id,
       });
-
-      console.log('chatroomInfo', chatroomInfo);
 
       await chatroomInfo.addUsers(myId);
       await chatroomInfo.addUsers(opponentId);

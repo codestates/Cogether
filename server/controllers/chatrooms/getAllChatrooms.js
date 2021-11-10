@@ -13,14 +13,6 @@ module.exports = async (req, res) => {
   const myId = auth.id;
   let data = [];
 
-  /*
-    roomid, = 룸 아이디
-    opponentId
-    opponentName = 상대방 닉네임
-    opponentimg = 상대방 프사
-    updatedAt = 마지막 채팅 시간
-  */
-
   try {
     const userChatroom = await User_chatroom.findAll({
       where: {
@@ -30,21 +22,18 @@ module.exports = async (req, res) => {
 
     if (userChatroom.length !== 0) {
       for (let i = 0; i < userChatroom.length; i++) {
-        //   console.log(myInfo.Chatrooms[i].id);
         const RoomInfo = await Chatroom.findOne({
           where: {
             id: userChatroom[i].chatroomId,
           },
           include: [{ model: User }],
         });
-        //   console.log(RoomInfo.id);
-        //   console.log(RoomInfo.Users);
+
         const opponentInfoList = RoomInfo.Users.filter(
           (user) => user.id !== myId
         );
-        //   console.log(opponentInfoList);
+
         opponentInfoList.forEach((opponentInfo) => {
-          // console.log(opponentInfo);
           data.push({
             roomId: RoomInfo.id,
             opponentId: opponentInfo.id,
@@ -54,14 +43,18 @@ module.exports = async (req, res) => {
           });
         });
       }
-      // 시간.....
-      //   console.log(data);
-      return res.status(200).send({ data, message: '성공' });
+
+      return res.status(200).send({
+        data: data,
+        message: 'get all chatrooms successed',
+      });
     } else {
-      return res.status(200).send({ message: '채팅목록없음' });
+      return res.status(200).send({
+        data: null,
+        message: 'chatroom is not exist',
+      });
     }
   } catch (error) {
     console.error(error);
-    res.status(500).send('에러');
   }
 };
