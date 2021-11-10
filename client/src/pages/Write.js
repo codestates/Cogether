@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setConfirmModal, setQuarterModal } from '../actions';
+import { setConfirmModal } from '../actions';
 import { useParams, useHistory } from 'react-router';
 import Editor from '../components/EditorComponent';
 import LanguageSelect from '../components/LanguageSelect';
@@ -91,36 +91,45 @@ const Write = () => {
   };
 
   const editPost = () => {
-    axios
-      .patch(
-        `${process.env.REACT_APP_API_URL}/posts/${detailId.postId}`,
-        {
-          title: title,
-          stacks: result,
-          content: desc,
-        },
-        {
-          headers: {
-            authorization: `Bearer ${localStorage.accessToken}`,
+    if (title !== '' && desc !== '' && !result.includes(NaN)) {
+      axios
+        .patch(
+          `${process.env.REACT_APP_API_URL}/posts/${detailId.postId}`,
+          {
+            title: title,
+            stacks: result,
+            content: desc,
           },
-        }
-      )
-      .then((res) => {
-        dispatch(setConfirmModal(true, '게시물이 수정되었습니다.'));
-        console.log('등록완료');
-        history.push('/');
-      })
-      .catch((err) => {
-        dispatch(setConfirmModal(true, '게시물 수정에 실패하였습니다.'));
-        console.log('등록실패');
-      });
+          {
+            headers: {
+              authorization: `Bearer ${localStorage.accessToken}`,
+            },
+          }
+        )
+        .then((res) => {
+          dispatch(setConfirmModal(true, '게시물이 수정되었습니다.'));
+          console.log('등록완료');
+          history.push('/');
+        })
+        .catch((err) => {
+          dispatch(setConfirmModal(true, '게시물 수정에 실패하였습니다.'));
+          console.log('등록실패');
+        });
+    } else {
+      dispatch(setConfirmModal(true, '사용 언어를 선택해주세요'));
+    }
   };
 
+  const cancel = () => {
+    console.log('글쓰기 취소');
+    history.push('/');
+  };
   return (
     <section className="writeContainer">
       <input
         className="titleInput"
         type="text"
+        maxlength="30"
         placeholder="제목을 입력하세요"
         onChange={TitleChange}
         value={title || ''}
@@ -133,7 +142,7 @@ const Write = () => {
         <Editor value={desc || ''} onChange={onEditorChange} />
       </div>
       <div className="writBtn">
-        <button>취소</button>
+        <button onClick={cancel}>취소</button>
         {detailId.postId ? (
           <button onClick={editPost}>저장</button>
         ) : (

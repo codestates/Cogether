@@ -14,6 +14,7 @@
 
 .postComment-btn {
   button {
+    font-family: '777Balsamtint';
     flex-basis: 100px;
     min-width: 100px;
     background-color: #d3a4f9;
@@ -55,10 +56,6 @@
   z-index: 10;
 }
 
-// .commentUser {
-//   display: flex;
-//   justify-content: flex-start;
-// }
 .commentNick {
   display: flex;
   width: 100%;

@@ -108,7 +108,7 @@ const PostUserInfo = ({
             style={{ color: interest }}
             onClick={changeInterest}
           />
-          관심 추가
+          관심추가
         </div>
         <div>
           <i className="far fa-eye" style={{ color: '#85878a' }}></i>
