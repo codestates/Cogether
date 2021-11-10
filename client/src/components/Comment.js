@@ -30,10 +30,10 @@ const Comment = ({ comments, uploadComment, visitId, deleteComment }) => {
 
       {comments?.map((data, i) => {
         return (
-          <div key={i} className='comment'>
-            <div className='comment-img'>
+          <div key={i} className="comment">
+            <div className="comment-img">
               <img
-                className='profile'
+                className="profile"
                 src={
                   data.User.image === null
                     ? '/images/default-profile.jpg'
@@ -50,7 +50,7 @@ const Comment = ({ comments, uploadComment, visitId, deleteComment }) => {
             </div>
             {data.userId === visitId ? (
               <i
-                className='fas fa-trash-alt'
+                className="fas fa-trash-alt"
                 onClick={() => deleteComment(data.id)}
               ></i>
             ) : null}

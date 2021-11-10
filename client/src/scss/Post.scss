@@ -7,6 +7,7 @@
 
   .postContainer {
     width: 80%;
+
     .postHeader {
       display: flex;
       align-items: center;
@@ -19,53 +20,40 @@
         border-bottom: 1px solid #ced4da;
         margin-bottom: 2rem;
         width: 80%;
-        height: 4rem;
+        height: 20%;
       }
     }
 
     .postControl {
       display: flex;
+      flex-direction: row;
       justify-content: space-between;
       align-items: center;
+      span {
+        font-size: 14px;
+        min-width: 80px;
+      }
     }
-    .postedit {
-      background-color: #d3a4f9;
-      color: white;
-      border-radius: 2rem;
-      padding: 10px 20px;
-      font-size: 14px;
-      margin-right: 1.5rem;
-      border: none;
+    .postControl-btn {
+      display: flex;
+      flex-direction: row;
+      button {
+        font-family: '777Balsamtint';
+        min-width: 70px;
+        background-color: #d3a4f9;
+        color: white;
+        border-radius: 2rem;
+        padding: 10px 20px;
+        font-size: 14px;
+        margin-right: 1.5rem;
+        border: none;
+      }
+      button:hover {
+        color: #870cec;
+        font-weight: 700;
+      }
     }
-    .postedit:hover {
-      color: #870cec;
-      font-weight: 700;
-    }
-    .postdelete {
-      background-color: #d3a4f9;
-      color: white;
-      border-radius: 2rem;
-      padding: 10px 20px;
-      font-size: 14px;
-      margin-right: 1.5rem;
-      border: none;
-    }
-    .postdelete:hover {
-      color: #870cec;
-      font-weight: 700;
-    }
-    .postlist {
-      background-color: #d3a4f9;
-      color: white;
-      border-radius: 2rem;
-      padding: 10px 20px;
-      font-size: 14px;
-      border: none;
-    }
-    .postlist:hover {
-      color: #870cec;
-      font-weight: 700;
-    }
+
     .postLanguages {
       display: flex;
       width: 80%;
@@ -73,16 +61,17 @@
       margin-bottom: 1rem;
       align-items: center;
       h2 {
+        min-width: 110px;
         margin-right: 1.5rem;
       }
       .postLanguages-view {
         display: flex;
-
+        flex-wrap: wrap;
         div {
-          margin-left: 0.5rem;
+          margin: 0.5rem;
           background-color: #d3a4f9;
           border-radius: 3rem;
-          padding: 0.5rem;
+          padding: 0.3rem;
         }
       }
       .postLanguages-edit {
