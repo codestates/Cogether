@@ -3,6 +3,6 @@ const chattingController = require('../controllers/chattings');
 
 const router = express.Router();
 
-router.get('/', chattingController.getAllChattings);
+router.get('/:id', chattingController.getAllChattings);
 
 module.exports.chattingRouter = router;

@@ -20,4 +20,10 @@ export const initialState = {
   isPostId: '',
   isStack: '',
   isReplace: false,
+  userInfo: {
+    id: '',
+    email: '',
+    nickname: '',
+    image: '',
+  },
 };

@@ -4,10 +4,13 @@ export const getRoomList = async () => {
   const response = await axios.get(
     `${process.env.REACT_APP_API_URL}/chatrooms`,
     {
+      headers: {
+        authorization: `Bearer ${localStorage.accessToken}`,
+      },
       withCredentials: true,
     }
   );
-  //console.log(response.data);
+  console.log('test', response.data);
   return response.data.data;
 };
 
@@ -19,10 +22,13 @@ export const createRoom = async (opponentId) => {
         opponentId,
       },
       {
+        headers: {
+          authorization: `Bearer ${localStorage.accessToken}`,
+        },
         withCredentials: true,
       }
     );
-    console.log(response.data);
+    console.log('data넘어와', response);
     return response.data.data;
   } catch (error) {
     return error;
@@ -44,10 +50,13 @@ export const chatData = async (roomId) => {
   const response = await axios.get(
     `${process.env.REACT_APP_API_URL}/chattings/${roomId}`,
     {
+      headers: {
+        authorization: `Bearer ${localStorage.accessToken}`,
+      },
       withCredentials: true,
     }
   );
-  // console.log('====api====');
-  // console.log(response.data.data);
+  console.log('====api====');
+  console.log(response.data.data);
   return response.data.data;
 };

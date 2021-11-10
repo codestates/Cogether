@@ -10,7 +10,7 @@ const HTTP_PORT = process.env.HTTP_PORT || 80;
 const socketIO = require('socket.io');
 const io = socketIO(server, {
   cors: {
-    origin: process.env.DOMAIN,
+    origin: true,
     methods: ['GET', 'POST'],
     credentials: true,
   },

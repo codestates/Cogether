@@ -4,6 +4,8 @@ const _ = require('lodash');
 
 module.exports = async (req, res) => {
   const auth = isAuthorized(req);
+  const myId = auth.id;
+  const opponentId = req.body.opponentId;
 
   if (!auth) {
     return res.status(401).send({
@@ -11,42 +13,60 @@ module.exports = async (req, res) => {
     });
   }
 
-  const myId = auth.id;
-  const opponentId = req.body.opponentId;
+  console.log('로그인 한 유저의 id', myId);
+  console.log('게시글 작성자 id', opponentId);
 
   try {
-    const user = await User.findOne({
+    const myInfo = await User.findOne({
       where: {
-        id: auth.id,
+        id: myId,
       },
       attributes: ['id'],
-      include: [{ model: Chatroom }],
+      include: [
+        {
+          model: Chatroom,
+        },
+      ],
     });
 
-    const oppentUser = await User.findOne({
+    const opponentInfo = await User.findOne({
       where: {
         id: opponentId,
       },
       attributes: ['id'],
-      include: [{ model: Chatroom }],
+      include: [
+        {
+          model: Chatroom,
+        },
+      ],
     });
 
-    const myChatrooms = [];
-    const opponenUserList = [];
+    console.log('myInfo', myInfo);
+    console.log('oppenentInfo', opponentInfo);
 
-    for (let i = 0; i < user.Chatrooms.length; i++) {
-      myChatrooms.push(user.Chatrooms[i].id);
+    const myRoomList = [];
+    const opponentList = [];
+
+    for (let i = 0; i < myInfo.Chatrooms.length; i++) {
+      myRoomList.push(myInfo.Chatrooms[i].id);
     }
 
-    for (let i = 0; i < oppentUser.Chatrooms.length; i++) {
-      myChatrooms.push(opponenUserList.Chatrooms[i].id);
+    for (let i = 0; i < opponentInfo.Chatrooms.length; i++) {
+      opponentList.push(opponentInfo.Chatrooms[i].id);
     }
 
-    const isChatroom = _.intersection(myChatrooms, opponenUserList);
-    console.log(isChatroom);
+    console.log('myRoomList', myRoomList);
+    console.log('opponentList', opponentList);
+
+    const isChatroom = _.intersection(myRoomList, opponentList);
+    console.log('isChatroom', isChatroom);
 
     if (isChatroom.length === 0) {
-      const chatroomInfo = await Chatroom.create({});
+      const chatroomInfo = await Chatroom.create({
+        userId: myInfo.id,
+      });
+
+      console.log('chatroomInfo', chatroomInfo);
 
       await chatroomInfo.addUsers(myId);
       await chatroomInfo.addUsers(opponentId);

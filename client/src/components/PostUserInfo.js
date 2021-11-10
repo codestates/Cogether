@@ -6,7 +6,14 @@ import { setConfirmModal } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { createRoom, getRooms } from '../reducers/chattingReducer';
 
-const PostUserInfo = ({ nickname, isImg, view, detailId, isInterest }) => {
+const PostUserInfo = ({
+  nickname,
+  isImg,
+  view,
+  detailId,
+  isInterest,
+  authorId,
+}) => {
   const [interest, setInterest] = useState();
   const history = useHistory();
   const dispatch = useDispatch();
@@ -84,7 +91,7 @@ const PostUserInfo = ({ nickname, isImg, view, detailId, isInterest }) => {
         <div
           onClick={() => {
             checkLoginStatus(() => {
-              dispatch(createRoom(detailId.postId));
+              dispatch(createRoom(authorId));
               setTimeout(() => {
                 dispatch(getRooms());
                 history.push(`/chatlist`);
