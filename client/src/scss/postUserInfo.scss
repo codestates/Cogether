@@ -30,9 +30,10 @@
     div {
       margin: 0.1rem;
     }
-    div:hover {
+    .postClick:hover {
       color: $color-button;
       font-weight: 700;
+      cursor: pointer;
     }
     i {
       font-size: 1.5rem;

@@ -74,16 +74,17 @@ const PostUserInfo = ({
     return;
   };
   return (
-    <div className='postUserInfo'>
-      <div className='postUserInfo-img'>
+    <div className="postUserInfo">
+      <div className="postUserInfo-img">
         <img
-          className='profile'
+          className="profile"
           src={isImg !== null ? isImg : '/images/default-profile.jpg'}
         ></img>
       </div>
-      <p className='postNickname'>{nickname}</p>
-      <div className='postUserInfo-container'>
+      <p className="postNickname">{nickname}</p>
+      <div className="postUserInfo-container">
         <div
+          className="postClick"
           onClick={() => {
             checkLoginStatus(() => {
               dispatch(createRoom(authorId));
@@ -94,19 +95,19 @@ const PostUserInfo = ({
             });
           }}
         >
-          <i className='far fa-comment-dots' style={{ color: '#56d0a0' }} />
+          <i className="far fa-comment-dots" style={{ color: '#56d0a0' }} />
           채팅하기
         </div>
-        <div>
+        <div className="postClick">
           <i
-            className='fas fa-thumbs-up'
+            className="fas fa-thumbs-up"
             style={{ color: interest }}
             onClick={changeInterest}
           />
           관심추가
         </div>
         <div>
-          <i className='far fa-eye' style={{ color: '#85878a' }}></i>
+          <i className="far fa-eye" style={{ color: '#85878a' }}></i>
           {view}
         </div>
       </div>
