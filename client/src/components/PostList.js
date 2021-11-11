@@ -10,7 +10,6 @@ const PostList = () => {
   const Stack = useSelector((state) => state.userReducer);
   const { isStack, isLogin } = Stack;
   const [posts, setPosts] = useState();
-  const [stackList, setStackList] = useState();
   useEffect(() => {
     recentPosts();
     dispatch(setStack(''));
@@ -82,6 +81,7 @@ const PostList = () => {
       })
       .catch((err) => {
         console.log(err);
+        setPosts();
       });
   };
 
@@ -97,6 +97,7 @@ const PostList = () => {
       })
       .catch((err) => {
         console.log(err);
+        setPosts();
       });
   };
 
@@ -108,6 +109,7 @@ const PostList = () => {
       })
       .catch((err) => {
         console.log(err);
+        setPosts();
       });
   };
 
@@ -124,83 +126,91 @@ const PostList = () => {
       })
       .catch((err) => {
         console.log(err);
+        setPosts();
       });
   };
+
   return (
-    <div className='postMain'>
+    <div className="postMain">
       {isLogin ? (
-        <ul className='postList'>
+        <ul className="postList">
           <li onClick={recentPosts}>
-            <i className='far fa-clock'></i>
+            <i className="far fa-clock"></i>
             <span>최신</span>
           </li>
           <li onClick={hotPosts}>
-            <i className='fab fa-hotjar'></i>
+            <i className="fab fa-hotjar"></i>
             <span>인기</span>
           </li>
           <li onClick={myInterest}>
-            <i className='fas fa-clipboard-check'></i>
+            <i className="fas fa-clipboard-check"></i>
             <span>관심</span>
           </li>
           <li onClick={myPosts}>
-            <i className='fas fa-portrait'></i>
+            <i className="fas fa-portrait"></i>
             <span>내 글</span>
           </li>
         </ul>
       ) : (
-        <ul className='postList'>
+        <ul className="postList">
           <li>
-            <i className='far fa-clock'></i>
+            <i className="far fa-clock"></i>
             최신
           </li>
           <li>
-            <i className='fab fa-hotjar'></i>
+            <i className="fab fa-hotjar"></i>
             인기
           </li>
         </ul>
       )}
 
-      {/* <div className="postList-img">
-        <img className="nodataImg" src="./images/No_data.svg"></img>
-      </div> */}
-      <div className='postList-main'>
-        {posts?.map((data, ind) => {
-          return data !== null ? (
-            <div key={ind} className='postList-box'>
-              <div
-                className='postListContainer'
-                onClick={() => postDtail(data.id)}
-              >
-                <div className='postList-title'>
-                  <p>{data?.title}</p>
-                </div>
-                <div className='postList-img'>
-                  <img src={reducer('', data?.mainstack)} />
-                </div>
-                <div className='postListContainer-bottom'>
-                  <div className='list-bottom'>
-                    <i
-                      className='far fa-comment-dots'
-                      style={{ color: '#56d0a0' }}
-                    />
-                    <p>{data?.totalComments}</p>
+      <div className="postList-main">
+        {!posts ? (
+          <div className="nodata">
+            <h2>게시글이 없습니다.</h2>
+          </div>
+        ) : (
+          posts?.map((data, ind) => {
+            return data !== null ? (
+              <div key={ind} className="postList-box">
+                <div
+                  className="postListContainer"
+                  onClick={() => postDtail(data.id)}
+                >
+                  <div className="postList-title">
+                    <p>{data?.title}</p>
                   </div>
-                  <div className='list-bottom'>
-                    <i
-                      className='fas fa-thumbs-up'
-                      style={{ color: '#5f7db7' }}
-                    />
-                    <p>{data?.totalInterests}</p>
+                  <div className="postList-img">
+                    <img src={reducer('', data?.mainstack)} />
                   </div>
-                  <div className='list-bottom'>
-                    <i className='far fa-eye' style={{ color: '#85878a' }}></i>
-                    <p>{data?.totalViews}</p>
+                  <div className="postListContainer-bottom">
+                    <div className="list-bottom">
+                      <i
+                        className="far fa-comment-dots"
+                        style={{ color: '#56d0a0' }}
+                      />
+                      <p>{data?.totalComments}</p>
+                    </div>
+                    <div className="list-bottom">
+                      <i
+                        className="fas fa-thumbs-up"
+                        style={{ color: '#5f7db7' }}
+                      />
+                      <p>{data?.totalInterests}</p>
+                    </div>
+                    <div className="list-bottom">
+                      <i
+                        className="far fa-eye"
+                        style={{ color: '#85878a' }}
+                      ></i>
+                      <p>{data?.totalViews}</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ) : null;
-        })}
+            ) : null;
+          })
+        )}
       </div>
     </div>
   );
