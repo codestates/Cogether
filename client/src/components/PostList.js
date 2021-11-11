@@ -10,6 +10,7 @@ const PostList = () => {
   const Stack = useSelector((state) => state.userReducer);
   const { isStack, isLogin } = Stack;
   const [posts, setPosts] = useState();
+  const [stackList, setStackList] = useState();
   useEffect(() => {
     recentPosts();
     dispatch(setStack(''));
@@ -81,7 +82,6 @@ const PostList = () => {
       })
       .catch((err) => {
         console.log(err);
-        setPosts();
       });
   };
 
@@ -97,7 +97,6 @@ const PostList = () => {
       })
       .catch((err) => {
         console.log(err);
-        setPosts();
       });
   };
 
@@ -109,7 +108,6 @@ const PostList = () => {
       })
       .catch((err) => {
         console.log(err);
-        setPosts();
       });
   };
 
@@ -126,10 +124,8 @@ const PostList = () => {
       })
       .catch((err) => {
         console.log(err);
-        setPosts();
       });
   };
-
   return (
     <div className="postMain">
       {isLogin ? (
@@ -164,53 +160,51 @@ const PostList = () => {
         </ul>
       )}
 
+      {/* <div className="postList-img">
+        <img className="nodataImg" src="./images/No_data.svg"></img>
+      </div> */}
       <div className="postList-main">
-        {!posts ? (
-          <div className="nodata">
-            <h2>게시글이 없습니다.</h2>
-          </div>
-        ) : (
-          posts?.map((data, ind) => {
-            return data !== null ? (
-              <div key={ind} className="postList-box">
-                <div
-                  className="postListContainer"
-                  onClick={() => postDtail(data.id)}
-                >
-                  <div className="postList-title">
+        {posts?.map((data, ind) => {
+          return data !== null ? (
+            <div key={ind} className="postList-box">
+              <div
+                className="postListContainer"
+                onClick={() => postDtail(data.id)}
+              >
+                <div className="postList-title">
+                  {data?.title.length > 9 ? (
+                    <p>{data?.title.substring(0, 9) + '...'}</p>
+                  ) : (
                     <p>{data?.title}</p>
+                  )}
+                </div>
+                <div className="postList-img">
+                  <img src={reducer('', data?.mainstack)} />
+                </div>
+                <div className="postListContainer-bottom">
+                  <div className="list-bottom">
+                    <i
+                      className="far fa-comment-dots"
+                      style={{ color: '#56d0a0' }}
+                    />
+                    <p>{data?.totalComments}</p>
                   </div>
-                  <div className="postList-img">
-                    <img src={reducer('', data?.mainstack)} />
+                  <div className="list-bottom">
+                    <i
+                      className="fas fa-thumbs-up"
+                      style={{ color: '#5f7db7' }}
+                    />
+                    <p>{data?.totalInterests}</p>
                   </div>
-                  <div className="postListContainer-bottom">
-                    <div className="list-bottom">
-                      <i
-                        className="far fa-comment-dots"
-                        style={{ color: '#56d0a0' }}
-                      />
-                      <p>{data?.totalComments}</p>
-                    </div>
-                    <div className="list-bottom">
-                      <i
-                        className="fas fa-thumbs-up"
-                        style={{ color: '#5f7db7' }}
-                      />
-                      <p>{data?.totalInterests}</p>
-                    </div>
-                    <div className="list-bottom">
-                      <i
-                        className="far fa-eye"
-                        style={{ color: '#85878a' }}
-                      ></i>
-                      <p>{data?.totalViews}</p>
-                    </div>
+                  <div className="list-bottom">
+                    <i className="far fa-eye" style={{ color: '#85878a' }}></i>
+                    <p>{data?.totalViews}</p>
                   </div>
                 </div>
               </div>
-            ) : null;
-          })
-        )}
+            </div>
+          ) : null;
+        })}
       </div>
     </div>
   );
