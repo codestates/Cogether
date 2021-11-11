@@ -1,7 +1,7 @@
 @font-face {
-  font-family: 'OTWelcomeRA';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeRA.woff2')
-    format('woff2');
+  font-family: 'IBMPlexSansKR-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff')
+    format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -10,7 +10,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'OTWelcomeRA';
+  font-family: 'IBMPlexSansKR-Regular';
 }
 
 .content {
@@ -70,18 +70,25 @@
     font-size: 2rem;
     cursor: pointer;
   }
-  li:hover {
-    color: #870cec;
+  span:hover {
     font-weight: 700;
   }
   i {
     padding: 0.5rem;
   }
 }
+
 .postList-img {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.fa-clock {
+  color: black;
+}
+
+.fa-hotjar {
+  color: red;
 }
 
 .fa-chevron-circle-up {

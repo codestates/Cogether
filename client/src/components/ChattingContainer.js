@@ -31,18 +31,18 @@ const ChattingContainer = () => {
     dispatch(getRooms());
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   }, [dispatch]);
-  if (loading) return <div>로딩중</div>;
-  if (error) return <div>에러</div>;
+  if (loading) return <div>로딩 중 입니다.</div>;
+  if (error) return <div>다시 시도해주세요.</div>;
   if (!data)
     return (
       <ImgDiv>
         <div>채팅 목록이 없습니다.</div>
-        <img src="/images/No_data.svg" alt="" />
+        <img src='/images/No_data.svg' alt='' />
       </ImgDiv>
     );
   return (
     <DivContainer>
-      <H1>나의 채팅목록</H1>
+      <H1>채팅 목록</H1>
       <Rooms data={data} />
     </DivContainer>
   );
