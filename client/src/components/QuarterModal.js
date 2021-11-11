@@ -3,6 +3,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   setQuarterModal,
+  setConfirmModal,
   setIsLogin,
   setPostDelete,
   setUserDelete,
@@ -52,6 +53,7 @@ const QuarterModal = () => {
       .then((res) => {
         dispatch(setIsLogin(false));
         dispatch(setQuarterModal(false, ''));
+        dispatch(setConfirmModal(true, 'Cogether를 이용해 주셔서 감사합니다.'));
         history.push('/');
       })
       .catch((err) => {
@@ -62,22 +64,22 @@ const QuarterModal = () => {
   return (
     <>
       {quarterModal.isOpen ? (
-        <div className='Modal'>
-          <div className='ModalMain' />
-          <div className='ModalBox'>
-            <div className='Modalcontent'>{quarterModal.content}</div>
-            <div className='ModalBtnBox'>
+        <div className="Modal">
+          <div className="ModalMain" />
+          <div className="ModalBox">
+            <div className="Modalcontent">{quarterModal.content}</div>
+            <div className="ModalBtnBox">
               {isPostDelete ? (
-                <button className='ModalBtn' onClick={handlePostDelete}>
+                <button className="ModalBtn" onClick={handlePostDelete}>
                   삭제
                 </button>
               ) : null}
               {isDelete ? (
-                <button className='ModalBtn' onClick={handleDelete}>
+                <button className="ModalBtn" onClick={handleDelete}>
                   회원 탈퇴
                 </button>
               ) : null}
-              <button className='ModalBtn' onClick={closeModal}>
+              <button className="ModalBtn" onClick={closeModal}>
                 아니요
               </button>
             </div>
