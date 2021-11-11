@@ -37,7 +37,7 @@ const LanguageBar = () => {
           Java
         </li>
         <li className="languageItem" value="9" onClick={test}>
-          SQL
+          MySQL
         </li>
       </ul>
       {/* {value === 1 ? <div className="balloon">1</div> : null}
