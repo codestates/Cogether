@@ -23,7 +23,7 @@ const Signin = ({ variation }) => {
   };
   const validation = () => {
     const { email, password } = login;
-    console.log(login);
+
     if (!email && !password) {
       setEailMessage('이메일을 입력하세요.');
       setPasswordMessage('비밀번호를 입력하세요.');
@@ -57,7 +57,6 @@ const Signin = ({ variation }) => {
           dispatch(setConfirmModal(true, '로그인에 성공 하셨습니다.'));
           dispatch(setSigninModal(false));
           dispatch(setUserInfo(res.data.data));
-          console.log(res.data.data);
         })
         .catch((err) => {
           if (err.response.data.message === 'user is not exist') {
@@ -72,7 +71,6 @@ const Signin = ({ variation }) => {
     }
   };
   const oAuthHandler = () => {
-    console.log('구글버튼 클릭');
     window.location.assign(
       `${process.env.REACT_APP_API_URL}/users/oauth/login`
     );
@@ -81,40 +79,40 @@ const Signin = ({ variation }) => {
     dispatch(setIsGoogleLogin(true));
   };
   return (
-    <div className="SigninMain">
-      <form className="SigninForm" onSubmit={handleLogin}>
-        <p className="SigninP">Email</p>
-        <label className="SigninLabel">
+    <div className='SigninMain'>
+      <form className='SigninForm' onSubmit={handleLogin}>
+        <p className='SigninP'>Email</p>
+        <label className='SigninLabel'>
           <input
-            placeholder="email"
-            type="email"
+            placeholder='email'
+            type='email'
             onChange={handleInputValue('email')}
             onKeyUp={validation}
           ></input>
-          <span className="SigninAlert">{eailMessage}</span>
+          <span className='SigninAlert'>{eailMessage}</span>
         </label>
 
-        <p className="SigninP">Password</p>
-        <label className="SigninLabel">
+        <p className='SigninP'>Password</p>
+        <label className='SigninLabel'>
           <input
-            placeholder="password"
-            type="password"
+            placeholder='password'
+            type='password'
             onChange={handleInputValue('password')}
             onKeyUp={validation}
           ></input>
-          <span className="SigninAlert">{passwordMessage}</span>
+          <span className='SigninAlert'>{passwordMessage}</span>
         </label>
 
-        <button className="SigninBtn" type="submit">
+        <button className='SigninBtn' type='submit'>
           로그인
         </button>
-        <div className="SigninCompoSignup">
+        <div className='SigninCompoSignup'>
           <label>회원이 아니신가요?</label>
           <span onClick={variation}>회원가입</span>
         </div>
       </form>
-      <button className="SigninGoogle" onClick={oAuthHandler}>
-        <img src="/images/btn_google_light_normal_ios.png" />
+      <button className='SigninGoogle' onClick={oAuthHandler}>
+        <img src='/images/btn_google_light_normal_ios.png' />
         Sign in with Google
       </button>
     </div>

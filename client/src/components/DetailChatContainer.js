@@ -20,10 +20,8 @@ const DetailChatContainer = ({ socket, roomId }) => {
 
   useEffect(() => {
     dispatch(getChatData(roomId));
-    // 여기에다가 채팅목록 뿌려줘야됨 쿼리파라미터로 roomid다 가져와서
-    // console.log('msgList', msgList);
+
     socket.on('onReceive', (msg) => {
-      // console.log(msg);
       setMsgList((msgList) => [...msgList, msg]);
     });
 
@@ -51,7 +49,6 @@ const DetailChatContainer = ({ socket, roomId }) => {
 
   const onMessageChange = useCallback((e) => {
     setMessage(e.target.value);
-    console.log(e.target.value);
   }, []);
 
   if (loading) return <div>로딩중</div>;

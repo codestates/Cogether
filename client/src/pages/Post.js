@@ -54,7 +54,6 @@ const Post = () => {
         const data = res.data.data;
         setPostTitle(data.title);
         setPostContent(data.content);
-        console.log('data', res);
         setPostStackNumber(res.data.stacks);
         setPostDate(data.updatedAt);
         setPostNickname(data.User.nickname);
@@ -80,12 +79,11 @@ const Post = () => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/comments/${detailId.postId}`)
       .then((res) => {
-        console.log('댓글', res);
         const { data: comment } = res.data;
         setComments(comment);
       })
       .catch((err) => {
-        console.log('댓글실패');
+        console.log(err);
       });
   };
 
@@ -105,10 +103,8 @@ const Post = () => {
       .then((res) => {
         const { data: comment } = res.data;
         setComments([...comments, comment]);
-        console.log('comment', comment);
       })
       .catch((err) => {
-        console.log('실패');
         console.log(err);
         dispatch(setConfirmModal(true, '로그인 후 이용가능 합니다.'));
       });
@@ -126,7 +122,7 @@ const Post = () => {
         commentList();
       })
       .catch((err) => {
-        console.log('실패');
+        console.log(err);
       });
   };
 
@@ -177,24 +173,24 @@ const Post = () => {
   };
 
   return (
-    <div className="post" ref={containerRef}>
-      <div className="postContainer">
-        <section className="postHeader">
-          <div className="postTitle">{postTitle}</div>
+    <div className='post' ref={containerRef}>
+      <div className='postContainer'>
+        <section className='postHeader'>
+          <div className='postTitle'>{postTitle}</div>
         </section>
-        <section className="postControl">
-          <div className="postControl-btn">
+        <section className='postControl'>
+          <div className='postControl-btn'>
             {isAuthor ? (
-              <button className="postedit" onClick={editWrite}>
+              <button className='postedit' onClick={editWrite}>
                 수정
               </button>
             ) : null}
             {isAuthor ? (
-              <button className="postdelete" onClick={deletePost}>
+              <button className='postdelete' onClick={deletePost}>
                 삭제
               </button>
             ) : null}
-            <button className="postlist" onClick={Postlist}>
+            <button className='postlist' onClick={Postlist}>
               목록
             </button>
           </div>
@@ -202,26 +198,26 @@ const Post = () => {
           <span>{postDate.substring(0, 10)}</span>
         </section>
 
-        <div className="postLanguages">
+        <div className='postLanguages'>
           <h2>사용 언어 : </h2>
-          <div className="postLanguages-view">
+          <div className='postLanguages-view'>
             {postStack.map((stack, idx) => {
               return <div key={idx}>{stack}</div>;
             })}
           </div>
-          <div className="postLanguages-edit">
+          <div className='postLanguages-edit'>
             <LanguageSelect setLanguage={setLanguage} />
           </div>
         </div>
 
-        <div className="postEditor">
+        <div className='postEditor'>
           <Editor
             value={postContent || ''}
             postEdit={postEdit}
             isRead={isRead}
           />
         </div>
-        <div className="postUser">
+        <div className='postUser'>
           <PostUserInfo
             nickname={postNickname}
             isImg={isImg}
@@ -232,7 +228,7 @@ const Post = () => {
           />
         </div>
 
-        <div className="postComment">
+        <div className='postComment'>
           <Comment
             comments={comments}
             uploadComment={uploadComment}

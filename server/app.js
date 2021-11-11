@@ -7,12 +7,12 @@ const db = require('./models');
 
 // check database connection
 
-// db.sequelize
-//   .sync()
-//   .then(() => {
-//     console.log('Connect to MySQL successed');
-//   })
-//   .catch(console.error);
+db.sequelize
+  .sync()
+  .then(() => {
+    console.log('Connect to MySQL successed');
+  })
+  .catch(console.error);
 
 // app setting
 

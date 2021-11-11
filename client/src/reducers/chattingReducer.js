@@ -50,8 +50,6 @@ export const createRoom = (opponentId) => async (dispatch) => {
   dispatch({ type: CREATE_ROOM });
   try {
     const room = await chattingAPI.createRoom(opponentId);
-    // console.log('createRoom');
-    // console.log(room);
     dispatch({ type: CREATE_ROOM_SUCCESS, room });
   } catch (error) {
     dispatch({ type: CREATE_ROOM_ERROR, error });

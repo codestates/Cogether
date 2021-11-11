@@ -62,7 +62,6 @@ const ListBoxContainer = styled.div`
 
 const Rooms = ({ data }) => {
   const dispatch = useDispatch();
-  console.log('data', data);
 
   const deleteList = (roomId) => {
     axios
@@ -75,7 +74,7 @@ const Rooms = ({ data }) => {
         dispatch(getRooms());
       })
       .catch((err) => {
-        console.log('에러');
+        console.log(err);
       });
   };
   return (
@@ -83,7 +82,7 @@ const Rooms = ({ data }) => {
       {data.map((room) => (
         <ListBoxContainer key={room.roomId}>
           <Link to={`/chatlist/${room.roomId}`}>
-            <div className="title">
+            <div className='title'>
               <ImgDiv>
                 <img
                   src={
@@ -98,7 +97,7 @@ const Rooms = ({ data }) => {
             </div>
           </Link>
           <button onClick={() => deleteList(room.roomId)}>
-            <i className="fas fa-trash-alt"></i>
+            <i className='fas fa-trash-alt'></i>
           </button>
         </ListBoxContainer>
       ))}

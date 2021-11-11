@@ -14,8 +14,6 @@ import ChattingPage from './pages/ChattingPage';
 
 function App() {
   const token = localStorage.accessToken;
-  console.log('토큰', `${localStorage.accessToken}`);
-
   const url = new URL(window.location.href);
   const href = url.href;
   const accessToken = href.split('=')[1];

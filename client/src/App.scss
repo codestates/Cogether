@@ -1,21 +1,14 @@
 @import './scss/color.scss';
-// @font-face {
-//   font-family: '777Balsamtint';
-//   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/777Balsamtint.woff')
-//     format('woff');
-//   font-weight: normal;
-//   font-style: normal;
-// }
 
 @font-face {
-  font-family: 'OTWelcomeRA';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeRA.woff2')
-    format('woff2');
+  font-family: 'IBMPlexSansKR-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff')
+    format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 .appContainer {
   background: $color-main;
-  font-family: 'OTWelcomeRA';
+  font-family: 'IBMPlexSansKR-Regular';
 }

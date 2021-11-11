@@ -1,6 +1,6 @@
 @font-face {
-  font-family: '777Balsamtint';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/777Balsamtint.woff')
+  font-family: 'IBMPlexSansKR-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff')
     format('woff');
   font-weight: normal;
   font-style: normal;
@@ -9,7 +9,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: '777Balsamtint';
+  font-family: 'IBMPlexSansKR-Regular';
 }
 
 .arrow_box {
@@ -106,19 +106,26 @@
     font-size: 2rem;
     cursor: pointer;
   }
-  li:hover {
-    color: #870cec;
+  span:hover {
     font-weight: 700;
   }
   i {
     padding: 0.5rem;
   }
 }
+
 .postList-img {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0.4rem;
+}
+.fa-clock {
+  color: black;
+}
+
+.fa-hotjar {
+  color: red;
 }
 
 .fa-chevron-circle-up {
