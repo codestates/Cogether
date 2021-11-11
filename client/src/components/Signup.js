@@ -114,7 +114,7 @@ const Signup = ({ variation }) => {
           { withCredentials: true }
         )
         .then((res) => {
-          dispatch(setConfirmModal(true, '회원가입에 성공하셨습니다'));
+          dispatch(setConfirmModal(true, '회원가입되었습니다.'));
           variation();
         })
         .catch((err) => {

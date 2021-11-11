@@ -93,13 +93,13 @@ const Setting = () => {
       })
       .then((res) => {
         localStorage.setItem('accessToken', res.data.data.accessToken);
-        dispatch(setConfirmModal(true, '유저정보가 변경되었습니다.'));
+        dispatch(setConfirmModal(true, '회원 정보가 변경되었습니다.'));
         history.push('/');
       })
       .catch((err) => {
         if (err.response.data.message === 'nickname is already exist') {
           dispatch(setIsReplace(true));
-          dispatch(setConfirmModal(true, '이미있는 닉네임 입니다.'));
+          dispatch(setConfirmModal(true, '이미 존재하는 닉네임 입니다.'));
         }
         console.log(err);
       });

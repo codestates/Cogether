@@ -73,15 +73,17 @@ const Write = () => {
           }
         )
         .then((res) => {
-          dispatch(setConfirmModal(true, '등록 완료되었습니다'));
+          dispatch(setConfirmModal(true, '게시글이 등록 되었습니다.'));
           history.push('/');
         })
         .catch((err) => {
-          dispatch(setConfirmModal(true, '등록 실패하였습니다'));
+          dispatch(setConfirmModal(true, '게시글 등록에 실패하였습니다.'));
           console.log(err);
         });
     } else {
-      dispatch(setConfirmModal(true, '제목, 언어, 내용을 작성해 주세요.'));
+      dispatch(
+        setConfirmModal(true, '제목, 사용 언어, 내용은 필수 항목입니다.')
+      );
     }
   };
 
@@ -110,7 +112,9 @@ const Write = () => {
           console.log(err);
         });
     } else {
-      dispatch(setConfirmModal(true, '사용 언어를 선택해주세요'));
+      dispatch(
+        setConfirmModal(true, '제목, 사용 언어, 내용은 필수 항목입니다.')
+      );
     }
   };
 
