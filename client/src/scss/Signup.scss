@@ -1,3 +1,4 @@
+@import './color.scss';
 .SignupMain {
   padding: 0.4rem;
   display: flex;
@@ -27,13 +28,13 @@
   }
 
   input:focus {
-    box-shadow: 0 0 0 2px #870cec;
+    box-shadow: 0 0 0 2px $color-button;
   }
 
   span {
     font-size: 0.7rem;
     margin-bottom: 1rem;
-    color: #870cec;
+    color: $color-button;
   }
 }
 
@@ -42,7 +43,7 @@
   line-height: 1rem;
   margin-top: 0.2rem;
   span {
-    color: #870cec;
+    color: $color-button;
   }
 }
 
@@ -56,7 +57,7 @@
     margin-left: 1rem;
   }
   span:hover {
-    color: #870cec;
+    color: $color-button;
   }
 }
 
@@ -73,7 +74,7 @@
 }
 
 .SignupBtn:hover {
-  color: #870cec;
+  color: $color-button;
   font-weight: 700;
 }
 
@@ -90,7 +91,7 @@
     color: #000000;
   }
   span:hover {
-    color: #870cec;
+    color: $color-button;
   }
 }
 .SignupGoogle {
@@ -103,7 +104,7 @@
 }
 
 .SignupGoogle:hover {
-  color: #870cec;
-  box-shadow: 0 0 0 1px #870cec;
+  color: $color-button;
+  box-shadow: 0 0 0 1px $color-button;
   font-weight: 700;
 }

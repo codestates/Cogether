@@ -1,8 +1,9 @@
+@import './color.scss';
 .footer-contact {
   cursor: pointer;
   margin-right: 0.5rem;
 }
 
 .footer-contact:hover {
-  color: #870cec;
+  color: $color-button;
 }

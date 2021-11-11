@@ -1,3 +1,4 @@
+@import './color.scss';
 .SigninMain {
   padding: 0.4rem;
   display: flex;
@@ -26,7 +27,7 @@
     background-color: #f5e9ff;
   }
   input:focus {
-    box-shadow: 0 0 0 2px #870cec;
+    box-shadow: 0 0 0 2px $color-button;
   }
   label {
     display: flex;
@@ -54,7 +55,7 @@
     margin-left: 1rem;
   }
   span:hover {
-    color: #870cec;
+    color: $color-button;
   }
   display: flex;
 }
@@ -70,7 +71,7 @@
 }
 
 .SigninBtn:hover {
-  color: #870cec;
+  color: $color-button;
   font-weight: 700;
 }
 
@@ -90,12 +91,12 @@
 }
 
 .SigninGoogle:hover {
-  color: #870cec;
-  box-shadow: 0 0 0 1px #870cec;
+  color: $color-button;
+  box-shadow: 0 0 0 1px $color-button;
   font-weight: 700;
 }
 
 .SigninAlert {
-  color: #870cec;
+  color: $color-button;
   font-size: 15px;
 }

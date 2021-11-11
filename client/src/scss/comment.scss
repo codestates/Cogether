@@ -1,3 +1,4 @@
+@import './color.scss';
 .commentContainer {
   display: flex;
   flex-direction: column;
@@ -26,7 +27,7 @@
     border: none;
   }
   button:hover {
-    color: #870cec;
+    color: $color-button;
     font-weight: 700;
   }
 }
