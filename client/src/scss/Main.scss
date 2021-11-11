@@ -146,13 +146,6 @@
   cursor: pointer;
 }
 
-.footer {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background: #eae8e8;
-  margin-top: 50px;
-}
 @media screen and (max-width: 1450px) {
   .content {
     font-size: 2rem;
@@ -293,6 +286,7 @@
     }
     .postList-box {
       display: flex;
+      flex-wrap: wrap;
       flex-direction: column;
       justify-content: center;
       align-items: center;
@@ -311,10 +305,15 @@
       .postListContainer {
         .postList-title {
           display: flex;
+          max-width: 170px;
           justify-content: center;
           align-items: center;
+          font-size: large;
         }
         .postList-img {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
           width: 150px;
           height: 150px;
           img {
@@ -322,7 +321,9 @@
             height: auto;
             max-width: 80px;
             max-height: 80px;
-            padding-top: 1rem;
+          }
+          p {
+            font-size: 12px;
           }
         }
 

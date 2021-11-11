@@ -1,9 +1,43 @@
 @import './color.scss';
-.footer-contact {
-  cursor: pointer;
-  margin-right: 0.5rem;
-}
+.footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #f0eeee;
+  margin-top: 50px;
+  padding: 1.5rem;
+  height: 140px;
+  .footer-logo {
+    img {
+      height: 80px;
+    }
+    p {
+      font-size: small;
+    }
+  }
+  .footer-contact {
+    cursor: pointer;
+    margin-right: 0.5rem;
+  }
 
-.footer-contact:hover {
-  color: $color-button;
+  .footer-contact:hover {
+    color: $color-button;
+  }
+  .members-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .members {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      p {
+        font-size: small;
+        margin: 0 1rem;
+      }
+    }
+  }
 }
