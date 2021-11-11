@@ -33,16 +33,14 @@ const Main = () => {
   }, []);
   return (
     <div>
-      <MainImage
-        contents={[
-          '코딩을 배우는 당신,',
-          '코딩을 직업으로 하는 당신,',
-          '밤새 코딩과 사투를 벌여온 당신,',
-          'Cogether에서는 더 이상 혼자가 아닙니다.',
-        ]}
-        imageLink={'images/MainPage.svg'}
-      />
-      <PostView />
+      <div className="main-container">
+        <MainImage
+          contents={['Cogether에서', '자기개발과 프로젝트를', '시작해보세요']}
+          subcontents={['코딩을 직업으로 하는 당신은 더 이상 혼자가 아닙니다.']}
+          imageLink={'images/MainPage.svg'}
+        />
+        <PostView />
+      </div>
       <div className="mainLanguageBar">
         <LanguageBar />
       </div>
