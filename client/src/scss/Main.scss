@@ -1,22 +1,56 @@
 @font-face {
-  font-family: 'OTWelcomeRA';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeRA.woff2')
-    format('woff2');
+  font-family: '777Balsamtint';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/777Balsamtint.woff')
+    format('woff');
   font-weight: normal;
   font-style: normal;
 }
-
 .MainImageContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'OTWelcomeRA';
+  font-family: '777Balsamtint';
+}
+
+.arrow_box {
+  position: relative;
+  background: #f5e9ff;
+  border: 4px solid #fff;
+  padding: 0.1rem;
+  border-radius: 45px;
+  div {
+    padding: 0.5rem;
+  }
+}
+.arrow_box:after,
+.arrow_box:before {
+  left: 100%;
+  top: 50%;
+  border: solid transparent;
+  content: '';
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.arrow_box:after {
+  border-color: rgba(213, 203, 153, 0);
+  border-left-color: #f5e9ff;
+  border-width: 25px;
+  margin-top: -30px;
+}
+.arrow_box:before {
+  border-color: rgba(255, 255, 255, 0);
+  border-left-color: #fff;
+  border-width: 36px;
+  margin-top: -36px;
 }
 
 .content {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: bolder;
-  line-height: 5rem;
+  line-height: 3rem;
   margin-right: 0.1rem;
 }
 .content-img {
@@ -36,6 +70,8 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  border-bottom: 1px solid #ccc;
+  padding: 1rem;
   .languageContainer {
     width: 80%;
     display: flex;
@@ -82,6 +118,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0.4rem;
 }
 
 .fa-chevron-circle-up {
@@ -125,6 +162,32 @@
   .nodataImg {
     max-width: 80%;
     height: auto;
+  }
+
+  .arrow_box {
+    position: relative;
+    background: #f5e9ff;
+    border: 4px solid #fff;
+    padding: 0.1rem;
+    border-radius: 45px;
+    div {
+      padding: 0.5rem;
+    }
+  }
+  .arrow_box:after,
+  .arrow_box:before {
+    top: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: '';
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+  .content {
+    font-size: 1.6rem;
+    line-height: 2rem;
   }
 }
 
