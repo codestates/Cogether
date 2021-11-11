@@ -68,6 +68,16 @@
       .postTitle {
         font-size: 1.5rem !important;
       }
+      .postControl {
+        span {
+          font-size: 0.8rem;
+        }
+      }
+      .postLanguages {
+        h2 {
+          display: none;
+        }
+      }
     }
 
     .postLanguages {
@@ -78,7 +88,7 @@
       align-items: center;
 
       h2 {
-        min-width: 78px;
+        min-width: 58px;
         margin-right: 0.5rem;
       }
       .postLanguages-view {

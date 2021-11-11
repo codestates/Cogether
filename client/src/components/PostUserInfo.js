@@ -96,7 +96,7 @@ const PostUserInfo = ({
           }}
         >
           <i className="far fa-comment-dots" style={{ color: '#56d0a0' }} />
-          채팅하기
+          1:1채팅
         </div>
         <div className="postClick">
           <i
