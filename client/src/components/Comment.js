@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
 import '../scss/comment.scss';
-import axios from 'axios';
 
 const Comment = ({ comments, uploadComment, visitId, deleteComment }) => {
   const [isComment, setIsComment] = useState('');
@@ -47,13 +46,13 @@ const Comment = ({ comments, uploadComment, visitId, deleteComment }) => {
             </div>
             <div className="comment-container">
               <p>{data.comment}</p>
+              {data.userId === visitId ? (
+                <i
+                  className="fas fa-trash-alt"
+                  onClick={() => deleteComment(data.id)}
+                ></i>
+              ) : null}
             </div>
-            {data.userId === visitId ? (
-              <i
-                className="fas fa-trash-alt"
-                onClick={() => deleteComment(data.id)}
-              ></i>
-            ) : null}
           </div>
         );
       })}

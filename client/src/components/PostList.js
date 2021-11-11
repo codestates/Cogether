@@ -129,7 +129,7 @@ const PostList = () => {
         setPosts();
       });
   };
-  console.log(posts);
+
   return (
     <div className="postMain">
       {isLogin ? (
@@ -164,14 +164,10 @@ const PostList = () => {
         </ul>
       )}
 
-      {/* <div className="postList-img">
-        <img className="nodataImg" src="./images/No_data.svg"></img>
-      </div> */}
       <div className="postList-main">
         {!posts ? (
           <div className="nodata">
             <h2>게시글이 없습니다.</h2>
-            {/* <img src="/images/No_data.svg"></img> */}
           </div>
         ) : (
           posts?.map((data, ind) => {
