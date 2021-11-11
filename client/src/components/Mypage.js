@@ -30,12 +30,9 @@ const Mypage = () => {
         dispatch(setIsLogin(false));
         dispatch(setIsGoogleLogin(false));
         dispatch(setUserInfo({}));
-        console.log('로그아웃 성공');
         history.push('/');
       })
-      .catch((err) => {
-        console.log('로그아웃 실패');
-      });
+      .catch((err) => {});
   };
   return (
     <div className='MypageMain' onClick={toggleClass}>

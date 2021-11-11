@@ -10,7 +10,7 @@ const ChattingPage = ({}) => {
   const [detailId, setDetailId] = useState(postId);
   const LoginInfo = useSelector((state) => state.userReducer);
   const { userInfo } = LoginInfo;
-  console.log('postId', postId);
+
   useEffect(() => {
     setCurrentSocket(socketIOClient(`${process.env.REACT_APP_API_URL}`));
   }, []);
@@ -20,7 +20,7 @@ const ChattingPage = ({}) => {
       currentSocket.emit('join', { chatroomId: detailId.id, userInfo });
     });
   }
-  console.log('채팅페이지');
+
   return (
     <>
       {currentSocket ? (

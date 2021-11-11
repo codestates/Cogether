@@ -1,6 +1,7 @@
 'use strict';
 const { User, Chatting } = require('../../models');
 const { isAuthorized } = require('../../utils/helpFunc');
+
 module.exports = {
   getAllChattings: async (req, res) => {
     const auth = isAuthorized(req);

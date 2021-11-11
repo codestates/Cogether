@@ -29,7 +29,6 @@ const Write = () => {
         })
         .then((res) => {
           const data = res.data.data;
-          // console.log('data', res.data.stacks);
           setTitle(data.title);
           setDesc(data.content);
           setLanguage(res.data.stacks);
@@ -58,9 +57,6 @@ const Write = () => {
   let result = getFields(language, 'value');
 
   const createPost = () => {
-    console.log(title);
-    console.log('result', result.length);
-    console.log(desc);
     if (title !== '' && desc !== '' && result.length !== 0) {
       axios
         .post(
@@ -78,12 +74,11 @@ const Write = () => {
         )
         .then((res) => {
           dispatch(setConfirmModal(true, '등록 완료되었습니다'));
-          console.log('등록완료');
           history.push('/');
         })
         .catch((err) => {
           dispatch(setConfirmModal(true, '등록 실패하였습니다'));
-          console.log('등록실패');
+          console.log(err);
         });
     } else {
       dispatch(setConfirmModal(true, '제목, 언어, 내용을 작성해 주세요.'));
@@ -108,12 +103,11 @@ const Write = () => {
         )
         .then((res) => {
           dispatch(setConfirmModal(true, '게시물이 수정되었습니다.'));
-          console.log('등록완료');
           history.push('/');
         })
         .catch((err) => {
           dispatch(setConfirmModal(true, '게시물 수정에 실패하였습니다.'));
-          console.log('등록실패');
+          console.log(err);
         });
     } else {
       dispatch(setConfirmModal(true, '사용 언어를 선택해주세요'));
@@ -121,27 +115,26 @@ const Write = () => {
   };
 
   const cancel = () => {
-    console.log('글쓰기 취소');
     history.push('/');
   };
   return (
-    <section className="writeContainer">
+    <section className='writeContainer'>
       <input
-        className="titleInput"
-        type="text"
-        maxlength="30"
-        placeholder="제목을 입력하세요"
+        className='titleInput'
+        type='text'
+        maxlength='30'
+        placeholder='제목을 입력하세요'
         onChange={TitleChange}
         value={title || ''}
       />
-      <div className="writeLanguages">
+      <div className='writeLanguages'>
         <h2>사용 언어 : </h2>
         <LanguageSelect setLanguage={setLanguage} />
       </div>
-      <div className="writeEditor">
+      <div className='writeEditor'>
         <Editor value={desc || ''} onChange={onEditorChange} />
       </div>
-      <div className="writBtn">
+      <div className='writBtn'>
         <button onClick={cancel}>취소</button>
         {detailId.postId ? (
           <button onClick={editPost}>저장</button>

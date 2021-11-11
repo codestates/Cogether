@@ -10,7 +10,6 @@ export const getRoomList = async () => {
       withCredentials: true,
     }
   );
-  console.log('test', response.data);
   return response.data.data;
 };
 
@@ -28,7 +27,6 @@ export const createRoom = async (opponentId) => {
         withCredentials: true,
       }
     );
-    console.log('data넘어와', response);
     return response.data.data;
   } catch (error) {
     return error;
@@ -56,7 +54,5 @@ export const chatData = async (roomId) => {
       withCredentials: true,
     }
   );
-  console.log('====api====');
-  console.log(response.data.data);
   return response.data.data;
 };

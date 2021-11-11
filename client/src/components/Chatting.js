@@ -6,7 +6,6 @@ import ChattingYou from './ChattingYou';
 function Chatting({ chatContent, data, msgList }) {
   const loginInfo = useSelector((state) => state.userReducer);
   const { userInfo } = loginInfo;
-  console.log('userInfo', userInfo);
 
   const messagesEndRef = useRef(null);
   const scrollToBottom = () => {
