@@ -25,8 +25,8 @@ const ChattingContainer = () => {
   const { loading, error, data } = useSelector(
     (state) => state.chattingReducer.rooms
   );
-  console.log('data', data);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getRooms());
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });

@@ -33,7 +33,6 @@ const PostUserInfo = ({
     }
   };
   const pushInterest = () => {
-    console.log(interest);
     if (interest === '#cccccc') {
       axios
         .post(
@@ -45,9 +44,7 @@ const PostUserInfo = ({
             },
           }
         )
-        .then((res) => {
-          console.log('test정상', res);
-        })
+        .then((res) => {})
         .catch((err) => {
           dispatch(setConfirmModal(true, '로그인 후 이용가능 합니다.'));
         });
@@ -61,11 +58,9 @@ const PostUserInfo = ({
             },
           }
         )
-        .then((res) => {
-          console.log('delete정상', res);
-        })
+        .then((res) => {})
         .catch((err) => {
-          console.log('실패');
+          console.log(err);
         });
     }
   };
@@ -79,15 +74,15 @@ const PostUserInfo = ({
     return;
   };
   return (
-    <div className="postUserInfo">
-      <div className="postUserInfo-img">
+    <div className='postUserInfo'>
+      <div className='postUserInfo-img'>
         <img
-          className="profile"
+          className='profile'
           src={isImg !== null ? isImg : '/images/default-profile.jpg'}
         ></img>
       </div>
-      <p className="postNickname">{nickname}</p>
-      <div className="postUserInfo-container">
+      <p className='postNickname'>{nickname}</p>
+      <div className='postUserInfo-container'>
         <div
           onClick={() => {
             checkLoginStatus(() => {
@@ -99,19 +94,19 @@ const PostUserInfo = ({
             });
           }}
         >
-          <i className="far fa-comment-dots" style={{ color: '#56d0a0' }} />
+          <i className='far fa-comment-dots' style={{ color: '#56d0a0' }} />
           채팅하기
         </div>
         <div>
           <i
-            className="fas fa-thumbs-up"
+            className='fas fa-thumbs-up'
             style={{ color: interest }}
             onClick={changeInterest}
           />
           관심추가
         </div>
         <div>
-          <i className="far fa-eye" style={{ color: '#85878a' }}></i>
+          <i className='far fa-eye' style={{ color: '#85878a' }}></i>
           {view}
         </div>
       </div>

@@ -115,7 +115,6 @@ const Signup = ({ variation }) => {
         )
         .then((res) => {
           dispatch(setConfirmModal(true, '회원가입에 성공하셨습니다'));
-          console.log('확인모달');
           variation();
         })
         .catch((err) => {
@@ -127,55 +126,55 @@ const Signup = ({ variation }) => {
     }
   };
   return (
-    <div className="SignupMain">
-      <form className="SignupForm" onSubmit={handleSubmit}>
-        <p className="SignupP">Email</p>
-        <label className="SignupLabel">
+    <div className='SignupMain'>
+      <form className='SignupForm' onSubmit={handleSubmit}>
+        <p className='SignupP'>Email</p>
+        <label className='SignupLabel'>
           <input
-            placeholder="email"
-            type="email"
+            placeholder='email'
+            type='email'
             onChange={handleInputValue('email')}
             onKeyUp={validateEmail}
           ></input>
         </label>
-        <span className="SignupAlert">{emailMessage}</span>
-        <p className="SignupP">Nickname</p>
-        <label className="SignupLabel">
+        <span className='SignupAlert'>{emailMessage}</span>
+        <p className='SignupP'>Nickname</p>
+        <label className='SignupLabel'>
           <input
-            placeholder="nickname"
-            type="text"
+            placeholder='nickname'
+            type='text'
             onChange={handleInputValue('nickname')}
             onKeyUp={validateNickname}
           ></input>
         </label>
-        <span className="SignupAlert">{nicknameMessage}</span>
-        <p className="SignupP">Password</p>
-        <label className="SignupLabel">
+        <span className='SignupAlert'>{nicknameMessage}</span>
+        <p className='SignupP'>Password</p>
+        <label className='SignupLabel'>
           <input
-            placeholder="password"
-            type="password"
+            placeholder='password'
+            type='password'
             onChange={handleInputValue('password')}
-            placeholder="password"
+            placeholder='password'
             onKeyUp={validatePassword}
           ></input>
         </label>
-        <p className="SignupP">Password Check</p>
-        <label className="SignupLabel">
+        <p className='SignupP'>Password Check</p>
+        <label className='SignupLabel'>
           <input
-            placeholder="password check"
-            type="password"
+            placeholder='password check'
+            type='password'
             onChange={handleInputValue('passwordCheck')}
             onKeyUp={validatePassword}
           ></input>
         </label>
-        <span className="SignupAlert">{passwordMessage}</span>
-        <button className="SignupBtn" type="submit">
+        <span className='SignupAlert'>{passwordMessage}</span>
+        <button className='SignupBtn' type='submit'>
           회원가입
         </button>
       </form>
-      <div className="BackSignup">
+      <div className='BackSignup'>
         <label>계정이 있으신가요?</label>
-        <span className="SigninFormBtn" onClick={variation}>
+        <span className='SigninFormBtn' onClick={variation}>
           로그인
         </span>
       </div>

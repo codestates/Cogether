@@ -90,6 +90,6 @@ module.exports = async (req, res) => {
       message: 'update userinfo successed',
     });
   } catch (err) {
-    console.log('error', err);
+    console.log(err);
   }
 };

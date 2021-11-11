@@ -46,7 +46,6 @@ const ChatDiv = styled.div`
 `;
 
 function ChattingYou({ chat }) {
-  console.log('상대방입니다', chat);
   return (
     <Container>
       <ImgDiv>
@@ -60,8 +59,8 @@ function ChattingYou({ chat }) {
         />
       </ImgDiv>
       <ChatDiv>
-        <div className="nickname">{chat.User.nickname}</div>
-        <div className="message">{chat.content}</div>
+        <div className='nickname'>{chat.User.nickname}</div>
+        <div className='message'>{chat.content}</div>
       </ChatDiv>
     </Container>
   );

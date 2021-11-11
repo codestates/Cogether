@@ -24,12 +24,10 @@ const PostList = () => {
   };
 
   useEffect(() => {
-    console.log('Stack', isStack);
     if (isStack !== '') {
       axios
         .get(`${process.env.REACT_APP_API_URL}/posts/hashtags/${isStack}`)
         .then((res) => {
-          console.log('정상', res.data.data);
           let result = getFields(res.data.data, 'Post');
           setPosts(result);
           dispatch(setStack(''));
@@ -66,7 +64,6 @@ const PostList = () => {
   }
 
   const postDtail = (index) => {
-    console.log(posts);
     axios
       .patch(`${process.env.REACT_APP_API_URL}/posts/totalviews/${index}`)
       .then((res) => {
@@ -81,7 +78,6 @@ const PostList = () => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/posts`)
       .then((res) => {
-        console.log('정상적인 리스트', res);
         setPosts(res.data.data);
       })
       .catch((err) => {
@@ -97,11 +93,10 @@ const PostList = () => {
         },
       })
       .then((res) => {
-        console.log('성공', res);
         setPosts(res.data.data);
       })
       .catch((err) => {
-        console.log('에러');
+        console.log(err);
       });
   };
 
@@ -109,7 +104,6 @@ const PostList = () => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/posts/hotposts`)
       .then((res) => {
-        console.log('정상적인 리스트', res);
         setPosts(res.data.data);
       })
       .catch((err) => {
@@ -125,7 +119,6 @@ const PostList = () => {
         },
       })
       .then((res) => {
-        console.log('정상적인 리스트', res);
         let result = getFields(res.data.data, 'Post');
         setPosts(result);
       })

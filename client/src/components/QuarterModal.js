@@ -32,14 +32,13 @@ const QuarterModal = () => {
         },
       })
       .then((res) => {
-        console.log('성공');
         dispatch(setQuarterModal(false, ''));
         dispatch(setPostDelete(false));
         dispatch(setUserDelete(false));
         history.push('/');
       })
       .catch((err) => {
-        console.log('실패');
+        console.log(err);
       });
   };
 
@@ -51,35 +50,34 @@ const QuarterModal = () => {
         },
       })
       .then((res) => {
-        console.log('회원탈퇴 성공');
         dispatch(setIsLogin(false));
         dispatch(setQuarterModal(false, ''));
         history.push('/');
       })
       .catch((err) => {
-        console.log('회원탈퇴 실패');
+        console.log(err);
       });
   };
 
   return (
     <>
       {quarterModal.isOpen ? (
-        <div className="Modal">
-          <div className="ModalMain" />
-          <div className="ModalBox">
-            <div className="Modalcontent">{quarterModal.content}</div>
-            <div className="ModalBtnBox">
+        <div className='Modal'>
+          <div className='ModalMain' />
+          <div className='ModalBox'>
+            <div className='Modalcontent'>{quarterModal.content}</div>
+            <div className='ModalBtnBox'>
               {isPostDelete ? (
-                <button className="ModalBtn" onClick={handlePostDelete}>
+                <button className='ModalBtn' onClick={handlePostDelete}>
                   삭제
                 </button>
               ) : null}
               {isDelete ? (
-                <button className="ModalBtn" onClick={handleDelete}>
+                <button className='ModalBtn' onClick={handleDelete}>
                   회원 탈퇴
                 </button>
               ) : null}
-              <button className="ModalBtn" onClick={closeModal}>
+              <button className='ModalBtn' onClick={closeModal}>
                 아니요
               </button>
             </div>
