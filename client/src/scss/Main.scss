@@ -83,6 +83,16 @@
       margin-left: 0.75rem;
       font-size: 30px;
     }
+    .done {
+      margin-right: 0.75rem;
+      margin-left: 0.75rem;
+      font-size: 30px;
+      color: #ccc;
+    }
+    .done:hover {
+      transform: scale(1.06);
+      cursor: pointer;
+    }
     .languageItem:hover {
       transform: scale(1.06);
       // background: #fff;
