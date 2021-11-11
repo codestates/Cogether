@@ -4,7 +4,7 @@ const MainImage = ({ contents, imageLink }) => {
   return (
     <div className="MainImageContainer">
       <div className="arrow_box">
-        <div>
+        <div className="arrow_box-content">
           {contents.map((content, i) => (
             <div className="content" key={i}>
               {content}

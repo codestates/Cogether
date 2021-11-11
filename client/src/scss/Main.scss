@@ -18,8 +18,8 @@
   border: 4px solid #fff;
   padding: 0.1rem;
   border-radius: 45px;
-  div {
-    padding: 0.5rem;
+  .arrow_box-content {
+    padding: 1.5rem;
   }
 }
 .arrow_box:after,
@@ -49,8 +49,8 @@
 
 .content {
   font-size: 2.5rem;
-  font-weight: bolder;
-  line-height: 3rem;
+  // font-weight: bolder;
+  line-height: 4rem;
   margin-right: 0.1rem;
 }
 .content-img {
@@ -284,6 +284,12 @@
     height: auto;
     flex-wrap: wrap;
     margin-top: 2rem;
+    .nodata {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
     .postList-box {
       display: flex;
       flex-direction: column;
