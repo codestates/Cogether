@@ -3,7 +3,6 @@
   display: flex;
   align-items: center;
   width: 100%;
-
   .postUserInfo-img {
     max-width: 60px;
     max-height: 60px;
@@ -19,7 +18,7 @@
     }
   }
   .postNickname {
-    width: 550px;
+    width: 20rem;
   }
   .postUserInfo-container {
     display: flex;
@@ -47,11 +46,18 @@
 @media screen and (max-width: 700px) {
   .postUserInfo-container {
     div {
-      font-size: 0.7rem;
+      font-size: 0.6rem;
     }
   }
   .postUserInfo-img {
     min-width: 45px;
     height: 45px;
+  }
+  .postNickname {
+    font-size: 0.8rem;
+    max-width: 4rem;
+  }
+  .postUserInfo .postUserInfo-container i {
+    font-size: 0.7rem;
   }
 }
