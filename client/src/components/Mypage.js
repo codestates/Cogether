@@ -9,6 +9,7 @@ import {
   setUserInfo,
   setIsToggle,
   setIsActive,
+  setConfirmModal,
 } from '../actions/index';
 
 import '../scss/Mypage.scss';
@@ -20,9 +21,6 @@ const Mypage = () => {
   const [action, setAction] = useState(false);
   const { isActive, istoggle } = Toggle;
 
-  // useEffect(() => {
-  //   window.addEventListener('click', handleClickOutside);
-  // }, []);
   const toggleClass = () => {
     if (isActive === true && istoggle === true) {
       dispatch(setIsToggle(false));
@@ -34,11 +32,7 @@ const Mypage = () => {
       setAction(!action);
     }
   };
-  // const handleClickOutside = () => {
-  //   console.log('action클릭한곳');
-  //   dispatch(setIsToggle(false));
-  //   dispatch(setIsActive(false));
-  // };
+
   console.log(action);
   console.log('isActive', isActive);
   console.log('istoggle', istoggle);
@@ -58,6 +52,7 @@ const Mypage = () => {
         dispatch(setIsLogin(false));
         dispatch(setIsGoogleLogin(false));
         dispatch(setUserInfo({}));
+        dispatch(setConfirmModal(true, '로그아웃 되었습니다.'));
         history.push('/');
       })
       .catch((err) => {});

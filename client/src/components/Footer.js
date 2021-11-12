@@ -10,8 +10,12 @@ const Footer = () => {
     <div className="footer">
       <div className="footer-logo">
         <img
-          className="footer-img"
+          className="footer-img-full"
           src="./images/logo_cogether-removebg-preview.png"
+        ></img>
+        <img
+          className="footer-logo-small"
+          src="/images/favicon-removebg.png"
         ></img>
         <p>
           Co’ding + to’gether’을 합친 단어로
