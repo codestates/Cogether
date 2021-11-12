@@ -49,7 +49,7 @@
 }
 
 .ldio-92qnniqtgd div:nth-child(1) {
-  left: 15px;
+  left: 0px;
   animation: ldio-92qnniqtgd-1 1s cubic-bezier(0, 0.5, 0.5, 1) infinite;
   animation-delay: -0.7s;
 }
@@ -61,43 +61,43 @@
 }
 
 .ldio-92qnniqtgd div:nth-child(3) {
-  left: 95px;
+  left: 120px;
   animation: ldio-92qnniqtgd-3 1s cubic-bezier(0, 0.5, 0.5, 1) infinite;
   animation-delay: -0.5s;
 }
 
 .ldio-92qnniqtgd div:nth-child(4) {
-  left: 135px;
+  left: 180px;
   animation: ldio-92qnniqtgd-3 1s cubic-bezier(0, 0.5, 0.5, 1) infinite;
   animation-delay: -0.4s;
 }
 
 .ldio-92qnniqtgd div:nth-child(5) {
-  left: 170px;
+  left: 235px;
   animation: ldio-92qnniqtgd-3 1s cubic-bezier(0, 0.5, 0.5, 1) infinite;
   animation-delay: -0.3s;
 }
 
 .ldio-92qnniqtgd div:nth-child(6) {
-  left: 205px;
+  left: 290px;
   animation: ldio-92qnniqtgd-3 1s cubic-bezier(0, 0.5, 0.5, 1) infinite;
   animation-delay: -0.2s;
 }
 
 .ldio-92qnniqtgd div:nth-child(7) {
-  left: 245px;
+  left: 350px;
   animation: ldio-92qnniqtgd-3 1s cubic-bezier(0, 0.5, 0.5, 1) infinite;
   animation-delay: -0.1s;
 }
 
 .ldio-92qnniqtgd div:nth-child(8) {
-  left: 280px;
+  left: 400px;
   animation: ldio-92qnniqtgd-3 1s cubic-bezier(0, 0.5, 0.5, 1) infinite;
   animation-delay: undefineds;
 }
 
 .loadingio-spinner-pulse-h7kngj9d4p {
-  width: 380px;
+  width: 550px;
   height: 200px;
   display: inline-block;
   overflow: hidden;
@@ -115,6 +115,11 @@
 
 .ldio-92qnniqtgd div {
   box-sizing: content-box;
+  padding: 1.5rem;
+  font-size: 85px;
+  background: linear-gradient(to right top, #c48eee, #eac6f8);
+  color: transparent;
+  -webkit-background-clip: text;
 }
 
 #Loading {
