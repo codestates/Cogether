@@ -52,7 +52,7 @@ module.exports = async (req, res) => {
         message: 'create chatroom successed',
       });
     } else if (isChatroom.length === 1) {
-      return res.status(200).send({
+      return res.status(201).send({
         data: {
           chatroomId: isChatroom[0],
           myId,
