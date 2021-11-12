@@ -43,9 +43,9 @@ const Main = () => {
     <div>
       <div className="main-container">
         <MainImage
-          contents={['Cogether에서', '자기개발과 프로젝트를', '시작해보세요']}
+          contents={['Cogether에서', '자기개발과 프로젝트를', '시작해 보세요.']}
           subcontents={['코딩을 직업으로 하는 당신은 더 이상 혼자가 아닙니다.']}
-          imageLink={'images/MainPage.svg'}
+          // imageLink={'pc.png'}
         />
       </div>
       <div className="mainLanguageBar">
