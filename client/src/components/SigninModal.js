@@ -29,7 +29,7 @@ const SigninModal = () => {
       {isSigninModalOpen ? (
         <div className="SigninModal">
           <div className="ModalMain" onClick={closeModal} />
-          <div className={confirmModal.isOpen ? 'ModalBox-block' : 'ModalBox'}>
+          <div className={confirmModal.isOpen ? 'DubleModalBox' : 'ModalBox'}>
             <>
               {isSignin ? (
                 <Signin variation={HandlerSignin} />
