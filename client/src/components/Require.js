@@ -29,7 +29,6 @@ const Require = () => {
         })
         .then((res) => {
           dispatch(setConfirmModal(true, '소중한 평가 감사합니다.'));
-          console.log('평가 성공');
         })
         .catch((err) => {
           console.log(err);

@@ -33,9 +33,6 @@ const Mypage = () => {
     }
   };
 
-  console.log(action);
-  console.log('isActive', isActive);
-  console.log('istoggle', istoggle);
   const logOutHandler = async () => {
     await axios
       .post(
