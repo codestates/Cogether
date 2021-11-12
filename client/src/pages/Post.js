@@ -106,7 +106,7 @@ const Post = () => {
       })
       .catch((err) => {
         console.log(err);
-        dispatch(setConfirmModal(true, '로그인 후 이용가능 합니다.'));
+        dispatch(setConfirmModal(true, '로그인 후 이용 가능합니다.'));
       });
   };
 

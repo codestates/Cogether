@@ -46,7 +46,7 @@ const PostUserInfo = ({
         )
         .then((res) => {})
         .catch((err) => {
-          dispatch(setConfirmModal(true, '로그인 후 이용가능 합니다.'));
+          dispatch(setConfirmModal(true, '로그인 후 이용 가능합니다.'));
         });
     } else {
       axios
@@ -69,7 +69,7 @@ const PostUserInfo = ({
     if (isLogin) {
       callback();
     } else {
-      dispatch(setConfirmModal(true, '로그인 후 이용가능 합니다.'));
+      dispatch(setConfirmModal(true, '로그인 후 이용 가능합니다.'));
     }
     return;
   };
