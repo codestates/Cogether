@@ -8,6 +8,7 @@ import '../scss/Require.scss';
 const Require = () => {
   const [content, setContent] = useState('');
   const [rate, setRate] = useState('');
+  const [action, setAction] = useState(false);
   const dispatch = useDispatch();
 
   const rateHandler = (e) => {
@@ -19,6 +20,7 @@ const Require = () => {
   };
 
   const onSubmit = () => {
+    setAction(true);
     if (content && rate) {
       axios
         .post(`${process.env.REACT_APP_API_URL}/evaluations`, {
@@ -38,8 +40,8 @@ const Require = () => {
   };
 
   return (
-    <div className='RequireMain'>
-      <div className='RequireHeader'>
+    <div className="RequireMain">
+      <div className="RequireHeader">
         더 좋은 서비스를 위해 Cogether에게 평가를 남겨주세요!
       </div>
       <div>
@@ -48,14 +50,14 @@ const Require = () => {
           count={5}
           onChange={rateHandler}
           size={70}
-          activeColor='#870cec'
+          activeColor="#870cec"
           value={rate}
         />
       </div>
-      <div className='RequireFooter'>
+      <div className="RequireFooter">
         <textarea
           onChange={(e) => contentHandler(e)}
-          placeholder='여기에 평가를 남겨주세요'
+          placeholder="여기에 평가를 남겨주세요"
         />
         <button onClick={onSubmit}>제출 하기</button>
       </div>
