@@ -1,4 +1,4 @@
-const { Post_comment } = require('../../models');
+const { Post_comment, Post } = require('../../models');
 const { isAuthorized } = require('../../utils/helpFunc');
 
 module.exports = async (req, res) => {
@@ -12,6 +12,23 @@ module.exports = async (req, res) => {
   }
 
   try {
+    const comment = await Post_comment.findOne({
+      where: {
+        id,
+      },
+    });
+
+    const post = await Post.findOne({
+      where: {
+        userId: auth.id,
+        id: comment.postId,
+      },
+    });
+
+    post.totalComments = post.totalComments - 1;
+
+    await post.save();
+
     await Post_comment.destroy({
       where: {
         id,
