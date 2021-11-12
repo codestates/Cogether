@@ -49,7 +49,7 @@ module.exports = async (req, res) => {
         message: 'get all chatrooms successed',
       });
     } else {
-      return res.status(200).send({
+      return res.status(400).send({
         data: null,
         message: 'chatroom is not exist',
       });

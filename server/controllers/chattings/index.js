@@ -24,7 +24,10 @@ module.exports = {
         ],
       });
 
-      return res.status(200).send({ data: chattingData, message: '성공' });
+      return res.status(200).send({
+        data: chattingData,
+        message: 'get all chat data successed',
+      });
     } catch (error) {
       console.error(error);
     }
