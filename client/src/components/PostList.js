@@ -163,6 +163,7 @@ const PostList = () => {
         dispatch(setIsValue(0));
       });
   };
+
   return (
     <div className="postMain">
       {isLogin ? (

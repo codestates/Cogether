@@ -124,10 +124,10 @@ const Write = () => {
   return (
     <section className='writeContainer'>
       <input
-        className='titleInput'
-        type='text'
-        maxLength='30'
-        placeholder='제목을 입력하세요'
+        className="titleInput"
+        type="text"
+        maxLength="30"
+        placeholder="제목을 입력하세요"
         onChange={TitleChange}
         value={title || ''}
       />
