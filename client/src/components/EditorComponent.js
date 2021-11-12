@@ -41,7 +41,7 @@ class EditorComponent extends Component {
 
   render() {
     const { value, postEdit, onChange, isRead } = this.props;
-
+    console.log(value);
     return (
       <div style={{ height: '550px', marginBottom: '1rem' }}>
         {isRead === true ? (
