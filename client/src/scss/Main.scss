@@ -22,8 +22,8 @@
   // font-weight: bolder;
   line-height: 4rem;
   margin-right: 0.1rem;
-  -webkit-animation: fade-in-top 0.8s linear both;
-  animation: fade-in-top 0.8s linear both;
+  -webkit-animation: fade-in-top 2.5s linear both;
+  animation: fade-in-top 2.5s linear both;
 }
 @keyframes fade-in-top {
   0% {
@@ -40,8 +40,8 @@
 
 .subcontent {
   margin-top: 0.3rem;
-  -webkit-animation: fade-in-top 1.5s linear both;
-  animation: fade-in-top 1.5s linear both;
+  -webkit-animation: fade-in-top 3.4s linear both;
+  animation: fade-in-top 3.4s linear both;
 }
 
 .content-img {
@@ -142,6 +142,14 @@
   bottom: 2rem;
   color: #c48eee;
 }
+.topScroll {
+  position: fixed;
+  z-index: 10;
+  right: 2rem;
+  bottom: 7rem;
+  color: #c48eee;
+}
+.topScroll,
 .fa-chevron-circle-up:hover {
   cursor: pointer;
 }

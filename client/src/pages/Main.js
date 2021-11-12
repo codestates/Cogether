@@ -3,7 +3,6 @@ import Footer from '../components/Footer';
 import LanguageBar from '../components/LanguageBar';
 import MainImage from '../components/MainImage';
 import PostList from '../components/PostList';
-import PostView from '../components/PostView';
 import GoTop from '../components/GoTop';
 import { useSelector, useDispatch } from 'react-redux';
 import { setUserInfo } from '../actions/index';
@@ -39,6 +38,7 @@ const Main = () => {
       }, 200);
     }
   }, []);
+
   return (
     <div>
       <div className="main-container">
@@ -47,7 +47,6 @@ const Main = () => {
           subcontents={['코딩을 직업으로 하는 당신은 더 이상 혼자가 아닙니다.']}
           imageLink={'images/MainPage.svg'}
         />
-        <PostView />
       </div>
       <div className="mainLanguageBar">
         <LanguageBar />

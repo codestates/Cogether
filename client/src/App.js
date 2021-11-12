@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.scss';
 import Nav from './components/Nav';
@@ -11,13 +12,19 @@ import Setting from './pages/Setting';
 import Write from './pages/Write';
 import Chatlist from './pages/Chatlist';
 import ChattingPage from './pages/ChattingPage';
+import Loading from './components/Loading';
 
 function App() {
-  const token = localStorage.accessToken;
+  const [isLoading, setIsLoading] = useState(true);
   const url = new URL(window.location.href);
   const href = url.href;
   const accessToken = href.split('=')[1];
 
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+  }, []);
   if (accessToken) {
     localStorage.setItem('accessToken', accessToken);
     window.location.href = `${process.env.REACT_APP_DOMAIN}`;
@@ -25,7 +32,8 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className='appContainer'>
+      {isLoading ? <Loading /> : null}
+      <div className="appContainer">
         <ConfirmModal />
         <QuarterModal />
         <SigninModal />
@@ -33,25 +41,25 @@ function App() {
         <Nav />
 
         <Switch>
-          <Route exact path='/'>
+          <Route exact path="/">
             <Main />
           </Route>
-          <Route exact path='/write'>
+          <Route exact path="/write">
             <Write />
           </Route>
-          <Route exact path='/setting'>
+          <Route exact path="/setting">
             <Setting />
           </Route>
-          <Route exact path='/post/:postId'>
+          <Route exact path="/post/:postId">
             <Post />
           </Route>
-          <Route exact path='/write/:postId'>
+          <Route exact path="/write/:postId">
             <Write />
           </Route>
-          <Route exact path='/chatlist'>
+          <Route exact path="/chatlist">
             <Chatlist />
           </Route>
-          <Route exact path='/chatlist/:id'>
+          <Route exact path="/chatlist/:id">
             <ChattingPage />
           </Route>
         </Switch>
