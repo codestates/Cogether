@@ -32,6 +32,10 @@ module.exports = async (req, res) => {
       comment,
     });
 
+    post.totalComments = post.totalComments + 1;
+
+    await post.save();
+
     const commentData = await Post_comment.findOne({
       where: {
         id: createcomment.id,

@@ -122,7 +122,7 @@ const Write = () => {
     history.push('/');
   };
   return (
-    <section className="writeContainer">
+    <section className='writeContainer'>
       <input
         className="titleInput"
         type="text"
@@ -131,14 +131,14 @@ const Write = () => {
         onChange={TitleChange}
         value={title || ''}
       />
-      <div className="writeLanguages">
+      <div className='writeLanguages'>
         <h2>사용 언어 : </h2>
         <LanguageSelect setLanguage={setLanguage} />
       </div>
-      <div className="writeEditor">
+      <div className='writeEditor'>
         <Editor value={desc || ''} onChange={onEditorChange} />
       </div>
-      <div className="writBtn">
+      <div className='writBtn'>
         <button onClick={cancel}>취소</button>
         {detailId.postId ? (
           <button onClick={editPost}>저장</button>

@@ -1,4 +1,4 @@
-const { User, Post, Post_hashtag, Post_comment } = require('../../models');
+const { User, Post, Post_hashtag } = require('../../models');
 const { isAuthorized } = require('../../utils/helpFunc');
 
 module.exports = async (req, res) => {
@@ -37,12 +37,6 @@ module.exports = async (req, res) => {
       });
     });
 
-    const totalComments = await Post_comment.count({
-      where: {
-        postId: post.id,
-      },
-    });
-
     res.status(200).send({
       data: {
         id: post.id,
@@ -53,7 +47,7 @@ module.exports = async (req, res) => {
         mainstack: stacks[0],
         totalViews: post.totalViews,
         totalInterests: post.totalInterests,
-        totalComments: totalComments,
+        totalComments: post.totalComments,
         updatedAt: post.updatedAt,
         createdAt: post.createdAt,
       },
