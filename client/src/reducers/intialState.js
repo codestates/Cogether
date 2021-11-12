@@ -28,4 +28,5 @@ export const initialState = {
   },
   isActive: false,
   istoggle: false,
+  isValue: '',
 };

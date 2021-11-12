@@ -88,7 +88,7 @@ const Write = () => {
   };
 
   const editPost = () => {
-    if (title !== '' && desc !== '' && !result.includes(NaN)) {
+    if (title !== '' && desc !== '<p><br></p>' && !result.includes(NaN)) {
       axios
         .patch(
           `${process.env.REACT_APP_API_URL}/posts/${detailId.postId}`,
@@ -126,7 +126,7 @@ const Write = () => {
       <input
         className="titleInput"
         type="text"
-        maxLength="30"
+        maxlength="30"
         placeholder="제목을 입력하세요"
         onChange={TitleChange}
         value={title || ''}

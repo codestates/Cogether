@@ -1,4 +1,5 @@
 import React from 'react';
+import PostView from './PostView';
 
 const MainImage = ({ contents, imageLink, subcontents }) => {
   return (
@@ -14,6 +15,7 @@ const MainImage = ({ contents, imageLink, subcontents }) => {
             {content}
           </div>
         ))}
+        <PostView />
       </div>
       <img className="content-img" src={imageLink} alt=""></img>
     </div>
