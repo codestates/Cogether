@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setConfirmModal, setIsReplace } from '../actions';
+import '../scss/Modal.scss';
 
 const ConfirmModal = () => {
   const confirm = useSelector((state) => state.messageReducer);
@@ -21,7 +22,7 @@ const ConfirmModal = () => {
     <>
       {confirmModal.isOpen ? (
         <div className="Modal">
-          <div className="ModalMain" />
+          <div className={confirmModal.isOpen ? 'DubleModal' : 'ModalMain'} />
           <div className="ConfirmModalBox">
             <div className="Modalcontent">{confirmModal.content}</div>
             <button className="ModalBtn" onClick={closeModal}>
