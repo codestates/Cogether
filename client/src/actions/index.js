@@ -16,6 +16,7 @@ export const SET_IS_REPLACE = 'SET_IS_REPLACE';
 export const SET_USERINFO = 'SET_USERINFO';
 export const SET_IS_ACTIVE = 'SET_IS_ACTIVE';
 export const SET_IS_TOGGLE = 'SET_IS_TOGGLE';
+export const SET_TOGGLE_VALUE = 'SET_TOGGLE_VALUE';
 
 export const setIsLogin = (isLogin) => {
   return {
@@ -158,5 +159,12 @@ export const setIsToggle = (istoggle) => {
     payload: {
       istoggle,
     },
+  };
+};
+
+export const setIsValue = (content) => {
+  return {
+    type: SET_TOGGLE_VALUE,
+    payload: content,
   };
 };

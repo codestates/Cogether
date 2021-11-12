@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useHistory } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState, useEffect } from 'react';
-import { setStack } from '../actions';
+import { setStack, setIsValue } from '../actions';
 
 const PostList = () => {
   const history = useHistory();
@@ -104,10 +104,12 @@ const PostList = () => {
       .get(`${process.env.REACT_APP_API_URL}/posts`)
       .then((res) => {
         setPosts(res.data.data);
+        dispatch(setIsValue(0));
       })
       .catch((err) => {
         console.log(err);
         setPosts();
+        dispatch(setIsValue(0));
       });
   };
 
@@ -120,10 +122,12 @@ const PostList = () => {
       })
       .then((res) => {
         setPosts(res.data.data);
+        dispatch(setIsValue(0));
       })
       .catch((err) => {
         console.log(err);
         setPosts();
+        dispatch(setIsValue(0));
       });
   };
 
@@ -132,10 +136,12 @@ const PostList = () => {
       .get(`${process.env.REACT_APP_API_URL}/posts/hotposts`)
       .then((res) => {
         setPosts(res.data.data);
+        dispatch(setIsValue(0));
       })
       .catch((err) => {
         console.log(err);
         setPosts();
+        dispatch(setIsValue(0));
       });
   };
 
@@ -149,10 +155,12 @@ const PostList = () => {
       .then((res) => {
         let result = getFields(res.data.data, 'Post');
         setPosts(result);
+        dispatch(setIsValue(0));
       })
       .catch((err) => {
         console.log(err);
         setPosts();
+        dispatch(setIsValue(0));
       });
   };
   return (
