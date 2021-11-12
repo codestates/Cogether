@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function GoTop() {
   const [scrollPosition, setScrollPosition] = useState(window.scrollY);
   const handleScroll = () => {
     setScrollPosition(window.scrollY);
   };
-  window.addEventListener('scroll', handleScroll);
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <>
       {scrollPosition === 0 ? null : scrollPosition > 980 ? (
