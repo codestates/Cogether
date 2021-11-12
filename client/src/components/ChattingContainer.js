@@ -5,7 +5,12 @@ import styled from 'styled-components';
 import Rooms from './Rooms';
 
 const ImgDiv = styled.div`
-  text-align: center;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
 `;
 
 const DivContainer = styled.div`
@@ -36,8 +41,7 @@ const ChattingContainer = () => {
   if (!data)
     return (
       <ImgDiv>
-        <div>채팅 목록이 없습니다.</div>
-        <img src='/images/No_data.svg' alt='' />
+        <h2>채팅 목록이 없습니다.</h2>
       </ImgDiv>
     );
   return (
