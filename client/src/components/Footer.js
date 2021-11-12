@@ -14,8 +14,6 @@ const Footer = () => {
           src="./images/logo_cogether-removebg-preview.png"
         ></img>
         <p>
-          Cogether는’
-          <br />
           Co’ding + to’gether’을 합친 단어로
           <br /> 함께하는 코딩을 추구하는 웹 서비스입니다.
         </p>
@@ -35,9 +33,13 @@ const Footer = () => {
         ABOUT US
         <p>깃헙 레포지토리</p>
       </div>
-      <div>
+      <div className="members-box">
         TEAM MEMBERS
-        <p>팀원소개</p>
+        <div className="members">
+          <p>박세희</p>
+          <p>임정명</p>
+          <p>한은태</p>
+        </div>
       </div>
     </div>
   );

@@ -169,55 +169,58 @@ const Post = () => {
   };
 
   const Postlist = () => {
-    history.push('/');
+    history.push({
+      pathname: '/',
+      state: detailId.postId,
+    });
   };
 
   return (
-    <div className='post' ref={containerRef}>
-      <div className='postContainer'>
-        <section className='postHeader'>
-          <div className='postTitle'>{postTitle}</div>
+    <div className="post" ref={containerRef}>
+      <div className="postContainer">
+        <section className="postHeader">
+          <div className="postTitle">{postTitle}</div>
         </section>
-        <section className='postControl'>
-          <div className='postControl-btn'>
+        <section className="postControl">
+          <div className="postControl-btn">
             {isAuthor ? (
-              <button className='postedit' onClick={editWrite}>
+              <button className="postedit" onClick={editWrite}>
                 수정
               </button>
             ) : null}
             {isAuthor ? (
-              <button className='postdelete' onClick={deletePost}>
+              <button className="postdelete" onClick={deletePost}>
                 삭제
               </button>
             ) : null}
-            <button className='postlist' onClick={Postlist}>
+            <button className="postlist" onClick={Postlist}>
               목록
             </button>
           </div>
 
-          <span>{postDate.substring(0, 10)}</span>
+          <span>등록일 : {postDate.substring(0, 10)}</span>
         </section>
 
-        <div className='postLanguages'>
+        <div className="postLanguages">
           <h2>사용 언어 : </h2>
-          <div className='postLanguages-view'>
+          <div className="postLanguages-view">
             {postStack.map((stack, idx) => {
               return <div key={idx}>{stack}</div>;
             })}
           </div>
-          <div className='postLanguages-edit'>
+          <div className="postLanguages-edit">
             <LanguageSelect setLanguage={setLanguage} />
           </div>
         </div>
 
-        <div className='postEditor'>
+        <div className="postEditor">
           <Editor
             value={postContent || ''}
             postEdit={postEdit}
             isRead={isRead}
           />
         </div>
-        <div className='postUser'>
+        <div className="postUser">
           <PostUserInfo
             nickname={postNickname}
             isImg={isImg}
@@ -228,7 +231,7 @@ const Post = () => {
           />
         </div>
 
-        <div className='postComment'>
+        <div className="postComment">
           <Comment
             comments={comments}
             uploadComment={uploadComment}

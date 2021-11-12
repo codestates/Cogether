@@ -9,6 +9,8 @@ import {
   SET_USER_STACK,
   SET_IS_REPLACE,
   SET_USERINFO,
+  SET_IS_ACTIVE,
+  SET_IS_TOGGLE,
 } from '../actions/index';
 import { initialState } from './intialState';
 
@@ -60,6 +62,14 @@ const itemReducer = (state = initialState, action) => {
     case SET_USERINFO:
       return Object.assign({}, state, {
         userInfo: action.payload,
+      });
+    case SET_IS_ACTIVE:
+      return Object.assign({}, state, {
+        isActive: action.payload.isActive,
+      });
+    case SET_IS_TOGGLE:
+      return Object.assign({}, state, {
+        istoggle: action.payload.istoggle,
       });
     default:
       return state;

@@ -4,39 +4,76 @@ import { setStack } from '../actions';
 
 const LanguageBar = () => {
   const dispatch = useDispatch();
-  const [value, setValue] = useState('1');
+  const [value, setValue] = useState(0);
   const test = (e) => {
     setValue(e.target.value);
     dispatch(setStack(e.target.value));
   };
+
   return (
     <div className="languageContainer">
       <ul className="languageBar">
-        <li className="languageItem" value="1" onClick={test}>
+        <li
+          className={value === 1 || value === 0 ? 'languageItem' : 'done'}
+          value="1"
+          onClick={test}
+        >
           JavaScript
         </li>
-        <li className="languageItem" value="2" onClick={test}>
+        <li
+          className={value === 2 || value === 0 ? 'languageItem' : 'done'}
+          value="2"
+          onClick={test}
+        >
           TypeScript
         </li>
-        <li className="languageItem" value="3" onClick={test}>
+        <li
+          className={value === 3 || value === 0 ? 'languageItem' : 'done'}
+          value="3"
+          onClick={test}
+        >
           React
         </li>
-        <li className="languageItem" value="4" onClick={test}>
+        <li
+          className={value === 4 || value === 0 ? 'languageItem' : 'done'}
+          value="4"
+          onClick={test}
+        >
           NodeJS
         </li>
-        <li className="languageItem" value="5" onClick={test}>
+        <li
+          className={value === 5 || value === 0 ? 'languageItem' : 'done'}
+          value="5"
+          onClick={test}
+        >
           Python
         </li>
-        <li className="languageItem" value="6" onClick={test}>
+        <li
+          className={value === 6 || value === 0 ? 'languageItem' : 'done'}
+          value="6"
+          onClick={test}
+        >
           Django
         </li>
-        <li className="languageItem" value="7" onClick={test}>
+        <li
+          className={value === 7 || value === 0 ? 'languageItem' : 'done'}
+          value="7"
+          onClick={test}
+        >
           C
         </li>
-        <li className="languageItem" value="8" onClick={test}>
+        <li
+          className={value === 8 || value === 0 ? 'languageItem' : 'done'}
+          value="8"
+          onClick={test}
+        >
           Java
         </li>
-        <li className="languageItem" value="9" onClick={test}>
+        <li
+          className={value === 9 || value === 0 ? 'languageItem' : 'done'}
+          value="9"
+          onClick={test}
+        >
           MySQL
         </li>
       </ul>
