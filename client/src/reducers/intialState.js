@@ -26,4 +26,6 @@ export const initialState = {
     nickname: '',
     image: '',
   },
+  isActive: false,
+  istoggle: false,
 };

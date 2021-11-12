@@ -33,6 +33,7 @@ const PostList = () => {
         })
         .catch((err) => {
           console.log(err);
+          setPosts();
         });
     }
   }, [isStack]);
@@ -57,6 +58,31 @@ const PostList = () => {
         return (state = './images/languages/java.png');
       case 9:
         return (state = './images/languages/sql.png');
+      default:
+        return state;
+    }
+  }
+
+  function label(state = '', action) {
+    switch (action) {
+      case 1:
+        return 'JavaScript';
+      case 2:
+        return 'TypeScript';
+      case 3:
+        return 'React';
+      case 4:
+        return 'NodeJS';
+      case 5:
+        return 'Python';
+      case 6:
+        return 'Django';
+      case 7:
+        return 'C';
+      case 8:
+        return 'Java';
+      case 9:
+        return 'MySQL';
       default:
         return state;
     }
@@ -177,14 +203,15 @@ const PostList = () => {
                   onClick={() => postDtail(data.id)}
                 >
                   <div className="postList-title">
-                    {data?.title.length > 9 ? (
-                      <p>{data?.title.substring(0, 9) + '...'}</p>
+                    {data?.title.length > 13 ? (
+                      <p>{data?.title.substring(0, 10) + '...'}</p>
                     ) : (
                       <p>{data?.title}</p>
                     )}
                   </div>
                   <div className="postList-img">
                     <img src={reducer('', data?.mainstack)} />
+                    <p>{label('', data?.mainstack)}</p>
                   </div>
                   <div className="postListContainer-bottom">
                     <div className="list-bottom">

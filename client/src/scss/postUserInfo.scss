@@ -28,6 +28,9 @@
     width: 100%;
     div {
       margin: 0.1rem;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
     }
     .postClick:hover {
       color: $color-button;
