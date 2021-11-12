@@ -169,8 +169,10 @@ const Post = () => {
   };
 
   const Postlist = () => {
-    history.push('/');
-    window.scrollTo({ top: 800, behavior: 'smooth' });
+    history.push({
+      pathname: '/',
+      state: detailId.postId,
+    });
   };
 
   return (

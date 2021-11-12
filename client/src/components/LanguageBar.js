@@ -9,7 +9,7 @@ const LanguageBar = () => {
     setValue(e.target.value);
     dispatch(setStack(e.target.value));
   };
-  console.log(value);
+
   return (
     <div className="languageContainer">
       <ul className="languageBar">

@@ -14,6 +14,8 @@ export const SET_POST_ID = 'SET_POST_ID';
 export const SET_USER_STACK = 'SET_USER_STACK';
 export const SET_IS_REPLACE = 'SET_IS_REPLACE';
 export const SET_USERINFO = 'SET_USERINFO';
+export const SET_IS_ACTIVE = 'SET_IS_ACTIVE';
+export const SET_IS_TOGGLE = 'SET_IS_TOGGLE';
 
 export const setIsLogin = (isLogin) => {
   return {
@@ -137,6 +139,24 @@ export const setUserInfo = (userInfo) => {
     type: SET_USERINFO,
     payload: {
       ...userInfo,
+    },
+  };
+};
+
+export const setIsActive = (isActive) => {
+  return {
+    type: SET_IS_ACTIVE,
+    payload: {
+      isActive,
+    },
+  };
+};
+
+export const setIsToggle = (istoggle) => {
+  return {
+    type: SET_IS_TOGGLE,
+    payload: {
+      istoggle,
     },
   };
 };
