@@ -88,6 +88,11 @@
   display: flex;
   justify-content: flex-end;
 }
+
+.fa-trash-alt:hover {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 700px) {
   .comment-img {
     width: 45px;
