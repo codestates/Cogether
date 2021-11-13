@@ -1,8 +1,8 @@
 <div >
 
+# 💁🏻Service Introduction
+  
 ![](https://user-images.githubusercontent.com/77868874/138618613-c149d389-a151-4e3a-87e2-b68e861a5741.png)  
-
-  # 💁🏻Service Introduction
 
 🙆🏻 **스터디, 사이드 프로젝트, 모각코 팀원을 가장 쉽게 구할 수 있는 곳.**
 
@@ -22,12 +22,14 @@
 
 ### 🙌🏻 [Cogether 이용 해보기](https://cogether.link) 🙌🏻
   
-<br/>  
+<br/>
+<br/>
   
 # 💻 Tech Stack
 
 <img width="800" alt="스크린샷 2021-11-13 오후 5 58 51" src="https://user-images.githubusercontent.com/83830283/141612795-969bfb08-a0e3-486c-9697-67dd44129720.png">
 
+<br/>
 <br/>
   
 # ➡️ Flow Chart
@@ -41,6 +43,7 @@
 
 <img width="800" alt="스크린샷 2021-11-13 오후 11 30 16" src="https://user-images.githubusercontent.com/83830283/141647568-c265bf8c-e637-4aed-ab3d-381b14137004.png">
 
+<br/>
 <br/>
   
 # 🖥️ Final Web View
@@ -83,7 +86,7 @@
 </details>
   
 
-  
+<br/>
 <br/>
   
 # 👨🏻‍💻 Team Members
