@@ -61,13 +61,13 @@
 
 # ❓ More Information
   
-### [Cogether Link](https://cogether.link)
+### [프로젝트 배포 링크](https://cogether.link)
   
-### [프로젝트 소개 문서]()
+### [프로젝트 노션](https://www.notion.so/19-BERA31-Cogether-d246f3626eac4b4fabe81eaf96c43d02)
   
-### [Cogether Wiki]()
+### [프로젝트 위키](https://github.com/codestates/Cogether/wiki)
   
-### [Cogether Log](https://github.com/codestates/Cogether/projects)
+### [프로젝트 로그](https://github.com/codestates/Cogether/projects)
   
   
 </div>
