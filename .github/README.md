@@ -54,9 +54,7 @@
 | 임정명 |   팀원   | Front-End |    <a href="https://github.com/wjdaud107"><img src="https://img.shields.io/badge/wjdaud107-C48EEE?style=for-the-badge&logo=github&logoColor=black&link=https://github.com/wjdaud107"></a>        |
 | 한은태 |   팀원   | Front-End  |            <a href="https://github.com/Hans160"><img src="https://img.shields.io/badge/hans160-C48EEE?style=for-the-badge&logo=github&logoColor=black&link=https://github.com/Hans160"></a>        |
 
-### [프로젝트 기간 동안의 팀 Log를 공유합니다 !](https://github.com/codestates/Cogether/projects)
 
-<img width="1228" alt="스크린샷 2021-11-13 오후 7 09 38" src="https://user-images.githubusercontent.com/83830283/141614739-ab8175ea-a846-4333-9ec6-73150dd14ae7.png">
 
 
 <br/>
@@ -68,6 +66,8 @@
 ### [프로젝트 소개 문서]()
   
 ### [Cogether Wiki]()
+  
+### [Cogether Log](https://github.com/codestates/Cogether/projects)
   
   
 </div>
