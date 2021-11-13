@@ -22,8 +22,8 @@ const Footer = () => {
           <br /> 함께하는 코딩을 추구하는 웹 서비스입니다.
         </p>
       </div>
-      <div>
-        CONTACT
+      <div className="contact">
+        <p>CONTACT</p>
         <p
           className="footer-contact"
           onClick={() => {
@@ -33,16 +33,16 @@ const Footer = () => {
           서비스평가
         </p>
       </div>
-      <div>
-        ABOUT US
-        <p>깃헙 레포지토리</p>
+      <div className="aboutUs">
+        <p>ABOUT US</p>
+        <a href="https://github.com/codestates/Cogether">Our Repository</a>
       </div>
       <div className="members-box">
-        TEAM MEMBERS
+        <p>TEAM MEMBERS</p>
         <div className="members">
-          <p>박세희</p>
-          <p>임정명</p>
-          <p>한은태</p>
+          <a href="https://github.com/Sehee-Park-93">Se hee</a>
+          <a href="https://github.com/wjdaud107">Lim Jung Myeong</a>
+          <a href="https://github.com/Hans160">Han Eun Tae</a>
         </div>
       </div>
     </div>
