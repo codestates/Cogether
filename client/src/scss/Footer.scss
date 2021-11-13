@@ -23,30 +23,67 @@
       display: none;
     }
   }
-  .footer-contact {
-    cursor: pointer;
-    margin-right: 0.5rem;
+  .contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    p {
+      font-weight: bolder;
+    }
+    .footer-contact {
+      font-weight: normal;
+      font-size: smaller;
+      cursor: pointer;
+      margin-right: 0.5rem;
+    }
+
+    .footer-contact:hover {
+      color: $color-button;
+    }
   }
 
-  .footer-contact:hover {
-    color: $color-button;
+  .aboutUs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      font-weight: bolder;
+    }
+    a {
+      font-size: smaller;
+    }
   }
   .members-box {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    p {
+      font-weight: bolder;
+    }
+    a {
+      font-size: smaller;
+    }
     .members {
       display: flex;
       flex-direction: column;
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      p {
-        margin: 0 1rem;
-      }
     }
   }
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  color: $color-button;
 }
 
 @media screen and (max-width: 700px) {
