@@ -13,14 +13,14 @@ function GoTop() {
     <>
       {scrollPosition === 0 ? null : scrollPosition > 980 ? (
         <i
-          className="fas fa-chevron-circle-up fa-3x topScroll"
+          className='fas fa-chevron-circle-up fa-3x topScroll'
           onClick={() =>
             window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
           }
         ></i>
       ) : (
         <i
-          className="fas fa-chevron-circle-up fa-3x"
+          className='fas fa-chevron-circle-up fa-3x'
           onClick={() =>
             window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
           }
