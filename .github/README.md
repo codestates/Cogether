@@ -1,4 +1,4 @@
-<div align="center">
+<div >
 
 ![](https://user-images.githubusercontent.com/77868874/138618613-c149d389-a151-4e3a-87e2-b68e861a5741.png)  
 
@@ -26,22 +26,63 @@
   
 # 💻 Tech Stack
 
-<img width="600" alt="스크린샷 2021-11-13 오후 5 58 51" src="https://user-images.githubusercontent.com/83830283/141612795-969bfb08-a0e3-486c-9697-67dd44129720.png">
+<img width="800" alt="스크린샷 2021-11-13 오후 5 58 51" src="https://user-images.githubusercontent.com/83830283/141612795-969bfb08-a0e3-486c-9697-67dd44129720.png">
 
 <br/>
   
 # ➡️ Flow Chart
 
 ### Client Side Flow Chart
+  
+<img width="800" alt="스크린샷 2021-11-13 오후 11 24 01" src="https://user-images.githubusercontent.com/83830283/141647440-50f40fbf-5f9b-4128-a068-2d494488cb12.png">
 
 
 ### Server Side Flow Chart
+
+<img width="800" alt="스크린샷 2021-11-13 오후 11 30 16" src="https://user-images.githubusercontent.com/83830283/141647568-c265bf8c-e637-4aed-ab3d-381b14137004.png">
 
 <br/>
   
 # 🖥️ Final Web View
 
-### 전체 시연 영상은 [Wiki(Final Web View)](https://github.com/codestates/Cogether/wiki/%08Final-Web-View)에서 보실 수 있습니다.
+### 전체 시연 영상은 [Wiki(Final Web View)](https://github.com/codestates/Cogether/wiki/Final-Web-View)에서 보실 수 있습니다.
+  
+<details>
+<summary>Service(서비스 소개)</summary>
+
+![소개](https://user-images.githubusercontent.com/77868874/141617594-495ecdf1-440a-4ace-bafa-c8deb8208d0a.gif)
+    
+</details>
+  
+<details>
+<summary>게시물 목록(필터 검색 기능)</summary>
+
+![게시물필터](https://user-images.githubusercontent.com/77868874/141637247-1bb267cc-63df-457b-95ee-8bea43dd64e8.gif)
+    
+</details>
+  
+<details>
+<summary>게시물 등록</summary>
+
+![게시물등록](https://user-images.githubusercontent.com/77868874/141642251-2683c16a-6fec-4bce-81f2-d1cdc46fffdc.gif)
+    
+</details>
+  
+<details>
+<summary>게시물 조회, 댓글 등록(삭제), 관심 추가</summary>
+
+![게시물조회(댓글,관심)](https://user-images.githubusercontent.com/77868874/141642331-a1299857-6cba-4da2-9ddc-e4687eec733e.gif)
+    
+</details>
+  
+<details>
+<summary>실시간 채팅</summary>
+
+![실시간채팅2](https://user-images.githubusercontent.com/77868874/141646489-fc7263a3-3132-43dd-910f-e4b9f3d512a4.gif)
+    
+</details>
+  
+
   
 <br/>
   
