@@ -18,7 +18,7 @@ const Footer = () => {
           src="/images/favicon-removebg.png"
         ></img>
         <p>
-          Co’ding + to’gether’을 합친 단어로
+          'Co'ding + to'gether'을 합친 단어로
           <br /> 함께하는 코딩을 추구하는 웹 서비스입니다.
         </p>
       </div>
@@ -41,8 +41,8 @@ const Footer = () => {
         <p>TEAM MEMBERS</p>
         <div className="members">
           <a href="https://github.com/Sehee-Park-93">Se hee</a>
-          <a href="https://github.com/wjdaud107">Lim Jung Myeong</a>
-          <a href="https://github.com/Hans160">Han Eun Tae</a>
+          <a href="https://github.com/wjdaud107">Jung myeong</a>
+          <a href="https://github.com/Hans160">Eun tae</a>
         </div>
       </div>
     </div>
