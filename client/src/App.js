@@ -32,38 +32,41 @@ function App() {
 
   return (
     <BrowserRouter>
-      {isLoading ? <Loading /> : null}
-      <div className="appContainer">
-        <ConfirmModal />
-        <QuarterModal />
-        <SigninModal />
-        <RequireModal />
-        <Nav />
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <div className="appContainer">
+          <ConfirmModal />
+          <QuarterModal />
+          <SigninModal />
+          <RequireModal />
+          <Nav />
 
-        <Switch>
-          <Route exact path="/">
-            <Main />
-          </Route>
-          <Route exact path="/write">
-            <Write />
-          </Route>
-          <Route exact path="/setting">
-            <Setting />
-          </Route>
-          <Route exact path="/post/:postId">
-            <Post />
-          </Route>
-          <Route exact path="/write/:postId">
-            <Write />
-          </Route>
-          <Route exact path="/chatlist">
-            <Chatlist />
-          </Route>
-          <Route exact path="/chatlist/:id">
-            <ChattingPage />
-          </Route>
-        </Switch>
-      </div>
+          <Switch>
+            <Route exact path="/">
+              <Main />
+            </Route>
+            <Route exact path="/write">
+              <Write />
+            </Route>
+            <Route exact path="/setting">
+              <Setting />
+            </Route>
+            <Route exact path="/post/:postId">
+              <Post />
+            </Route>
+            <Route exact path="/write/:postId">
+              <Write />
+            </Route>
+            <Route exact path="/chatlist">
+              <Chatlist />
+            </Route>
+            <Route exact path="/chatlist/:id">
+              <ChattingPage />
+            </Route>
+          </Switch>
+        </div>
+      )}
     </BrowserRouter>
   );
 }
