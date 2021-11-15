@@ -105,13 +105,13 @@
 
 # ❓ More Information
   
-### [프로젝트 배포 링크](https://cogether.link)
+### [➡️ To Cogether](https://cogether.link)
   
-### [프로젝트 노션](https://www.notion.so/19-BERA31-Cogether-d246f3626eac4b4fabe81eaf96c43d02)
+### [📔 Team Notion](https://www.notion.so/19-BERA31-Cogether-d246f3626eac4b4fabe81eaf96c43d02)
   
-### [프로젝트 위키](https://github.com/codestates/Cogether/wiki)
+### [😸 Github Wiki](https://github.com/codestates/Cogether/wiki)
   
-### [프로젝트 로그](https://github.com/codestates/Cogether/projects)
+### [✍🏻 Project Logs](https://github.com/codestates/Cogether/projects)
   
   
 </div>
