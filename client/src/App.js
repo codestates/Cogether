@@ -20,11 +20,11 @@ function App() {
   const href = url.href;
   const accessToken = href.split('=')[1];
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setIsLoading(false);
-  //   }, 1500);
-  // }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+  }, []);
   if (accessToken) {
     localStorage.setItem('accessToken', accessToken);
     window.location.href = `${process.env.REACT_APP_DOMAIN}`;
