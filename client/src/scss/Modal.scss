@@ -1,3 +1,5 @@
+@import './color.scss';
+.RequireMain,
 .SigninModal {
   z-index: 40;
 }
@@ -5,8 +7,17 @@
 .Modal {
   z-index: 50;
 }
+.DubleModal {
+  z-index: 110;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.01);
+}
 .ModalMain {
-  z-index: inherit;
+  z-index: 100;
   position: fixed;
   top: 0;
   left: 0;
@@ -15,8 +26,8 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.ModalBox {
-  z-index: inherit;
+.DubleModalBox {
+  z-index: 99;
   max-width: 500px;
   min-width: 500px;
   position: fixed;
@@ -30,10 +41,50 @@
   flex-flow: column nowrap;
 }
 
-@media screen and (max-width: 550px) {
-  .modal-box {
-    min-width: 90vw;
-  }
+.ModalBox {
+  z-index: 100;
+  max-width: 500px;
+  min-width: 500px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  padding: 1rem;
+  transform: translate(-50%, -50%);
+  border-radius: 1.5rem;
+  background-color: #f5e9ff;
+  display: flex;
+  flex-flow: column nowrap;
+}
+.ModalBox-block {
+  z-index: 90;
+  max-width: 500px;
+  min-width: 500px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  padding: 1rem;
+  transform: translate(-50%, -50%);
+  border-radius: 1.5rem;
+  background-color: #f5e9ff;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.ConfirmModalBox {
+  z-index: 120;
+  max-width: 400px;
+  min-width: 400px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  padding: 1rem;
+  transform: translate(-50%, -50%);
+  border-radius: 2rem;
+  border-width: 2px;
+  border: 1.5px solid $color-button;
+  background-color: #f5e9ff;
+  display: flex;
+  flex-flow: column nowrap;
 }
 
 .Modalcontent {
@@ -41,6 +92,11 @@
   word-break: break-all;
   font-size: 0.9rem;
   text-align: center;
+}
+
+.ModalBtnBox {
+  display: flex;
+  flex-flow: nowrap;
 }
 
 .ModalBtn {
@@ -53,6 +109,40 @@
   border: none;
 }
 .ModalBtn:hover {
-  color: #870cec;
+  color: $color-button;
   font-weight: 700;
+}
+
+@media screen and (max-width: 700px) {
+  .ModalBox {
+    z-index: 100;
+    min-width: 290px !important;
+    height: auto !important;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    padding: 1rem;
+    transform: translate(-50%, -50%);
+    border-radius: 1.5rem;
+    background-color: #f5e9ff;
+    display: flex;
+    flex-flow: column nowrap;
+  }
+
+  .ConfirmModalBox {
+    z-index: 120;
+    max-width: 400px;
+    min-width: 280px !important;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    padding: 1rem;
+    transform: translate(-50%, -50%);
+    border-radius: 2rem;
+    border-width: 2px;
+    border: 1.5px solid $color-button;
+    background-color: #f5e9ff;
+    display: flex;
+    flex-flow: column nowrap;
+  }
 }

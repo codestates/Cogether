@@ -5,7 +5,7 @@ nav {
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
-  padding: 0.8rem;
+  padding: 2.5rem;
   background: $color-main;
 
   .nav-logo-full {
@@ -13,6 +13,7 @@ nav {
     height: auto;
     max-width: 150px;
     max-height: 150px;
+    padding-top: 1rem;
   }
 
   .nav-logo-small {
@@ -23,8 +24,15 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0.5rem;
   span {
-    margin-right: 0.5rem;
+    cursor: pointer;
+    margin-right: 0.7rem;
+    // font-weight: bolder;
+    font-size: 1rem;
+  }
+  span:hover {
+    color: $color-button;
   }
 }
 .userControl {
@@ -34,6 +42,14 @@ nav {
   div {
     margin: 5px;
   }
+}
+
+.userControlSignin {
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+.userControlSignin:hover {
+  color: $color-button;
 }
 
 @media screen and (max-width: 880px) {

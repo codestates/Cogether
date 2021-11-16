@@ -1,3 +1,4 @@
+@import './color.scss';
 .SignupMain {
   padding: 0.4rem;
   display: flex;
@@ -14,9 +15,10 @@
   background-color: #ffffff;
   align-items: center;
   border-radius: 1.5rem;
+
   input {
     margin-top: 0.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
     padding: 1rem;
     height: 0.7rem;
     outline: none;
@@ -24,16 +26,24 @@
     border-radius: 2rem;
     background-color: #f5e9ff;
   }
+
   input:focus {
-    box-shadow: 0 0 0 2px #870cec;
+    box-shadow: 0 0 0 2px $color-button;
+  }
+
+  span {
+    font-size: 0.7rem;
+    margin-bottom: 1rem;
+    color: $color-button;
   }
 }
 
 .SignupP {
   font-size: 0.9rem;
   line-height: 1rem;
+  margin-top: 0.2rem;
   span {
-    color: #870cec;
+    color: $color-button;
   }
 }
 
@@ -47,15 +57,16 @@
     margin-left: 1rem;
   }
   span:hover {
-    color: #870cec;
+    color: $color-button;
   }
 }
 
 .SignupBtn {
+  font-family: 'IBMPlexSansKR-Regular';
   background-color: #c48eee;
   color: white;
   border-radius: 2rem;
-  padding: 10px 30px;
+  padding: 10px 50px;
   font-size: 14px;
   margin: 0.5rem;
   margin-top: 1.5rem;
@@ -63,10 +74,26 @@
 }
 
 .SignupBtn:hover {
-  color: #870cec;
+  color: $color-button;
   font-weight: 700;
 }
 
+.BackSignup {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  display: flex;
+  flex-flow: nowrap;
+  span {
+    cursor: pointer;
+    margin-left: 0.5rem;
+    font-weight: 500;
+    color: #000000;
+  }
+  span:hover {
+    color: $color-button;
+  }
+}
 .SignupGoogle {
   background-color: #ffffff;
   color: black;
@@ -77,7 +104,7 @@
 }
 
 .SignupGoogle:hover {
-  color: #870cec;
-  box-shadow: 0 0 0 1px #870cec;
+  color: $color-button;
+  box-shadow: 0 0 0 1px $color-button;
   font-weight: 700;
 }

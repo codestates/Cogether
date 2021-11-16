@@ -8,6 +8,6 @@ module.exports = {
     signout: require('./signout'),
     userinfo: require('./userinfo'),
     updateUserinfo: require('./updateUserinfo'),
-    delete: require('./delete'),
+    deleteUser: require('./deleteUser'),
   },
 };

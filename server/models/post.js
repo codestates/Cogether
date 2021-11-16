@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       userId: DataTypes.INTEGER,
       title: DataTypes.STRING,
       content: DataTypes.STRING,
-      image: DataTypes.STRING,
+      mainstack: DataTypes.INTEGER,
       totalViews: {
         type: DataTypes.INTEGER,
         defaultValue: 0,

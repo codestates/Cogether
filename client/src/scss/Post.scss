@@ -1,0 +1,136 @@
+@import './color.scss';
+@font-face {
+  font-family: 'IBMPlexSansKR-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.post {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+
+  .postContainer {
+    width: 80%;
+
+    .postHeader {
+      display: flex;
+      align-items: center;
+      .postTitle {
+        font-family: arial;
+        font-size: 2.5rem;
+        font-weight: bold;
+        outline: none;
+        padding-bottom: 0.5rem;
+        border: none;
+        border-bottom: 1px solid #ced4da;
+        margin-bottom: 2rem;
+        width: 100%;
+        height: 20%;
+      }
+    }
+
+    .postControl {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      span {
+        font-size: 1rem;
+        min-width: 80px;
+      }
+    }
+    .postControl-btn {
+      display: flex;
+      flex-direction: row;
+      button {
+        font-family: 'IBMPlexSansKR-Regular';
+        min-width: 70px;
+        background-color: #d3a4f9;
+        color: white;
+        border-radius: 2rem;
+        padding: 10px 20px;
+        font-size: 14px;
+        margin-right: 1.5rem;
+        border: none;
+      }
+      button:hover {
+        color: $color-button;
+        font-weight: 700;
+      }
+    }
+
+    @media screen and (max-width: 700px) {
+      .postTitle {
+        font-size: 1.5rem !important;
+      }
+      .postControl {
+        span {
+          font-size: 0.8rem;
+        }
+      }
+      .postLanguages {
+        h2 {
+          display: none;
+        }
+      }
+    }
+
+    .postLanguages {
+      display: flex;
+      width: 80%;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      align-items: center;
+
+      h2 {
+        min-width: 58px;
+        margin-right: 0.5rem;
+      }
+      .postLanguages-view {
+        display: flex;
+        flex-wrap: wrap;
+        div {
+          margin: 0.5rem;
+          background-color: #d3a4f9;
+          border-radius: 3rem;
+          padding: 0.7rem;
+          font-size: 1rem;
+        }
+      }
+      .postLanguages-edit {
+        display: none;
+      }
+    }
+
+    .postComments {
+      width: 85%;
+    }
+    .postComment {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+
+      textarea {
+        font-family: 'IBMPlexSansKR-Regular';
+        height: 100px;
+        width: 100%;
+        text-align: left;
+        letter-spacing: 0.9px;
+        resize: none;
+        margin: 1rem;
+      }
+      .postComment-btn {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+  }
+}

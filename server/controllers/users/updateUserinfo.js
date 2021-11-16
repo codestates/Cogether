@@ -6,56 +6,62 @@ const {
 } = require('../../utils/helpFunc');
 
 module.exports = async (req, res) => {
+  const { nickname, password, deleteImg } = req.body;
   const auth = isAuthorized(req);
+
+  // 토근 검증
 
   if (!auth) {
     return res.status(401).send({
       message: 'unauthorized user',
     });
   }
-
   try {
-    const { nickname, password } = req.body;
-
+    // 닉네임 중복 검사
     const checkNickName = await User.findOne({
       where: {
         nickname: nickname,
       },
     });
-
     if (checkNickName) {
-      return res.status(400).send({
-        message: 'nickname already exist',
-      });
-    }
-
-    image = req.file.location || null;
-
-    const newPassword = password;
-    await User.update(
-      {
-        nickname: nickname,
-        password: newPassword,
-        image: image,
-      },
-      {
-        where: {
-          id: auth.id,
-        },
+      if (auth.id !== checkNickName.id) {
+        return res.status(400).send({
+          message: 'nickname is already exist',
+        });
       }
-    );
-
-    const updatedUser = await User.findOne({
+    }
+    // 회원 정보 수정
+    const userInfo = await User.findOne({
       where: {
-        nickname: nickname,
+        email: auth.email,
       },
     });
 
+    if (!req.file && deleteImg) {
+      userInfo.image = null;
+    }
+
+    if (req.file) {
+      userInfo.image = req.file.location || null;
+    }
+
+    if (nickname) {
+      userInfo.nickname = nickname;
+      userInfo.image = userInfo.image;
+    }
+
+    if (password) {
+      userInfo.nickname = nickname;
+      userInfo.image = userInfo.image;
+    }
+
+    await userInfo.save();
+
     const payload = {
-      id: updatedUser.id,
-      email: updatedUser.email,
-      image: updatedUser.image,
-      nickname: updatedUser.nickname,
+      id: userInfo.id,
+      email: userInfo.email,
+      image: userInfo.image,
+      nickname: userInfo.nickname,
     };
 
     res.clearCookie('authorization', {
@@ -63,27 +69,27 @@ module.exports = async (req, res) => {
       sameSite: 'none',
       secure: true,
       path: '/',
-      domail: '/',
+      domain: '/',
     });
 
     const accessToken = generateToken(payload);
     sendToken(res, accessToken);
 
-    res.status(200).send({
+    return res.status(200).send({
       data: {
         accessToken: accessToken,
-        id: updatedUser.id,
-        email: updatedUser.email,
-        image: updatedUser.image,
-        nickname: updatedUser.nickname,
-        login_type: updatedUser.login_type,
-        authorization: updatedUser.authorization,
-        createdAt: updatedUser.createdAt,
-        updatedAt: updatedUser.updatedAt,
+        id: userInfo.id,
+        email: userInfo.email,
+        image: userInfo.image,
+        nickname: userInfo.nickname,
+        login_type: userInfo.login_type,
+        authorization: userInfo.authorization,
+        createdAt: userInfo.createdAt,
+        updatedAt: userInfo.updatedAt,
       },
       message: 'update userinfo successed',
     });
   } catch (err) {
-    console.log('error', err);
+    console.log(err);
   }
 };

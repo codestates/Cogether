@@ -1,7 +1,7 @@
 import React from 'react';
 import Select from 'react-select';
 
-const LanguageSelect = () => {
+const LanguageSelect = ({ setLanguage }) => {
   const customStyles = {
     control: (css) => ({
       ...css,
@@ -20,11 +20,11 @@ const LanguageSelect = () => {
     { value: '6', label: 'Django' },
     { value: '7', label: 'C' },
     { value: '8', label: 'Java' },
-    { value: '9', label: 'SQL' },
+    { value: '9', label: 'MySQL' },
   ];
 
-  const handleChangeSelect = (e) => {
-    console.log(e.target.value);
+  const setLikeLanguages = (e) => {
+    setLanguage(e);
   };
 
   return (
@@ -32,9 +32,11 @@ const LanguageSelect = () => {
       <Select
         isMulti
         styles={customStyles}
-        options={languageList}
+        options={languageList || ''}
         placeholder="사용할 언어를 선택하세요"
-        onChange={(e) => handleChangeSelect()}
+        onChange={(e) => {
+          setLikeLanguages(e);
+        }}
       />
     </div>
   );

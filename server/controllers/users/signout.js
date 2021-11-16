@@ -1,14 +1,4 @@
-const { isAuthorized } = require('../../utils/helpFunc');
-
 module.exports = (req, res) => {
-  const auth = isAuthorized(req);
-
-  if (!auth) {
-    return res.status(401).send({
-      message: 'unauthorzied user',
-    });
-  }
-
   try {
     if (req.headers.Authorization || req.cookies.authorization) {
       delete req.headers.authorization;
@@ -20,7 +10,7 @@ module.exports = (req, res) => {
         sameSite: 'none',
         secure: true,
         path: '/',
-        domail: '/',
+        domain: '/',
       })
       .status(205)
       .send({

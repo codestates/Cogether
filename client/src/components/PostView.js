@@ -1,8 +1,9 @@
 import React from 'react';
+import '../scss/PostView.scss';
 
 const PostView = () => {
   return (
-    <div className="postView">
+    <div className='postView'>
       <button
         onClick={() =>
           window.scrollTo({ top: 966, left: 0, behavior: 'smooth' })

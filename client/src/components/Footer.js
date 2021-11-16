@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { setRequireModal } from '../actions/index';
+import '../scss/Footer.scss';
 
 const Footer = () => {
   const dispatch = useDispatch();
@@ -9,19 +10,22 @@ const Footer = () => {
     <div className="footer">
       <div className="footer-logo">
         <img
-          className="footer-img"
+          className="footer-img-full"
           src="./images/logo_cogether-removebg-preview.png"
         ></img>
+        <img
+          className="footer-logo-small"
+          src="/images/favicon-removebg.png"
+        ></img>
         <p>
-          Cogether는’
-          <br />
-          Co’ding + to’gether’을 합친 단어로
+          'Co'ding + to'gether'을 합친 단어로
           <br /> 함께하는 코딩을 추구하는 웹 서비스입니다.
         </p>
       </div>
-      <div>
-        CONTACT
+      <div className="contact">
+        <p>CONTACT</p>
         <p
+          className="footer-contact"
           onClick={() => {
             dispatch(setRequireModal(true));
           }}
@@ -29,13 +33,17 @@ const Footer = () => {
           서비스평가
         </p>
       </div>
-      <div>
-        ABOUT US
-        <p>깃헙 레포지토리</p>
+      <div className="aboutUs">
+        <p>ABOUT US</p>
+        <a href="https://github.com/codestates/Cogether">Our Repository</a>
       </div>
-      <div>
-        TEAM MEMBERS
-        <p>팀원소개</p>
+      <div className="members-box">
+        <p>TEAM MEMBERS</p>
+        <div className="members">
+          <a href="https://github.com/Sehee-Park-93">Se hee</a>
+          <a href="https://github.com/wjdaud107">Jung myeong</a>
+          <a href="https://github.com/Hans160">Eun tae</a>
+        </div>
       </div>
     </div>
   );

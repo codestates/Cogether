@@ -18,6 +18,10 @@ module.exports = {
         content: content,
       });
       res.status(201).send({
+        data: {
+          grade,
+          content,
+        },
         message: 'send user evaluation success',
       });
     } catch (err) {

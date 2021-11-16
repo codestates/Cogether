@@ -11,7 +11,12 @@ module.exports = {
 
   sendToken: (res, token) => {
     res.cookie('authorizaion', token, {
+      domain: process.env.DOMAIN,
+      path: '/',
+      maxAge: 24 * 6 * 60 * 1000,
+      sameSite: 'none',
       httpOnly: true,
+      secure: true,
     });
   },
 

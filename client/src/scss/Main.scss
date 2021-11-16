@@ -1,43 +1,125 @@
+@import './color.scss';
 @font-face {
-  font-family: '777Balsamtint';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/777Balsamtint.woff')
+  font-family: 'IBMPlexSansKR-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff')
     format('woff');
   font-weight: normal;
   font-style: normal;
 }
-
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
 .MainImageContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: '777Balsamtint';
+  font-family: 'IBMPlexSansKR-Regular';
+  height: 100%;
+  width: 75%;
+  // position: relative;
+  .content-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .MainComment {
+    position: absolute;
+    top: 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+  }
+  .postView {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2.8rem;
+  }
+  .iphone-img {
+    display: none;
+  }
 }
+
 .content {
-  font-size: 3rem;
-  font-weight: bolder;
+  font-size: 3.5rem;
+  // font-weight: bolder;
   line-height: 5rem;
+  margin-right: 0.1rem;
+  -webkit-animation: fade-in-top 2.5s linear both;
+  animation: fade-in-top 2.5s linear both;
 }
-.postView {
+@keyframes fade-in-top {
+  0% {
+    -webkit-transform: translateY(-50px);
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.subcontent {
+  margin-top: 0.3rem;
+  -webkit-animation: fade-in-top 3.4s linear both;
+  animation: fade-in-top 3.4s linear both;
+}
+
+.mainLanguageBar {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 2.8rem 0;
-}
+  width: 100%;
+  border: 1px solid #e0c0f8;
+  // border-radius: 1.5rem;
+  padding: 0.7rem;
+  box-shadow: 0px 5px 25px rgba(231, 113, 247, 0.15);
+  .languageContainer {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .languageBar {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 1rem;
+      max-width: 1210px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-.languageBar {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 auto;
-  padding: 1rem;
-  max-width: 1210px;
-  margin-top: 5rem;
-  margin-bottom: 5rem;
-}
-
-.languageItem {
-  margin-right: 0.75rem;
-  margin-left: 0.75rem;
-  font-size: 30px;
+    .languageItem {
+      margin-right: 0.75rem;
+      margin-left: 0.75rem;
+      font-size: 30px;
+    }
+    .done {
+      margin-right: 0.75rem;
+      margin-left: 0.75rem;
+      font-size: 30px;
+      color: #ccc;
+    }
+    .done:hover {
+      transform: scale(1.06);
+      cursor: pointer;
+    }
+    .languageItem:hover {
+      transform: scale(1.06);
+      // background: #fff;
+      // box-shadow: 0px 5px 25px rgba(231, 113, 247, 0.15);
+      cursor: pointer;
+    }
+  }
 }
 
 .postList {
@@ -45,53 +127,263 @@
   justify-content: center;
   align-items: center;
   li {
+    min-width: 75px;
     margin-right: 0.75rem;
     margin-left: 0.75rem;
-    font-size: 30px;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  span:hover {
+    font-weight: 700;
+  }
+  i {
+    padding: 0.5rem;
   }
 }
+
 .postList-img {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0.4rem;
+}
+.fa-clock {
+  color: black;
 }
 
-.footer {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background: #eae8e8;
-  margin-top: 50px;
+.fa-hotjar {
+  color: red;
 }
+
+.fa-chevron-circle-up {
+  position: fixed;
+  z-index: 10;
+  right: 2rem;
+  bottom: 2rem;
+  color: #c48eee;
+}
+.topScroll {
+  position: fixed;
+  z-index: 10;
+  right: 2rem;
+  bottom: 7rem;
+  color: #c48eee;
+}
+.topScroll,
+.fa-chevron-circle-up:hover {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 1450px) {
+  .MainComment {
+    position: absolute;
+    top: 19rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+  }
+  .iphone-img {
+    display: none;
+  }
   .content {
-    font-size: 2rem;
-    line-height: 3rem;
+    font-size: 3.1rem;
+    // font-weight: bolder;
+    line-height: 5rem;
+    margin-right: 0.1rem;
   }
   .content-img {
-    width: 60%;
+    width: 100%;
     height: auto;
     padding: 3rem;
     min-width: 430px;
+  }
+  .subcontent {
+    margin-top: 0.3rem;
+    font-size: smaller;
+  }
+}
+
+@media screen and (max-width: 1350px) {
+  .MainImageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'IBMPlexSansKR-Regular';
+    height: 80%;
+    width: 80%;
+  }
+  .MainComment {
+    position: absolute;
+    top: 19rem !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+  }
+  .content {
+    font-size: 2.1rem;
+    // font-weight: bolder;
+    line-height: 3rem;
+    margin-right: 0.1rem;
+  }
+  .content-img {
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
+    padding: 3rem;
+    // min-width: 430px;
+  }
+  .subcontent {
+    margin-top: 0.3rem;
+    font-size: smaller;
+  }
+  .iphone-img {
+    display: none;
   }
 }
 
 @media screen and (max-width: 1026px) {
   .MainImageContainer {
-    flex-flow: column;
-    align-items: center;
+    display: flex;
     justify-content: center;
+    align-items: center;
+    font-family: 'IBMPlexSansKR-Regular';
+    height: 65%;
+    width: 70%;
+  }
+  .MainComment {
+    position: absolute;
+    top: 21rem !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+  }
+  .content {
+    font-size: 1.7rem;
+    // font-weight: bolder;
+    line-height: 3rem;
+    margin-right: 0.1rem;
+  }
+  .content-img {
+    width: 65%;
+    height: 70%;
+    object-fit: cover;
+    padding: 3rem;
+    // min-width: 430px;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .MainImageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'IBMPlexSansKR-Regular';
+    height: 100%;
+    width: 70%;
+  }
+  .MainComment {
+    position: absolute;
+    top: 21rem !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+  }
+  .content {
+    font-size: 1.7rem;
+    // font-weight: bolder;
+    line-height: 3rem;
+    margin-right: 0.1rem;
+  }
+  .content-img {
+    display: none;
+    // min-width: 430px;
+  }
+  .iphone-img {
+    display: inline-block !important;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    padding: 3rem;
   }
 
-  .nodataImg {
-    max-width: 80%;
-    height: auto;
+  .postView button {
+    font-family: 'IBMPlexSansKR-Regular';
+    border: none;
+    cursor: pointer;
+    height: 7%;
+    width: 30%;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    background-color: #f5e9ff;
+    border-radius: 1.5rem;
+    min-width: 325px;
+    box-shadow: 0px 5px 25px rgb(0 0 0 / 15%);
   }
 }
 
 @media screen and (max-width: 700px) {
+  .MainImageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'IBMPlexSansKR-Regular';
+    height: 90% !important;
+    width: 100%;
+  }
+  .MainComment {
+    position: absolute;
+    top: 21rem !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+  }
   .content {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    // font-weight: bolder;
+    line-height: 3rem;
+    margin-right: 0.1rem;
+  }
+  .subcontent {
+    display: none;
+  }
+  .content-img {
+    display: none;
+    // min-width: 430px;
+  }
+  .iphone-img {
+    display: inline-block !important;
+    width: 100%;
+    height: 90%;
+    object-fit: cover;
+    padding: 3rem;
+  }
+
+  .postView button {
+    font-family: 'IBMPlexSansKR-Regular';
+    border: none;
+    cursor: pointer;
+    height: 7%;
+    width: 30%;
+    font-size: 1.3rem;
+    padding: 0.5rem;
+    background-color: #f5e9ff;
+    border-radius: 1.5rem;
+    min-width: 200px;
+    box-shadow: 0px 5px 25px rgb(0 0 0 / 15%);
+  }
+
+  .postList li {
+    font-size: 1.3rem;
   }
 
   .nodataImg {
@@ -102,11 +394,96 @@
     div,
     p {
       font-size: 10px;
-      padding: 5px;
+      padding: 0.1rem;
     }
     .footer-img {
       max-width: 150px;
       height: auto;
+    }
+  }
+}
+
+// PostList영역
+.postMain {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+  .postList-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: auto;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    .nodata {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .postList-box {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 15rem;
+      height: 15rem;
+      margin: 0.625rem;
+      padding: 1.5rem;
+      background: #ffffff;
+      // box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.15);
+      border: 0.1rem solid #e0c0f8;
+      border-radius: 1.5rem;
+      position: relative;
+      cursor: pointer;
+      transition: transform 200ms ease-in;
+
+      .postListContainer {
+        .postList-title {
+          display: flex;
+          max-width: 170px;
+          justify-content: center;
+          align-items: center;
+          font-size: large;
+        }
+        .postList-img {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          width: 150px;
+          height: 150px;
+          img {
+            width: auto;
+            height: auto;
+            max-width: 80px;
+            max-height: 80px;
+          }
+          p {
+            font-size: 12px;
+          }
+        }
+
+        .postListContainer-bottom {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          .list-bottom {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+      }
+    }
+    .postList-box:hover {
+      transform: scale(1.02);
+      box-shadow: 0px 5px 25px rgba(231, 113, 247, 0.15);
     }
   }
 }

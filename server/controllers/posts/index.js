@@ -6,9 +6,10 @@ module.exports = {
     getPostByHashtags: require('./getPostByHashtags'),
     getAllPosts: require('./getAllPosts'),
     getPostDetail: require('./getPostDetail'),
-    getMyPost: require('./getMyPosts'),
+    getMyPosts: require('./getMyPosts'),
+    getMyInterestPosts: require('./getMyInterestPosts'),
     updatePost: require('./updatePost'),
-    updateTotalViews: require('./updateTotalViews'),
     deletePost: require('./deletePost'),
+    updatePostTotalViews: require('./updatePostTotalViews'),
   },
 };

@@ -18,9 +18,8 @@ class EditorComponent extends Component {
         { indent: '-1' },
         { indent: '+1' },
       ],
-      ['link', 'image'],
+
       [{ align: [] }, { color: [] }, { background: [] }], // dropdown with defaults from theme
-      ['clean'],
     ],
   };
 
@@ -35,27 +34,34 @@ class EditorComponent extends Component {
     'list',
     'bullet',
     'indent',
-    'link',
-    'image',
     'align',
     'color',
     'background',
   ];
 
   render() {
-    const { value, onChange } = this.props;
+    const { value, postEdit, onChange, isRead } = this.props;
+
     return (
-      <div style={{ height: '650px' }}>
-        <ReactQuill
-          style={{ height: '600px' }}
-          theme='snow'
-          modules={this.modules}
-          formats={this.formats}
-          value={value || ''}
-          onChange={(content, delta, source, editor) =>
-            onChange(editor.getHTML())
-          }
-        />
+      <div style={{ height: '550px', marginBottom: '1rem' }}>
+        {isRead === true ? (
+          <ReactQuill
+            style={{ height: '500px' }}
+            value={value || ''}
+            readOnly={postEdit}
+          />
+        ) : (
+          <ReactQuill
+            style={{ height: '500px' }}
+            theme="snow"
+            modules={this.modules}
+            formats={this.formats}
+            value={value || ''}
+            onChange={(content, delta, source, editor) =>
+              onChange(editor.getHTML())
+            }
+          />
+        )}
       </div>
     );
   }

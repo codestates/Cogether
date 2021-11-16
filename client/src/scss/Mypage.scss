@@ -1,7 +1,32 @@
 @import 'color.scss';
+
+.fullBox {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  position: fixed;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  opacity: 0.01;
+  z-index: 998;
+}
+
+.MypageMain {
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+
+.MypageMain:hover {
+  color: $color-button;
+}
 .mypage-menu {
   display: none;
 }
+
+.chatting:hover,
 .userInfo:hover,
 .logout:hover {
   cursor: pointer;
@@ -24,6 +49,7 @@
   background: $color-logo;
   justify-content: center;
   align-items: center;
+  z-index: 999;
   li {
     padding: 0.8rem;
     color: white;

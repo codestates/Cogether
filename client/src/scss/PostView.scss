@@ -1,0 +1,29 @@
+@import './color.scss';
+.postView {
+  display: flex;
+  button {
+    font-family: 'IBMPlexSansKR-Regular';
+    border: none;
+    cursor: pointer;
+    height: 7%;
+    width: 30%;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    background-color: #f5e9ff;
+    border-radius: 1.5rem;
+    min-width: 350px;
+    box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.15);
+  }
+  button:hover {
+    color: $color-button;
+    font-weight: 700;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .postView {
+    button {
+      font-size: 1.3rem;
+    }
+  }
+}

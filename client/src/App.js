@@ -1,53 +1,72 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.scss';
-import { useSelector } from 'react-redux';
 import Nav from './components/Nav';
 import Main from './pages/Main';
+import Post from './pages/Post';
 import SigninModal from './components/SigninModal';
 import RequireModal from './components/RequireModal';
 import ConfirmModal from './components/ConfirmModal';
-import { setConfirmModal } from './actions/index';
-
+import QuarterModal from './components/QuarterModal';
 import Setting from './pages/Setting';
 import Write from './pages/Write';
+import Chatlist from './pages/Chatlist';
+import ChattingPage from './pages/ChattingPage';
+import Loading from './components/Loading';
 
 function App() {
-  useEffect(() => {
-    setConfirmModal(false, '');
-  }, []);
-  const SigninInfo = useSelector((state) => state.userReducer);
+  const [isLoading, setIsLoading] = useState(true);
+  const url = new URL(window.location.href);
+  const href = url.href;
+  const accessToken = href.split('=')[1];
 
-  const { isLogin, isSigninModalOpen, isRequireModalOpen, confirmModal } =
-    SigninInfo;
-  console.log('로그인상태', isLogin);
-  console.log('토큰', `${localStorage.accessToken}`);
-  console.log('확인모달', SigninInfo);
-  console.log('리콰이어', isRequireModalOpen);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+  }, []);
+  if (accessToken) {
+    localStorage.setItem('accessToken', accessToken);
+    window.location.href = `${process.env.REACT_APP_DOMAIN}`;
+  }
 
   return (
     <BrowserRouter>
-      <div className="appContainer">
-        <ConfirmModal
-          isOpenCon={confirmModal.isConfirmOpen}
-          content={confirmModal.content}
-        />
-        <SigninModal isOpen={isSigninModalOpen} />
-        <RequireModal isOpenRe={isRequireModalOpen} />
-        <Nav isLogin={isLogin} />
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <div className="appContainer">
+          <ConfirmModal />
+          <QuarterModal />
+          <SigninModal />
+          <RequireModal />
+          <Nav />
 
-        <Switch>
-          <Route exact path="/">
-            <Main />
-          </Route>
-          <Route exact path="/write">
-            <Write />
-          </Route>
-          <Route exact path="/setting">
-            <Setting />
-          </Route>
-        </Switch>
-      </div>
+          <Switch>
+            <Route exact path="/">
+              <Main />
+            </Route>
+            <Route exact path="/write">
+              <Write />
+            </Route>
+            <Route exact path="/setting">
+              <Setting />
+            </Route>
+            <Route exact path="/post/:postId">
+              <Post />
+            </Route>
+            <Route exact path="/write/:postId">
+              <Write />
+            </Route>
+            <Route exact path="/chatlist">
+              <Chatlist />
+            </Route>
+            <Route exact path="/chatlist/:id">
+              <ChattingPage />
+            </Route>
+          </Switch>
+        </div>
+      )}
     </BrowserRouter>
   );
 }
